@@ -23,7 +23,7 @@ public class ComController {
 		List<FreeBoard> list= fservice.selectLimitDesc();
 		mav.addObject("freeList",list);
 		mav.setViewName("/com/comMain");
-		System.out.println("aaaa");
+
 		return mav;
 	}
 	
