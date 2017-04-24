@@ -13,7 +13,7 @@ public class NomalServiceImpl implements NomalService{
 	private NomalDao nDao;
 
 	public NomalUser selectOne(String id) {
-		
+		System.out.println();
 		return null;
 	}
 	
