@@ -15,7 +15,7 @@ public interface FreeBoardDao {
 	public List<FreeBoard> selecAll();
 	//자유게시물 최근날짜 4개 가져오기
 	public List<FreeBoard> selectFreePast();
-	
+	//4353
 	//현재페이지에 해당하는 게시물만 가져오기
 	public List<FreeBoard> selectBoardPage(HashMap<String, Object> params);
 		
