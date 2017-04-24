@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -8,14 +7,4 @@
   	<select id="selectLimitDesc" resultType="freeBoard">
   		select * from freeBoard order by num desc limit 4
   	</select>
-=======
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-  <mapper namespace="dao.FreeBoardDao">
-  	<select id="selectLimitDesc" parameterType="java.util.HashMap" resultType="freeBoard">
-  		select * from freeBoard order by num desc limit 4
-  	</select>
->>>>>>> 4910a7d066726fc43855b9400b8d8eaa280e949c
   </mapper>
