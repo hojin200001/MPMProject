@@ -24,6 +24,7 @@ public class ComController {
 		mav.addObject("freeList",list);
 		mav.setViewName("/com/comMain");
 		System.out.println("aaaa");
+		System.out.println("test");
 		return mav;
 	}
 	
