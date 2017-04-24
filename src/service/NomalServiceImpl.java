@@ -9,7 +9,7 @@ import dao.NomalDao;
 import model.NomalUser;
 @Service
 public class NomalServiceImpl implements NomalService{
-	@Autowired
+	@Autowired(required = false)
 	private NomalDao nDao;
 
 	public NomalUser selectOne(String id) {

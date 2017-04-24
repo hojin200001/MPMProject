@@ -9,7 +9,7 @@ import dao.FreeBoardDao;
 import model.FreeBoard;
 @Service
 public class FreeBoardServiceImpl implements FreeBoardService{
-	@Autowired
+	@Autowired(required = false)
 	private FreeBoardDao fdao;
 /*	@Autowired
 	private NomalDao nDao;*/
