@@ -51,12 +51,14 @@ $(document).ready(function(){
   		<img class="logoImage" src="img/main/logoB_07.png" alt="인력몬 로고" style="width: 250px; height: 130px;"/>
   	</div>
     <div clsss="itemOneArea">
-    	<div class="nomalLink" onclick="location.href='nomalMain.do'">
-        	<ul>
+    	<div class="nomalLink">
+        	<ul onclick="location.href='nomalMain.do'">
             	<li class="infotxt">당신에게 알맞는 일자리를 찾아보세요.</li>
                 <li class="subject">구직<a href="nomalMain.do"><img src="img/main/btn_more.png" alt="더보기"></a></li>
             </ul>
-            <p class="sub_txt">구직등록 / 일자리검색 / 지역별 일자리</p>
+            <p class="sub_txt">
+            	<a>구직등록</a> / <a>일자리검색</a> / <a>지역별 일자리</a>
+            </p>
         </div>
         <div class="companyLink" onclick="location.href='comMain.do'">
         	<ul>
