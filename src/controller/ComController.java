@@ -25,6 +25,7 @@ public class ComController {
 		mav.setViewName("/com/comMain");
 		System.out.println("aaaa");
 		System.out.println("test");
+		System.out.println("test2");
 		return mav;
 	}
 	
