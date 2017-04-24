@@ -3,7 +3,7 @@ package model;
 import java.util.Date;
 
 public class NomalBoard {
-	private int num;
+	private int Nnum;
 	private String Ntitle;
 	private String Natea;
 	private String Njob;
@@ -15,10 +15,10 @@ public class NomalBoard {
 	private int Ncount;
 	private String nomalId;
 	public int getNum() {
-		return num;
+		return Nnum;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setNum(int nnum) {
+		this.Nnum = nnum;
 	}
 	public String getNtitle() {
 		return Ntitle;

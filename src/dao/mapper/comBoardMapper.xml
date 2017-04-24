@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-  <mapper namespace="dao.FreeBoardDao">
-  	<select id="selectLimitDesc" resultType="freeBoard">
-  		select * from freeBoard order by num desc limit 4
+  
+  <mapper namespace="dao.ComBoardDao">
+  	<select id="selectNomalBoardDesc" resultType="nomalBoard">
+  		select * from nomalBoard order by Nnum desc limit 6
   	</select>
   </mapper>
