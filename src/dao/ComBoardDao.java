@@ -1,9 +1,10 @@
-package service;
+package dao;
 
 import java.util.List;
 
+import model.FreeBoard;
 import model.NomalBoard;
 
-public interface ComService {
+public interface ComBoardDao {
 	public List<NomalBoard> selectNomalBoardDesc();
 }
