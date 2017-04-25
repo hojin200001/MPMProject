@@ -30,7 +30,7 @@ public class NomalController {
 		List<NomalBoard> list2= nservice.selectLimitDesc();
 		mav.addObject("freeList",list);
 		mav.addObject("nomalList",list2);
-		System.out.println("삽입");
+		System.out.println(list2);
 		mav.setViewName("/nomal/nomalMain");
 		return mav;
 	}
