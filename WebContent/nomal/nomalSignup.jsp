@@ -1,4 +1,3 @@
-<%-- <%@page import="Model.FreeBoard"%> --%>
 <%@page import="model.FreeBoard"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
@@ -224,71 +223,7 @@ width: 25%;
 	</script>
     <!-- end .sidebar1 --></div>
   <div class="content">
-  	<div class="recentHelp">
-    	<div class="bestinfo">
-    		<p>최근 올라온 구인공고 <span>Best4</span></p>
-				<table class=table6_6>
-				<tr>
-					<th>지역</th><th class="n2">구인 광고 내용</th><th>업무 기간</th><th>급여</th><th>등록일</th>
-				</tr>
-				<%-- <c:forEach items="${nomalList}" var="n">
-				<tr>
-					<td>${n.Narea}</td>
-					<td class="n2">${n.Ntitle}</td>
-					<td>${n.Nday}</td>
-					<td>${n.Ncareer}</td>
-					<td>${n.Narea}</td>
-				</tr>
-				</c:forEach> --%>
-				
-				<tr>
-					<td>test</td>
-					<td>test</td>
-					<td>test</td>
-					<td>test</td>
-					<td>test</td>
-				</tr>
-				
-				</table>
-    	</div>
-    </div>
-    <div class="recentFreeTable">
-    	<div class="bestinfo">
-    		<p>최근 등록된 자유 게시판</p>
-				<table class=table6_6>
-				<tr>
-					<th>게시판 번호</th><th class="n2">게시판 제목</th><th>등록인</th><th>등록 날짜</th><th>조회수</th>
-				</tr>
-				<c:forEach items="${freeList}" var="f">
-						<tr>
-						<td>${f.num}</td>
-						<td class="n2"><a href="#">${f.title}</a></td>
-						<td>${f.createName}</td>
-						<td>${f.createDay}</td>
-						<td>${f.freeCount}</td>
-					</tr>	
-				</c:forEach>
-<%-- 				<%	List<FreeBoard> list = (List<FreeBoard>)request.getAttribute("freeList");
-					for(int i = 0; i<list.size(); i++){%>
-					<tr>
-						<td><%=list.get(i).getNum()%></td>
-						<td class="n2"><a href="#"><%=list.get(i).getTitle()%></a></td>
-						<td><%=list.get(i).getCreateName()%></td>
-						<td><%=list.get(i).getCreateDay()%></td>
-						<td><%=list.get(i).getFreeCount()%></td>
-					</tr>	
-				<%}%> --%>
-				</table>
-    	</div>
-    </div>
-    <div class="infoArea" style="border: 1px solid red;">
-    	<div class="RegionInfo">
-    		지역별 구인 갯수 출력 왼쪽부분으로(도별로 나누면 좋겠는데 안대면 없애는걸로)
-    	</div>
-    	<div class="Notice">
-    		공지 게시판 테이블 (최근 5개)오른쪽부분으로
-    	</div>
-    </div>
+  	<h1>현재 준비중...</h1>
     <!-- end .content --></div>
   <div class="footer">
   	 <div class="copy">
