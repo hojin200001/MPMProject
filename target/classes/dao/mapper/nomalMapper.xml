@@ -11,4 +11,8 @@
   	<select id="selectLimitDesc" resultType="nomalBoard">
   		select * from nomalBoard order by Nnum desc limit 4
   	</select>
+  	
+  	<select id = "areaJobNum" parameterType="string" resultType="int">
+  		select count(*) from comboard where Carea like '%${area}%'
+  	</select>
   </mapper>

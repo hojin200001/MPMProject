@@ -10,4 +10,6 @@ public interface NomalDao {
 	public NomalUser selectOne(HashMap<String, Object> params);
 	
 	public List<NomalBoard> selectLimitDesc();
+	
+	public int areaJobNum(String area);
 }

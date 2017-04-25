@@ -28,9 +28,9 @@ public class NomalController {
 		ModelAndView mav = new ModelAndView();
 		List<FreeBoard> list= fservice.selectLimitDesc();
 		List<NomalBoard> list2= nservice.selectLimitDesc();
+		mav.addObject("gangnam", nservice.areaJobNum("강남"));
 		mav.addObject("freeList",list);
 		mav.addObject("nomalList",list2);
-		System.out.println(list2);
 		mav.setViewName("/nomal/nomalMain");
 		return mav;
 	}

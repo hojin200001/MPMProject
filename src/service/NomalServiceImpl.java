@@ -42,4 +42,10 @@ public class NomalServiceImpl implements NomalService{
 		List<NomalBoard> list = nDao.selectLimitDesc();
 		return list;
 	}
+
+	@Override
+	public int areaJobNum(String area) {
+		// TODO Auto-generated method stub
+		return nDao.areaJobNum(area);
+	}
 }

@@ -283,7 +283,7 @@ width: 25%;
     </div>
     <div class="infoArea" style="border: 1px solid red;">
     	<div class="RegionInfo">
-    		지역별 구인 갯수 출력 왼쪽부분으로(도별로 나누면 좋겠는데 안대면 없애는걸로)
+    		*지역별 구인현황* 강남 :${gangnam} , 대전 : , 대구 : , 부산 : 
     	</div>
     	<div class="Notice">
     		공지 게시판 테이블 (최근 5개)오른쪽부분으로
