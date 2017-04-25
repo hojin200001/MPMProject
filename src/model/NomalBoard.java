@@ -5,7 +5,7 @@ import java.util.Date;
 public class NomalBoard {
 	private int Nnum;
 	private String Ntitle;
-	private String Natea;
+	private String Narea;
 	private String Njob;
 	private String Ncareer;
 	private String Nphone;
@@ -26,11 +26,11 @@ public class NomalBoard {
 	public void setNtitle(String ntitle) {
 		Ntitle = ntitle;
 	}
-	public String getNatea() {
-		return Natea;
+	public String getNarea() {
+		return Narea;
 	}
-	public void setNatea(String natea) {
-		Natea = natea;
+	public void setNarea(String narea) {
+		Narea = narea;
 	}
 	public String getNjob() {
 		return Njob;
