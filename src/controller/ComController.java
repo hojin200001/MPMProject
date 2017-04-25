@@ -24,8 +24,8 @@ public class ComController {
 		ModelAndView mav = new ModelAndView();
 		List<FreeBoard> flist= fservice.selectLimitDesc();
 		List<NomalBoard> nlist = cservice.selectNomalBoardDesc();
-		mav.addObject("freeList",flist);
 		mav.addObject("nomalList", nlist);
+		mav.addObject("freeList",flist);
 		mav.setViewName("/com/comMain");
 		return mav;
 	}

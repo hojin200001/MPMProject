@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/board.css">
 
 <title>Insert title here</title>
-<script type="text/javascript" src="script/freeBoard.js"></script>
+<script type="text/javascript" src="js/board/freeBoard.js"></script>
 </head>
 <body>
 

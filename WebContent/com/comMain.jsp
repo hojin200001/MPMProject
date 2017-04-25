@@ -1,4 +1,5 @@
 <%-- <%@page import="Model.FreeBoard"%> --%>
+<%@page import="model.NomalBoard"%>
 <%@page import="model.FreeBoard"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
@@ -140,7 +141,36 @@ width: 25%;
 	height: 100px;
 	width: 100%;
 }
-
+.infoBox{
+	height:300px; 
+	list-style: none; 
+	margin: 0 auto; 
+	padding: 1px 0 0;
+}
+.first_info{
+	width: 49%; 
+	height : 50px; 
+	border: 1px solid red; 
+	display: list-item;
+	position: relative; 
+	float: left; 
+	margin: -1px 0 0 -1px; 
+	box-sizing: border-box;
+}
+.first_info>a{
+	padding: 14px 0 0 158px; 
+	text-decoration: none;
+}
+.info_span1{
+	color: #0372ab; 
+	background-color: #ebf8ff; 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	width: 130px; 
+	height: 41px; 
+	padding: 12px 0 0 12px;
+}
 -->
 
 </style>
@@ -220,23 +250,18 @@ width: 25%;
   	<div class="recentHelp">
     	<div class="bestinfo">
     		<p>최근 올라온 구인공고 <span>Best4</span></p>
-				<table class=table6_6>
-				<tr>
-					<th>지역</th><th class="n2">구직 광고 내용</th><th>업무 기간</th><th>급여</th><th>등록일</th>
-				</tr>
-				<tr>
-					<td>SAMPLE</td><td class="n2">SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td>
-				</tr>
-				<tr>
-					<td>SAMPLE</td><td class="n2">SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td>
-				</tr>
-					<tr>
-					<td>SAMPLE</td><td class="n2">SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td>
-				</tr>
-				<tr>
-					<td>SAMPLE</td><td class="n2">SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td>
-				</tr>
-				</table>
+			<ul class="infoBox">
+				<li class="first_info">
+					<a>
+						<span class="info_span1">용접기사</span>
+						<span><span style="display:block;">대충 구합니다.</span></span>
+						<span><span>기간 : 1년</span></span>일수
+						<span><span>관악구 / 용접기사</span></span>지역/작성자
+					</a>
+					<a></a>
+					<a></a>
+				</li>
+			</ul>
     	</div>
     </div>
     <div class="recentFreeTable">
