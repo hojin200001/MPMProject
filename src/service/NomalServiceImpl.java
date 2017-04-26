@@ -1,11 +1,13 @@
 package service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dao.NomalDao;
+import model.NomalBoard;
 import model.NomalUser;
 @Service
 public class NomalServiceImpl implements NomalService{
@@ -33,5 +35,17 @@ public class NomalServiceImpl implements NomalService{
 		}else{
 			return null;
 		}
+	}
+
+	@Override
+	public List<NomalBoard> selectLimitDesc() {
+		List<NomalBoard> list = nDao.selectLimitDesc();
+		return list;
+	}
+
+	@Override
+	public int areaJobNum(String area) {
+		// TODO Auto-generated method stub
+		return nDao.areaJobNum(area);
 	}
 }
