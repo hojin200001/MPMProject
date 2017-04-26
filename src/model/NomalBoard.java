@@ -12,9 +12,9 @@ public class NomalBoard {
 	private String nemail;
 	private String nday;
 	private Date njoinDay;
+	private String ntext;
 	private int ncount;
 	private String nomalId;
-	
 	public int getNnum() {
 		return nnum;
 	}
@@ -69,6 +69,12 @@ public class NomalBoard {
 	public void setNjoinDay(Date njoinDay) {
 		this.njoinDay = njoinDay;
 	}
+	public String getNtext() {
+		return ntext;
+	}
+	public void setNtext(String ntext) {
+		this.ntext = ntext;
+	}
 	public int getNcount() {
 		return ncount;
 	}
@@ -81,18 +87,12 @@ public class NomalBoard {
 	public void setNomalId(String nomalId) {
 		this.nomalId = nomalId;
 	}
-	
 	@Override
 	public String toString() {
 		return "NomalBoard [nnum=" + nnum + ", ntitle=" + ntitle + ", narea=" + narea + ", njob=" + njob + ", ncareer="
 				+ ncareer + ", nphone=" + nphone + ", nemail=" + nemail + ", nday=" + nday + ", njoinDay=" + njoinDay
-				+ ", ncount=" + ncount + ", nomalId=" + nomalId + "]";
+				+ ", ntext=" + ntext + ", ncount=" + ncount + ", nomalId=" + nomalId + "]";
 	}
-	
-	
-	
-	
-	
 	
 	
 }

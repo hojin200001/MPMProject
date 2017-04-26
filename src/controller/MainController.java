@@ -49,7 +49,6 @@ public class MainController {
 		String url2 = url.substring(33);
 		System.out.println(url2);
 		session.invalidate();
-		System.out.println("");
 		return "redirect:"+url2;
 	}
 }

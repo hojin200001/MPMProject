@@ -11,4 +11,5 @@ public interface NomalService {
 	public HashMap<String, Object> getLogin(String id, String pass);
 	public List<NomalBoard> selectLimitDesc();
 	public int areaJobNum(String area);
+	public NomalBoard boardView(int nnum);
 }

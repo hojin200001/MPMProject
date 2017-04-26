@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,6 +40,15 @@ public class NomalController {
 	public ModelAndView Signup(){
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/nomal/nomalSignup");
+		return mav;
+	}
+	
+	@RequestMapping("nomalView.do")
+	public ModelAndView boardView(HttpSession session, int nnum){
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("user" , session.getAttribute("user"));
+		mav.addObject(nservice.boardView(nnum));
+		mav.setViewName("nomal/nomalView");
 		return mav;
 	}
 }
