@@ -5,6 +5,6 @@
   
   <mapper namespace="dao.ComBoardDao">
   	<select id="selectNomalBoardDesc" resultType="nomalBoard">
-  		select * from nomalBoard order by Nnum desc limit 6
+  		select * from nomalBoard order by Nnum desc limit 10
   	</select>
   </mapper>

@@ -1,6 +1,5 @@
 body {
 	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
-	background-color: #f2f2f2;
 	margin: 0;
 	padding: 0;
 	color: #000;
@@ -38,18 +37,16 @@ a:hover, a:active, a:focus { /* 이 선택기 그룹은 마우스를 사용하�
 	width: 80%;
 	max-width: 1260px;/* 대형 모니터에서 이 레이아웃이 지나치게 넓어지는 것을 방지하기 위해 max-width를 사용할 수 있습니다. 이 속성을 사용하면 선 길이를 더욱 쉽게 읽을 수 있습니다. IE6에서는 이 선언이 적용되지 않습니다. */
 	min-width: 780px;/* 이 레이아웃이 지나치게 좁아지는 것을 방지하기 위해 min-width를 사용할 수 있습니다. 이 속성을 사용하면 사이드 열에서 선 길이를 더욱 쉽게 읽을 수 있습니다. IE6에서는 이 선언이 적용되지 않습니다. */
-	background-color: #f2f2f2;
 	margin: 0 auto; /* 측면 자동 값, 폭으로 연결, 레이아웃 가운데 정렬. .container의 폭을 100%로 설정하는 경우에는 필요하지 않습니다. */
 }
 .header {
-	background-color: #f2f2f2;
 	text-align:center;
 	height: 190px;
 }
 .side {
 	width: 25%;
 	float: right;
-	background-color: #f2f2f2;
+	background-color: #fafafa;
 	padding-bottom: 10px;
 }
 .content {
@@ -62,15 +59,10 @@ a:hover, a:active, a:focus { /* 이 선택기 그룹은 마우스를 사용하�
 nav{
 	
 }
-/* ~~ 그룹화된 이 선택기는 .content 영역 공간에 목록을 제공합니다. ~~ */
-.content ul, .content ol { 
-	padding: 0 15px 15px 40px; /* 이 패딩은 머리글의 오른쪽 패딩과 위의 단락 규칙을 미러링합니다. 패딩은 목록에서 다른 요소들 사이의 공간 아래쪽과 들여쓰기 생성을 위한 왼쪽에 배치되었습니다. 패딩은 원하는 대로 조정할 수 있습니다. */
-}
-
 /* ~~ 바닥글 ~~ */
 .footer {
 	padding: 10px 0;
-	background-color: #f2f2f2;
+	background-color: #fafafa;
 	text-align:center
 }
 

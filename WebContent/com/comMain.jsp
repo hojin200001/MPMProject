@@ -1,7 +1,3 @@
-<%-- <%@page import="Model.FreeBoard"%> --%>
-<%@page import="model.NomalBoard"%>
-<%@page import="model.FreeBoard"%>
-<%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
 <meta name="viewport" content="width=device-width">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -9,6 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="js/main/boardInfo.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>무제 문서</title>
@@ -51,16 +48,12 @@
 }
 .recentHelp, .recentFreeTable{
 	height: auto;
-	border-top: 3px solid #0d73d1;
-    border-left: 1px solid #0d73d1;
-    border-right: 1px solid #0d73d1;
-    
+	border-top: 3px solid #0d73d1; 
 }
 .recentFreeTable{
-margin-top: 30px;
+	margin-top: 15px;
 }
 .bestinfo{
- margin-left: 20px;
 }
 .bestinfo p{
 	margin-top: 10px;
@@ -83,43 +76,7 @@ margin-top: 30px;
     background: #034f96;
     cursor: pointer;
 }
-.table6_6{
-	margin: 20px auto;
-}
-.table6_6 table {
-	width:300%;
-	margin:15px 0;
-	border:0;
-}
-.table6_6 th {
 
-	color:#000000;
-}
-.table6_6,.table6_6 th,.table6_6 td {
-	font-size:10em;
-	text-align:center;
-	padding:4px;
-	border-collapse:collapse;
-}
-.table6_6 th{
-	border: 2px solid blue;
-	border-width:1px 0 1px 0;
-	font-size: 14px;
-}
-.table6_6 td {
-	border: 1px solid #111111;
-	border-width:1px 0 1px 0;
-	font-size: 10px;
-}
-.table6_6 tr {
-	border: 1px solid #ffffff;
-}
-.table6_6 tr:nth-child(even){
-	background-color:#ffffff;
-}
-.n2 {
-	width:400px;
-}
 .imgArea{
 	width: 100%; 
 	text-align: center;
@@ -134,23 +91,25 @@ margin-top: 30px;
 	padding-top: 0px;
 }
 .searchsdumi{
-float: left;
-width: 25%;
+	float: left;
+	width: 25%;
 }
 .Shortcut{
 	height: 100px;
 	width: 100%;
 }
+/* 구직정보 표기테이블 */
 .infoBox{
 	height:300px; 
 	list-style: none; 
 	margin: 0 auto; 
 	padding: 1px 0 0;
+	background-color: #ffffff;
 }
 .first_info{
-	width: 49%; 
-	height : 50px; 
-	border: 1px solid red; 
+	width: 50%; 
+	height : 20%; 
+	border: 1px solid #d5dbe9; 
 	display: list-item;
 	position: relative; 
 	float: left; 
@@ -161,15 +120,97 @@ width: 25%;
 	padding: 14px 0 0 158px; 
 	text-decoration: none;
 }
-.info_span1{
+
+.info_span1, .info_span1_1{
 	color: #0372ab; 
-	background-color: #ebf8ff; 
 	position: absolute; 
 	top: 0; 
 	left: 0; 
 	width: 130px; 
 	height: 41px; 
-	padding: 12px 0 0 12px;
+	padding: 15px 0 0 15px;
+}
+.info_span1{
+	background-color: #ebf8ff; 
+}
+.info_span2{
+	margin-left: 170px;
+	margin-top: 5px;
+}
+#span_info{
+	font-size: 10px;
+}
+#span_info> span{
+	padding-right: 5px;
+	padding-left: 5px;
+	margin-top: -5px;
+}
+.span_info_in{
+	border-right: 1px solid #0372ab;
+}
+/* 게시판 탭부분 */
+ul.tabs {
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style: none;
+    height: 50px;
+    border-bottom: 1px solid #0372ab;
+    border-left: 1px solid #0372ab;
+    width: 100%;
+    font-family:"dotum";
+    font-size:16px;
+}
+ul.tabs li {
+    float: left;
+    text-align:center;
+    cursor: pointer;
+    width:40%;
+    height: 50px;
+    line-height: 31px;
+    border: 1px solid #0372ab;
+    border-left: none;
+    font-weight: bold;
+    background: #f2f2f2;
+    overflow: hidden;
+    position: relative;
+}
+ul.tabs li.active {
+    background: #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+}
+.tab_container {
+    border: 1px solid #0372ab;
+    border-top: none;
+    clear: both;
+    float: left;
+    width: 100%;
+    background: #FFFFFF;
+}
+.tab_content {
+    padding: 5px;
+    font-size: 12px;
+    display: none;
+}
+.tab_container .tab_content ul {
+    width:100%;
+    margin:0px;
+    padding:0px;
+}
+.tab_container .tab_content ul li {
+    padding:5px;
+}
+;
+ #boardTabs {
+    width: 100%;
+    margin: 0 auto;
+}
+.tab_content>ul>li{
+	margin-left: 50px;
+	height: 20px;
+	width: 80%;
+	font-size: 12px;
+	list-style: none;
 }
 -->
 
@@ -195,7 +236,7 @@ width: 25%;
     <!-- end .header --></div>
    <nav style="margin-top: 20px;">
 	  <ul id="menu">
-	    <li><a href="#">홈으로</a></li>
+	    <li><a href="index.do">홈으로</a></li>
 	    <li><a href="#">인력찾기</a></li>
 	    <li><a href="#">인력찾기 등록하기</a></li>
 	    <li>
@@ -250,26 +291,51 @@ width: 25%;
   	<div class="recentHelp">
     	<div class="bestinfo">
     		<p>최근 올라온 구인공고 <span>Best4</span></p>
-			<ul class="infoBox">
-				<li class="first_info">
-					<a>
-						<span class="info_span1">용접기사</span>
-						<span><span style="display:block;">대충 구합니다.</span></span>
-						<span><span>기간 : 1년</span></span>일수
-						<span><span>관악구 / 용접기사</span></span>지역/작성자
-					</a>
+			<div class="infoBox">
+				<c:forEach items="${nomalList}" var="n" varStatus="r">
+				<div class="first_info">
+				<c:choose>
+					<c:when test="${r.count <= 5}">
+						<div class="info_span1">${n.njob}</div>
+					</c:when>
+					<c:when test="${r.count > 5}">
+						<div class="info_span1_1">${n.njob}</div>
+					</c:when>
+				</c:choose>
+					<div class="info_span2"><span>${n.ntitle}</span></div>
+					<div class="info_span2" id="span_info">
+						<span class="span_info_in">${n.nday}</span><span class="span_info_in">${n.narea}</span><span>${n.ncareer}</span>
+					</div>					
 					<a></a>
-					<a></a>
-				</li>
-			</ul>
+				</div>
+				</c:forEach>					
+    		</div>
     	</div>
-    </div>
     <div class="recentFreeTable">
-    	<div class="bestinfo">
-    		<p>최근 등록된 자유 게시판</p>
-				<table class=table6_6>
+    	<p>최근 자유게시판 및 공지사항</p>
+			<div id="boardTabs">
+			    <ul class="tabs">
+			        <li class="active" rel="tab1" style="margin-left: 10%;">자유게시판</li>
+			        <li rel="tab2">공지사항</li>
+			    </ul>
+			    <div class="tab_container">
+			        <div id="tab1" class="tab_content">
+						<c:forEach items="${freeList}" var="f">
+							<ul class="tab_content_in">
+								<li><span>${f.num}</span><span>${f.title}</span></li>
+							</ul>
+						</c:forEach>
+			        </div>
+			        <!-- #tab1 -->
+			        <div id="tab2" class="tab_content">2222Mortal Kombat returns after a lengthy hiatus and puts players back into the Tournament for 2D fighting with gruesome combat.</div>
+			        <!-- #tab2 -->
+			    </div>
+			    <!-- .tab_container -->
+			</div>
+			<!-- #container -->
+			<%-- 	<table class=table6_6>
 				<tr>
-					<th>게시판 번호</th><th class="n2">게시판 제목</th><th>등록인</th><th>등록 날짜</th><th>조회수</th>
+					<th>작성인</th><th class="n2"> 제목</th><th>등록일</th><th>조회수</th>
 				</tr>
 				<c:forEach items="${freeList}" var="f">
 						<tr>
@@ -280,25 +346,7 @@ width: 25%;
 						<td>${f.freeCount}</td>
 					</tr>	
 				</c:forEach>
-<%-- 				<%	List<FreeBoard> list = (List<FreeBoard>)request.getAttribute("freeList");
-					for(int i = 0; i<list.size(); i++){%>
-					<tr>
-						<td><%=list.get(i).getNum()%></td>
-						<td class="n2"><a href="#"><%=list.get(i).getTitle()%></a></td>
-						<td><%=list.get(i).getCreateName()%></td>
-						<td><%=list.get(i).getCreateDay()%></td>
-						<td><%=list.get(i).getFreeCount()%></td>
-					</tr>	
-				<%}%> --%>
-				</table>
-    	</div>
-    </div>
-    <div class="infoArea" style="border: 1px solid red;">
-    	<div class="RegionInfo">
-    		지역별 구인 갯수 출력 왼쪽부분으로(도별로 나누면 좋겠는데 안대면 없애는걸로)
-    	</div>
-    	<div class="Notice">
-    		공지 게시판 테이블 (최근 5개)오른쪽부분으로
+				</table> --%>
     	</div>
     </div>
     <!-- end .content --></div>
