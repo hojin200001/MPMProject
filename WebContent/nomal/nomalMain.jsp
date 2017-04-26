@@ -234,7 +234,7 @@ width: 25%;
  				<c:forEach items="${nomalList}" var="nn">
 				<tr>
 					<td>${nn.narea}</td>
-					<td class="n2">${nn.ntitle}</td>
+					<td class="n2"><a href="nomalView.do?nnum=${nn.nnum}">${nn.ntitle}</a></td>
 					<td>${nn.nday}</td>
 					<td>${nn.ncareer}</td>
 					<td>${nn.narea}</td>

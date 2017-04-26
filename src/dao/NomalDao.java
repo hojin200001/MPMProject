@@ -12,4 +12,8 @@ public interface NomalDao {
 	public List<NomalBoard> selectLimitDesc();
 	
 	public int areaJobNum(String area);
+	
+	public NomalBoard nomalView(HashMap<String, Integer> nnum);
+	
+	public void nomalUpdate(NomalBoard nb);
 }
