@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -5,7 +6,7 @@
 
 <mapper namespace="dao.FreeBoardDao">
 	<select id="selectLimitDesc" resultType="freeBoard">
-		select * from freeBoard order by num desc limit 5
+		select * from freeBoard order by num desc limit 4
 	</select>
 
 	<sql id="title">
@@ -92,4 +93,99 @@
 		select nomalPass from nomalUser where nomalId = #{createName}
 	</select>
 
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.FreeBoardDao">
+	<select id="selectLimitDesc" resultType="freeBoard">
+		select * from freeBoard order by num desc limit 5
+	</select>
+
+	<sql id="title">
+		<choose>
+			<when test="title != null">
+				#{title}
+			</when>
+			<otherwise>
+				'제목없음'
+			</otherwise>
+		</choose>
+	</sql>
+	<sql id="content">
+		<choose>
+			<when test="contentsValue != null">
+				#{contentsValue}
+			</when>
+			<otherwise>
+				'내용없음'
+			</otherwise>
+		</choose>
+	</sql>
+
+	<insert id="insertFreeBoard" parameterType="FreeBoard"
+		useGeneratedKeys="true" keyProperty="num">
+		insert into FreeBoard values(
+		0,
+		<include refid="title" />
+		, #{createDay}, #{freeCount}, #{createName},
+		<include refid="content" />
+	</insert>
+
+	<update id="updateFreeBoard" parameterType="freeBoard">
+		update FreeBoard set
+		title =
+		<include refid="title" />
+		,
+		freeCount = #{freeCount}, createName = #{createName},
+		conValue =
+		<include refid="content" />
+		where num = #{num}
+	</update>
+
+	<delete id="deleteFreeBoard" parameterType="int">
+		delete from FreeBoard where num = #{num}
+	</delete>
+
+	<select id="selectAll" resultType="freeboard">
+		select * from FreeBoard
+	</select>
+
+	<select id="getCount" resultType="int">
+		select count(*) from FreeBoard
+	</select>
+
+	<select id="selectFreeBoardPage" parameterType="java.util.HashMap"
+		resultType="freeBoard">
+		select * from FreeBoard order by num desc limit #{offset}
+		,#{freeBoardsPerPage}
+	</select>
+
+	<select id="selectOne" parameterType="int" resultType="freeBoard">
+		select *
+		from freeBoard where num = #{num}
+	</select>
+
+	<select id="selectSearchByKeyword" parameterType="java.util.HashMap"
+		resultType="freeBoard">
+		select * from freeBoard
+		where 1=0
+		<if test="type==1 or type==3"> or title like '%${keyword}%'</if>
+		<if test="type==2 or type==3"> or conValue like '%${keyword}%'</if>
+		<if test="type==4"> or createName like '%${keyword}%'</if>
+		order by num desc limit #{offset} ,#{freeBoardsPerPage}
+	</select>
+	<select id="getCountSearchByKeyword" parameterType="java.util.HashMap"
+		resultType="int">
+		select count(*) from freeBoard
+		where 1=0
+		<if test="type==1 or type==3"> or title like '%${keyword}%'</if>
+		<if test="type==2 or type==3"> or conValue like '%${keyword}%'</if>
+		<if test="type==4"> or createName like '%${keyword}%'</if>
+	</select>
+
+
+>>>>>>> 23dade34ec408f1cc0622fb96ae27184bda7c40e
 </mapper>
