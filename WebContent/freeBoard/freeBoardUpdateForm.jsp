@@ -13,7 +13,7 @@
 
 	<h1>게시글 수정</h1>
 	
-		<form action="MPMServlet" method="post" name="frm">
+		<form action="freeBoardUpdate.do" method="post" name="frm">
 		<input type="hidden" name="command" value="freeBoardUpdate">
 		<input type="hidden" name="num" value="${param.num}">
 		<table>

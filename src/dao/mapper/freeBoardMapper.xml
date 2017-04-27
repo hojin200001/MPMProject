@@ -29,12 +29,12 @@
 		</choose>
 	</sql>
 
-	<insert id="insertFreeBoard" parameterType="FreeBoard"
+	<insert id="insertFreeBoard" parameterType="freeBoard"
 		useGeneratedKeys="true" keyProperty="num">
 		insert into FreeBoard values(
 		0,
 		<include refid="title" />
-		, #{createDay}, #{freeCount}, #{createName},
+		, sysDate(), #{freeCount}, #{createName},
 		<include refid="content" />
 	</insert>
 
@@ -53,7 +53,7 @@
 		delete from FreeBoard where num = #{num}
 	</delete>
 
-	<select id="selectAll" resultType="freeboard">
+	<select id="selectAll" resultType="freeBoard">
 		select * from FreeBoard
 	</select>
 
@@ -63,11 +63,10 @@
 
 	<select id="selectFreeBoardPage" parameterType="java.util.HashMap"
 		resultType="freeBoard">
-		select * from FreeBoard order by num desc limit #{offset}
-		,#{freeBoardsPerPage}
+		select * from freeBoard order by num desc limit #{offset},#{freeBoardsPerPage}
 	</select>
 
-	<select id="selectOne" parameterType="int" resultType="freeBoard">
+	<select id="selectOneByNum" parameterType="int" resultType="freeBoard">
 		select *
 		from freeBoard where num = #{num}
 	</select>
@@ -89,6 +88,8 @@
 		<if test="type==2 or type==3"> or conValue like '%${keyword}%'</if>
 		<if test="type==4"> or createName like '%${keyword}%'</if>
 	</select>
-
+	<select id="getNomalID" parameterType="String" resultType="String">
+		select nomalPass from nomalUser where nomalId = #{createName}
+	</select>
 
 </mapper>

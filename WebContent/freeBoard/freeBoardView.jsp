@@ -198,7 +198,7 @@ width: 25%;
 			<td colspan="4">${FreeBoard.contentsValue}</td>
 		</tr>
 	</table>
-	<input type="button" value="수정" onclick="open_win('MPMServlet?command=freeBoardCheckPassForm&num=${FreeBoard.num}','update','user')">
+	<input type="button" value="수정" onclick="open_win('freeBoardCheckPassForm.do&num=${FreeBoard.num}&id=${FreeBoard.createName}','update','user')">
 	<input type="button" value="삭제" onclick="open_win('MPMServlet?command=freeBoardCheckPassForm&num=${FreeBoard.num}','delete')">
 	<input type="button" value="돌아가기" onclick="location.href='MPMServlet?command=nomalMain'">
 	</div>

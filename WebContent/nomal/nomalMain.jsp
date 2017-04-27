@@ -171,7 +171,7 @@ width: 25%;
 	    <li>
 	        <a href="#">게시판</a>
 	        <ul>
-	            <li><a href="MPMServlet?command=freeBoardList">자유게시판</a></li>
+	            <li><a href="freeBoardList.do">자유게시판</a></li>
 	            <li><a href="#">후기게시판</a></li>
 	        </ul>
 	    </li>
