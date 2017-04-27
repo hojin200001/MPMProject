@@ -93,13 +93,6 @@ public class NomalBoard {
 		return "NomalBoard [nnum=" + nnum + ", ntitle=" + ntitle + ", narea=" + narea + ", njob=" + njob + ", ncareer="
 				+ ncareer + ", nphone=" + nphone + ", nemail=" + nemail + ", nday=" + nday + ", njoinDay=" + njoinDay
 				+ ", ntext=" + ntext + ", ncount=" + ncount + ", nomalId=" + nomalId + "]";
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> 6fbdbf3a912de89e15b02f7388027bdfa79da576
 	}
 
 }
