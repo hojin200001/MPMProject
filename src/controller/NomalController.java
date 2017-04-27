@@ -47,9 +47,11 @@ public class NomalController {
 	@RequestMapping("nomalBoardList.do")
 	public ModelAndView nomalBoardList(
 			@RequestParam(defaultValue="1") int page){
+		System.out.println(page);
 		ModelAndView mav = new ModelAndView();
 		HashMap<String, Object> nb = new HashMap<>();
 		nb = nservice.nomalBoardList(page);
+		System.out.println("컨트롤 아웃");
 		mav.setViewName("/nomal/nomalBoardList");
 		mav.addAllObjects(nb);
 		return mav;

@@ -19,5 +19,5 @@ public interface NomalDao {
 
 	public int getCount();
 
-	public NomalBoard selectBoardPage(HashMap<String, Object> params);
+	public List<NomalBoard> selectBoardPage(HashMap<String, Object> params);
 }

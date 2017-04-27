@@ -76,7 +76,7 @@ public class NomalServiceImpl implements NomalService{
 		params.put("offset", getOffset(page));
 		params.put("boardsPerPage", 10);
 		result.put("nomalBoard", nDao.selectBoardPage(params));
-		
+		System.out.println(nDao.selectBoardPage(params));
 		return result;
 	}
 
