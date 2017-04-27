@@ -167,7 +167,7 @@ width: 25%;
 	  <ul id="menu">
 	    <li><a href="index.do">홈으로</a></li>
 	    <li><a href="comBoardList.do">일자리찾기</a></li>
-	    <li><a href="#">일자리등록하기</a></li>
+	    <li><a href="nomalBoardList.do">일자리등록하기</a></li>
 	    <li>
 	        <a href="#">게시판</a>
 	        <ul>

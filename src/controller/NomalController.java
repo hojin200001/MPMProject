@@ -9,6 +9,7 @@ import javax.websocket.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import model.FreeBoard;
@@ -41,6 +42,18 @@ public class NomalController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/nomal/nomalSignup");
 		return mav;
+	}
+	
+	@RequestMapping("nomalBoardList.do")
+	public ModelAndView nomalBoardList(
+			@RequestParam(defaultValue="1") int page){
+		ModelAndView mav = new ModelAndView();
+		HashMap<String, Object> nb = new HashMap<>();
+		nb = nservice.nomalBoardList(page);
+		mav.setViewName("/nomal/nomalBoardList");
+		mav.addAllObjects(nb);
+		return mav;
+		
 	}
 	
 	@RequestMapping("nomalView.do")

@@ -26,7 +26,7 @@ th, td {
 </head>
 <body>
 
-<form action="comBoardList.do" method="post">
+<form action="nomalBoardList.do" method="post">
 <table>
 	<tr>
 		<td colspan="5" style="text-align: right;">
@@ -41,13 +41,13 @@ th, td {
 		<th>작성일</th>
 	</tr>
 
-	<c:forEach items="${comBoard}" var="c">
+	<c:forEach items="${nomalBoard}" var="n">
 		<tr>
-			<td>${c.cnum}</td>
-			<td><a href="comView.do?cnum=${c.cnum}">${c.ctitle}</a></td>
-			<td>${c.comName}</td>
-			<td>${c.cwokers}</td>
-			<td><fmt:formatDate value="${c.createDay}" pattern="yyyy-MM-dd"/></td>
+			<td>${n.nnum}</td>
+			<td><a href="comView.do?cnum=${n.nnum}">${n.ntitle}</a></td>
+			<td>${n.nomalId}</td>
+			<td>${n.ncount}</td>
+			<td><fmt:formatDate value="${n.njoinDay}" pattern="yyyy-MM-dd"/></td>
 		</tr>
 	</c:forEach>
 	

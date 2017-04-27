@@ -42,6 +42,14 @@
   		select * from nomalBoard where Nnum=${nnum}
   	</select>
   	
+  	<select id="getCount" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
+    	select count(*) from nomalBoard
+    </select>
+    
+    <select id="selectBoardPage" parameterType="java.util.HashMap" resultType="nomalBoard">
+    	select * from nomalBoard order by Nnum desc limit #{offset} ,#{boardsPerPage}
+    </select>
+  	
      <update id="nomalUpdate" parameterType="nomalBoard">
         update nomalBoard set
         Ncount = #{ncount}, Njob = #{njob}, Nemail = #{nemail},
