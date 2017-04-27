@@ -11,9 +11,9 @@ import model.FreeBoard;
 
 public interface FreeBoardService {
 
-	public int writeFreeBoard(FreeBoard board , MultipartFile file);
-	public int modifyFreeBoard(FreeBoard board);
-	public int deleteFeeBoard(int num);
+	public int writeFreeBoard(FreeBoard freeBoard);
+	public int updateFreeBoard(FreeBoard freeBoard);
+	public int deleteFreeBoard(int num);
 	public FreeBoard readFreeBoard(int num);
 	
 	//게시물 페이지 정보 구하기
@@ -44,4 +44,5 @@ public interface FreeBoardService {
 	
 	public List<FreeBoard> selectLimitDesc();
  
+	public String getPass(String id);
 }
