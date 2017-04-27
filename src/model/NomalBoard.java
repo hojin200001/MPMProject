@@ -93,6 +93,11 @@ public class NomalBoard {
 		return "NomalBoard [nnum=" + nnum + ", ntitle=" + ntitle + ", narea=" + narea + ", njob=" + njob + ", ncareer="
 				+ ncareer + ", nphone=" + nphone + ", nemail=" + nemail + ", nday=" + nday + ", njoinDay=" + njoinDay
 				+ ", ntext=" + ntext + ", ncount=" + ncount + ", nomalId=" + nomalId + "]";
+<<<<<<< HEAD
 	}	
 }
 
+=======
+	}
+}
+>>>>>>> MPMbranch
