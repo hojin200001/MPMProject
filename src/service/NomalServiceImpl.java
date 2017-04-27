@@ -55,12 +55,10 @@ public class NomalServiceImpl implements NomalService{
 		HashMap<String, Integer> n = new HashMap<>();
 		n.put("nnum", nnum);
 		NomalBoard nb = nDao.nomalView(n);
-		System.out.println("서비스 끝");
 		if(nb !=null){
 			nb.setNcount(nb.getNcount()+1);
 			nDao.nomalUpdate(nb);
 		}
-		System.out.println("리턴");
 		
 		return nb;
 	}

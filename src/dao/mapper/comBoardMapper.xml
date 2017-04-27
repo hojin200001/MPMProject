@@ -7,4 +7,21 @@
   	<select id="selectNomalBoardDesc" resultType="nomalBoard">
   		select * from nomalBoard order by Nnum desc limit 10
   	</select>
+  	
+  	<select id="getCount" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
+    	select count(*) from comBoard
+    </select>
+    
+    <select id="selectBoardPage" parameterType="java.util.HashMap" resultType="ComBoard">
+    	select * from comBoard order by Cnum desc limit #{offset} ,#{boardsPerPage}
+    </select>
+    
+     <update id="comUpdate" parameterType="comBoard">
+        update nomalBoard set
+        Ncount = #{ncount}, Njob = #{njob}, Nemail = #{nemail},
+        Ntitle = <include refid="ntitle"/>,
+        Ntext = <include refid="ntext"/>
+        where Nnum = #{nnum}
+    </update>
+  	
   </mapper>
