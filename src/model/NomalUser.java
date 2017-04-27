@@ -1,6 +1,5 @@
 package model;
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class NomalUser {
 //	이름 name(not null)			varchar(20)

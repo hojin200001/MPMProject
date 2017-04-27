@@ -1,78 +1,86 @@
+
 package model;
 
 import java.util.Date;
 
 public class NomalBoard {
-	private int Nnum;
-	private String Ntitle;
-	private String Natea;
-	private String Njob;
-	private String Ncareer;
-	private String Nphone;
-	private String Nemail;
-	private String Nday;
-	private Date NjoinDay;
-	private int Ncount;
+	private int nnum;
+	private String ntitle;
+	private String narea;
+	private String njob;
+	private String ncareer;
+	private String nphone;
+	private String nemail;
+	private String nday;
+	private Date njoinDay;
+	private String ntext;
+	private int ncount;
 	private String nomalId;
-	public int getNum() {
-		return Nnum;
+	public int getNnum() {
+		return nnum;
 	}
-	public void setNum(int nnum) {
-		this.Nnum = nnum;
+	public void setNnum(int nnum) {
+		this.nnum = nnum;
 	}
 	public String getNtitle() {
-		return Ntitle;
+		return ntitle;
 	}
 	public void setNtitle(String ntitle) {
-		Ntitle = ntitle;
+		this.ntitle = ntitle;
 	}
-	public String getNatea() {
-		return Natea;
+	public String getNarea() {
+		return narea;
 	}
-	public void setNatea(String natea) {
-		Natea = natea;
+	public void setNarea(String narea) {
+		this.narea = narea;
 	}
 	public String getNjob() {
-		return Njob;
+		return njob;
 	}
 	public void setNjob(String njob) {
-		Njob = njob;
+		this.njob = njob;
 	}
 	public String getNcareer() {
-		return Ncareer;
+		return ncareer;
 	}
 	public void setNcareer(String ncareer) {
-		Ncareer = ncareer;
+		this.ncareer = ncareer;
 	}
 	public String getNphone() {
-		return Nphone;
+		return nphone;
 	}
 	public void setNphone(String nphone) {
-		Nphone = nphone;
+		this.nphone = nphone;
 	}
 	public String getNemail() {
-		return Nemail;
+		return nemail;
 	}
 	public void setNemail(String nemail) {
-		Nemail = nemail;
+		this.nemail = nemail;
 	}
 	public String getNday() {
-		return Nday;
+		return nday;
 	}
 	public void setNday(String nday) {
-		Nday = nday;
+		this.nday = nday;
 	}
 	public Date getNjoinDay() {
-		return NjoinDay;
+		return njoinDay;
 	}
 	public void setNjoinDay(Date njoinDay) {
-		NjoinDay = njoinDay;
+		this.njoinDay = njoinDay;
+	}
+	public String getNtext() {
+		return ntext;
+	}
+	public void setNtext(String ntext) {
+		this.ntext = ntext;
 	}
 	public int getNcount() {
-		return Ncount;
+		return ncount;
 	}
 	public void setNcount(int ncount) {
-		Ncount = ncount;
+		this.ncount = ncount;
 	}
 	public String getNomalId() {
 		return nomalId;
@@ -80,6 +88,16 @@ public class NomalBoard {
 	public void setNomalId(String nomalId) {
 		this.nomalId = nomalId;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "NomalBoard [nnum=" + nnum + ", ntitle=" + ntitle + ", narea=" + narea + ", njob=" + njob + ", ncareer="
+				+ ncareer + ", nphone=" + nphone + ", nemail=" + nemail + ", nday=" + nday + ", njoinDay=" + njoinDay
+				+ ", ntext=" + ntext + ", ncount=" + ncount + ", nomalId=" + nomalId + "]";
+<<<<<<< HEAD
+	}	
 }
+
+=======
+	}
+}
+>>>>>>> MPMbranch

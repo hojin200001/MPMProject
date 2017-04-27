@@ -1,13 +1,12 @@
-<%-- <%@page import="Model.FreeBoard"%> --%>
-<%@page import="model.FreeBoard"%>
-<%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
 <meta name="viewport" content="width=device-width">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="js/main/boardInfo.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>무제 문서</title>
@@ -30,39 +29,39 @@
 }
 .loginBtn{
 	margin: 0 auto;
-	height: 35px;
-	width: 200px;
-	border: 2px solid #c0c0c0; 
-	background-color: #EAEAEA;
+	height: 45px;
+	width: 230px;
+	border: 2px solid #BDBDBD; 
+	border-radius: 3px;
 	text-align: center;
+	background-color: #f2f2f2;
 }
 
 .search{
 	padding-left: 20px;
+	padding-top: 7px;
 	float: left;
 	font-size: 12px;
 }
 .LoginJoin{
 	padding-right:	20px;
+	padding-top: 7px;
 	float: right;
 	font-size: 12px;
 	
 }
 .recentHelp, .recentFreeTable{
 	height: auto;
-	border-top: 3px solid #0d73d1;
-    border-left: 1px solid #0d73d1;
-    border-right: 1px solid #0d73d1;
-    
+	border-top: 3px solid #0d73d1; 
 }
 .recentFreeTable{
-margin-top: 30px;
+	margin-top: 15px;
 }
 .bestinfo{
- margin-left: 20px;
 }
-.bestinfo p{
-	margin-top: 10px;
+.bestinfo p, .recentFreeTable p{
+	margin-top: 20px;
+	font-weight: 900;
 }
 .searchs{
 	height: 100px;
@@ -82,43 +81,7 @@ margin-top: 30px;
     background: #034f96;
     cursor: pointer;
 }
-.table6_6{
-	margin: 20px auto;
-}
-.table6_6 table {
-	width:300%;
-	margin:15px 0;
-	border:0;
-}
-.table6_6 th {
 
-	color:#000000;
-}
-.table6_6,.table6_6 th,.table6_6 td {
-	font-size:10em;
-	text-align:center;
-	padding:4px;
-	border-collapse:collapse;
-}
-.table6_6 th{
-	border: 2px solid blue;
-	border-width:1px 0 1px 0;
-	font-size: 14px;
-}
-.table6_6 td {
-	border: 1px solid #111111;
-	border-width:1px 0 1px 0;
-	font-size: 10px;
-}
-.table6_6 tr {
-	border: 1px solid #ffffff;
-}
-.table6_6 tr:nth-child(even){
-	background-color:#ffffff;
-}
-.n2 {
-	width:400px;
-}
 .imgArea{
 	width: 100%; 
 	text-align: center;
@@ -133,12 +96,161 @@ margin-top: 30px;
 	padding-top: 0px;
 }
 .searchsdumi{
-float: left;
-width: 25%;
+	float: left;
+	width: 25%;
 }
 .Shortcut{
-	height: 100px;
+	height: 220px;
 	width: 100%;
+}
+.ShortcutMain{
+	width: 100%;
+	height: 180px;
+	border: 3px solid #f2f2f2;
+}
+.ShortcutMain_dvi{
+	float: left; 
+	width:32.5%; 
+	height: 50%;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 11px;
+	border: 1px solid #f2f2f2;
+	cursor:pointer;
+}
+/* 구직정보 표기테이블 */
+.infoBox{
+	height:300px; 
+	list-style: none; 
+	margin: 0 auto; 
+	padding: 1px 0 0;
+	background-color: #ffffff;
+}
+.first_info{
+	width: 50%; 
+	height : 20%; 
+	border: 1px solid #d5dbe9; 
+	display: list-item;
+	position: relative; 
+	float: left; 
+	margin: -1px 0 0 -1px; 
+	box-sizing: border-box;
+}
+.first_info>a{
+	padding: 14px 0 0 158px; 
+	text-decoration: none;
+}
+
+.info_span1, .info_span1_1{
+	color: #0372ab; 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	width: 130px; 
+	height: 41px; 
+	padding: 15px 0 0 15px;
+}
+.info_span1{
+	background-color: #ebf8ff; 
+}
+.info_span2{
+	margin-left: 170px;
+	margin-top: 5px;
+}
+#span_info{
+	font-size: 10px;
+}
+#span_info> span{
+	padding-right: 5px;
+	padding-left: 5px;
+	margin-top: -5px;
+}
+.span_info_in{
+	border-right: 1px solid #f2f2f2;
+}
+/* 게시판 탭부분 */
+ul.tabs {
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style: none;
+    height: 50px;
+    border-bottom: 1px solid #f2f2f2;
+    border-left: 1px solid #f2f2f2;
+    width: 100%;
+    font-family:"dotum";
+    font-size:16px;
+}
+ul.tabs li {
+    float: left;
+    text-align:center;
+    cursor: pointer;
+    width:49.8%;
+    height: 50px;
+    line-height: 31px;
+    border: 1px solid #f2f2f2;
+    border-top: 1px solid #034f96;
+    border-left: none;
+    font-weight: bold;
+    background: #f2f2f2;
+    overflow: hidden;
+    position: relative;
+}
+ul.tabs li.active {
+    background: #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+}
+.tab_container {
+    border: 3px solid #f2f2f2;
+    border-top: none;
+    clear: both;
+    float: left;
+    width: 100%;
+    background: #FFFFFF;
+}
+.tab_content {
+    padding: 5px;
+    font-size: 15px;
+    display: none;
+}
+.tab_container .tab_content ul {
+    width:100%;
+    margin:0px;
+    padding:0px;
+    
+}
+.tab_container .tab_content ul li {
+    padding:5px;
+    display:inline;
+}
+
+ #boardTabs {
+    width: 100%;
+    margin: 0 auto;
+}
+.content_in_lis{
+	margin-left: 20px;
+	height: 20px;
+	width: 80%;
+	list-style: none;	
+}
+
+.content_in_lis>span>a{
+	text-decoration:none;
+}
+.content_in_li{
+	margin-left: 50px;
+}
+#content_item{
+	font-size: 15px;
+}
+#content_item2>span{
+	clolr:#4E5869;
+	font-size: 12px;
+}
+#content_item3{
+	color:#034f96;
+	font-size: 12px;
 }
 
 -->
@@ -165,9 +277,14 @@ width: 25%;
     <!-- end .header --></div>
    <nav style="margin-top: 20px;">
 	  <ul id="menu">
-	    <li><a href="#">홈으로</a></li>
+	    <li><a href="index.do">홈으로</a></li>
 	    <li><a href="#">인력찾기</a></li>
-	    <li><a href="#">인력찾기 등록하기</a></li>
+	    <li><a href="#">구직 정보</a>
+	    	<ul>
+	    		<li><a href="#">구직 등록 현황</a></li>
+	    		<li><a href="#">구직 등록하기</a></li>	
+	    	</ul>
+	    </li>
 	    <li>
 	        <a href="#">게시판</a>
 	        <ul>
@@ -183,7 +300,7 @@ width: 25%;
 		<div class="loginArea">
 			<p>보다안전하게 인력몬 사이트를 이용하세요</p>
 			<div class="loginBtn">
-				<a href="MPMServlet?command=nomalUserLogin" clsss="loginComent"><i><span>인력몬</span>로그인</i></a>
+				<a href="login.do" clsss="loginComent"><img src="img/main/logoB_07_s.png"></img></a>
 			</div>
 			<div class="loginBottom">
 				<a href="" class="LoginJoin">회원가입</a>
@@ -196,7 +313,14 @@ width: 25%;
 		</div>
 	</div>
 	<div class="Shortcut">
-		<div class="ShortcutMain">뭔가 등록할 자리임</div>
+		<div class="ShortcutMain">
+			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick4.png"/></div><div>구인검색</div></div>
+			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick2.png"/></div><div>구직등록</div></div>
+			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick1.png"/></div><div>구직 등록현황</div></div>
+			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick5.png"/></div><div>구인검색 가이드</div></div>
+			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick7.png"/></div><div>구직등록 가이드</div></div>
+			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick6.png"/></div><div>공지사항</div></div>
+		</div>
 	</div>
 	<div class="Advertising">
 		<ul class="bxslider">
@@ -219,61 +343,67 @@ width: 25%;
   <div class="content">
   	<div class="recentHelp">
     	<div class="bestinfo">
-    		<p>최근 올라온 구인공고 <span>Best4</span></p>
-				<table class=table6_6>
-				<tr>
-					<th>지역</th><th class="n2">구직 광고 내용</th><th>업무 기간</th><th>급여</th><th>등록일</th>
-				</tr>
-				<tr>
-					<td>SAMPLE</td><td class="n2">SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td>
-				</tr>
-				<tr>
-					<td>SAMPLE</td><td class="n2">SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td>
-				</tr>
-					<tr>
-					<td>SAMPLE</td><td class="n2">SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td>
-				</tr>
-				<tr>
-					<td>SAMPLE</td><td class="n2">SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td>
-				</tr>
-				</table>
+    		<p class="info_p">＊최근  구직공고</p>
+			<div class="infoBox">
+				<c:forEach items="${nomalList}" var="n" varStatus="r">
+				<div class="first_info">
+				<c:choose>
+					<c:when test="${r.count <= 5}">
+						<div class="info_span1">${n.njob}</div>
+					</c:when>
+					<c:when test="${r.count > 5}">
+						<div class="info_span1_1">${n.njob}</div>
+					</c:when>
+				</c:choose>
+					<div class="info_span2"><span>${n.ntitle}</span></div>
+					<div class="info_span2" id="span_info">
+						<span class="span_info_in">${n.nday}</span><span class="span_info_in">${n.narea}</span><span>${n.ncareer}</span>
+					</div>					
+					<a></a>
+				</div>
+				</c:forEach>					
+    		</div>
     	</div>
-    </div>
-    <div class="recentFreeTable">
-    	<div class="bestinfo">
-    		<p>최근 등록된 자유 게시판</p>
-				<table class=table6_6>
-				<tr>
-					<th>게시판 번호</th><th class="n2">게시판 제목</th><th>등록인</th><th>등록 날짜</th><th>조회수</th>
-				</tr>
-				<c:forEach items="${freeList}" var="f">
-						<tr>
-						<td>${f.num}</td>
-						<td class="n2"><a href="#">${f.title}</a></td>
-						<td>${f.createName}</td>
-						<td>${f.createDay}</td>
-						<td>${f.freeCount}</td>
-					</tr>	
-				</c:forEach>
-<%-- 				<%	List<FreeBoard> list = (List<FreeBoard>)request.getAttribute("freeList");
-					for(int i = 0; i<list.size(); i++){%>
-					<tr>
-						<td><%=list.get(i).getNum()%></td>
-						<td class="n2"><a href="#"><%=list.get(i).getTitle()%></a></td>
-						<td><%=list.get(i).getCreateName()%></td>
-						<td><%=list.get(i).getCreateDay()%></td>
-						<td><%=list.get(i).getFreeCount()%></td>
-					</tr>	
-				<%}%> --%>
-				</table>
-    	</div>
-    </div>
-    <div class="infoArea" style="border: 1px solid red;">
-    	<div class="RegionInfo">
-    		지역별 구인 갯수 출력 왼쪽부분으로(도별로 나누면 좋겠는데 안대면 없애는걸로)
-    	</div>
-    	<div class="Notice">
-    		공지 게시판 테이블 (최근 5개)오른쪽부분으로
+    <div class="recentFreeTable" >
+    	<p>＊자유게시판 & 공지사항</p>
+			<div id="boardTabs">
+			    <ul class="tabs">
+			        <li class="active" rel="tab1">자유게시판</li>
+			        <li rel="tab2">공지사항</li>
+			    </ul>
+			    <div class="tab_container">
+			        <div id="tab1" class="tab_content">
+						<c:forEach items="${freeList}" var="f" varStatus="fst">
+							<ul class="tab_content_in">
+								<c:forEach items="${timeList}" var="t" varStatus="tst">
+									<c:if test="${fst.count eq tst.count}">
+										<c:choose>
+											<c:when test="${fn:contains(t, '일전') or fn:contains(t, '어제')}">
+												<li class="content_in_li"><img src="img/main/dumy.png"/></li>
+											</c:when>
+											<c:otherwise>
+												<li class="content_in_li"><img src="img/main/new.png"/></li>
+											</c:otherwise>
+										</c:choose>
+									</c:if>
+								</c:forEach>
+								<li class="content_in_lis" id="content_item"><span><a href="">${f.title}</a></span></li>
+								<li class="content_in_lis" id="content_item2"><span>${f.createName}</span></li>
+								<c:forEach items="${timeList}" var="t2" varStatus="tst2">
+								 	<c:if test="${fst.count eq tst2.count}">
+										<li class="content_in_lis" id="content_item3"><span>${t2}</span></li>
+								 	</c:if>
+								</c:forEach>
+							</ul>
+						</c:forEach>
+			        </div>
+			        <!-- #tab1 -->
+			        <div id="tab2" class="tab_content">2222Mortal Kombat returns after a lengthy hiatus and puts players back into the Tournament for 2D fighting with gruesome combat.</div>
+			        <!-- #tab2 -->
+			    </div>
+			    <!-- .tab_container -->
+			</div>
+			<!-- #container -->
     	</div>
     </div>
     <!-- end .content --></div>

@@ -4,7 +4,49 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="dao.NomalDao">
+  
+  	 <sql id="ntitle">
+        <choose>
+            <when test="ntitle != null">
+                #{ntitle}
+            </when>
+            <otherwise>
+                '제목없음'
+            </otherwise>
+        </choose>
+    </sql>
+    <sql id="ntext">
+        <choose>
+            <when test="ntext != ntext">
+                #{ntext}
+            </when>
+            <otherwise>
+                '내용없음'
+            </otherwise>
+        </choose>
+    </sql>
+  
   	<select id="selectOne" parameterType="java.util.HashMap" resultType="nomalUser">
   		select * from nomalUser where nomalId = '${id}'
   	</select>
+  	
+  	<select id="selectLimitDesc" resultType="nomalBoard">
+  		select * from nomalBoard order by Nnum desc limit 4
+  	</select>
+  	
+  	<select id = "areaJobNum" parameterType="String" resultType="int">
+  		select count(*) from comboard where Carea like '%강남%'
+  	</select>
+  	
+  	<select id="nomalView" parameterType="java.util.HashMap" resultType="nomalBoard">
+  		select * from nomalBoard where Nnum=${nnum}
+  	</select>
+  	
+     <update id="nomalUpdate" parameterType="nomalBoard">
+        update nomalBoard set
+        Ncount = #{ncount}, Njob = #{njob}, Nemail = #{nemail},
+        Ntitle = <include refid="ntitle"/>,
+        Ntext = <include refid="ntext"/>
+        where Nnum = #{nnum}
+    </update>
   </mapper>
