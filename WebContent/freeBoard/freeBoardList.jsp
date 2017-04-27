@@ -173,7 +173,7 @@ width: 25%;
 	    <li>
 	        <a href="#">게시판</a>
 	        <ul>
-	            <li><a href="MPMServlet?command=freeBoardList">자유게시판</a></li>
+	            <li><a href="freeBoardList.do">자유게시판</a></li>
 	            <li><a href="#">후기게시판</a></li>
 	        </ul>
 	    </li>
@@ -195,7 +195,7 @@ width: 25%;
 		<c:forEach items="${freeBoardList}" var="freeBoard">
 			<tr>
 				<td>${freeBoard.num}</td>
-				<td><a href='MPMServlet?command=freeBoardView&num=${freeBoard.num }'>${freeBoard.title}</a></td>
+				<td><a href='freeBoardView.do?num=${freeBoard.num }'>${freeBoard.title}</a></td>
 				<td>${freeBoard.createName}</td>
 				<td><fmt:formatDate value="${freeBoard.createDay}" pattern="yyyy-MM-dd"/> </td>
 				<td>${freeBoard.freeCount}</td>

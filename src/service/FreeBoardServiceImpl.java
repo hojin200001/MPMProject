@@ -46,7 +46,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	public FreeBoard readFreeBoard(int num) {
 		// TODO Auto-generated method stub
 		//게시물 번호를 이용해서 DB에서게시물 조회
-		//게시물이 있으면 조회쉬 1 올리기
+		//게시물이 있으면 조회수 1 올리기
 		//게시물하나 가져오기  : DAO의 selectOne이용
 				
 		FreeBoard b = fDao.selectOneByNum(num);
