@@ -4,7 +4,46 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="dao.ComBoardDao">
+  
+    	 <sql id="ctitle">
+        <choose>
+            <when test="ctitle != null">
+                #{ctitle}
+            </when>
+            <otherwise>
+                '제목없음'
+            </otherwise>
+        </choose>
+    </sql>
+    <sql id="ctext">
+        <choose>
+            <when test="ctext != ctext">
+                #{ctext}
+            </when>
+            <otherwise>
+                '내용없음'
+            </otherwise>
+        </choose>
+    </sql>
+    
   	<select id="selectNomalBoardDesc" resultType="nomalBoard">
   		select * from nomalBoard order by Nnum desc limit 10
   	</select>
+  	
+  	<select id="getCount" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
+    	select count(*) from comBoard
+    </select>
+    
+    <select id="selectBoardPage" parameterType="java.util.HashMap" resultType="ComBoard">
+    	select * from comBoard order by Cnum desc limit #{offset} ,#{boardsPerPage}
+    </select>
+    
+     <update id="comUpdate" parameterType="comBoard">
+        update comBoard set
+        Ccount = #{ccount}, Cjob = #{cjob}, ComEmail = #{comEmail},
+        Ctitle = <include refid="ctitle"/>,
+        Ctext = <include refid="ctext"/>
+        where Cnum = #{cnum}
+    </update>
+  	
   </mapper>
