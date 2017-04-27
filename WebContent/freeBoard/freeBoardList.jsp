@@ -192,13 +192,13 @@ width: 25%;
 			<th>조회수</th>
 		</tr>
 		
-		<c:forEach items="${FreeBoardList}" var="FreeBoard">
+		<c:forEach items="${freeBoardList}" var="freeBoard">
 			<tr>
-				<td>${FreeBoard.num}</td>
-				<td><a href='MPMServlet?command=freeBoardView&num=${FreeBoard.num }'>${FreeBoard.title}</a></td>
-				<td>${FreeBoard.createName}</td>
-				<td><fmt:formatDate value="${FreeBoard.createDay}" pattern="yyyy-MM-dd"/> </td>
-				<td>${FreeBoard.freeCount}</td>
+				<td>${freeBoard.num}</td>
+				<td><a href='MPMServlet?command=freeBoardView&num=${freeBoard.num }'>${freeBoard.title}</a></td>
+				<td>${freeBoard.createName}</td>
+				<td><fmt:formatDate value="${freeBoard.createDay}" pattern="yyyy-MM-dd"/> </td>
+				<td>${freeBoard.freeCount}</td>
 			</tr>
 		</c:forEach>
 	</table>

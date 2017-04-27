@@ -29,7 +29,7 @@
 		</choose>
 	</sql>
 
-	<insert id="insertFreeBoard" parameterType="FreeBoard"
+	<insert id="insertFreeBoard" parameterType="freeBoard"
 		useGeneratedKeys="true" keyProperty="num">
 		insert into FreeBoard values(
 		0,

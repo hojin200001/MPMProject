@@ -61,7 +61,11 @@ public class ComController {
 		return mav;
 		
 	}
-	
+	@RequestMapping("comSearch.do")
+	public String comSearch(){
+		return "/com/comSearch";
+	}
+	//------------------------------------------------------------------------------------------------------------------------------------//
 	//시간계산 지우지 마시길
 	public List<String >getTime(List<FreeBoard> list){
 		List<String>timeList = new ArrayList<>();
