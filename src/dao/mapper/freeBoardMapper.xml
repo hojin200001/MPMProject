@@ -5,7 +5,7 @@
 
 <mapper namespace="dao.FreeBoardDao">
 	<select id="selectLimitDesc" resultType="freeBoard">
-		select * from freeBoard order by num desc limit 4
+		select * from freeBoard order by num desc limit 5
 	</select>
 
 	<sql id="title">
