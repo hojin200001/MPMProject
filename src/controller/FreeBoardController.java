@@ -68,7 +68,7 @@ public class FreeBoardController {
 		//서비스의 readBoard
 		
 		mav.addObject(freeBoardService.readFreeBoard(num));
-		mav.setViewName("freeBoardView");
+		mav.setViewName("/freeBoard/freeBoardView");
 		
 		return mav;
 	}

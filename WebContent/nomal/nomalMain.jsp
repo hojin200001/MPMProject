@@ -166,7 +166,7 @@ width: 25%;
 	  <ul id="menu">
 	    <li><a href="index.do">홈으로</a></li>
 	    <li><a href="comBoardList.do">일자리찾기</a></li>
-	    <li><a href="#">일자리등록하기</a></li>
+	    <li><a href="nomalBoardList.do">일자리등록하기</a></li>
 	    <li>
 	        <a href="#">게시판</a>
 	        <ul>
@@ -299,4 +299,4 @@ width: 25%;
   <!-- end .container --></div>
 </body>
 </html>
->>>>>>> 6fbdbf3a912de89e15b02f7388027bdfa79da576
+>>>>>>> a950c31dfc2dc9c9a2d5faa82dff2ad19faf978f

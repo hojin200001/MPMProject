@@ -16,4 +16,8 @@ public interface NomalDao {
 	public NomalBoard nomalView(HashMap<String, Integer> nnum);
 	
 	public void nomalUpdate(NomalBoard nb);
+
+	public int getCount();
+
+	public List<NomalBoard> selectBoardPage(HashMap<String, Object> params);
 }

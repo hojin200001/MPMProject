@@ -62,4 +62,42 @@ public class NomalServiceImpl implements NomalService{
 		
 		return nb;
 	}
+
+	@Override
+	public HashMap<String, Object> nomalBoardList(int page) {
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("current", page);
+		result.put("start", getStartPage(page));
+		result.put("end", getEndPage(page));
+		result.put("last", getLastPage(nDao.getCount()));
+		result.put("totalPage", nDao.getCount());
+		
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("offset", getOffset(page));
+		params.put("boardsPerPage", 10);
+		result.put("nomalBoard", nDao.selectBoardPage(params));
+		System.out.println(nDao.selectBoardPage(params));
+		return result;
+	}
+
+	@Override
+	public int getStartPage(int page) {
+		// TODO Auto-generated method stub
+		return page - ((page-1)%10);
+	}
+	@Override
+	public int getEndPage(int page) {
+		// TODO Auto-generated method stub
+		return page - ((page-1)%10) + (10-1);
+	}
+	@Override
+	public int getLastPage(int numOfBoards) {
+		// TODO Auto-generated method stub
+		return (numOfBoards-1)/10 + 1;
+	}
+	@Override
+	public int getOffset(int page) {
+		// TODO Auto-generated method stub
+		return (page - 1)*10;
+	}
 }
