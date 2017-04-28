@@ -5,57 +5,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
+<link rel="stylesheet" type="text/css" href="css/main/public_header.css">
 <title>Insert title here</title>
 <style type="text/css">
 <!--
-body {
-	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
-	margin: 0;
-	padding: 0;
-	color: #000;
+.SkyBanner{
+	position: fixed; 
+	left:20px; 
+	width: 130px; 
+	border:1px solid red;
 }
-.container {
-	width: 80%;
-	max-width: 1260px;/* 대형 모니터에서 이 레이아웃이 지나치게 넓어지는 것을 방지하기 위해 max-width를 사용할 수 있습니다. 이 속성을 사용하면 선 길이를 더욱 쉽게 읽을 수 있습니다. IE6에서는 이 선언이 적용되지 않습니다. */
-	min-width: 780px;/* 이 레이아웃이 지나치게 좁아지는 것을 방지하기 위해 min-width를 사용할 수 있습니다. 이 속성을 사용하면 사이드 열에서 선 길이를 더욱 쉽게 읽을 수 있습니다. IE6에서는 이 선언이 적용되지 않습니다. */
-	margin: 0 auto; /* 측면 자동 값, 폭으로 연결, 레이아웃 가운데 정렬. .container의 폭을 100%로 설정하는 경우에는 필요하지 않습니다. */
+.Sky_blank{
+	height: 20px; 
+	border: 1px solid red;
 }
-.header {
-	text-align:center;
-	height: 190px;
+.Sky_contents>ul{
+	font-size: 13px;
 }
-.searchs{
-	height: 100px;
-	padding-top: 0px;
+.Sky_contents>ul>li{
+	margin-left: -20px;
 }
-.searchArea{
-	margin : 0 auto;
-}
-.searchText{
-    width: 350px;
-    padding: 9px;
-    float: left;
-    border: 3px solid #034f96;
-    background: #fff;
-}
-.searchIcn{
-    float: left;
-    background: #034f96;
-    cursor: pointer;
-}
-.searchsdumi {
-    float: left;
-    width: 25%;
-}
-.imgArea{
-	width: 100%; 
+.Sky_info>p{
 	text-align: center;
-	padding-top: 10px;
-}
-.imageLogo{
-	width: 250px; 
-	height: 110px; 
-	padding-right: 40px;
+	margin-top: -15px;
 }
  -->
 </style>
@@ -94,5 +66,29 @@ body {
 	</ul>
    </nav>
    <!-- end .container --></div>
+   <div class="SkyBanner">
+   		<div class="Sky_blank" ></div>
+   		<div class="Sky_contents">
+   			<ul>
+   				<li><a href="#">구인검색하기</a></li>
+   				<li><a href="#">구직등록 상세현황</a></li>
+   				<li><a href="#">구직등록 하기</a></li>
+   			</ul>
+   		</div>
+   		<div class=""><h3>오늘본 공고 0</h3></div>
+   		<div class="Sky_info">
+   			<p>거성산업</p>
+   			<p>용접분야</p>
+   			<p>서울 관악구</p>
+   			<p>일수 무관</p>
+   		</div>
+   		<div style="width:100%; text-align: center;">
+   			<p>전체보기 0/0</p>
+   		</div>
+   		<div>
+   			<div><img alt="이전공고" src="img/main/up.png" style="float: left; width: 50%;"></div>
+   			<div><img alt="다음공고" src="img/main/down.png"style="width: 50%;"></div>
+   		</div>
+   </div>
 </body>
 </html>

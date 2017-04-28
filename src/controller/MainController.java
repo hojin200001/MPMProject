@@ -30,6 +30,7 @@ public class MainController {
 	public String getLogin(HttpSession session, String id, String pass){
 		HashMap<String, Object> map = new HashMap<>();
 		map = nservice.getLogin(id, pass);
+		System.out.println();
 		if(map != null){
 			session.setAttribute("user", map);
 			session.setAttribute("userInfo", 3);

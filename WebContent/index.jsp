@@ -10,6 +10,7 @@
 <script src="js/main/jquery.bxslider.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/main/jquery.bxslider.css">
 <link rel="stylesheet" type="text/css" href="css/main/main.css">
+
 <script>
 $(document).ready(function(){
 	  $('.bxslider').bxSlider({
