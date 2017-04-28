@@ -109,7 +109,7 @@ public class FreeBoardController {
 		//페이지에서 파라미터 얻어와서 DB에 저장
 		
 		freeBoardService.writeFreeBoard(freeBoard);
-		return "redirect:view.do?num="+freeBoard.getNum();
+		return "redirect:freeBoardView.do?num="+freeBoard.getNum();
 		
 	}
 	

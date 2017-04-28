@@ -207,7 +207,7 @@ width: 25%;
 		
 		</table>
 		
-		<input type="submit" value="수정" onclick="return updateCheck()">
+		<input type="submit" value="등록" >
 		</form>
 
 
