@@ -11,10 +11,10 @@
 <script type="text/javascript">
 
 	if(window.name == "update"){
-		window.opener.parent.location.href="MPMServlet?command=freeBoardUpdateForm&num=${param.num}";
+		window.opener.parent.location.href="freeBoardUpdateForm.do?num=${param.num}";
 	}
 	else if(window.name == "delete"){
-		window.opener.parent.location.href="MPMServlet?command=freeBoardDelete&num=${param.num}";
+		window.opener.parent.location.href="freeBoardDelete.do?num=${param.num}";
 	}
 	
 	window.close();
