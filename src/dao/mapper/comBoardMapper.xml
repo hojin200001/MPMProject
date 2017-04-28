@@ -45,5 +45,9 @@
         Ctext = <include refid="ctext"/>
         where Cnum = #{cnum}
     </update>
+    
+  	<select id="comView" parameterType="java.util.HashMap" resultType="comBoard">
+  		select * from comBoard where Cnum=${cnum}
+  	</select>
   	
   </mapper>

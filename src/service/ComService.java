@@ -25,5 +25,4 @@ public interface ComService {
 
 	public ComBoard boardView(int cnum);
 
-	
 }

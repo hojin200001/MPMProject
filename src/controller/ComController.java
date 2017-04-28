@@ -42,10 +42,10 @@ public class ComController {
 	}
 	
 	@RequestMapping("comView.do")
-	public ModelAndView boardView(HttpSession session, int nnum){
+	public ModelAndView boardView(HttpSession session, int cnum){
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("user" , session.getAttribute("user"));
-		mav.addObject(cservice.boardView(nnum));
+		mav.addObject(cservice.boardView(cnum));
 		mav.setViewName("com/comView");
 		return mav;
 	}

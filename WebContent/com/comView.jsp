@@ -33,43 +33,43 @@ th, td {
 	<table>
 	<tr>
 		<th>작성자</th>
-		<td>${nomalBoard.nomalId}</td>
+		<td>${comBoard.comId}</td>
 		<th>이메일</th>
-		<td>${nomalBoard.nemail}</td>	
+		<td>${comBoard.comEmail}</td>	
 	</tr>
 		<tr>
 		<th>작성일</th>
-		<td><fmt:formatDate value="${nomalBoard.njoinDay}"/></td>
+		<td><fmt:formatDate value="${comBoard.createDay}"/></td>
 		<th>조회수</th>
-		<td>${nomalBoard.ncount}</td>	
+		<td>${comBoard.ccount}</td>	
 	</tr>
 	<tr>
 		<th>제목</th>
-		<td colspan="3">${nomalBoard.ntitle}</td>
+		<td colspan="3">${comBoard.ctitle}</td>
 	<tr>
 	
 	</tr>
 	<tr>
 		<th>내용</th>
-		<td colspan="3">${nomalBoard.ntext}</td>	
+		<td colspan="3">${comBoard.ctext}</td>	
 	</tr>
 	
 	<tr>
 		<th>직업</th>
-		<td colspan="3">${nomalBoard.njob}</td>	
+		<td colspan="3">${comBoard.cjob}</td>	
 	</tr>
 	
 	<tr>
 		<th>경력</th>
-		<td colspan="3">${nomalBoard.ncareer}</td>	
+		<td colspan="3">${comBoard.ccareer}</td>	
 	</tr>
 
 	<tr>
 		<td colspan="4">
 			<input type="button" value="목록으로" onclick="location.href='boardList.do'">
 			<c:choose>
-				<c:when test="${user.id eq nomalBoard.nomalId}">
-					<input type="button" value="수정하기" onclick="location.href='modifyForm.do?num=${nomalBoard.nnum}'">
+				<c:when test="${user.id eq comBoard.comId}">
+					<input type="button" value="수정하기" onclick="location.href='modifyForm.do?num=${comBoard.cnum}'">
 				</c:when>
 			</c:choose>
 			
