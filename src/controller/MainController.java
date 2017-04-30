@@ -52,4 +52,8 @@ public class MainController {
 		session.invalidate();
 		return "redirect:"+url2;
 	}
+	@RequestMapping("joinForm.do")
+	public String join(){
+		return "/main/joinForm";
+	}
 }

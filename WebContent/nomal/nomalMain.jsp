@@ -186,7 +186,7 @@ width: 25%;
 				<a href="login.do" clsss="loginComent"><i><span>인력몬</span>로그인</i></a>
 			</div>
 			<div class="loginBottom">
-				<a href="" class="LoginJoin">회원가입</a>
+				<a href="joinForm.do" class="LoginJoin">회원가입</a>
 				<span class="search">
 				<a>아이디 찾기</a>
 				/

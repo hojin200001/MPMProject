@@ -34,7 +34,7 @@
     	select count(*) from comBoard
     </select>
     
-    <select id="selectBoardPage" parameterType="java.util.HashMap" resultType="ComBoard">
+    <select id="selectBoardPage" parameterType="java.util.HashMap" resultType="comBoard">
     	select * from comBoard order by Cnum desc limit #{offset} ,#{boardsPerPage}
     </select>
     

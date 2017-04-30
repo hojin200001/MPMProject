@@ -36,7 +36,7 @@
 	    <li><a href="comSearch.do">인력찾기</a></li>
 	    <li><a href="#">구직 정보</a>
 	    	<ul>
-	    		<li><a href="#">구직 등록 현황</a></li>
+	    		<li><a href="comBoardList.do">구직 등록 현황</a></li>
 	    		<li><a href="#">구직 등록하기</a></li>	
 	    	</ul>
 	    </li>
@@ -53,25 +53,32 @@
   <div class="side">
 	<div class="sideLogin">
 		<div class="loginArea">
+		<%if(session.getAttribute("user")==null){%>
 			<p>보다안전하게 인력몬 사이트를 이용하세요</p>
 			<div class="loginBtn">
 				<a href="login.do" clsss="loginComent"><img src="img/main/logoB_07_s.png"></img></a>
 			</div>
 			<div class="loginBottom">
-				<a href="" class="LoginJoin">회원가입</a>
+				<a href="join.do" class="LoginJoin">회원가입</a>
 				<span class="search">
 				<a>아이디 찾기</a>
 				/
 				<a>비밀번호 찾기</a>
 				</span>
 			</div>
+			<%}else{%>
+			<div>${user.name}님 환영합니다. &nbsp;&nbsp;&nbsp;
+			<a href="logoutForm.do">로그아웃</a></li>
+  			<li><a href="#">마이 페이지</a></li>
+			</div>
+			<%} %>
 		</div>
 	</div>
 	<div class="Shortcut">
 		<div class="ShortcutMain">
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick4.png"/></div><div>구인검색</div></div>
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick2.png"/></div><div>구직등록</div></div>
-			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick1.png"/></div><div>구직 등록현황</div></div>
+			<div class="ShortcutMain_dvi" onclick="location.href='comBoardList.do'"><div><img src="img/main/Newquick1.png"/></div><div>구직 등록현황</div></div>
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick5.png"/></div><div>구인검색 가이드</div></div>
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick7.png"/></div><div>구직등록 가이드</div></div>
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick6.png"/></div><div>공지사항</div></div>
