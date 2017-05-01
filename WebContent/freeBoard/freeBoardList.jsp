@@ -182,7 +182,7 @@ width: 25%;
    </nav>
    
 	<h4>자유게시판</h4>
-	
+	<form action="freeBoardList.do" method="post">
 	<table class="table table-condensed">
 		<tr>
 			<th>번호</th>
@@ -201,9 +201,50 @@ width: 25%;
 				<td>${freeBoard.freeCount}</td>
 			</tr>
 		</c:forEach>
+		
+		<tr>
+			<td colspan="5">
+			
+				<c:if test="${start != 1}">
+					<a href="freeBoardList.do?page=1&type=${type}&keyword=${keyword}">[처음]</a>
+					<a href="freeBoardList.do?page=${start-1}&type=${type}&keyword=${keyword}">[이전]</a>
+				</c:if>
+				<c:forEach begin="${start}" end="${end <last? end: last}" var="i">
+					
+					<c:choose>
+						<c:when test="${i == current }">
+							[${i}]
+						</c:when>
+						<c:otherwise>
+							<a href="freeBoardList.do?page=${i}&type=${type}&keyword=${keyword}">[${i}]</a>				
+						</c:otherwise>
+					</c:choose>
+						
+				</c:forEach>
+				
+				<c:if test="${end < last}">
+					<a href="freeBoardList.do?page=${end+1}&type=${type}&keyword=${keyword}">[다음]</a>
+					<a href="freeBoardList.do?page=${last}&type=${type}&keyword=${keyword}">[마지막]</a>
+				
+				</c:if>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="5" style="text-align: right;">
+				<select	id="type" name="type" size="1">
+					<option value="1">제목</option>
+					<option value="2">내용</option>
+					<option value="3">제목+내용</option>
+					<option value="4">작성자</option>
+				</select>
+				검색어 <input type="text" name="keyword">
+				<input type="submit" value="검색">
+			</td>
+		
+		</tr>
 	</table>
-	<form class="form-horizontal" action="MPMServlet" name="frm" method="post">
-	<input type="hidden" name="command" value="freeBoardWriteForm">
+	</form>
+	<form class="form-horizontal" action="freeBoardWriteForm.do" name="frm" method="post">
 	<input type="submit" value="게시글 등록"></form>
 </div>
 

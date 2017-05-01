@@ -4,23 +4,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <title>Insert title here</title>
-</head>
-<body>
-
 <script type="text/javascript">
 
-	if(window.name == "update"){
-		window.opener.parent.location.href="freeBoardUpdateForm.do?num=${param.num}";
-	}
-	else if(window.name == "delete"){
-		window.opener.parent.location.href="freeBoardDelete.do?num=${param.num}";
-	}
-	
-	window.close();
-
+ $(document).ready(function() {
+		alert("일반회원은 이용하실 수 없습니다."); 
+		$(location).attr("href", "comMain.do");
+	}) 
 </script>
 
-
+</head>
+<body>
 </body>
 </html>
