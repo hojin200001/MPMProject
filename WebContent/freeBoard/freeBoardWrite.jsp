@@ -199,7 +199,7 @@ width: 25%;
 		
 			<tr>
 				<th>내용</th>
-				<td><textarea rows="15" cols="70" name="contentsValue"></textarea>* 필수 </td>
+				<td><textarea rows="15" cols="70" name="conValue"></textarea>* 필수 </td>
 				
 			</tr>
 		

@@ -195,10 +195,15 @@ width: 25%;
 			<td><fmt:formatDate value="${freeBoard.createDay}" pattern="yyyy-MM-dd"/></td>
 		</tr>	
 		<tr>
-			<td colspan="4">${freeBoard.contentsValue}</td>
+			<td colspan="4">${freeBoard.conValue}</td>
 		</tr>
 	</table>
-	<input type="button" value="수정" onclick="open_win('freeBoardCheckPassForm.do&num=${freeBoard.num}&id=${freeBoard.createName}','update','user')">
+	<script type="text/javascript">
+		if(user.id == ${freeBoard.createName}){
+			${'#up'}
+		}
+	</script>
+	<input id="up" type="button" value="수정" onclick="location.href='freeBoardUpdateForm.do&num=${freeBoard.num}&id=${freeBoard.createName}','update','user'">
 	<input type="button" value="삭제" onclick="open_win('freeBoardCheckPassForm&num=${freeBoard.num}','delete')">
 	<input type="button" value="돌아가기" onclick="location.href='nomalMain'">
 	</div>

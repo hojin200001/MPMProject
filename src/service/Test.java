@@ -18,14 +18,14 @@ public class Test {
 		for(int i=0; i<100; i++){
 			f.setTitle("라면좋아 "+i);
 			f.setCreateName("MPMManager"+i);
-			f.setContentsValue("라면 맛이 참~좋은데 "+i);
+			f.setConValue("라면 맛이 참~좋은데 "+i);
 			dao.insertFreeBoard(f);
 		}
 		
 		for(int i=0; i<100; i++){
 			f.setTitle("우동좋아 "+i);
 			f.setCreateName("Manager"+i);
-			f.setContentsValue("우동 맛이 참~좋은데 "+i);
+			f.setConValue("우동 맛이 참~좋은데 "+i);
 			dao.insertFreeBoard(f);
 		}
 		

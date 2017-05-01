@@ -78,7 +78,7 @@ public class FreeBoardController {
 		//DB에서 가져온 게시판 정보 하나 : 데이터
 		//modifyForm.jsp 페이지 : view
 		//서비스의 getBoard
-		
+		System.out.println(1);
 		model.addAttribute(freeBoardService.getFreeBoard(num));	
 		
 	}

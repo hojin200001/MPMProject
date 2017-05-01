@@ -16,8 +16,8 @@
 	</sql>
 	<sql id="content">
 		<choose>
-			<when test="contentsValue != null">
-				#{contentsValue}
+			<when test="conValue != null">
+				#{conValue}
 			</when>
 			<otherwise>
 				'내용없음'
