@@ -49,7 +49,9 @@
   	<select id="comView" parameterType="java.util.HashMap" resultType="comBoard">
   		select * from comBoard where Cnum=${cnum}
   	</select>
+  	<!-- comuser -->
   	<select id="selectOne" parameterType="java.util.HashMap" resultType="comUser">
   		select * from comUser where comId = '${id}'
   	</select>
+  	<!-- inComBoard -->
   </mapper>

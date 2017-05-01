@@ -64,6 +64,7 @@ public class ComController {
 			HashMap<String, Object> cb = new HashMap<>();
 			cb = cservice.comBoardList(page, (String)map.get("id"), boardsPerPage);
 			mav.addObject("PerPage",boardsPerPage);
+			mav.addObject("search_type", search_type);
 			mav.addAllObjects(cb);
 			mav.setViewName("/com/comBoardList");
 		}else if(session.getAttribute("user") != null && (int)session.getAttribute("userInfo") == 1){

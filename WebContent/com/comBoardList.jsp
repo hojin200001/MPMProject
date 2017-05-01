@@ -259,10 +259,20 @@ td>a{
 	<div class="contents_top3">
 		<div class="contents_top3_div">
 			<c:choose>
-				<c:when test="${null eq search_type}">
-						<a class="on" id="contents_top_id" name ="search_type" value="1" onclick=""><img alt="" src="img/com/check.png">등록일순</a>
-						<a class="" id="contents_top_id2" name="search_type" value="2" onclick=""><img alt="" src="img/com/point.png">마감일순</a>
-						<a class="" id="contents_top_id3" name="search_type" value="3" onclick=""><img alt="" src="img/com/point.png">신청인원순</a>
+				<c:when test="${search_type eq 1}">
+						<a class="on" id="contents_top_id"><img src="img/com/check.png">등록일순</a>
+						<a class="" id="contents_top_id2" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=2"><img src="img/com/point.png">마감일순</a>
+						<a class="" id="contents_top_id3" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=3"><img src="img/com/point.png">신청인원순</a>
+				</c:when>
+				<c:when test="${search_type eq 2}">
+						<a class="" id="contents_top_id" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=1"><img src="img/com/point.png">등록일순</a>
+						<a class="on" id="contents_top_id2"><img src="img/com/check.png">마감일순</a>
+						<a class="" id="contents_top_id3" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=3"><img src="img/com/point.png">신청인원순</a>
+				</c:when>
+				<c:when test="${search_type eq 3}">
+						<a class="" id="contents_top_id" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=1"><img src="img/com/point.png">등록일순</a>
+						<a class="" id="contents_top_id2" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=2"><img src="img/com/point.png">마감일순</a>
+						<a class="on" id="contents_top_id3"><img src="img/com/check.png">신청인원순</a>
 				</c:when>
 				
 			</c:choose>
