@@ -74,12 +74,16 @@ public class FreeBoardController {
 	}
 	
 	@RequestMapping("freeBoardUpdateForm.do")
-	public void modifyForm(Model model, int num, HttpSession session){
+	public ModelAndView modifyForm(Model model, int num, HttpSession session){
+		
 		//DB에서 가져온 게시판 정보 하나 : 데이터
 		//modifyForm.jsp 페이지 : view
 		//서비스의 getBoard
+		ModelAndView mav = new ModelAndView();
 		
-		model.addAttribute(freeBoardService.getFreeBoard(num));	
+		mav.addObject(freeBoardService.getFreeBoard(num));
+		mav.setViewName("/freeBoard/freeBoardUpdateForm");
+		return mav;
 		
 	}
 	
@@ -88,28 +92,28 @@ public class FreeBoardController {
 		
 		//게시물정보를 파라미터로 받아서 DB에 수정작업
 		//서비스의 modifyBoard
+		System.out.println(freeBoard);
 		freeBoardService.updateFreeBoard(freeBoard);
 		return "redirect:freeBoardView.do?num="+freeBoard.getNum();
 	}
 	
-	@RequestMapping("writeForm.do")
+	@RequestMapping("freeBoardWriteForm.do")
 	public String writeForm(HttpSession session){
 		
 		if(session.getAttribute("user")!=null){
-			return "freeBoardWrite";
+			return "/freeBoard/freeBoardWrite";
 		}
 		else{
 			return "redirect:login.do";
 		}
 	}
 	
-	@RequestMapping("write.do")
+	@RequestMapping("freeBoardWrite.do")
 	public String write(FreeBoard freeBoard){		
 		//게시글 작성하기
 		//페이지에서 파라미터 얻어와서 DB에 저장
-		
 		freeBoardService.writeFreeBoard(freeBoard);
-		return "redirect:view.do?num="+freeBoard.getNum();
+		return "redirect:freeBoardView.do?num="+freeBoard.getNum();
 		
 	}
 	
@@ -136,8 +140,10 @@ public class FreeBoardController {
 	
 	
 	@RequestMapping("freeBoardDelete.do")
-	public void freeBoardDelete(){
+	public String freeBoardDelete(int num){
 		
+		freeBoardService.deleteFreeBoard(num);
+		return "redirect:/freeBoard/freeBoardView";
 	}
 	
 	

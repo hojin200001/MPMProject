@@ -8,7 +8,8 @@ public class FreeBoard {
 	private Timestamp createDay;
 	private int freeCount;
 	private String createName;
-	private String contentsValue;
+	private String conValue;
+	
 	
 	public int getNum() {
 		return num;
@@ -40,20 +41,18 @@ public class FreeBoard {
 	public void setCreateName(String createName) {
 		this.createName = createName;
 	}
-	public String getContentsValue() {
-		return contentsValue;
+	public String getConValue() {
+		return conValue;
 	}
-	public void setContentsValue(String contentsValue) {
-		this.contentsValue = contentsValue;
+	public void setConValue(String conValue) {
+		this.conValue = conValue;
 	}
 	
 	
 	@Override
 	public String toString() {
 		return "FreeBoard [num=" + num + ", title=" + title + ", createDay=" + createDay + ", freeCount=" + freeCount
-				+ ", createName=" + createName + ", contentsValue=" + contentsValue + "]";
+				+ ", createName=" + createName + ", conValue=" + conValue + "]";
 	}
-	
-	
 	
 }

@@ -28,7 +28,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	@Override
 	public int writeFreeBoard(FreeBoard freeBoard) {
 		// TODO Auto-generated method stub
-		
+	
 		return fDao.insertFreeBoard(freeBoard);
 	}
 	@Override
@@ -55,7 +55,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 			b.setFreeCount(b.getFreeCount() + 1);
 			fDao.updateFreeBoard(b);
 		}
-				
+		
 		return b;
 	}
 	
@@ -116,7 +116,8 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	@Override
 	public FreeBoard getFreeBoard(int num) {
 		// TODO Auto-generated method stub
-		return null;
+		FreeBoard b = fDao.selectOneByNum(num);
+		return b;
 	}
 	
 	
@@ -130,7 +131,25 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	@Override
 	public HashMap<String, Object> getFreeBoardListByCondition(int page, String keyword, int type) {
 		// TODO Auto-generated method stub
-		return null;
+		//sql문 작성에 필요한 파라미터 설정
+		HashMap<String, Object> params = new HashMap<>();
+				
+		//검색결과 얻은 게시물 리스트를 담기위한 해쉬맵
+		HashMap<String, Object> result = new HashMap<>();
+				
+		params.put("keyword", keyword);
+		params.put("type", type);			params.put("offset", getOffset(page));
+		params.put("freeBoardsPerPage", 10);
+				
+		result.put("freeBoardList", fDao.selectSearchByKeyword(params) ) ;
+				
+		//찾아낸 게시물들 페이지처리
+		result.put("current", page);
+		result.put("start", getStartPage(page));
+		result.put("end", getEndPage(page));
+		result.put("last", getLastPage(fDao.getCountSearchByKeyword(params)));
+		
+		return result;
 	}
 	
 	
@@ -140,4 +159,6 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		return fDao.getNomalID(id);
 	}
 
+	
+	
 }
