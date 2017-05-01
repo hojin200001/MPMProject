@@ -30,12 +30,12 @@
   		select * from nomalBoard order by Nnum desc limit 10
   	</select>
   	
-  	<select id="getCount" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
-    	select count(*) from comBoard
+  	<select id="getCount" parameterType="java.util.HashMap" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
+    	select count(*) from comBoard where comId="${id}"
     </select>
     
     <select id="selectBoardPage" parameterType="java.util.HashMap" resultType="comBoard">
-    	select * from comBoard order by Cnum desc limit #{offset} ,#{boardsPerPage}
+    	select * from comBoard where comId = '${id}' order by Cnum desc limit #{offset} ,#{boardsPerPage}
     </select>
     
      <update id="comUpdate" parameterType="comBoard">
@@ -49,5 +49,7 @@
   	<select id="comView" parameterType="java.util.HashMap" resultType="comBoard">
   		select * from comBoard where Cnum=${cnum}
   	</select>
-  	
+  	<select id="selectOne" parameterType="java.util.HashMap" resultType="comUser">
+  		select * from comUser where comId = '${id}'
+  	</select>
   </mapper>
