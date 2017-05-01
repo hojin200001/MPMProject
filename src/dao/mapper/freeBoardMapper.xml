@@ -41,7 +41,6 @@
 		title =
 		<include refid="title" />
 		,
-		freeCount = #{freeCount}, createName = #{createName},
 		conValue =
 		<include refid="content" />
 		where num = #{num}

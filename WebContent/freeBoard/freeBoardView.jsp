@@ -198,13 +198,12 @@ width: 25%;
 			<td colspan="4">${freeBoard.conValue}</td>
 		</tr>
 	</table>
-	<script type="text/javascript">
-		if(user.id == ${freeBoard.createName}){
-			${'#up'}
-		}
-	</script>
-	<input id="up" type="button" value="수정" onclick="location.href='freeBoardUpdateForm.do&num=${freeBoard.num}&id=${freeBoard.createName}','update','user'">
-	<input type="button" value="삭제" onclick="open_win('freeBoardCheckPassForm&num=${freeBoard.num}','delete')">
+	<c:choose>
+		<c:when test="${user.id eq freeBoard.createName}">
+			<input id="up" type="button" value="수정" onclick="location.href='freeBoardUpdateForm.do?num=${freeBoard.num}'">
+			<input type="button" value="삭제" onclick="location.href='freeBoardDelete.do?num=${freeBoard.num}'">
+		</c:when>
+	</c:choose>
 	<input type="button" value="돌아가기" onclick="location.href='nomalMain'">
 	</div>
 	

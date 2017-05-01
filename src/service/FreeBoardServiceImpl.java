@@ -116,7 +116,8 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	@Override
 	public FreeBoard getFreeBoard(int num) {
 		// TODO Auto-generated method stub
-		return null;
+		FreeBoard b = fDao.selectOneByNum(num);
+		return b;
 	}
 	
 	
