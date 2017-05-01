@@ -55,7 +55,7 @@
   <div class="form-group">
     <label for="inputPassword3" class="col-xs-10 control-label">Password :</label>
     <div class="col-xs-10">
-      <input type="text" class="form-control" id="inputPassword3" placeholder="비밀번호를 입력해주세요" name="pass">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="비밀번호를 입력해주세요" name="pass">
     </div>
   </div>
   <div class="form-group">
