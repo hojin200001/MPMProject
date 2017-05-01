@@ -28,7 +28,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	@Override
 	public int writeFreeBoard(FreeBoard freeBoard) {
 		// TODO Auto-generated method stub
-		
+	
 		return fDao.insertFreeBoard(freeBoard);
 	}
 	@Override
@@ -55,7 +55,8 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 			b.setFreeCount(b.getFreeCount() + 1);
 			fDao.updateFreeBoard(b);
 		}
-				
+		System.out.println(b);
+		System.out.println(b.getContentsValue());		
 		return b;
 	}
 	

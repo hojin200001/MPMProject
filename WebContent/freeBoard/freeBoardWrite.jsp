@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/board/freeBoard.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
@@ -148,9 +149,7 @@ width: 25%;
 -->
 
 </style>
-<script type="text/javascript" src="script/freeBoard.js"></script>
 <link rel="stylesheet" type="text/css" href="css/board.css">
-<script type="text/javascript" src="script/board.js"></script>
 </head>
 <body>
 
@@ -187,11 +186,10 @@ width: 25%;
 	<h1>게시글 등록</h1>
 	
 		<form action="freeBoardWrite.do" method="post" name="frm">
-		<input type="hidden" name="num" value="${param.num}">
 		<table class="table table-condensed">
 			<tr>
 				<th>글쓴이</th>
-				<td><input type="text" name="name" >* 필수 </td>
+				<td><input type="text" name="createName" value="${user.id}" readonly>* 필수 </td>
 			</tr>
 
 			<tr>
@@ -201,13 +199,13 @@ width: 25%;
 		
 			<tr>
 				<th>내용</th>
-				<td><textarea rows="15" cols="70" name="contents"></textarea>* 필수 </td>
+				<td><textarea rows="15" cols="70" name="contentsValue"></textarea>* 필수 </td>
 				
 			</tr>
 		
 		</table>
 		
-		<input type="submit" value="등록" >
+		<input type="submit" value="등록" onclick="return insertCheck()">
 		</form>
 
 

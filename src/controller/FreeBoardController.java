@@ -107,7 +107,6 @@ public class FreeBoardController {
 	public String write(FreeBoard freeBoard){		
 		//게시글 작성하기
 		//페이지에서 파라미터 얻어와서 DB에 저장
-		
 		freeBoardService.writeFreeBoard(freeBoard);
 		return "redirect:freeBoardView.do?num="+freeBoard.getNum();
 		
