@@ -8,10 +8,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -51,16 +53,27 @@ public class ComController {
 	}
 	
 	@RequestMapping("comBoardList.do")
-	public ModelAndView comBoardList(
-			@RequestParam(defaultValue="1") int page){
+	public ModelAndView comBoardList(@RequestParam(defaultValue="1") int page, 
+										@RequestParam(defaultValue="5") int boardsPerPage,
+										@RequestParam(defaultValue="1") int search_type,
+										HttpSession session){
 		ModelAndView mav = new ModelAndView();
-		HashMap<String, Object> cb = new HashMap<>();
-		cb = cservice.comBoardList(page);
-		mav.setViewName("/com/comBoardList");
-		mav.addAllObjects(cb);
+		System.out.println(search_type);
+		if(session.getAttribute("user") != null && (int)session.getAttribute("userInfo") ==2){
+			HashMap<String , Object> map = (HashMap<String, Object>) session.getAttribute("user");
+			HashMap<String, Object> cb = new HashMap<>();
+			cb = cservice.comBoardList(page, (String)map.get("id"), boardsPerPage);
+			mav.addObject("PerPage",boardsPerPage);
+			mav.addAllObjects(cb);
+			mav.setViewName("/com/comBoardList");
+		}else if(session.getAttribute("user") != null && (int)session.getAttribute("userInfo") == 1){
+			mav.setViewName("/login/loginAlert_id");			
+		}else{
+			mav.setViewName("/login/loginAlert_login");
+		}
 		return mav;
-		
 	}
+	
 	@RequestMapping("comSearch.do")
 	public String comSearch(){
 		return "/com/comSearch";
