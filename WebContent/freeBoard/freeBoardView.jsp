@@ -173,7 +173,7 @@ width: 25%;
 	    <li>
 	        <a href="#">게시판</a>
 	        <ul>
-	            <li><a href="MPMServlet?command=freeBoardList">자유게시판</a></li>
+	            <li><a href="freeBoardList.do">자유게시판</a></li>
 	            <li><a href="#">후기게시판</a></li>
 	        </ul>
 	    </li>
@@ -186,21 +186,21 @@ width: 25%;
 	<table class="table table-condensed">
 		<tr>
 			<td>제목</td>
-			<td colspan="3">${FreeBoard.title}</td>
+			<td colspan="3">${freeBoard.title}</td>
 		</tr>
 		<tr>
 			<td>글쓴이/조회수</td>	
-			<td>${FreeBoard.createName}/${FreeBoard.freeCount}</td>
+			<td>${freeBoard.createName}/${freeBoard.freeCount}</td>
 			<td>작성일</td>
-			<td><fmt:formatDate value="${FreeBoard.createDay}" pattern="yyyy-MM-dd"/></td>
+			<td><fmt:formatDate value="${freeBoard.createDay}" pattern="yyyy-MM-dd"/></td>
 		</tr>	
 		<tr>
-			<td colspan="4">${FreeBoard.contentsValue}</td>
+			<td colspan="4">${freeBoard.contentsValue}</td>
 		</tr>
 	</table>
-	<input type="button" value="수정" onclick="open_win('MPMServlet?command=freeBoardCheckPassForm&num=${FreeBoard.num}','update','user')">
-	<input type="button" value="삭제" onclick="open_win('MPMServlet?command=freeBoardCheckPassForm&num=${FreeBoard.num}','delete')">
-	<input type="button" value="돌아가기" onclick="location.href='MPMServlet?command=nomalMain'">
+	<input type="button" value="수정" onclick="open_win('freeBoardCheckPassForm.do&num=${freeBoard.num}&id=${freeBoard.createName}','update','user')">
+	<input type="button" value="삭제" onclick="open_win('freeBoardCheckPassForm&num=${freeBoard.num}','delete')">
+	<input type="button" value="돌아가기" onclick="location.href='nomalMain'">
 	</div>
 	
 	

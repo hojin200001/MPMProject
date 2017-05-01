@@ -5,9 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>무제 문서</title>
+<!-- <link href="bootStrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="bootstrap/bootstrap.min.js"></script> -->
 <script src="js/main/jquery.bxslider.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/main/jquery.bxslider.css">
 <link rel="stylesheet" type="text/css" href="css/main/main.css">
+
 <script>
 $(document).ready(function(){
 	  $('.bxslider').bxSlider({
@@ -39,7 +42,7 @@ $(document).ready(function(){
 	 <ul class="headerNev">
   		<li class="Nev1"><%if(session.getAttribute("user")==null){%>
 			<a href="login.do">로그인</a></li>
-		<li><a href="#">회원 가입</a></li><%
+		<li><a href="joinForm.do">회원 가입</a></li><%
 			}else{%>${user.name}님 환영합니다. &nbsp;&nbsp;&nbsp;
 		<a href="logoutForm.do">로그아웃</a></li>
   		<li><a href="#">마이 페이지</a></li>
@@ -57,7 +60,9 @@ $(document).ready(function(){
                 <li class="subject">구직<a href="nomalMain.do"><img src="img/main/btn_more.png" alt="더보기"></a></li>
             </ul>
             <p class="sub_txt">
-            	<a href="nomalSignup.do">구직등록</a> / <a href="index.do">일자리검색</a> / <a href="index.do">지역별 일자리</a>
+            	<a href="nomalSignup.do">구직등록</a> / 
+            	<a href="index.do">일자리검색</a> / 
+            	<a href="index.do">지역별 일자리</a>
             </p>
         </div>
         <div class="companyLink" onclick="location.href='comMain.do'">

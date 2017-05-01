@@ -7,13 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="script/freeBoard.js"></script>
+<script type="text/javascript" src="js/board/freeBoard.js"></script>
 </head>
 <body>
 
 	<h1>게시글 수정</h1>
 	
-		<form action="MPMServlet" method="post" name="frm">
+		<form action="freeBoardUpdate.do" method="post" name="frm">
 		<input type="hidden" name="command" value="freeBoardUpdate">
 		<input type="hidden" name="num" value="${param.num}">
 		<table>

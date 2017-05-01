@@ -61,6 +61,8 @@
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <div class="checkbox">
+      	<input type="radio" name="radios" value="1">일반회원
+      	<input type="radio" name="radios" value="2">기업회원
         <label>
           <input type="checkbox"> ID저장
         </label>

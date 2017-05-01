@@ -1,4 +1,3 @@
-<%-- <%@page import="Model.FreeBoard"%> --%>
 <%@page import="model.FreeBoard"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
@@ -159,15 +158,15 @@ width: 25%;
   			</div>
   			<dir class="searchsdumi"></dir>
   			<dir class="searchs">
-	  		<input type="text" alt="전체검색" class="searchText"><img src="img/main/btn_search.gif" alt="홈으로" style="float: left;"/></input>
+	  		<input type="text" alt="전체검색" class="searchText"/><img src="img/main/btn_search.gif" alt="홈으로" style="float: left;"/>
   			</dir>
   		</div>	
     <!-- end .header --></div>
    <nav style="margin-top: 20px;">
 	  <ul id="menu">
-	    <li><a href="#">홈으로</a></li>
-	    <li><a href="#">일자리찾기</a></li>
-	    <li><a href="#">일자리등록하기</a></li>
+	    <li><a href="index.do">홈으로</a></li>
+	    <li><a href="comBoardList.do">일자리찾기</a></li>
+	    <li><a href="nomalBoardList.do">일자리등록하기</a></li>
 	    <li>
 	        <a href="#">게시판</a>
 	        <ul>
@@ -184,10 +183,10 @@ width: 25%;
 		<%if(session.getAttribute("user")==null){%>
 			<p>보다안전하게 인력몬 사이트를 이용하세요</p>
 			<div class="loginBtn">
-				<a href="MPMServlet?command=nomalUserLogin" clsss="loginComent"><i><span>인력몬</span>로그인</i></a>
+				<a href="login.do" clsss="loginComent"><i><span>인력몬</span>로그인</i></a>
 			</div>
 			<div class="loginBottom">
-				<a href="" class="LoginJoin">회원가입</a>
+				<a href="joinForm.do" class="LoginJoin">회원가입</a>
 				<span class="search">
 				<a>아이디 찾기</a>
 				/
@@ -227,23 +226,23 @@ width: 25%;
   	<div class="recentHelp">
     	<div class="bestinfo">
     		<p>최근 올라온 구인공고 <span>Best4</span></p>
-				<table class=table6_6>
+				<table class="table6_6">
 				<tr>
 					<th>지역</th><th class="n2">구인 광고 내용</th><th>업무 기간</th><th>급여</th><th>등록일</th>
 				</tr>
-				<%-- <c:forEach items="${nomalList}" var="n">
+ 				<c:forEach items="${nomalList}" var="nn">
 				<tr>
-					<td>${n.Narea}</td>
-					<td class="n2">${n.Ntitle}</td>
-					<td>${n.Nday}</td>
-					<td>${n.Ncareer}</td>
-					<td>${n.Narea}</td>
+					<td>${nn.narea}</td>
+					<td class="n2"><a href="nomalView.do?nnum=${nn.nnum}">${nn.ntitle}</a></td>
+					<td>${nn.nday}</td>
+					<td>${nn.ncareer}</td>
+					<td>${nn.narea}</td>
 				</tr>
-				</c:forEach> --%>
+				</c:forEach> 
 				
 				<tr>
 					<td>test</td>
-					<td>test</td>
+					<td class="n2">test</td>
 					<td>test</td>
 					<td>test</td>
 					<td>test</td>
@@ -255,7 +254,7 @@ width: 25%;
     <div class="recentFreeTable">
     	<div class="bestinfo">
     		<p>최근 등록된 자유 게시판</p>
-				<table class=table6_6>
+				<table class="table6_6">
 				<tr>
 					<th>게시판 번호</th><th class="n2">게시판 제목</th><th>등록인</th><th>등록 날짜</th><th>조회수</th>
 				</tr>
@@ -283,7 +282,7 @@ width: 25%;
     </div>
     <div class="infoArea" style="border: 1px solid red;">
     	<div class="RegionInfo">
-    		지역별 구인 갯수 출력 왼쪽부분으로(도별로 나누면 좋겠는데 안대면 없애는걸로)
+    		*지역별 구인현황* 강남 :${gangnam} , 대전 : , 대구 : , 부산 : 
     	</div>
     	<div class="Notice">
     		공지 게시판 테이블 (최근 5개)오른쪽부분으로
@@ -300,3 +299,4 @@ width: 25%;
   <!-- end .container --></div>
 </body>
 </html>
+>>>>>>> a950c31dfc2dc9c9a2d5faa82dff2ad19faf978f
