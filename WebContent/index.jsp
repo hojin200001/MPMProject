@@ -10,6 +10,7 @@
 <script src="js/main/jquery.bxslider.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/main/jquery.bxslider.css">
 <link rel="stylesheet" type="text/css" href="css/main/main.css">
+
 <script>
 $(document).ready(function(){
 	  $('.bxslider').bxSlider({
@@ -41,7 +42,7 @@ $(document).ready(function(){
 	 <ul class="headerNev">
   		<li class="Nev1"><%if(session.getAttribute("user")==null){%>
 			<a href="login.do">로그인</a></li>
-		<li><a href="#">회원 가입</a></li><%
+		<li><a href="joinForm.do">회원 가입</a></li><%
 			}else{%>${user.name}님 환영합니다. &nbsp;&nbsp;&nbsp;
 		<a href="logoutForm.do">로그아웃</a></li>
   		<li><a href="#">마이 페이지</a></li>

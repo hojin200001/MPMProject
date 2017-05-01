@@ -10,256 +10,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>무제 문서</title>
-<style type="text/css">
-<!--
-/* 요기부터 나의 CSS */
-.sideLogin{
-	margin-top: 10px;
-	height:120px;
-	border: 2px solid #c0c0c0; 
-	border-top: 3px solid #0d73d1;
-	background-color: #ffffff;
-}
-.loginArea p{
-	padding-top: 10px;
-	font-size: 12px;
-}
-.loginArea div a{
-	text-decoration:none;
-}
-.loginBtn{
-	margin: 0 auto;
-	height: 45px;
-	width: 230px;
-	border: 2px solid #BDBDBD; 
-	border-radius: 3px;
-	text-align: center;
-	background-color: #f2f2f2;
-}
-
-.search{
-	padding-left: 20px;
-	padding-top: 7px;
-	float: left;
-	font-size: 12px;
-}
-.LoginJoin{
-	padding-right:	20px;
-	padding-top: 7px;
-	float: right;
-	font-size: 12px;
-	
-}
-.recentHelp, .recentFreeTable{
-	height: auto;
-	border-top: 3px solid #0d73d1; 
-}
-.recentFreeTable{
-	margin-top: 15px;
-}
-.bestinfo{
-}
-.bestinfo p, .recentFreeTable p{
-	margin-top: 20px;
-	font-weight: 900;
-}
-.searchs{
-	height: 100px;
-}
-.searchArea{
-	margin : 0 auto;
-}
-.searchText{
-    width: 350px;
-    padding: 9px;
-    float: left;
-    border: 3px solid #034f96;
-    background: #fff;
-}
-.searchIcn{
-    float: left;
-    background: #034f96;
-    cursor: pointer;
-}
-
-.imgArea{
-	width: 100%; 
-	text-align: center;
-	padding-top: 10px;
-}
-.imageLogo{
-	width: 250px; 
-	height: 110px; 
-	padding-right: 40px;
-}
-.searchs{
-	padding-top: 0px;
-}
-.searchsdumi{
-	float: left;
-	width: 25%;
-}
-.Shortcut{
-	height: 220px;
-	width: 100%;
-}
-.ShortcutMain{
-	width: 100%;
-	height: 180px;
-	border: 3px solid #f2f2f2;
-}
-.ShortcutMain_dvi{
-	float: left; 
-	width:32.5%; 
-	height: 50%;
-	margin: 0 auto;
-	text-align: center;
-	font-size: 11px;
-	border: 1px solid #f2f2f2;
-	cursor:pointer;
-}
-/* 구직정보 표기테이블 */
-.infoBox{
-	height:300px; 
-	list-style: none; 
-	margin: 0 auto; 
-	padding: 1px 0 0;
-	background-color: #ffffff;
-}
-.first_info{
-	width: 50%; 
-	height : 20%; 
-	border: 1px solid #d5dbe9; 
-	display: list-item;
-	position: relative; 
-	float: left; 
-	margin: -1px 0 0 -1px; 
-	box-sizing: border-box;
-}
-.first_info>a{
-	padding: 14px 0 0 158px; 
-	text-decoration: none;
-}
-
-.info_span1, .info_span1_1{
-	color: #0372ab; 
-	position: absolute; 
-	top: 0; 
-	left: 0; 
-	width: 130px; 
-	height: 41px; 
-	padding: 15px 0 0 15px;
-}
-.info_span1{
-	background-color: #ebf8ff; 
-}
-.info_span2{
-	margin-left: 170px;
-	margin-top: 5px;
-}
-#span_info{
-	font-size: 10px;
-}
-#span_info> span{
-	padding-right: 5px;
-	padding-left: 5px;
-	margin-top: -5px;
-}
-.span_info_in{
-	border-right: 1px solid #f2f2f2;
-}
-/* 게시판 탭부분 */
-ul.tabs {
-    margin: 0;
-    padding: 0;
-    float: left;
-    list-style: none;
-    height: 50px;
-    border-bottom: 1px solid #f2f2f2;
-    border-left: 1px solid #f2f2f2;
-    width: 100%;
-    font-family:"dotum";
-    font-size:16px;
-}
-ul.tabs li {
-    float: left;
-    text-align:center;
-    cursor: pointer;
-    width:49.8%;
-    height: 50px;
-    line-height: 31px;
-    border: 1px solid #f2f2f2;
-    border-top: 1px solid #034f96;
-    border-left: none;
-    font-weight: bold;
-    background: #f2f2f2;
-    overflow: hidden;
-    position: relative;
-}
-ul.tabs li.active {
-    background: #FFFFFF;
-    border-bottom: 1px solid #FFFFFF;
-}
-.tab_container {
-    border: 3px solid #f2f2f2;
-    border-top: none;
-    clear: both;
-    float: left;
-    width: 100%;
-    background: #FFFFFF;
-}
-.tab_content {
-    padding: 5px;
-    font-size: 15px;
-    display: none;
-}
-.tab_container .tab_content ul {
-    width:100%;
-    margin:0px;
-    padding:0px;
-    
-}
-.tab_container .tab_content ul li {
-    padding:5px;
-    display:inline;
-}
-
- #boardTabs {
-    width: 100%;
-    margin: 0 auto;
-}
-.content_in_lis{
-	margin-left: 20px;
-	height: 20px;
-	width: 80%;
-	list-style: none;	
-}
-
-.content_in_lis>span>a{
-	text-decoration:none;
-}
-.content_in_li{
-	margin-left: 50px;
-}
-#content_item{
-	font-size: 15px;
-}
-#content_item2>span{
-	clolr:#4E5869;
-	font-size: 12px;
-}
-#content_item3{
-	color:#034f96;
-	font-size: 12px;
-}
-
--->
-
-</style>
 <script src="js/main/jquery.bxslider.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/main/jquery.bxslider.css">
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
 <link rel="stylesheet" type="text/css" href="css/main/nomalMain.css">
+<link rel="stylesheet" type="text/css" href="css/com/comMain_con.css">
 </head>
 
 <body>
@@ -278,17 +33,17 @@ ul.tabs li.active {
    <nav style="margin-top: 20px;">
 	  <ul id="menu">
 	    <li><a href="index.do">홈으로</a></li>
-	    <li><a href="#">인력찾기</a></li>
+	    <li><a href="comSearch.do">인력찾기</a></li>
 	    <li><a href="#">구직 정보</a>
 	    	<ul>
-	    		<li><a href="#">구직 등록 현황</a></li>
+	    		<li><a href="comBoardList.do">구직 등록 현황</a></li>
 	    		<li><a href="#">구직 등록하기</a></li>	
 	    	</ul>
 	    </li>
 	    <li>
 	        <a href="#">게시판</a>
 	        <ul>
-	            <li><a href="MPMServlet?command=freeBoardList">자유게시판</a></li>
+	            <li><a href="freeBoardList.do">자유게시판</a></li>
 	            <li><a href="#">후기게시판</a></li>
 	        </ul>
 	    </li>
@@ -298,25 +53,32 @@ ul.tabs li.active {
   <div class="side">
 	<div class="sideLogin">
 		<div class="loginArea">
+		<%if(session.getAttribute("user")==null){%>
 			<p>보다안전하게 인력몬 사이트를 이용하세요</p>
 			<div class="loginBtn">
 				<a href="login.do" clsss="loginComent"><img src="img/main/logoB_07_s.png"></img></a>
 			</div>
 			<div class="loginBottom">
-				<a href="" class="LoginJoin">회원가입</a>
+				<a href="join.do" class="LoginJoin">회원가입</a>
 				<span class="search">
 				<a>아이디 찾기</a>
 				/
 				<a>비밀번호 찾기</a>
 				</span>
 			</div>
+			<%}else{%>
+			<div>${user.name}님 환영합니다. &nbsp;&nbsp;&nbsp;
+			<a href="logoutForm.do">로그아웃</a></li>
+  			<li><a href="#">마이 페이지</a></li>
+			</div>
+			<%} %>
 		</div>
 	</div>
 	<div class="Shortcut">
 		<div class="ShortcutMain">
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick4.png"/></div><div>구인검색</div></div>
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick2.png"/></div><div>구직등록</div></div>
-			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick1.png"/></div><div>구직 등록현황</div></div>
+			<div class="ShortcutMain_dvi" onclick="location.href='comBoardList.do'"><div><img src="img/main/Newquick1.png"/></div><div>구직 등록현황</div></div>
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick5.png"/></div><div>구인검색 가이드</div></div>
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick7.png"/></div><div>구직등록 가이드</div></div>
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick6.png"/></div><div>공지사항</div></div>
