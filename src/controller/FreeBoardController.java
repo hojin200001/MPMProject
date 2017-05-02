@@ -121,18 +121,9 @@ public class FreeBoardController {
 		
 	}
 	
-	@RequestMapping("freeBoardCheckPass.do")
-	public String freeBoardCheckPass(String id,HttpSession session){
+	@RequestMapping("updateCheckForm.do")
+	public String freeBoardupdateCheckForm(FreeBoard freeBoard,HttpSession session){
 
-//		String pass = freeBoardService.getPass(id);
-//		String loginPass = ;
-//		
-//		if(){
-//			
-//		}
-//		else{
-//			
-//		}
 		
 		return null;
 	}
