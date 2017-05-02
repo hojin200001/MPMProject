@@ -8,7 +8,7 @@ import model.FreeBoard;
 public interface FreeBoardDao {
 	public int insertFreeBoard(FreeBoard freeboard);
 	public int updateFreeBoard(FreeBoard freeBoard);
-	public int deleteFreeBoard(String num);
+	public void deleteFreeBoard(int num);
 	public FreeBoard selectOneByNum(int num);
 	
 	public int getCount();
