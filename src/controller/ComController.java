@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -78,6 +79,15 @@ public class ComController {
 	@RequestMapping("comSearch.do")
 	public String comSearch(){
 		return "/com/comSearch";
+	}
+	@RequestMapping("comWriteForm.do")
+	public String comWriteForm(){
+		return "/com/comWriteForm";
+	}
+	@RequestMapping("comWrite.do")
+	public ModelAndView comWrite(){
+		ModelAndView mav = new ModelAndView();
+		return mav;
 	}
 	//------------------------------------------------------------------------------------------------------------------------------------//
 	//시간계산 지우지 마시길

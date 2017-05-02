@@ -10,77 +10,10 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
 <link rel="stylesheet" type="text/css" href="css/main/public_header.css">
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<link rel="stylesheet" type="text/css" href="css/main/SkyBanner.css">
 <title>Insert title here</title>
 <style type="text/css">
-.SkyBanner{
-	position: fixed; 
-	left:20px; 
-	width: 130px; 
-	border:1px solid #0f4579;
-	background-color: #f8f8f8;
-}
-.SkyBanner>div>div>img:HOVER{
-	cursor: pointer;
-}
-.Sky_blank{
-	height: 20px; 
-	border: 1px solid #0f4579;
-	background-color: #0f4579;
-}
-.Sky_contents{
-	border-bottom: 1px solid #949494;
-}
-.Sky_contents>ul{
-	font-size: 13px;
-}
-.Sky_contents>ul>li{
-	margin-left: -20px;
-}
-.Sky_contents>ul>li>a{
-	color: #000;
-	text-decoration:none;
-}
 
-.Sky_topinfo{
-	height: 30px;
-	background-color: #fff;
-	font-size: 14px;
-	font-weight: bold;
-	padding-top: 5px;
-	padding-left: 5px;
-}
-.Sky_topinfo>span>a{
-	color: #ff5400;
-}
-.Sky_info{
-	border-top: 1px solid #949494;
-	border-bottom: 1px solid #949494;
-}
-.Sky_info>a{
-	text-decoration: none;
-}
-.Sky_info_p{
-	text-align: center;
-	font-size: 12px;
-}
-#Sky_info_p2, #Sky_info_p3, #Sky_info_p4{
-	margin-top: -10px;
-	color:#000;
-}
-#Sky_info_p{
-	color:#3973cb;
-}
-#Sky_info_p3{
-	color: #999;
-}
-#Sky_info_p4>span{
-	color:#717171;
-}
-.Sky_bottom{
-	font-size:15px; 
-	text-align: center;
-}
 /* 컨텐츠*/
 .contents_top{
 	padding-top: 5px;
@@ -134,6 +67,9 @@
 	background-color: #fff;
 	border: 1px solid #bbb;
 }
+#contents_top_id, #contents_top_id2, #contents_top_id3{
+	text-decoration: none;
+}
 #contents_top_id:HOVER, #contents_top_id2:HOVER, #contents_top_id3:HOVER{
 	text-decoration:underline;
 }
@@ -141,6 +77,9 @@
 	color: #000;
 	font-weight: bold;
 	font-size: 13px;
+}
+.contents_top3 a.off{
+	color: #B8B8B8;
 }
 .contents_bottom{
 	display: inline-block;
@@ -205,10 +144,10 @@ td>a{
 	  <ul id="menu">
 	    <li><a href="index.do">홈으로</a></li>
 	    <li><a href="#">인력찾기</a></li>
-	    <li><a href="#">구직 정보</a>
+	    <li><a href="comBoardList.do">구직 정보</a>
 	    	<ul>
 	    		<li><a href="comBoardList.do">구직 등록 현황</a></li>
-	    		<li><a href="#">구직 등록하기</a></li>	
+	    		<li><a href="comWriteForm.do">구직 등록하기</a></li>	
 	    	</ul>
 	    </li>
 	    <li>
@@ -226,8 +165,8 @@ td>a{
    		<div class="Sky_contents">
    			<ul>
    				<li><a href="#">구인검색하기</a></li>
-   				<li><a href="comBoardList.do">구직등록 상세현황</a></li>
-   				<li><a href="#">구직등록 하기</a></li>
+   				<li><a href="comBoardList.do">구직등록 현황</a></li>
+   				<li><a href="comWriteForm.do">구직등록 하기</a></li>
    			</ul>
    		</div>
    		<div class="Sky_topinfo"><span>오늘본 공고 <a href="">0</a></span></div>
@@ -253,7 +192,7 @@ td>a{
 			<span class="top2_1">구인등록 현황</span>ㅣ<span class="top2_2">총 <span>${totalPage}</span> 건</span>
 		</div>
 		<div class="contents_top2_2">
-			<button>구직 등록하기</button>
+			<input type="button" value="구직등록하기" onclick="location.href='comWriteForm.do'">
 		</div>
 	</div> 
 	<div class="contents_top3">
@@ -261,17 +200,17 @@ td>a{
 			<c:choose>
 				<c:when test="${search_type eq 1}">
 						<a class="on" id="contents_top_id"><img src="img/com/check.png">등록일순</a>
-						<a class="" id="contents_top_id2" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=2"><img src="img/com/point.png">마감일순</a>
-						<a class="" id="contents_top_id3" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=3"><img src="img/com/point.png">신청인원순</a>
+						<a class="off" id="contents_top_id2" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=2"><img src="img/com/point.png">마감일순</a>
+						<a class="off" id="contents_top_id3" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=3"><img src="img/com/point.png">신청인원순</a>
 				</c:when>
 				<c:when test="${search_type eq 2}">
-						<a class="" id="contents_top_id" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=1"><img src="img/com/point.png">등록일순</a>
+						<a class="off" id="contents_top_id" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=1"><img src="img/com/point.png">등록일순</a>
 						<a class="on" id="contents_top_id2"><img src="img/com/check.png">마감일순</a>
-						<a class="" id="contents_top_id3" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=3"><img src="img/com/point.png">신청인원순</a>
+						<a class="off" id="contents_top_id3" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=3"><img src="img/com/point.png">신청인원순</a>
 				</c:when>
 				<c:when test="${search_type eq 3}">
-						<a class="" id="contents_top_id" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=1"><img src="img/com/point.png">등록일순</a>
-						<a class="" id="contents_top_id2" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=2"><img src="img/com/point.png">마감일순</a>
+						<a class="off" id="contents_top_id" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=1"><img src="img/com/point.png">등록일순</a>
+						<a class="off" id="contents_top_id2" href="comBoardList.do?&boardsPerPage=${PerPage}&search_type=2"><img src="img/com/point.png">마감일순</a>
 						<a class="on" id="contents_top_id3"><img src="img/com/check.png">신청인원순</a>
 				</c:when>
 				

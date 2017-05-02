@@ -49,9 +49,18 @@
   	<select id="comView" parameterType="java.util.HashMap" resultType="comBoard">
   		select * from comBoard where Cnum=${cnum}
   	</select>
-  	<!-- comuser -->
+  	
+  	<insert id="insertComBoard" parameterType="java.util.HashMap">
+  		insert into comBoard values(0,'개미건설','성실한 용접기사 모집','관악구','용접기술사','1년','011-1111-1111',
+  									'formicidae@naver.com','1달',3,80000,'각종 건설업에서 용접을 주로 맡고있는 업체입니다. 성실한분 모집합니다',0,now(),'1111');
+  	</insert>
+  	<!-- comUser -->
   	<select id="selectOne" parameterType="java.util.HashMap" resultType="comUser">
   		select * from comUser where comId = '${id}'
   	</select>
   	<!-- inComBoard -->
+  	<!-- comDay -->
+ 	<insert id="insertComDay" parameterType="java.util.HashMap">
+ 		insert into comday values(0, ${}, ${}, ${})
+ 	</insert>
   </mapper>

@@ -35,10 +35,10 @@
 	  <ul id="menu">
 	    <li><a href="index.do">홈으로</a></li>
 	    <li><a href="comSearch.do">인력찾기</a></li>
-	    <li><a href="#">구직 정보</a>
+	    <li><a href="comBoardList.do">구직 정보</a>
 	    	<ul>
 	    		<li><a href="comBoardList.do">구직 등록 현황</a></li>
-	    		<li><a href="#">구직 등록하기</a></li>	
+	    		<li><a href="comWriteForm.do">구직 등록하기</a></li>	
 	    	</ul>
 	    </li>
 	    <li>
@@ -78,7 +78,7 @@
 	<div class="Shortcut">
 		<div class="ShortcutMain">
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick4.png"/></div><div>구인검색</div></div>
-			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick2.png"/></div><div>구직등록</div></div>
+			<div class="ShortcutMain_dvi" onclick="location.href='comWriteForm.do'"><div><img src="img/main/Newquick2.png"/></div><div>구직등록</div></div>
 			<div class="ShortcutMain_dvi" onclick="location.href='comBoardList.do'"><div ><img src="img/main/Newquick1.png"/></div><div>구직 등록현황</div></div>
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick5.png"/></div><div>구인검색 가이드</div></div>
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick7.png"/></div><div>구직등록 가이드</div></div>

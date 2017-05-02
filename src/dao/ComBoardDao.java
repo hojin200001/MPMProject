@@ -17,7 +17,9 @@ public interface ComBoardDao {
 	public List<ComBoard> selectBoardPage(HashMap<String, Object> params);
 	public ComBoard comView(HashMap<String, Integer> n);
 	public void comUpdate(ComBoard cb);
+	public int insertComBoard(HashMap<String, Object> params);
 	
 	//incomBoard
-	
+	//comday
+	public int insertComDay(HashMap<String, Object> params);
 }

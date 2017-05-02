@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import dao.ComBoardDao;
@@ -19,6 +20,11 @@ public class ComServiceImpl implements ComService{
 	public List<NomalBoard> selectNomalBoardDesc() {
 		List<NomalBoard> list = cdao.selectNomalBoardDesc(); 
 		return list;
+	}
+	@Override
+	public int insertComBoard(HashMap<String, Object> params) {
+		int re = cdao.insertComBoard(params);
+		return re;
 	}
 	@Override
 	public HashMap<String, Object> comBoardList(int page, String id, int boardsPerPage) {
@@ -71,7 +77,6 @@ public class ComServiceImpl implements ComService{
 		}
 		return cb;
 	}
-	@Override
 	public HashMap<String, Object> getLogin(String id, String pass) {
 		HashMap<String, Object> map = new HashMap<>();
 		HashMap<String, Object> map2 = new HashMap<>();
@@ -88,5 +93,10 @@ public class ComServiceImpl implements ComService{
 		}else{
 			return null;
 		}
+	}
+	//comday
+	public int insertComDay(HashMap<String, Object> params) {
+		int re = cdao.insertComDay(params);
+		return re;
 	}
 }

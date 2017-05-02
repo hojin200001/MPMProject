@@ -10,9 +10,9 @@ public interface ComService {
 	//로그인
 	public HashMap<String, Object> getLogin(String id, String pass);
 	public List<NomalBoard> selectNomalBoardDesc();
-	
+	//comBoard
 	public HashMap<String, Object> comBoardList(int page, String id, int boardsPerPage);
-	
+	public int insertComBoard(HashMap<String, Object> params);
 	//네이게이터의 첫번째 번호 얻기
 	public int getStartPage(int page);
 	
@@ -26,5 +26,8 @@ public interface ComService {
 	public int getOffset(int page, int boardsPerPage);
 
 	public ComBoard boardView(int cnum);
+	
+	//comday
+	public int insertComDay(HashMap<String, Object> params);
 
 }
