@@ -38,9 +38,9 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		return fDao.updateFreeBoard(freeBoard);
 	}
 	@Override
-	public int deleteFreeBoard(int num) {
+	public void deleteFreeBoard(int num) {
 		// TODO Auto-generated method stub
-		return 0;
+		fDao.deleteFreeBoard(num);
 	}
 	@Override
 	public FreeBoard readFreeBoard(int num) {

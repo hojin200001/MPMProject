@@ -92,7 +92,6 @@ public class FreeBoardController {
 		
 		//게시물정보를 파라미터로 받아서 DB에 수정작업
 		//서비스의 modifyBoard
-		System.out.println(freeBoard);
 		freeBoardService.updateFreeBoard(freeBoard);
 		return "redirect:freeBoardView.do?num="+freeBoard.getNum();
 	}
@@ -117,8 +116,8 @@ public class FreeBoardController {
 		
 	}
 	
-	@RequestMapping("freeBoardCheckPassForm.do")
-	public void freeBoardCheckPassForm(){
+	@RequestMapping("deleteCheckForm.do")
+	public void freeBoardDeleteCheckForm(int num){
 		
 	}
 	
@@ -143,7 +142,7 @@ public class FreeBoardController {
 	public String freeBoardDelete(int num){
 		
 		freeBoardService.deleteFreeBoard(num);
-		return "redirect:/freeBoard/freeBoardView";
+		return "redirect:freeBoardList.do";
 	}
 	
 	

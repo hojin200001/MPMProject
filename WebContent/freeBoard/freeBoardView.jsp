@@ -204,7 +204,7 @@ width: 25%;
 			<input type="button" value="삭제" onclick="location.href='freeBoardDelete.do?num=${freeBoard.num}'">
 		</c:when>
 	</c:choose>
-	<input type="button" value="돌아가기" onclick="location.href='nomalMain'">
+	<input type="button" value="돌아가기" onclick="location.href='freeBoardList.do'">
 	</div>
 	
 	
