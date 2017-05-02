@@ -7,9 +7,11 @@ import model.ComBoard;
 import model.NomalBoard;
 
 public interface ComService {
+	//로그인
+	public HashMap<String, Object> getLogin(String id, String pass);
 	public List<NomalBoard> selectNomalBoardDesc();
 	
-	public HashMap<String, Object> comBoardList(int page);
+	public HashMap<String, Object> comBoardList(int page, String id, int boardsPerPage);
 	
 	//네이게이터의 첫번째 번호 얻기
 	public int getStartPage(int page);
@@ -18,10 +20,10 @@ public interface ComService {
 	public int getEndPage(int page);
 	
 	//맨 마지막 페이지 얻기
-	public int getLastPage(int numOfBoards);
+	public int getLastPage(int numOfBoards, int boardsPerPage);
 	
 	//현재 페이지에서 보여줄 게시물의 시작지점
-	public int getOffset(int page);
+	public int getOffset(int page, int boardsPerPage);
 
 	public ComBoard boardView(int cnum);
 
