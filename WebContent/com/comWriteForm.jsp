@@ -84,7 +84,7 @@
 	</div>
 	<div class="contents_top2" style="padding-top: 10px">
 		<div class="contents_top2_1">
-			<span class="top2_1">구인등록</span>ㅣ<span class="top2_2">총 <span>${totalPage}</span> 건</span>
+			<span class="top2_1">구인등록 페이지</span>ㅣ<span class="top2_2">총 <span>${totalPag</span>
 		</div>
 		<div class="contents_top2_2">
 			<input type="button" value="구직등록하기" onclick="location.href='comWriteForm.do'">
