@@ -4,11 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import dao.ComBoardDao;
 import model.ComBoard;
+import model.ComUser;
 import model.NomalBoard;
+import model.NomalUser;
 @Service
 public class ComServiceImpl implements ComService{
 	@Autowired(required = false)
@@ -19,17 +22,25 @@ public class ComServiceImpl implements ComService{
 		return list;
 	}
 	@Override
-	public HashMap<String, Object> comBoardList(int page) {
+	public int insertComBoard(HashMap<String, Object> params) {
+		int re = cdao.insertComBoard(params);
+		return re;
+	}
+	@Override
+	public HashMap<String, Object> comBoardList(int page, String id, int boardsPerPage) {
 		HashMap<String, Object> result = new HashMap<>();
+		HashMap<String, Object> resultid = new HashMap<>();
+		resultid.put("id", id);
 		result.put("current", page);
 		result.put("start", getStartPage(page));
 		result.put("end", getEndPage(page));
-		result.put("last", getLastPage(cdao.getCount()));
-		result.put("totalPage", cdao.getCount());
+		result.put("last", getLastPage(cdao.getCount(resultid), boardsPerPage));
+		result.put("totalPage", cdao.getCount(resultid));
 		
 		HashMap<String, Object> params = new HashMap<>();
-		params.put("offset", getOffset(page));
-		params.put("boardsPerPage", 10);
+		params.put("offset", getOffset(page, boardsPerPage));
+		params.put("boardsPerPage", boardsPerPage);
+		params.put("id", id);
 		result.put("comBoard", cdao.selectBoardPage(params));
 		
 		return result;
@@ -45,14 +56,14 @@ public class ComServiceImpl implements ComService{
 		return page - ((page-1)%10) + (10-1);
 	}
 	@Override
-	public int getLastPage(int numOfBoards) {
+	public int getLastPage(int numOfBoards, int boardsPerPage) {
 		// TODO Auto-generated method stub
-		return (numOfBoards-1)/10 + 1;
+		return (numOfBoards-1)/boardsPerPage + 1;
 	}
 	@Override
-	public int getOffset(int page) {
+	public int getOffset(int page, int boardsPerPage) {
 		// TODO Auto-generated method stub
-		return (page - 1)*10;
+		return (page - 1)*boardsPerPage;
 	}
 	@Override
 	public ComBoard boardView(int cnum) {
@@ -66,5 +77,26 @@ public class ComServiceImpl implements ComService{
 		}
 		return cb;
 	}
-
+	public HashMap<String, Object> getLogin(String id, String pass) {
+		HashMap<String, Object> map = new HashMap<>();
+		HashMap<String, Object> map2 = new HashMap<>();
+		map.put("id", id);
+		ComUser user = cdao.selectOne(map);
+		if(user != null){
+			if(user.getComPass().equals(pass)){
+				map2.put("name", user.getComName());
+				map2.put("id",user.getComId());
+				return map2;
+			}else{
+				return null;
+			}
+		}else{
+			return null;
+		}
+	}
+	//comday
+	public int insertComDay(HashMap<String, Object> params) {
+		int re = cdao.insertComDay(params);
+		return re;
+	}
 }

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,25 +17,34 @@ import service.NomalService;
 public class MainController {
 	@Autowired
 	private NomalService nservice;
-/*	@Autowired
-	private ComService cservice;*/
+	@Autowired
+	private ComService cservice;
 	
 	@RequestMapping("index.do")
 	public void index(){}
 	
 	@RequestMapping("login.do")
-	public String longin(){
+	public String longin(HttpServletRequest req, HttpSession session){
+		session.setAttribute("hrefs",req.getHeader("referer"));
 		return "/login/login";
 	}
 	@RequestMapping("loginCheck.do")
-	public String getLogin(HttpSession session, String id, String pass){
+	public String getLogin(HttpSession session, String id, String pass, int radios){
+		String url = (String) session.getAttribute("hrefs");
+		String url2 = url.substring(33);
+		if(url2.equals("")){
+			url2 = "index.do";
+		}
 		HashMap<String, Object> map = new HashMap<>();
-		map = nservice.getLogin(id, pass);
-		System.out.println();
+		if(radios == 1){
+			map = nservice.getLogin(id, pass);
+		}else if(radios == 2){
+			map = cservice.getLogin(id, pass);
+		}
 		if(map != null){
 			session.setAttribute("user", map);
-			session.setAttribute("userInfo", 3);
-			return "redirect:index.do";
+			session.setAttribute("userInfo", radios);
+			return "redirect:"+url2;
 		}else{
 			return "redirect:login.do";
 		}
@@ -48,7 +58,6 @@ public class MainController {
 	public String logout(HttpSession session){
 		String url = (String) session.getAttribute("hrefs");
 		String url2 = url.substring(33);
-		System.out.println(url2);
 		session.invalidate();
 		return "redirect:"+url2;
 	}
@@ -56,4 +65,5 @@ public class MainController {
 	public String join(){
 		return "/main/joinForm";
 	}
+	
 }

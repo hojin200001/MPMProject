@@ -13,22 +13,11 @@
 <body>
 
 <div id="wrap">
-	<h1>비밀번호 확인</h1>
+	<h1>정말로 삭제하시겠습니까?</h1>
 	
-	<form action="MPMServlet" name="frm" method="post">
-		<input type="hidden" name="command" value="freeBoardCheckPass">
-		<input type="hidden" name="num" value="${param.num}">
-		<table>
-			<tr>
-				<th>비밀번호</th>
-				<td><input type="password" name="pass"></td>
-			</tr>
-		</table>
-		<br>
-		<input type="submit" value="확인" onclick="return passCheck()">
-		<br>
-		${msg}
-	</form>
+	<input type="button" value="아니오" onclick="location.href='freeBoardDelete.do?num=${freeBoard.num}'">
+	<input type="button" value="네" onclick="location.href='freeBoardView.do?num=${freeBoard.num}'">
+	
 </div>
 
 </body>
