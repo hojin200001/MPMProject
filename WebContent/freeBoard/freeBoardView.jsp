@@ -208,6 +208,27 @@ width: 25%;
 	</div>
 	
 	
+	<div>
+		<form action="replyWrite.do">
+		<input type="hidden" name="reName" value="${user.id}"> 
+		<input type="hidden" name="num" value="${freeBoard.num}">
+			<textarea rows="" cols="" name="teText"></textarea>
+			<input type="submit" value="등록">
+		</form>
+		
+		<c:forEach items="${freereplyList}" var="freereply">
+		--------------------------------------------------------
+		<dl>
+			<dt>${freereply.reName}| ${freereply.reDay}</dt>
+			
+			<dd>${freereply.teText}</dd>
+		
+		</dl>	
+		</c:forEach>
+	</div>
+	
+	
+	
 </div>
 
 </body>
