@@ -12,6 +12,7 @@ public interface ComService {
 	public List<NomalBoard> selectNomalBoardDesc();
 	//comBoard
 	public HashMap<String, Object> comBoardList(int page, String id, int boardsPerPage);
+	
 	public int insertComBoard(HashMap<String, Object> params);
 	//네이게이터의 첫번째 번호 얻기
 	public int getStartPage(int page);

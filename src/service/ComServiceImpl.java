@@ -3,6 +3,7 @@ package service;
 import java.util.HashMap;
 import java.util.List;
 
+import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import model.ComUser;
 import model.NomalBoard;
 import model.NomalUser;
 @Service
+@Aspect
 public class ComServiceImpl implements ComService{
 	@Autowired(required = false)
 	private ComBoardDao cdao;
@@ -21,7 +23,7 @@ public class ComServiceImpl implements ComService{
 		List<NomalBoard> list = cdao.selectNomalBoardDesc(); 
 		return list;
 	}
-	@Override
+	
 	public int insertComBoard(HashMap<String, Object> params) {
 		int re = cdao.insertComBoard(params);
 		return re;
