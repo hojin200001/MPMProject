@@ -88,6 +88,7 @@ public class ComController {
 	@RequestMapping("comWrite.do")
 	public ModelAndView comWrite(){
 		ModelAndView mav = new ModelAndView();
+		
 		return mav;
 	}
 	//------------------------------------------------------------------------------------------------------------------------------------//

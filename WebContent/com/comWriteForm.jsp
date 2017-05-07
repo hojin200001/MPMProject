@@ -1,6 +1,11 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,6 +13,8 @@
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
 <link rel="stylesheet" type="text/css" href="css/main/public_header.css">
 <link rel="stylesheet" type="text/css" href="css/main/SkyBanner.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <!-- 다음지도 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=5df6011222b3cbeedfefde1c00f1b101&libraries=services"></script>
@@ -111,6 +118,7 @@ td>a{
 	padding-top: 25px;
 	border: 2px solid #ccc;
 	border-radius: 5px;
+	
 }
 .td_area_4_div2:HOVER{
 	border:2px solid #0f4579;
@@ -154,17 +162,106 @@ td>a{
 .td_area_6{
 	width: 100%; 
 	height: 170px;
+	border: none;
 }
 .td_area_6_div{
 	width: 100%;
 	height: 100%;
 }
 .td_area_6_div_1{
-	height: 50px;
+	height: 90px;
 	border-bottom: 1px solid #d7d7d7;
+}
+.td_area_6_div_1_div{
+	width: 19%;
+	height: 18px;
+	border: 1px solid #d7d7d7;
+	float: left;
+	margin-top: 2px;
+	border-radius: 5px;
+	cursor: pointer;
+	display: none;
+}
+.td_area_6_div_1_div:HOVER{
+	color:#0f4579;
+	border: 1px solid #0f4579;
 }
 .td_area_6_div_2{
 	height: 100%;
+	width: 100%;
+}
+.td_area_6_div_2_1, .td_area_6_div_2_2{
+	width: 100%;
+	list-style:none;
+	height: 50px;
+	color: #fff;
+}
+
+.td_area_6_div_2_2{
+	margin-top: 20px;
+}
+.td_area_6_div_2_1>li, .td_area_6_div_2_2>li{
+	margin-left: 5px;
+	border: 1px solid #0f4579;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.td_area_6_div_2_1>li:HOVER, .td_area_6_div_2_2>li:HOVER{
+	background-color: #0f4579;
+}
+.td_area_6_div_2_1>li>a, .td_area_6_div_2_2>li>a{
+	text-decoration:none;
+	color:#000;
+}
+.td_area_6_div_2_1>li>a:HOVER, .td_area_6_div_2_2>li>a:HOVER{
+	color: #fff;
+}
+
+.td_area_6_div_2_1>li{
+	margin-top: 10px;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+.td_area_6_div_2_2>li{
+	margin-top: 10px;
+ 	width: 30px;
+}
+.td_area_7>span{
+	float: right;
+}
+.td_area_9>span{
+	margin-left: 10px;
+	float: left;
+	border-left: none;
+}
+.td_area_9>span>input{
+	border: none;
+}
+.textAreas{
+	margin: 0 auto;
+	margin-top: 10px;
+	width: 70%;
+}
+.textAreas>textarea{
+	width: 100%;
+}
+.btnArea{
+	margin: 0 auto;
+	margin-top: 10px;
+	width: 70%;
+}
+.btnArea>input{
+	margin-left: 250px;
+	height: 40px;
+	width: 100px;
+}
+.footer {
+	padding: 10px 0;
+	background-color: #f2f2f2;
+	text-align:center
+}
+.copy{
+	font-size: 10px;
 }
 </style>
 
@@ -238,12 +335,14 @@ td>a{
 			<input type="button" value="구직등록하기" onclick="location.href='comWriteForm.do'">
 		</div>
 	</div>
-	<form action="">
+	<form action="comWrite.do" method="post">
+	<input type="hidden" name="userid" value="${user.id}">
+	<input type="hidden" name="addr2" value="" id="hiddenAddr">
 		<table>
 			<tr class="trs">
 				<td class="td_area_1" colspan="2" >
 					<span>모집공고 제목 : </span>
-					<input type="text" name="" placeholder="제목을 입력하세요">
+					<input type="text" name="ctitle" placeholder="제목을 입력하세요">
 				</td>
 			</tr>
 			<tr class="trs">
@@ -252,7 +351,7 @@ td>a{
 			<tr style="border:none;">
 				<td class="td_area_3" rowspan="2">
 					<div class="td_area_3_map" id="map"></div>
-					<div>위치 좌표<input type="text" readonly="readonly"></div>
+					<div>위치 좌표<input  id="addr" type="text" name="cxy" readonly="readonly"></div>
 				</td>
 				<td class="td_area_4">
 					<div class="td_area_4_div">
@@ -267,8 +366,13 @@ td>a{
 							$('#div2_2').css("border", "2px solid #d7d7d7")
 							.css("background-color", "")
 							.css("color", "");
+							$('.td_area_5_div2_1').css("background-color", "")
+							.css("color", "#000");
 							$('.td_area_5_div2').hide();
+							$('.td_area_6_div').hide();
+							$('.td_area_6_div_1 div').hide();
 							$('.td_area_5_div1').show();
+							
 						}
 						function td_area_4_div2(){
 							$('#div2_2').css("border", "2px solid #0f4579")
@@ -279,22 +383,23 @@ td>a{
 							.css("color", "");
 							$('.td_area_5_div1').hide();
 							$('.td_area_5_div2').show();
+							$('.td_area_6_div').show();
 						}
 					</script>
 					<div class="td_area_5">
 						<div class="td_area_5_div1">
 							<div class="td_area_5_div1_1">
 								<span>＊주소검색 : </span>
-								<input type="text" id="sample5_address" placeholder="주소">
+								<input type="text" id="sample5_address" placeholder="주소" name="carea">
 								<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 							</div>
 							<div class="td_area_5_div1_2">
 								<span>＊상세주소 : </span>
-								<input type="text" id="address2" placeholder="상세주소">
+								<input type="text" id="address2" placeholder="상세주소" name="carea2">
 							</div>
 						</div>
 						<div class="td_area_5_div2">
-							<div onclick=""><span>서울/수도권</span></div>
+							<div class="td_area_5_div2_1" onclick="td_area_5_div2_1()"><span>서울/수도권</span></div>
 							<div onclick=""><span>부산</span></div>
 							<div onclick=""><span>대구</span></div>
 							<div onclick=""><span>광주</span></div>
@@ -306,41 +411,143 @@ td>a{
 			<tr>
 				<td class="td_area_6">
 					<div class="td_area_6_div">
-						<div class="td_area_6_div_1">호션 이름</div>
-						<div class="td_area_6_div_2">호선별 역이름 </div>						
+						<div class="td_area_6_div_1">
+							<div class='td_area_6_div_1_div'>1호선</div>
+							<div class='td_area_6_div_1_div'>2호선</div>
+							<div class='td_area_6_div_1_div'>3호선</div>
+							<div class='td_area_6_div_1_div'>4호선</div>
+							<div class='td_area_6_div_1_div'>5호선</div>
+							<div class='td_area_6_div_1_div'>6호선</div>
+							<div class='td_area_6_div_1_div'>7호선</div>
+							<div class='td_area_6_div_1_div'>8호선</div>
+							<div class='td_area_6_div_1_div'>9호선</div>
+							<div class='td_area_6_div_1_div'>인천1호선</div>
+							<div class='td_area_6_div_1_div'>인천2호선</div>
+							<div class='td_area_6_div_1_div'>분당선</div>
+							<div class='td_area_6_div_1_div'>공항철도</div>
+							<div class='td_area_6_div_1_div'>경의중앙선</div>
+							<div class='td_area_6_div_1_div'>신분당선</div>
+							<div class='td_area_6_div_1_div'>경춘선</div>
+							<div class='td_area_6_div_1_div'>수인선</div>
+							<div class='td_area_6_div_1_div'>에버라인</div>
+							<div class='td_area_6_div_1_div'>의정부전철</div>
+							<div class='td_area_6_div_1_div'>경강선</div>
+						</div>
+						<div class="td_area_6_div_2">
+							<div class="td_area_6_div_2_1"></div>
+							<div class="td_area_6_div_2_2"></div>
+						</div>						
 					</div>
 				</td>
 			</tr>		
 		</table>
+		<script type="text/javascript">
+		 function td_area_5_div2_1(){
+			 $('.td_area_6_div_1 div').show();
+			 $('.td_area_5_div2_1').css("background-color", "#0f4579");
+			 $('.td_area_5_div2_1').css("color", "#fff");
+		 }
+		</script>
+		
 		<table>
 			<tr>
-				<td>1</td>
+				<td class="td_area_7">
+					<span>전공분야</span>
+				</td>
+				<td class="td_area_9">
+					<span>
+					<select id='fruits' name='cjob'>
+								<option value='전체' selected> 전체</option>
+								<option value='거푸집기능'>거푸집기능</option>
+								<option value='건설기계기술'>건설기계기술</option>
+								<option value='건축도장기능'>건축도장기능</option>
+								<option value='건축목공기능'>건축목공기능</option>
+								<option value='금속'>금속</option>
+								<option value='금형기술'>금형기술</option>
+								<option value='기계기'>기계기술</option>
+								<option value='기계정비'>기계정비</option>
+								<option value='기계조립'>기계조립</option>
+								<option value='도배기능'>도배기능</option>
+								<option value='미장기능'>미장기능</option>
+								<option value='배관'>배관</option>
+								<option value='석공'>석공</option>
+								<option value='연삭기능'>연삭기능</option>
+								<option value='용접기술'>용접기술</option>
+								<option value='유리시공'>유리시공</option>
+								<option value='일반기계'>일반기계</option>
+								<option value='전기공사'>전기공사</option>
+								<option value='토목'>토목</option>
+								<option value='포장'>포장</option>
+						</select>
+					</span>
+				</td>
 			</tr>
 			<tr>
-				<td>2</td>
+				<td class="td_area_7">
+					<span>경력사항</span>
+				</td>
+				<td class="td_area_9">
+					<span>
+					<input type="radio" name="ccarrer" value="0" checked="checked">없음
+					<input type="radio" name="ccarrer" value="1">1년이하
+					<input type="radio" name="ccarrer" value="2">1~3년
+					<input type="radio" name="ccarrer" value="3">3년이상
+					</span>
+				</td>
 			</tr>
 			<tr>
-				<td>3</td>
+				<td class="td_area_7">
+					<span>업무 소요일</span>
+				</td>
+				<td class="td_area_9">
+					<span>
+					<input style="text-align: right; width:100px;" type="text" name="cday" placeholder="업무 진행일 입력">
+					</span>
+				</td>
 			</tr>
 			<tr>
-				<td>4</td>
+				<td class="td_area_7"><span>업무기간</span></td>
+				<td class="td_area_9">
+				<span>
+					<label for="txtStartDt">시작일</label><input type="text" id="txtStartDt" name="cstartDay" value="" style="border: 1px solid #d7d7d7;" readonly placeholder="클릭해주세요">
+  					<label for="txtEndDt">종료일</label><input type="text" id="txtEndDt" name="cendDay" value="" style="border: 1px solid #d7d7d7;" readonly placeholder="클릭해 주세요">	
+				</span>
+				</td>
 			</tr>
 			<tr>
-				<td>5</td>
+				<td class="td_area_7">
+					<span>요구인원</span>
+				</td>
+				<td class="td_area_9">
+				<span>
+					<input type="text" name="cwokers" style="text-align: right; width:100px;" placeholder="필요한 인원 입력">
+				</span>
+				</td>
 			</tr>
 			<tr>
-				<td>6</td>
+				<td class="td_area_7">
+					<span>급여</span>
+				</td>
+				<td class="td_area_9">
+				<span>
+					<input type="text" name="cpay" style="text-align: right; width:100px;" placeholder="일 급여 입력">
+				</span>
+				</td>
 			</tr>
 		</table>
-		<div>
-			<textarea rows="10" cols="30" name="contents">상세 내용 작성란</textarea>
+		<div class="textAreas">
+			<textarea rows="10" name="ctext" placeholder="상세 내용을 작성해 주세요"></textarea>
+		</div>
+		<div class="btnArea">
+			<input type="submit" value="등록하기">
+			<input type="button" value="취소하기">
 		</div>	
 	</form>
 	</div>
 	<script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
-            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+            center: new daum.maps.LatLng(37.497175, 127.027926), // 지도의 중심좌표
             level: 5 // 지도의 확대 레벨
         };
 
@@ -349,11 +556,27 @@ td>a{
     //주소-좌표 변환 객체를 생성
     var geocoder = new daum.maps.services.Geocoder();
     //마커를 미리 생성
-    var marker = new daum.maps.Marker({
-        position: new daum.maps.LatLng(37.537187, 127.005476),
-        map: map
-    });
-   
+   var marker = new daum.maps.Marker({ 
+    // 지도 중심좌표에 마커를 생성합니다 
+    position: map.getCenter() 
+	}); 
+	// 지도에 마커를 표시합니다
+	marker.setMap(map);
+   	
+	daum.maps.event.addListener(map, 'click', function(mouseEvent) {        
+	    
+	    // 클릭한 위도, 경도 정보를 가져옵니다 
+	    var latlng = mouseEvent.latLng; 
+	    
+	    // 마커 위치를 클릭한 위치로 옮깁니다
+	    marker.setPosition(latlng);
+	    
+	    var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
+	    message += '경도는 ' + latlng.getLng() + ' 입니다';
+	    
+	    var resultDiv = document.getElementById('clickLatlng'); 
+	    
+	});
     function sample5_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -391,11 +614,136 @@ td>a{
                         map.setCenter(coords);
                         // 마커를 결과값으로 받은 위치로 옮긴다.
                         marker.setPosition(coords)
+                        var a = coords+"";
+                        $('#addr').val(a.substr(1,30));
                     }
                 });
             }
         }).open();
     }
 </script>
+		
+  		 <script>
+    var ap_option = {
+      dateFormat: 'yy-mm-dd',
+      prevText: '이전 달',
+      nextText: '다음 달',
+      monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+      monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+      dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+      dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+      dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+      showMonthAfterYear: true,
+      changeMonth: true,
+      changeYear: true,
+      yearSuffix: '년'
+    },
+      $startDt = $('#txtStartDt').datepicker(ap_option),
+      $endDt = $('#txtEndDt').datepicker(ap_option);
+ 
+    // 시작일 maxData, 종료일 minData 셋팅
+    $startDt.datepicker('option', 'maxDate', $endDt.val());
+    $endDt.datepicker('option', 'minDate', $startDt.val());
+ 
+    // 시작일, 종료일 값 선택에 따라 minDate, maxDate값 변경할 수 있도록 이벤트 처리
+    $startDt.datepicker('option', 'onSelect', function(selectedDate){
+      $endDt.datepicker('option', 'minDate', selectedDate);
+    });
+    $endDt.datepicker('option', 'onSelect', function(selectedDate){
+      $startDt.datepicker('option', 'maxDate', selectedDate);
+    });
+  </script>	
+  <script type="text/javascript">
+  			function replaceValue(e){
+  				var value = e;
+  				var a = sessionStorage.getItem('subway');
+  				$.ajax({
+  					url: "json/subLine.json",
+					dataType:"json",
+  					success:function(result){
+  						$.each(result.seoul[a], function(key){
+  							$.each(result.seoul[a][key], function(key, value){
+								if(key == e){
+									$('.td_area_6_div_2_1 li').remove();
+									c = value+'';
+									var array = c.split(',');
+									$.each(array, function(index, value){
+										$('.td_area_6_div_2_1').append("<li style='float: left;'><a onclick='searchMaps(\""+value+"\")'>"+value+"</a></li>");
+									});
+								}
+  							});
+  						});
+  					}
+  				});
+  			}
+			$('.td_area_6_div_1_div').click(function(){
+				$('.td_area_6_div_2 ul').remove();
+				$('.td_area_6_div_2_2 li').remove();
+				$('.td_area_6_div_2_1 li').remove();
+				var a = $(this).text();
+				sessionStorage.setItem("subway",a);
+				var b = 'ㄱ';
+				var c;
+				$.ajax({
+					url: "json/subLine.json",
+					dataType:"json",
+					success:function(result){
+						$.each(result.seoul[a], function(key){
+							$.each(result.seoul[a][key], function(key, value){
+								$('.td_area_6_div_2_2').append("<li style='float: left;'><a onclick='replaceValue(\""+key+"\")'>"+key+"</a></li>");
+								if(key == b){
+									c = value+'';
+									var array = c.split(',');
+									$.each(array, function(index, value){
+										$('.td_area_6_div_2_1').append("<li style='float: left;'><a onclick='searchMaps(\""+value+"\")'>"+value+"</a></li>")	
+									});
+								} 
+								
+							});
+						});
+					}
+				});
+			});
+			function searchMaps(a) {
+				var valueX;
+				var valueY;
+				var addr = 'http://openAPI.seoul.go.kr:8088/446a746d4b686f6a363376556a596f/xml/SearchInfoBySubwayNameService/1/5/'+a;
+				var code;
+				var address;
+				 $.ajax({
+					url: addr,
+					dataType:'xml',
+					success:function(response){
+						code = $(response).find('SearchInfoBySubwayNameService').find('row').find('FR_CODE').text();
+						$.ajax({
+							url:'http://openAPI.seoul.go.kr:8088/446a746d4b686f6a363376556a596f/xml/SearchSTNInfoByFRCodeService/1/5/'+code,
+							dataType:'xml',
+							success:function(response){
+								valueX = $(response).find("SearchSTNInfoByFRCodeService").find('row').find('XPOINT_WGS').text();
+								valueY = $(response).find("SearchSTNInfoByFRCodeService").find('row').find('YPOINT_WGS').text();
+								address = $(response).find("SearchSTNInfoByFRCodeService").find('row').find('ADDRESS').text();
+								$('#addr').val(valueX+","+valueY);
+								$('#hiddenAddr').val(address);
+								var moveLatLon = new daum.maps.LatLng(valueX, valueY);
+								map.panTo(moveLatLon);
+								 var marker = new daum.maps.Marker({ 
+									    // 지도 중심좌표에 마커를 생성합니다 
+									    position: map.getCenter() 
+										}); 
+										// 지도에 마커를 표시합니다
+										marker.setMap(map);
+							}
+						}); 
+					}
+				});
+			}
+		</script>
+		 <div class="footer">
+  	 <div class="copy">
+            <address>서울특별시 강남구 역삼동 819-10 한빛교육센터 강의실,<br>
+            대표연락처 : 1577-0000, FAX : 052-000-0000, E-mail : asdf@naver.com</address>
+            <p>Copyrights 2017~~~~ MPMcompany All rights Reserved</p>
+        </div>
+    <!-- end .footer --></div>
 </body>
 </html>

@@ -18,8 +18,14 @@ public class ComBoard {
 	private int ccount;
 	private Date createDay;
 	private String comId;
+	private String cxy;
 	
-	
+	public String getCxy() {
+		return cxy;
+	}
+	public void setCxy(String cxy) {
+		this.cxy = cxy;
+	}
 	public int getCnum() {
 		return cnum;
 	}
