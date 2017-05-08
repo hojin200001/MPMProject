@@ -4,7 +4,7 @@
 function insertCheck(){
    if(document.frm.name.value.length==0){
       alert('글쓴이 이름을 입력해주세요');
-      frm.name.focus();
+      frm.createName.focus();
       return false;
    }
    if(document.frm.title.value.length==0){
@@ -14,7 +14,7 @@ function insertCheck(){
    }
    if(document.frm.contents.value.length==0){
       alert('내용을 입력해주세요');
-      frm.contents.focus();
+      frm.contentsValue.focus();
       return false;
    }
    return true;   
@@ -25,7 +25,7 @@ function open_win(url,name){
 function updateCheck(){
 	   if(document.frm.name.value.length==0){
 	      alert('글쓴이 이름을 입력해주세요');
-	      frm.name.focus();
+	      frm.createName.focus();
 	      return false;
 	   }
 	   if(document.frm.title.value.length==0){
@@ -35,7 +35,7 @@ function updateCheck(){
 	   }
 	   if(document.frm.contents.value.length==0){
 	      alert('내용을 입력해주세요');
-	      frm.contents.focus();
+	      frm.contentsValue.focus();
 	      return false;
 	   }
 	   return true;   

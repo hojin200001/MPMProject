@@ -15,8 +15,7 @@
 <div id="wrap">
 	<h1>비밀번호 확인</h1>
 	
-	<form action="MPMServlet" name="frm" method="post">
-		<input type="hidden" name="command" value="freeBoardCheckPass">
+	<form action="freeBoardCheckPass.do" name="frm" method="post">
 		<input type="hidden" name="num" value="${param.num}">
 		<table>
 			<tr>

@@ -4,10 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="dao.FreeBoardDao">
-	<select id="selectLimitDesc" resultType="freeBoard">
-		select * from freeBoard order by num desc limit 5
-	</select>
-
 	<sql id="title">
 		<choose>
 			<when test="title != null">
@@ -20,26 +16,28 @@
 	</sql>
 	<sql id="content">
 		<choose>
-			<when test="contentsValue != null">
-				#{contentsValue}
+			<when test="conValue != null">
+				#{conValue}
 			</when>
 			<otherwise>
 				'내용없음'
 			</otherwise>
 		</choose>
 	</sql>
+	
+	<select id="selectLimitDesc" resultType="freeBoard">
+		select * from freeBoard order by num desc limit 5
+	</select>
+
 
 	<insert id="insertFreeBoard" parameterType="freeBoard"
 		useGeneratedKeys="true" keyProperty="num">
-		insert into FreeBoard values(
-		0,
-		<include refid="title" />
-		, #{createDay}, #{freeCount}, #{createName},
-		<include refid="content" />
+		insert into freeBoard values(0, <include refid="title" />,
+		now(), 0, #{createName}, <include refid="content" />)
 	</insert>
 
 	<update id="updateFreeBoard" parameterType="freeBoard">
-		update FreeBoard set
+		update freeBoard set
 		title =
 		<include refid="title" />
 		,
@@ -50,20 +48,20 @@
 	</update>
 
 	<delete id="deleteFreeBoard" parameterType="int">
-		delete from FreeBoard where num = #{num}
+		delete from freeBoard where num = #{num}
 	</delete>
 
 	<select id="selectAll" resultType="freeboard">
-		select * from FreeBoard
+		select * from freeBoard
 	</select>
 
 	<select id="getCount" resultType="int">
-		select count(*) from FreeBoard
+		select count(*) from freeBoard
 	</select>
 
 	<select id="selectFreeBoardPage" parameterType="java.util.HashMap"
 		resultType="freeBoard">
-		select * from FreeBoard order by num desc limit #{offset}
+		select * from freeBoard order by num desc limit #{offset}
 		,#{freeBoardsPerPage}
 	</select>
 

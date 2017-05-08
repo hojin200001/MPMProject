@@ -78,7 +78,7 @@ public class FreeBoardController {
 		//DB에서 가져온 게시판 정보 하나 : 데이터
 		//modifyForm.jsp 페이지 : view
 		//서비스의 getBoard
-		
+		System.out.println(1);
 		model.addAttribute(freeBoardService.getFreeBoard(num));	
 		
 	}
@@ -92,24 +92,23 @@ public class FreeBoardController {
 		return "redirect:freeBoardView.do?num="+freeBoard.getNum();
 	}
 	
-	@RequestMapping("writeForm.do")
+	@RequestMapping("freeBoardWriteForm.do")
 	public String writeForm(HttpSession session){
 		
 		if(session.getAttribute("user")!=null){
-			return "freeBoardWrite";
+			return "/freeBoard/freeBoardWrite";
 		}
 		else{
 			return "redirect:login.do";
 		}
 	}
 	
-	@RequestMapping("write.do")
+	@RequestMapping("freeBoardWrite.do")
 	public String write(FreeBoard freeBoard){		
 		//게시글 작성하기
 		//페이지에서 파라미터 얻어와서 DB에 저장
-		
 		freeBoardService.writeFreeBoard(freeBoard);
-		return "redirect:view.do?num="+freeBoard.getNum();
+		return "redirect:freeBoardView.do?num="+freeBoard.getNum();
 		
 	}
 	
