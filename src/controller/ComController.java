@@ -52,7 +52,11 @@ public class ComController {
 	
 	@RequestMapping("comBoardList.do")
 	public ModelAndView comBoardList(
-			@RequestParam(defaultValue="1") int page){
+			@RequestParam(defaultValue="1") int page,
+			@RequestParam(value="checkbox", required=false) List checkbox,
+			@RequestParam(value="radiobox", required=false) String radiobox,
+			@RequestParam(value="area", required=false) String area
+	){
 		ModelAndView mav = new ModelAndView();
 		HashMap<String, Object> cb = new HashMap<>();
 		cb = cservice.comBoardList(page);

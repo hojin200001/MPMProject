@@ -61,9 +61,12 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/nomal/test.do", method=RequestMethod.POST)
-	public void test01(@RequestParam(value="checkbox") List checkbox,
-			@RequestParam(value="radiobox") String radiobox){
+	public void test01(@RequestParam(value="checkbox", required=false) List checkbox,
+			@RequestParam(value="radiobox", required=false) String radiobox,
+			@RequestParam(value="area", required=false) String area
+			){
 		System.out.print(radiobox);
 		System.out.print(checkbox.size());
+		System.out.println(area);
 	}
 }

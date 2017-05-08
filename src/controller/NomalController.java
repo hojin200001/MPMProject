@@ -44,9 +44,19 @@ public class NomalController {
 		return mav;
 	}
 	
+	@RequestMapping("nomalSearch.do")
+	public ModelAndView searchPage(){
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/nomal/nomalSearch");
+		return mav;
+	}
+	
 	@RequestMapping("nomalBoardList.do")
 	public ModelAndView nomalBoardList(
-			@RequestParam(defaultValue="1") int page){
+			@RequestParam(defaultValue="1") int page
+			
+			
+			){
 		System.out.println(page);
 		ModelAndView mav = new ModelAndView();
 		HashMap<String, Object> nb = new HashMap<>();

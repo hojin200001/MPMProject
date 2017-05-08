@@ -61,22 +61,34 @@ a.commentLink {
 		<li>오늘의 구인 현황 : </li>
 	</ul>
 </nav>
- 
+<form action="comBoardList.do" id="formTest" method="post"> 
+
 <div class="quote">
-<p style="text-align: right;"><a class="commentLink" title="Add a comment to this entry" href="javascript:toggleLayer('commentForm');">여기클릭</a>
- 
+<p style="text-align: right;">
+<a class="commentLink" title="Add a comment to this entry" href="javascript:toggleLayer('commentForm');">지역 선택</a>
+
 	<div id="commentForm">
-	
-	
-		<form action="test.do" id="formTest" method="post"> 
-			<input type="text" readonly="readonly" id="test5">
+			<input type="text" name="area" readonly="readonly" id="test5">
 			<div id="wrap">
 				<div id="tabMenu">
 					<ul>
 						<li><a href="javascript:void(0);" title="서울" id="seoul" onclick="areaPass('seoul');">서울</a></li>
 						<li><a href="javascript:void(0);" title="대전" id="daejun" onclick="areaPass('daejun');">대전</a></li>
-						<li><a href="javascript:void(0);" title="대구">대구</a></li>
-						<li><a href="javascript:void(0);" title="부산">부산</a></li>
+						<li><a href="javascript:void(0);" title="부산" id="pusan" onclick="areaPass('pusan');">부산</a></li>
+						<li><a href="javascript:void(0);" title="인천" id="incheon" onclick="areaPass('incheon');">인천</a></li>
+						<li><a href="javascript:void(0);" title="대구" id="daegu" onclick="areaPass('daegu');">대구</a></li>
+						<li><a href="javascript:void(0);" title="광주" id="gwangju" onclick="areaPass('gwangju');">광주</a></li>
+						<li><a href="javascript:void(0);" title="울산" id="ulsan" onclick="areaPass('ulsan');">울산</a></li>
+						<li><a href="javascript:void(0);" title="경기" id="kyunggi" onclick="areaPass('kyunggi');">경기</a></li>
+						<li><a href="javascript:void(0);" title="강원" id="kangwon" onclick="areaPass('kangwon');">강원</a></li>
+						<li><a href="javascript:void(0);" title="충북" id="chungbuk" onclick="areaPass('chungbuk');">충북</a></li>
+						<li><a href="javascript:void(0);" title="충남" id="chungnam" onclick="areaPass('chungnam');">충남</a></li>
+						<li><a href="javascript:void(0);" title="경북" id="kyungbuk" onclick="areaPass('kyungbuk');">경북</a></li>
+						<li><a href="javascript:void(0);" title="경남" id="kyungnam" onclick="areaPass('kyungnam');">경남</a></li>
+						<li><a href="javascript:void(0);" title="전북" id="jeonbuk" onclick="areaPass('jeonbuk');">전북</a></li>
+						<li><a href="javascript:void(0);" title="전남" id="jeonnam" onclick="areaPass('jeonnam');">전남</a></li>
+						<li><a href="javascript:void(0);" title="제주" id="jeju" onclick="areaPass('jeju');">제주</a></li>
+						
 					</ul>
 				</div>
 				<div id="tabSubMenu">
@@ -90,37 +102,98 @@ a.commentLink {
 							<ol></ol>
 						</div>
 					</div>
-					<div>대구</div>
-					<div>부산</div>
-					<div>서브5</div>
-					<div>서브6</div>
-					<div>서브7</div>
+					<div>부산
+						<div id="areapusan">
+							<ol></ol>
+						</div>
+					</div>
+					<div>인천
+						<div id="areaincheon">
+							<ol></ol>
+						</div>
+					</div>
+					<div>대구
+						<div id="areadaegu">
+							<ol></ol>
+						</div>
+					</div>
+					<div>광주
+						<div id="areagwangju">
+							<ol></ol>
+						</div>
+					</div>
+					<div>울산
+						<div id="areaulsan">
+							<ol></ol>
+						</div>
+					</div>
+					<div>경기
+						<div id="areakyunggi">
+							<ol></ol>
+						</div>
+					</div>
+					<div>강원
+						<div id="areakangwon">
+							<ol></ol>
+						</div>
+					</div>
+					<div>충북
+						<div id="areachungbuk">
+							<ol></ol>
+						</div>
+					</div>
+					<div>충남
+						<div id="areachungnam">
+							<ol></ol>
+						</div>
+					</div>
+					<div>경북
+						<div id="areakyungbuk">
+							<ol></ol>
+						</div>
+					</div>
+					<div>경남
+						<div id="areakyungnam">
+							<ol></ol>
+						</div>
+					</div>
+					<div>전북
+						<div id="areajeonbuk">
+							<ol></ol>
+						</div>
+					</div>
+					<div>전남
+						<div id="areajeonnam">
+							<ol></ol>
+						</div>
+					</div>
+					<div>제주
+						<div id="areajeju">
+							<ol></ol>
+						</div>
+					</div>
 				</div>
-				
-				
-			<div>
-					<p> 
-						체크1<input type="checkbox" name="checkbox" value="1"/>
-						체크2<input type="checkbox" name="checkbox" value="2"/> 
-						체크3<input type="checkbox" name="checkbox" value="3"/>   
-					</p>
-					
-					<p>
-						라디오1<input type="radio" name="radiobox" value="으으으으으음" /> 
-						라디오2<input type="radio" name="radiobox" value="으으으으으음1"/> 
-						라디오3<input type="radio" name="radiobox" value="으으으으으음2"/>   
-					</p>
-				</div>
-				
-				
-				
 			</div>
-		</form>
-		
-		<input type="button" onclick="formSubmit();" value="검색"/>
+			
 	</div>
 </div>
- 
+
+<a href="javascript:void(0);" onclick="jobs();">직업 보기</a>
+<a href="javascript:void(0);" onclick="jobsd();"> 숨기기</a>
+
+<div id="checkDiv">
+	<ol></ol>
+</div>	
+<div id="radioDiv">	
+	<p>
+		라디오1<input type="radio" name="radiobox" value="으으으으으음" /> 
+		라디오2<input type="radio" name="radiobox" value="으으으으으음1"/> 
+		라디오3<input type="radio" name="radiobox" value="으으으으으음2"/>   
+	</p>
+</div>
+
+</form>
+<input type="button" onclick="formSubmit();" value="검색"/>
  
  
 <script type="text/javascript">
@@ -130,27 +203,45 @@ var wh;
  
 function formSubmit(){
 	$("#formTest").submit();
+	$("#formTest2").submit();
+	$("#formTest3").submit();
 }
  
 function areaPass(area){
-	
 	wh=area;
 	$.ajax({
-		url : "area.json", //데이터를 요청할 URL주소
+		url : "area2.json", //데이터를 요청할 URL주소
 		dataType : "json",
 		success : function(result){
 			
 			$("#area"+wh+" ol").empty();
 			$.each(result[wh], function(i,d){
-				/*$("#area"+wh+" ol").append(
-					"<a " + "id=" + d["id"] + " href=" + "#" + " value=" +d["value"] + " onclick = " + "areaChoose(" + "'" + d["value"]+"'" + ");" + ">" + d["area"] + "</a>"
-					);*/
 				$("#area"+wh+" ol").append(
-						"<a href=" + "#" + " value=" +d["value"] + " onclick = " + "areaChoose(" + "'" + d["value"]+"'" + ");" + ">" + d["area"] + "</a>"
+						"<a href=" + "#" + " value=" + d["value"] + " onclick = " + "areaChoose(" + "'" + d["value"] +"'" + ");" + ">" + d["value"] +" "+ "</a>"
 						);
 			});
 		}
 	});
+}
+
+function jobs(){
+	$.ajax({
+		url : "job.json", //데이터를 요청할 URL주소
+		dataType : "json",
+		success : function(result){
+			$("#checkDiv ol").empty();
+			$.each(result.job, function(i,d){
+				$("#checkDiv ol").append(
+					//"<input type=" + "'" + "checkbox" + "'"  + " name=" + "'" + "checkbox" + "'"  + " value=" + d["value"] + "/>" + d["value"]
+					"<input type=" + "checkbox" + " name=" + "checkbox" + " value=" + d["value"] + "/>" + d["value"]
+				);
+			});
+		}
+	});
+}
+
+function jobsd(){
+	$("#checkDiv ol").empty();
 }
  
 function areaChoose(vl){
@@ -163,7 +254,6 @@ function areaChoose(vl){
 		$('#test5').val(testEx);
 	}
 };
- 
 </script>
  
 <!-- 지역 선택 스크립트 -->
