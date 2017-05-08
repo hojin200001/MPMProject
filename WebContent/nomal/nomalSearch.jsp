@@ -140,63 +140,18 @@ function areaPass(area){
 		dataType : "json",
 		success : function(result){
 			
-			console.log(result);
-			console.log(wh);
-			
-	
 			$("#area"+wh+" ol").empty();
 			$.each(result[wh], function(i,d){
-				$("#area"+wh+" ol").append(
+				/*$("#area"+wh+" ol").append(
 					"<a " + "id=" + d["id"] + " href=" + "#" + " value=" +d["value"] + " onclick = " + "areaChoose(" + "'" + d["value"]+"'" + ");" + ">" + d["area"] + "</a>"
-					);
+					);*/
+				$("#area"+wh+" ol").append(
+						"<a href=" + "#" + " value=" +d["value"] + " onclick = " + "areaChoose(" + "'" + d["value"]+"'" + ");" + ">" + d["area"] + "</a>"
+						);
 			});
 		}
 	});
 }
- 
- 
-/*
-$(function(){
-	
-	
-	$('#'+wh).on('click',function(){
-		
-		alert('qqq');
-		$.ajax({
-			url : "area.json", //데이터를 요청할 URL주소
-			dataType : "json",
-			success : function(result){
-				
-				console.log(result);
-				console.log(wh);
-				
-				
-				
-				$("#area"+wh+" ol").empty();
-				$.each(result[wh], function(i,d){
-					$("#area"+wh+" ol").append(
-						"<a " + "id=" + d["id"] + " href=" + "#" + " value=" +d["value"] + " onclick = " + "areaChoose(" + "'" + d["value"]+"'" + ");" + ">" + d["area"] + "</a>"
-						);
-				});
-			}
-		});
-	});
-	
-	$('#openDaejun').on('click',function(){
-		$.ajax({
-			url : "area.json", //데이터를 요청할 URL주소
-			dataType : "json",
-			success : function(result){
-				$("#areaSeoul ol").empty();
-				$.each(result.daejun, function(i,d){
-					$("#areaSeoul ol").append(
-						"<a " + "id=" + d["id"] + " href=" + "#" + " value=" +d["value"] + " onclick = " + "areaChoose(" + "'" + d["value"]+"'" + ");" + ">" + d["area"] + "</a>"
-						);
-				});
-			}
-		});
-	});
-});*/
  
 function areaChoose(vl){
 	var text = vl;
@@ -265,7 +220,5 @@ function areaChoose(vl){
     // 페이지 로딩시 맨 첫번째 메뉴 튀어나와 있게 함.
     tabMenu.eq(0).click();
 </script>
- 
- 
 </body>
 </html>
