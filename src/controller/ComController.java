@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import model.ComBoard;
 import model.FreeBoard;
 import model.NomalBoard;
 import service.ComService;
@@ -49,7 +50,7 @@ public class ComController {
 	public ModelAndView boardView(HttpSession session, int cnum){
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("user" , session.getAttribute("user"));
-		mav.addObject(cservice.boardView(cnum));
+		mav.addObject(cservice.comView(cnum));
 		mav.setViewName("com/comView");
 		return mav;
 	}
@@ -60,7 +61,6 @@ public class ComController {
 										@RequestParam(defaultValue="1") int search_type,
 										HttpSession session){
 		ModelAndView mav = new ModelAndView();
-		System.out.println(search_type);
 		if(session.getAttribute("user") != null && (int)session.getAttribute("userInfo") ==2){
 			HashMap<String , Object> map = (HashMap<String, Object>) session.getAttribute("user");
 			HashMap<String, Object> cb = new HashMap<>();
@@ -86,10 +86,9 @@ public class ComController {
 		return "/com/comWriteForm";
 	}
 	@RequestMapping("comWrite.do")
-	public ModelAndView comWrite(){
-		ModelAndView mav = new ModelAndView();
-		
-		return mav;
+	public String comWrite(ComBoard comBoard){
+		cservice.insertComBoard(comBoard);
+		return "redirect:comBoardList.do ";
 	}
 	//------------------------------------------------------------------------------------------------------------------------------------//
 	//시간계산 지우지 마시길

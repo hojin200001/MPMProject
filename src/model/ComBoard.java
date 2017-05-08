@@ -8,7 +8,7 @@ public class ComBoard {
 	private String ctitle;
 	private String carea;
 	private String cjob;
-	private String ccareer;
+	private String ccarrer;
 	private String comPhone;
 	private String comEmail;
 	private String cday;
@@ -19,7 +19,35 @@ public class ComBoard {
 	private Date createDay;
 	private String comId;
 	private String cxy;
+	private String addr2;
+	private String cstartDay;
+	private String cendDay;
+	private String carea2;
 	
+	public String getCarea2() {
+		return carea2;
+	}
+	public void setCarea2(String carea2) {
+		this.carea2 = carea2;
+	}
+	public String getCstartDay() {
+		return cstartDay;
+	}
+	public void setCstartDay(String cstartDay) {
+		this.cstartDay = cstartDay;
+	}
+	public String getCendDay() {
+		return cendDay;
+	}
+	public void setCendDay(String cendDay) {
+		this.cendDay = cendDay;
+	}
+	public String getAddr2() {
+		return addr2;
+	}
+	public void setAddr2(String addr2) {
+		this.addr2 = addr2;
+	}
 	public String getCxy() {
 		return cxy;
 	}
@@ -56,11 +84,11 @@ public class ComBoard {
 	public void setCjob(String cjob) {
 		this.cjob = cjob;
 	}
-	public String getCcareer() {
-		return ccareer;
+	public String getCcarrer() {
+		return ccarrer;
 	}
-	public void setCcareer(String ccareer) {
-		this.ccareer = ccareer;
+	public void setCcarrer(String ccareer) {
+		this.ccarrer = ccareer;
 	}
 	public String getComPhone() {
 		return comPhone;
@@ -119,7 +147,7 @@ public class ComBoard {
 	@Override
 	public String toString() {
 		return "ComBoard [cnum=" + cnum + ", comName=" + comName + ", ctitle=" + ctitle + ", carea=" + carea + ", cjob="
-				+ cjob + ", ccareer=" + ccareer + ", comPhone=" + comPhone + ", comEmail=" + comEmail + ", cday=" + cday
+				+ cjob + ", ccareer=" + ccarrer + ", comPhone=" + comPhone + ", comEmail=" + comEmail + ", cday=" + cday
 				+ ", cwokers=" + cwokers + ", cpay=" + cpay + ", ctext=" + ctext + ", ccount=" + ccount + ", createDay="
 				+ createDay + ", comId=" + comId + "]";
 	}

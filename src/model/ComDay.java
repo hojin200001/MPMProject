@@ -1,11 +1,9 @@
 package model;
 
-import java.util.Date;
-
 public class ComDay {
 	private int cnum;
-	private Date cstartDay;
-	private Date cendDay;
+	private String cstartDay;
+	private String cendDay;
 	private boolean deadline;
 	
 	public int getCnum() {
@@ -14,16 +12,16 @@ public class ComDay {
 	public void setCnum(int cnum) {
 		this.cnum = cnum;
 	}
-	public Date getCstartDay() {
+	public String getCstartDay() {
 		return cstartDay;
 	}
-	public void setCstartDay(Date cstartDay) {
+	public void setCstartDay(String cstartDay) {
 		this.cstartDay = cstartDay;
 	}
-	public Date getCendDay() {
+	public String getCendDay() {
 		return cendDay;
 	}
-	public void setCendDay(Date cendDay) {
+	public void setCendDay(String cendDay) {
 		this.cendDay = cendDay;
 	}
 	public boolean isDeadline() {

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import model.ComBoard;
+import model.ComDay;
 import model.ComUser;
 import model.NomalBoard;
 
@@ -16,10 +17,11 @@ public interface ComBoardDao {
 	public int getCount(HashMap<String, Object> params);
 	public List<ComBoard> selectBoardPage(HashMap<String, Object> params);
 	public ComBoard comView(HashMap<String, Integer> n);
-	public void comUpdate(ComBoard cb);
-	public int insertComBoard(HashMap<String, Object> params);
-	
+	public void comCountUpdate(HashMap<String, Integer> n);
+	public int insertComBoard(ComBoard comboard);
+	public int selectCnum(HashMap<String, Object> params);
 	//incomBoard
 	//comday
-	public int insertComDay(HashMap<String, Object> params);
+	public int insertComDay(ComDay comday);
+	public ComDay selectComDayOne(HashMap<String, Integer> n); 
 }
