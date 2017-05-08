@@ -1,0 +1,12 @@
+{"seoul" : [
+	{"id" : "songpa", "area" : "송파구", "value" : "서울시 금천구"},
+	{"id" : "songpa", "area" : "강남구", "value" : "서울시 강남구"},
+	{"id" : "songpa", "area" : "동작구", "value" : "서울시 동작구"}
+],
+
+"daejun" : [
+	{"id" : "geumchun", "area" : "금천구", "value" : "geumchun"},
+	{"id" : "gangnam", "area" : "강남구", "value" : "gangnam"},
+	{"id" : "dongjak", "area" : "동작구", "value" : "dongjak"}
+]
+}
