@@ -120,4 +120,43 @@ public class ComServiceImpl implements ComService{
 		}
 	}
 
+	@Override
+	public ComBoard selectComBoardOne(String id, int cnum) {
+		HashMap<String, Integer> params = new HashMap<>();
+		params.put("cnum", cnum);
+		ComBoard comBoard = cdao.comView(params);
+		ComDay cday = cdao.selectComDayOne(params);
+		if(comBoard.getComId().equals(id)){
+			comBoard.setCstartDay(cday.getCstartDay());
+			comBoard.setCendDay(cday.getCendDay());
+		}
+		return comBoard;
+	}
+
+	@Override
+	public int updateComBoard(ComBoard comboard) {
+
+		int cb = cdao.updateComBoard(comboard);
+		System.out.println(comboard.getCtitle());
+		ComDay comday = new ComDay();
+		comday.setCnum(comboard.getCnum());
+		comday.setCstartDay(comboard.getCstartDay());
+		comday.setCendDay(comboard.getCendDay());
+		int cd = cdao.updateComDay(comday);
+		return 0;
+	}
+
+	@Override
+	public int deleteComBoard(int cnum, String id) {
+		HashMap<String, Integer>n = new HashMap<>();
+		int cd = 0;
+		n.put("cnum", cnum);
+		ComBoard cb = cdao.comView(n);
+		if(cb.getComId().equals(id)){
+			cdao.deleteComDay(n);
+		cd =cdao.deleteComBoard(n);
+		}
+		return cd;
+	}
+
 }

@@ -31,6 +31,12 @@
   	<select id="selectCnum" parameterType="java.util.HashMap" resultType="int">
   		select Cnum from comboard where comId='${comId}' order by Cnum desc limit 1;
   	</select>
+   	<update id="updateComBoard" parameterType="comBoard">
+  		update comBoard set Ctitle = '${ctitle}', Carea = '${carea}', Cjob='${cjob}', Ccarrer='${ccarrer}', Cday=${cday}, Cwokers=${cwokers}, Cpay=${cpay}, Ctext='${ctext}', Cxy='${cxy}' where Cnum=${cnum} 
+  	</update>
+  	<delete id="deleteComBoard" parameterType="java.util.HashMap">
+  		delete from comboard where Cnum=${cnum}
+  	</delete>
   	<!-- comUser -->
   	<select id="selectOne" parameterType="java.util.HashMap" resultType="comUser">
   		select * from comUser where comId = '${id}'
@@ -43,4 +49,10 @@
  	<select id="selectComDayOne" parameterType="java.util.HashMap" resultType="comDay">
  		select * from comDay where Cnum=${cnum}
  	</select>
+ 	<update id="updateComDay" parameterType="comDay">
+ 		update comday set CstartDay='${cstartDay}', CendDay='${cendDay}' where Cnum=${cnum};
+ 	</update>
+ 	<delete id="deleteComDay" parameterType="java.util.HashMap">
+ 		delete from comday where Cnum=${cnum}
+ 	</delete>
   </mapper>

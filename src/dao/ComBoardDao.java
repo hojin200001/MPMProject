@@ -20,8 +20,12 @@ public interface ComBoardDao {
 	public void comCountUpdate(HashMap<String, Integer> n);
 	public int insertComBoard(ComBoard comboard);
 	public int selectCnum(HashMap<String, Object> params);
+	public int updateComBoard(ComBoard comboard);
+	public int updateComDay(ComDay comday);
+	public int deleteComBoard(HashMap<String, Integer> n);
 	//incomBoard
 	//comday
 	public int insertComDay(ComDay comday);
 	public ComDay selectComDayOne(HashMap<String, Integer> n); 
+	public int deleteComDay(HashMap<String, Integer> n);
 }

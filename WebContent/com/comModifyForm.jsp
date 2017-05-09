@@ -89,25 +89,29 @@
 			<span onclick="location.href='index.do'">홈</span>> <span
 				onclick="location.href='comMain.do'">업체메인</span>> <span
 				onclick="location.href='comBoardList.do'">구인등록 현황</span>> <span
-				onclick="location.href='comWriteForm.do'" style="font-weight: bold;">구인등록</span>
+				onclick="history.back()">구직등록
+				상세 페이지</span>> <span
+				onclick="location.href='comModifyForm.do?cnum=${comBoard.cnum}" style="font-weight: bold;">글 수정페이지</span>
+				
 		</div>
 		<div class="contents_top2" style="padding-top: 10px">
 			<div class="contents_top2_1">
 				<span class="top2_1">구인등록 페이지</span>
 			</div>
+		<form action="comModify.do">
+			<input type="hidden" name="comId" value="${user.id}"> <input
+				type="hidden" name="comName" value="${user.name}">
+				 <input type="hidden" name="addr2" value="" id="hiddenAddr">
+				 <input type="hidden" name="cnum" value="${comboard.cnum}" id="hiddenAddr">
 			<div class="contents_top2_2">
-				<input type="button" value="구직등록하기"
-					onclick="location.href='comWriteForm.do'">
+				<input type="button" value="수정하기"
+					onclick="this.form.submit();">
 			</div>
 		</div>
-		<form action="comWrite.do">
-			<input type="hidden" name="comId" value="${user.id}"> <input
-				type="hidden" name="comName" value="${user.name}"> <input
-				type="hidden" name="addr2" value="" id="hiddenAddr">
 			<table>
 				<tr class="trs">
 					<td class="td_area_1" colspan="2"><span>모집공고 제목 : </span> <input
-						type="text" name="ctitle" placeholder="제목을 입력하세요"></td>
+						type="text" name="ctitle" placeholder="제목을 입력하세요" value="${comboard.ctitle}"></td>
 				</tr>
 				<tr class="trs">
 					<td class="td_area_2" colspan="2"><span>접선장소 설정</span></td>
@@ -116,7 +120,7 @@
 					<td class="td_area_3" rowspan="2">
 						<div class="td_area_3_map" id="map"></div>
 						<div>
-							위치 좌표<input id="addr" type="text" name="cxy" readonly="readonly">
+							위치 좌표<input id="addr" type="text" name="cxy" readonly="readonly" value="${comboard.cxy}">
 						</div>
 					</td>
 					<td class="td_area_4">
@@ -134,7 +138,7 @@
 							<div class="td_area_5_div1">
 								<div class="td_area_5_div1_1">
 									<span>＊주소검색 : </span> <input type="text" id="sample5_address"
-										placeholder="주소" name="carea"> <input type="button"
+										placeholder="주소" name="carea" value="${comboard.carea}"> <input type="button"
 										onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 								</div>
 								<div class="td_area_5_div1_2">
@@ -200,7 +204,7 @@
 					<td class="td_area_7"><span>전공분야</span></td>
 					<td class="td_area_9"><span> <select id='fruits'
 							name='cjob'>
-								<option value='전체' selected>전체</option>
+								<option value='전체'>전체</option>
 								<option value='거푸집기능'>거푸집기능</option>
 								<option value='건설기계기술'>건설기계기술</option>
 								<option value='건축도장기능'>건축도장기능</option>
@@ -227,26 +231,26 @@
 				<tr>
 					<td class="td_area_7"><span>경력사항</span></td>
 					<td class="td_area_9"><span> <input type="radio"
-							name="ccarrer" value="0" checked="checked">없음 <input
-							type="radio" name="ccarrer" value="1">1년이하 <input
-							type="radio" name="ccarrer" value="2">1~3년 <input
-							type="radio" name="ccarrer" value="3">3년이상
+							name="ccarrer" value="없음">없음 <input
+							type="radio" name="ccarrer" value="1년이하">1년이하 <input
+							type="radio" name="ccarrer" value="1~3년">1~3년 <input
+							type="radio" name="ccarrer" value="3년이상">3년이상
 					</span></td>
 				</tr>
 				<tr>
 					<td class="td_area_7"><span>업무 소요일</span></td>
 					<td class="td_area_9"><span> <input
 							style="text-align: right; width: 100px;" type="text" name="cday"
-							placeholder="업무 진행일 입력">
+							placeholder="업무 진행일 입력" value="${comboard.cday}">
 					</span></td>
 				</tr>
 				<tr>
 					<td class="td_area_7"><span>업무기간</span></td>
 					<td class="td_area_9"><span> <label for="txtStartDt">시작일</label><input
-							type="text" id="txtStartDt" name="cstartDay" value=""
+							type="text" id="txtStartDt" name="cstartDay" value="${comboard.cstartDay}"
 							style="border: 1px solid #d7d7d7;" readonly placeholder="클릭해주세요">
 							<label for="txtEndDt">종료일</label><input type="text" id="txtEndDt"
-							name="cendDay" value="" style="border: 1px solid #d7d7d7;"
+							name="cendDay" value="${comboard.cendDay}" style="border: 1px solid #d7d7d7;"
 							readonly placeholder="클릭해 주세요">
 					</span></td>
 				</tr>
@@ -254,22 +258,22 @@
 					<td class="td_area_7"><span>요구인원</span></td>
 					<td class="td_area_9"><span> <input type="text"
 							name="cwokers" style="text-align: right; width: 100px;"
-							placeholder="필요한 인원 입력">
+							placeholder="필요한 인원 입력" value="${comboard.cwokers}">
 					</span></td>
 				</tr>
 				<tr>
 					<td class="td_area_7"><span>급여</span></td>
 					<td class="td_area_9"><span> <input type="text"
 							name="cpay" style="text-align: right; width: 100px;"
-							placeholder="일 급여 입력">
+							placeholder="일 급여 입력" value="${comboard.cpay}">
 					</span></td>
 				</tr>
 			</table>
 			<div class="textAreas">
-				<textarea rows="10" name="ctext" placeholder="상세 내용을 작성해 주세요"></textarea>
+				<textarea rows="10" name="ctext" placeholder="상세 내용을 작성해 주세요">${comboard.ctext}</textarea>
 			</div>
 			<div class="btnArea">
-				<input type="submit" value="등록하기"> <input type="button"
+				<input type="submit" value="수정하기"> <input type="button"
 					value="취소하기">
 			</div>
 		</form>
@@ -277,6 +281,31 @@
 	<script type="text/javascript" src="js/com/comWrite_con.js"></script>
 	<script type="text/javascript" src="js/com/calendar.js"></script>
 	<script type="text/javascript" src="js/com/map.js"></script>
+	<script type="text/javascript">
+	$(window).load(function(){
+		//지도~~~
+		var value ='${comboard.cxy}'+"";
+		var valueArray = value.split(',');
+		var valueX = valueArray[0];
+		var valueY = valueArray[1];
+ 		var moveLatLon = new daum.maps.LatLng(
+			valueX, valueY);
+		map.panTo(moveLatLon);
+		var marker = new daum.maps.Marker({
+			// 지도 중심좌표에 마커를 생성합니다
+			position : map.getCenter()
+		});
+		// 지도에 마커를 표시합니다
+		marker.setMap(map);  
+		
+		//설정값들
+		var radio = '${comboard.ccarrer}'+"";
+		$('input:radio[name=ccarrer]:input[value=' + radio + ']').attr("checked", true);
+		var select = '${comboard.cjob}'+"";
+		$('#fruits').val(select).attr('selected', 'selected');
+	});
+</script>
+	</script>
 	<div class="footer">
 		<div class="copy">
 			<address>
