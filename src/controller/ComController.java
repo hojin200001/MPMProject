@@ -90,6 +90,30 @@ public class ComController {
 		cservice.insertComBoard(comBoard);
 		return "redirect:comBoardList.do ";
 	}
+	@RequestMapping("comModifyForm.do")
+	public ModelAndView comModifyForm(HttpSession session, int cnum){
+		ModelAndView mav = new ModelAndView();
+		HashMap<String, Object> user = new HashMap<>();
+		user = (HashMap<String, Object>) session.getAttribute("user");
+		ComBoard comboard = new ComBoard();
+		comboard = cservice.selectComBoardOne((String)user.get("id"), cnum);
+		mav.addObject("comboard", comboard);
+		mav.setViewName("/com/comModifyForm");
+		return mav;
+	}
+	@RequestMapping("comModify.do")
+	public String comModify(ComBoard comboard){
+		cservice.updateComBoard(comboard);
+		
+		return "redirect:comBoardList.do";
+	}
+	@RequestMapping("comDelete.do")
+	public String comDelete(HttpSession session, int cnum ){
+		HashMap<String, Object> user = new HashMap<>();
+		user = (HashMap<String, Object>)session.getAttribute("user");
+		cservice.deleteComBoard(cnum, (String)user.get("id"));
+		return "redirect:comBoardList.do";
+	}
 	//------------------------------------------------------------------------------------------------------------------------------------//
 	//시간계산 지우지 마시길
 	public List<String >getTime(List<FreeBoard> list){

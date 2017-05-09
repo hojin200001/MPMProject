@@ -253,7 +253,7 @@ td>a {
 				<tr style="border: none;">
 					<td class="td_area_3" rowspan="8"><div class="td_area_3_map"
 							id="map">지도</div> <span>위치좌표</span><input type="text"
-						readonly="readonly"></td>
+						readonly="readonly" value="${comBoard.cxy}"></td>
 				</tr>
 				<tr class="trs2">
 					<td><span>상세 주소 :</span><label>${comBoard.carea}</label></td>
@@ -286,26 +286,37 @@ td>a {
 				</div>
 			</div>
 			<div class="textbottom_button">
-				<input type="button" value="목록으로">
-				<input type="button" value="수정하기">
+				<input type="button" value="수정하기" onclick="location.href='comModifyForm.do?cnum=${comBoard.cnum}'">
+				<input type="button" value="삭제하기" onclick="checkDelete(${comBoard.cnum})">
+	<%-- 			location.href='comDelete.do?cnum=${comBoard.cnum}' --%>
 			</div>
 		</div>
 	</div>
 	<script type="text/javascript" src="js/com/map.js"></script>
 	<script type="text/javascript">
 		$(window).load(function(){
- 			var value ='${comBoard.cxy}';
- 			alert(value);
-/* 			var moveLatLon = new daum.maps.LatLng(
-					valueX, valueY);
+			var value ='${comBoard.cxy}'+"";
+			var valueArray = value.split(',');
+			var valueX = valueArray[0];
+			var valueY = valueArray[1];
+	 		var moveLatLon = new daum.maps.LatLng(
+				valueX, valueY);
 			map.panTo(moveLatLon);
 			var marker = new daum.maps.Marker({
 				// 지도 중심좌표에 마커를 생성합니다
 				position : map.getCenter()
 			});
 			// 지도에 마커를 표시합니다
-			marker.setMap(map);  */
+			marker.setMap(map);  
 		});
+		function checkDelete(e){
+			var a = e;
+			if(confirm("삭제하시겠습니까")){
+				location.href='comDelete.do?cnum='+a;
+			}else{
+			}
+		
+		}
 	</script>
 	<div class="footer">
 		<div class="copy">
