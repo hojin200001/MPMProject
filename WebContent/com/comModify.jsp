@@ -227,10 +227,10 @@
 				<tr>
 					<td class="td_area_7"><span>경력사항</span></td>
 					<td class="td_area_9"><span> <input type="radio"
-							name="ccarrer" value="없음" checked="checked">없음 <input
-							type="radio" name="ccarrer" value="1년이하">1년이하 <input
-							type="radio" name="ccarrer" value="1~3년">1~3년 <input
-							type="radio" name="ccarrer" value="3년이상">3년이상
+							name="ccarrer" value="0" checked="checked">없음 <input
+							type="radio" name="ccarrer" value="1">1년이하 <input
+							type="radio" name="ccarrer" value="2">1~3년 <input
+							type="radio" name="ccarrer" value="3">3년이상
 					</span></td>
 				</tr>
 				<tr>
@@ -243,10 +243,10 @@
 				<tr>
 					<td class="td_area_7"><span>업무기간</span></td>
 					<td class="td_area_9"><span> <label for="txtStartDt">시작일</label><input
-							type="text" id="txtStartDt" name="cstartDay"
+							type="text" id="txtStartDt" name="cstartDay" value=""
 							style="border: 1px solid #d7d7d7;" readonly placeholder="클릭해주세요">
 							<label for="txtEndDt">종료일</label><input type="text" id="txtEndDt"
-							name="cendDay" style="border: 1px solid #d7d7d7;"
+							name="cendDay" value="" style="border: 1px solid #d7d7d7;"
 							readonly placeholder="클릭해 주세요">
 					</span></td>
 				</tr>

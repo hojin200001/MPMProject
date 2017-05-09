@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import model.ComBoard;
+import model.ComDay;
 import model.NomalBoard;
 
 public interface ComService {
@@ -12,7 +13,8 @@ public interface ComService {
 	public List<NomalBoard> selectNomalBoardDesc();
 	//comBoard
 	public HashMap<String, Object> comBoardList(int page, String id, int boardsPerPage);
-	public int insertComBoard(HashMap<String, Object> params);
+	
+	public int insertComBoard(ComBoard comBoard);
 	//네이게이터의 첫번째 번호 얻기
 	public int getStartPage(int page);
 	
@@ -25,9 +27,8 @@ public interface ComService {
 	//현재 페이지에서 보여줄 게시물의 시작지점
 	public int getOffset(int page, int boardsPerPage);
 
-	public ComBoard boardView(int cnum);
+	public ComBoard comView(int cnum);
 	
 	//comday
-	public int insertComDay(HashMap<String, Object> params);
 
 }
