@@ -20,4 +20,6 @@ public interface NomalDao {
 	public int getCount();
 
 	public List<NomalBoard> selectBoardPage(HashMap<String, Object> params);
+	// 회원가입
+	public int insertNomalUser(NomalUser nomaluser);
 }

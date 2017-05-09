@@ -27,7 +27,7 @@
 				</tr>
 			</table>
 			</article> <article id="rcorners2">
-			<form action="join.do" name="frm" method="post">
+			<form action="nomalJoinIndex.do" name="frm">
 
 				<table width="500px">
 
@@ -43,14 +43,14 @@
 					<tr>
 						<td>아이디</td>
 						<td valign="top"><span class="font2">*</font2></td>
-						<td><input type="text" name="userid" size="10"> <input
+						<td><input type="text" name="nomalId" size="10"> <input
 							type="button" value="중복 체크" onclick="idCheck()"> <input
 							type="hidden" name="reid"></td>
 					</tr>
 					<tr>
 						<td>암호</td>
 						<td valign="top"><span class="font2">*</font2></td>
-						<td><input type="password" name="pwd" size="10"></td>
+						<td><input type="password" name="nomalPass" size="10"></td>
 					</tr>
 					<tr>
 						<td>암호확인</td>
@@ -77,24 +77,24 @@
 							type="button" onclick="sample6_execDaumPostcode()"
 							value="우편번호 찾기"><br> <span style="LINE-HEIGHT: 10%"><br></span>
 							<input type="text" id="sample6_address" placeholder="주소"
-							readonly="" size="40" name="addr1"><br> <span
+							readonly="" size="40" name="add"><br> <span
 							style="LINE-HEIGHT: 10%"><br></span> <input type="text"
 							id="sample6_address2" placeholder="상세주소" size="40" name="addr2"></td>
 					</tr>
 					<tr>
 						<td>전화번호</td>
 						<td valign="top"><span class="font2">*</font2></td>
-						<td><input type="text" name="phone" size="10"></td>
+						<td><input type="tel" name="phone" size="10"></td>
 					</tr>
 					<tr>
 						<td>이메일</td>
 						<td valign="top"><span class="font2">*</font2></td>
-						<td><input type="text" name="email" size="10"></td>
+						<td><input type="email" name="email"></td>
 					</tr>
 					<tr>
 						<td>자격증</td>
 						<td valign="top"><span class="font2">*</font2></td>
-						<td><select id='fruits' name='fruits' size='4' multiple
+						<td><select id='fruits' name='license' size='4' multiple
 							onchange='fruits_selected()'>
 								<option value='' selected>-- 다중선택 --</option>
 								<option value=''>거푸집기능사</option>
@@ -124,16 +124,11 @@
 						</select></td>
 					</tr>
 					<tr>
-						<td>포인트</td>
-						<td></td>
-						<td><input type="text" name="nomalPoint" size="5"></td>
-					</tr>
-					<tr>
 						<td>정보공개</td>
 						<td></td>
-						<td><input type="radio" name="inpoDis" value="0"
+						<td><input type="radio" name="inpoDis" value="1"
 							checked="checked"> 찬성 <input type="radio" name="inpoDis"
-							value="1"> 반대</td>
+							value="0"> 반대</td>
 					</tr>
 						<tr>
 						<td></td>
@@ -163,5 +158,51 @@
 			</div>
 		</div>
 	</div>
+	<script>
+        function sample6_execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                    var fullAddr = ''; // 최종 주소 변수
+                    var extraAddr = ''; // 조합형 주소 변수
+                    var dong = '';
+
+                    // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                        fullAddr = data.jibunAddress;
+
+                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                        fullAddr = data.jibunAddress;
+
+                    }
+
+                    dong = data.bname;
+                    // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+                    if (data.userSelectedType === 'R') {
+                        //법정동명이 있을 경우 추가한다.
+                        if (data.bname !== '') {
+                            extraAddr += data.bname;
+                        }
+                        // 건물명이 있을 경우 추가한다.
+                        if (data.buildingName !== '') {
+                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                        fullAddr += (extraAddr !== '' ? ' (' + extraAddr + ')' : '');
+                    }
+
+                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                    // document.getElementById("ContentPlaceHolder1_WUC_BizCompanyReg_sample6_postcode").value = data.postcode; //6자리 우편번호 사용
+                    document.getElementById("sample6_postcode").value = data.zonecode; //5자리 기초구역번호 사용
+                    document.getElementById("sample6_address").value = fullAddr;
+                    // 커서를 상세주소 필드로 이동한다.
+                }
+            }).open();
+
+        }
+</script>
 </body>
 </html>

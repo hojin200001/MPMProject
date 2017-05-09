@@ -100,12 +100,12 @@ function updateCheck(){
 //아이디 중복체크
 //아이디가 입력되어있는지 확인
 function idCheck(){
-	if(document.frm.userid.value == "") {
+	if(document.frm.nomalId.value == "") {
 		alert("아이디를 입력하여 주십시오");
-		document.frm.userid.focus();
+		document.frm.nomalId.focus();
 		return;
 	}
-	var url = "idCheck.do?userid=" + document.frm.userid.value;
+	var url = "idCheck.do?nomalId=" + document.frm.nomalId.value;
 	window.open(
 			url, 
 			"_blank_1", 

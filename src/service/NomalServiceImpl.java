@@ -100,4 +100,10 @@ public class NomalServiceImpl implements NomalService{
 		// TODO Auto-generated method stub
 		return (page - 1)*10;
 	}
+	//일반 회원가입
+	@Override
+	public int insertNomalUser(NomalUser nomaluser) {
+		int re  = nDao.insertNomalUser(nomaluser);
+		return re;
+	}
 }

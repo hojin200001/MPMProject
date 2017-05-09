@@ -10,6 +10,7 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import model.NomalUser;
 import service.ComService;
 import service.NomalService;
 
@@ -61,9 +62,19 @@ public class MainController {
 		session.invalidate();
 		return "redirect:"+url2;
 	}
-	@RequestMapping("joinForm.do")
-	public String join(){
-		return "/main/joinForm";
+	@RequestMapping("nomalJoinFormIndex.do")
+	public String nomalJoinfomindex(){
+		return "/join/nomalJoinForm";
+	}
+	@RequestMapping("nomalJoinIndex.do")
+	public String nomalJoinindex(NomalUser nomaluser){
+
+		int re = nservice.insertNomalUser(nomaluser);
+		if(re == 1){
+			return "redirect:index.do";
+		}else{
+			return "";
+		}
 	}
 	
 }
