@@ -59,4 +59,8 @@
  	<insert id="insertComUser" parameterType="comUser">
  		insert into comUser values('${comId}','${comName}','${comEmail}', '${comPass}','${comMname}','${comPhone}','${comPhone2}', '${comAddr}','${comAddr2}','${comNum}','${comPhto}', now(), 0)
  	</insert>
+ 	<!-- id 중복확인 -->
+ 	  <select id="selectIdCheck" parameterType="java.util.HashMap" resultType="comUser">
+    	select * from comUser where comId ='${id}';
+    </select>
   </mapper>

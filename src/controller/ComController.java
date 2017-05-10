@@ -114,6 +114,7 @@ public class ComController {
 		cservice.deleteComBoard(cnum, (String)user.get("id"));
 		return "redirect:comBoardList.do";
 	}
+	
 	//------------------------------------------------------------------------------------------------------------------------------------//
 	//시간계산 지우지 마시길
 	public List<String >getTime(List<FreeBoard> list){

@@ -61,4 +61,7 @@
     <insert id="insertNomalUser" parameterType="nomalUser">
     	insert into nomalUser values('${nomalId}', '${nomalPass}', '${name}', ${age},'${add}','${add2}', '${phone}',now(),'${email}','${license}', 0, ${inpoDis})
     </insert>
+    <select id="selectIdCheck" parameterType="java.util.HashMap" resultType="nomalUser">
+    	select * from nomalUser where nomalId ='${id}';
+    </select>
   </mapper>

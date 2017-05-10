@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입</title>
-<script type="text/javascript" src="js/main/addr.js"></script>
+<script type="text/javascript" src="js/main/addr2.js"></script>
 <link rel="stylesheet" href="css/main/join.css" type="text/css">
 <link rel="stylesheet" href="css/main/join2.css" type="text/css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -48,7 +48,7 @@
 					<tr>
 						<td>아이디</td>
 						<td valign="top"><span class="font2">*</font2></td>
-						<td><input type="text" name="comId" size="10"> <input
+						<td><input type="text" name="comId" size="10" id="comId"> <input
 							type="button" value="중복 체크" onclick="idCheck()"> <input
 							type="hidden" name="reid"></td>
 					</tr>
@@ -174,6 +174,7 @@
 			
 			        }
 			</script>
+	
 			<div class="footer">
 				<div class="copy">
 					<address>

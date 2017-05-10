@@ -7,6 +7,7 @@ import model.ComBoard;
 import model.ComDay;
 import model.ComUser;
 import model.NomalBoard;
+import model.NomalUser;
 
 public interface ComBoardDao {
 	//comUser
@@ -29,4 +30,7 @@ public interface ComBoardDao {
 	public int insertComDay(ComDay comday);
 	public ComDay selectComDayOne(HashMap<String, Integer> n); 
 	public int deleteComDay(HashMap<String, Integer> n);
+	
+	//아이디 체크
+	public ComUser selectIdCheck(HashMap<String, Object> params);
 }

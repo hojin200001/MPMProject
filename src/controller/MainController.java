@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
 import model.ComUser;
@@ -61,15 +62,6 @@ public class MainController {
 		session.setAttribute("hrefs", req.getHeader("referer"));
 		return "/login/logout";
 	}
-
-	@RequestMapping("logout.do")
-	public String logout(HttpSession session) {
-		String url = (String) session.getAttribute("hrefs");
-		String url2 = url.substring(33);
-		session.invalidate();
-		return "redirect:" + url2;
-	}
-
 	@RequestMapping("joinForm.do")
 	public String joinForm() {
 		return "/join/joinForm";
@@ -105,5 +97,22 @@ public class MainController {
 		View view = new DownloadView(cservice.getAttachedFile(id));
 		return view;
 	}
-
+	@RequestMapping("idCheck.do")
+	public ModelAndView idCheck(String nomalId){
+		ModelAndView mav = new ModelAndView();
+		String msg = nservice.idCheck(nomalId);
+		mav.addObject("msg", msg);
+		mav.addObject("nomalId", nomalId);
+		mav.setViewName("/join/idCheck");
+		return mav;
+	}
+	@RequestMapping("idCheckCom.do")
+	public ModelAndView idCheckCom(String comId){
+		ModelAndView mav = new ModelAndView();
+		String msg = cservice.idCheck(comId);
+		mav.addObject("msg", msg);
+		mav.addObject("comId", comId);
+		mav.setViewName("/join/idCheckCom");
+		return mav;
+	}
 }

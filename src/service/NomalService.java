@@ -26,4 +26,6 @@ public interface NomalService {
 	public int getOffset(int page);
 	//일반 회원가입
 	public int insertNomalUser(NomalUser nomaluser);
+	//아이디 체크
+	public String idCheck(String id);
 }

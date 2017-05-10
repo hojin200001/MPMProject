@@ -15,6 +15,7 @@ import model.ComBoard;
 import model.ComDay;
 import model.ComUser;
 import model.NomalBoard;
+import model.NomalUser;
 @Service
 @Aspect
 public class ComServiceImpl implements ComService{
@@ -190,6 +191,19 @@ public class ComServiceImpl implements ComService{
 		}
 		int re = cdao.insertComUser(comUser);
 		return re;
+	}
+	@Override
+	public String idCheck(String id) {
+		String msg;
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("id", id);
+		ComUser nu = cdao.selectIdCheck(map);
+		if(nu == null){
+			msg = "사용 가능한 아이디 입니다";
+		}else{
+			msg = "존재하는 아이디 입니다. 재 입력해 주세요";
+		}
+		return msg;
 	}
 
 }

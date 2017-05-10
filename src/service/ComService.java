@@ -37,5 +37,6 @@ public interface ComService {
 	public File getAttachedFile(String id);
 	
 	public int insertComUser(ComUser comUser, MultipartFile file);
-
+	//아이디 체크
+	public String idCheck(String id);
 }
