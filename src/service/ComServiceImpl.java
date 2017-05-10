@@ -14,6 +14,7 @@ import dao.ComBoardDao;
 import model.ComBoard;
 import model.ComDay;
 import model.ComUser;
+import model.InComBoard;
 import model.NomalBoard;
 import model.NomalUser;
 @Service
@@ -204,6 +205,14 @@ public class ComServiceImpl implements ComService{
 			msg = "존재하는 아이디 입니다. 재 입력해 주세요";
 		}
 		return msg;
+	}
+
+	@Override
+	public List<InComBoard> selectIncomBoard(int cnum) {
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("cnum", cnum);
+		List<InComBoard> ico = cdao.selectIncomBoard(map);
+		return ico;
 	}
 
 }

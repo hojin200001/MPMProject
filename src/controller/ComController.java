@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import model.ComBoard;
 import model.FreeBoard;
+import model.InComBoard;
 import model.NomalBoard;
 import service.ComService;
 import service.FreeBoardService;
@@ -49,8 +50,10 @@ public class ComController {
 	@RequestMapping("comView.do")
 	public ModelAndView boardView(HttpSession session, int cnum){
 		ModelAndView mav = new ModelAndView();
+		List<InComBoard> ico= cservice.selectIncomBoard(cnum);
 		mav.addObject("user" , session.getAttribute("user"));
 		mav.addObject(cservice.comView(cnum));
+		mav.addObject("inComBoard",ico);
 		mav.setViewName("com/comView");
 		return mav;
 	}

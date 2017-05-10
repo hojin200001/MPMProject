@@ -10,159 +10,31 @@
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
 <link rel="stylesheet" type="text/css" href="css/main/public_header.css">
 <link rel="stylesheet" type="text/css" href="css/main/SkyBanner.css">
+<link rel="stylesheet" type="text/css" href="css/com/conView.css">
+
 <!-- 다음지도 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript"
 	src="//apis.daum.net/maps/maps3.js?apikey=5df6011222b3cbeedfefde1c00f1b101&libraries=services"></script>
+<title>게시물 상세보기</title>
 <style type="text/css">
-.contents_top {
-	padding-top: 5px;
-	border-bottom: 1px solid #b5b5b5;
-}
-
-.contents_top>span {
-	font-size: 12px;
-	cursor: pointer;
-}
-
-.contents_top2 {
-	border-bottom: 3px solid #b5b5b5;
-	font-size: 12px;
-	height: 25px;
-}
-
-.contents_top2_1 {
-	width: 49%;
-	float: left;
-}
-
-.contents_top2_2 {
-	width: 49%;
-	float: right;
-	text-align: right;
-}
-
-.contents_top2 .top2_1 {
-	font-size: 15px;
-	font-weight: bold;
-}
-
-table {
-	margin: 0 auto;
-	margin-top: 30px;
-	border-collapse: collapse;
-	width: 70%;
-}
-
-th, td {
-	background-color: #fff;
-	border: 1px solid #d7d7d7;
-	text-align: center;
-}
-
-td>a {
-	text-decoration: none;
-}
-
-.trs {
-	height: 50px;
-}
-
-.trs2>td>span {
-	float: left;
-	margin-left: 30px;
-}
-
-.trs2>td>label {
-	float: left;
-	margin-left: 50px;
-}
-
-.td_area_1>span {
-	margin-left: 30px;
-}
-
-.td_area_1>input {
+.textbottom_div_1{
 	width: 80%;
-	height: 30px;
-	float: right;
-	border: none;
+	margin: 0 auto;
+}
+.textbottom_div_1_1_1{
 	font-size: 15px;
 }
-
-.td_area_2 {
-	border-bottom: none;
-	font-size: 18px;
-	font-weight: bold;
+.textbottom_div_1_1_2{
+	font-size: 14px;
 }
-
-.td_area_2>span {
-	float: left;
-	margin-left: 15%;
-}
-
-.td_area_3 {
-	border: none;
-	width: 40%;
-}
-
-.td_area_3_map {
-	width: 300px;
-	height: 300px;
-	margin: 0 auto;
-	margin-top: 10px;
-}
-
-.textbottom {
-	margin: 0 auto;
-	margin-top: 30px;
-	border-collapse: collapse;
-	width: 70%;
-	height: 180px;
-}
-
-.textAreas {
-	width: 49%;
-	float: left;
-}
-
-.textAreas>textArea {
-	width: 100%;
-}
-
-.textbottom_div {
-	width: 50%;
-	height: 165px;
-	border: 1px solid #d7d7d7;
-	float: right;
-}
-
-.textbottom_button {
-	width: 70%;
-	margin: 0 auto;
-	height: 50px;
-
-}
-
-.textbottom_button>input {
-	margin-left:25%;
-	float: left;
-}
-
-.footer {
-	padding: 10px 0;
-	background-color: #f2f2f2;
-	text-align: center
-}
-
-.copy {
-	font-size: 10px;
+.textbottom_div_1_1_2{
+	font-size: 13px;
 }
 </style>
-
-<title>게시물 상세보기</title>
 </head>
 <body>
+	
 	<div class="container">
 		<div class="header">
 			<div class="searchArea">
@@ -282,13 +154,23 @@ td>a {
 					<textarea rows="10" name="ctext" placeholder="상세 내용을 작성해 주세요" style="font-size: 14px;">${comBoard.ctext}</textarea>
 				</div>
 				<div class="textbottom_div">
-					<div>신청인원 출력하는곳 </div>
+					<div class="textbottom_div_1">
+						<c:forEach items="${inComBoard}" var="in">
+						<div class="textbottom_div_1_1">
+							<span class="textbottom_div_1_1_1" >${in.nomalId}</span>
+							<span class="textbottom_div_1_1_2">HP.${in.phone}</span>
+							<span class="textbottom_div_1_1_3">
+								<fmt:formatDate value="${in.joinDay}" pattern="MM월dd일 HH시mm분ss"/>
+							</span>
+							<img alt="삭제하기" src="img/com/Xicon.png">
+						</div>
+						</c:forEach>
+					</div>
 				</div>
 			</div>
 			<div class="textbottom_button">
 				<input type="button" value="수정하기" onclick="location.href='comModifyForm.do?cnum=${comBoard.cnum}'">
 				<input type="button" value="삭제하기" onclick="checkDelete(${comBoard.cnum})">
-	<%-- 			location.href='comDelete.do?cnum=${comBoard.cnum}' --%>
 			</div>
 		</div>
 	</div>

@@ -6,6 +6,7 @@ import java.util.List;
 import model.ComBoard;
 import model.ComDay;
 import model.ComUser;
+import model.InComBoard;
 import model.NomalBoard;
 import model.NomalUser;
 
@@ -26,6 +27,7 @@ public interface ComBoardDao {
 	public int updateComDay(ComDay comday);
 	public int deleteComBoard(HashMap<String, Integer> n);
 	//incomBoard
+	public List<InComBoard> selectIncomBoard(HashMap<String, Integer> n);
 	//comday
 	public int insertComDay(ComDay comday);
 	public ComDay selectComDayOne(HashMap<String, Integer> n); 

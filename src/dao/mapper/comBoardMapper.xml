@@ -42,6 +42,9 @@
   		select * from comUser where comId = '${id}'
   	</select>
   	<!-- inComBoard -->
+  	<select id="selectIncomBoard" parameterType="java.util.HashMap" resultType="inComBoard">
+  		select * from incomboard where Cnum=${cnum}
+  	</select>
   	<!-- comDay -->
  	<insert id="insertComDay" parameterType="comDay">
  		insert into comday values(${cnum}, '${cstartDay}', '${cendDay}', ${deadline})
