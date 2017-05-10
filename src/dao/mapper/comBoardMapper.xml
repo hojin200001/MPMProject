@@ -55,4 +55,8 @@
  	<delete id="deleteComDay" parameterType="java.util.HashMap">
  		delete from comday where Cnum=${cnum}
  	</delete>
+ 	<!-- 회원가입 -->
+ 	<insert id="insertComUser" parameterType="comUser">
+ 		insert into comUser values('${comId}','${comName}','${comEmail}', '${comPass}','${comMname}','${comPhone}','${comPhone2}', '${comAddr}','${comAddr2}','${comNum}','${comPhto}', now(), 0)
+ 	</insert>
   </mapper>

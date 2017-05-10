@@ -1,11 +1,14 @@
 package service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import dao.ComBoardDao;
 import model.ComBoard;
@@ -157,6 +160,36 @@ public class ComServiceImpl implements ComService{
 		cd =cdao.deleteComBoard(n);
 		}
 		return cd;
+	}
+
+	@Override
+	public File getAttachedFile(String id) {
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("id", id);
+		ComUser com = cdao.selectOne(params);
+		String fileName = com.getComPhto();  //DB에 저장된 파일 이름 얻어내기
+		String path = "/ComRogo/attach/";
+		return new File(path + fileName);
+	}
+
+	@Override
+	public int insertComUser(ComUser comUser,  MultipartFile file) {
+		String path = "/ComRogo/attach/";
+		File dir = new File(path);
+		if(!dir.exists()){
+			dir.mkdirs();
+		}
+		String fileName = file.getOriginalFilename();
+		File attachedFile = new File(path, fileName);
+		
+		try{
+			file.transferTo(attachedFile);
+			comUser.setComPhto(fileName);
+		}catch(IllegalStateException | IOException e){
+			e.printStackTrace();
+		}
+		int re = cdao.insertComUser(comUser);
+		return re;
 	}
 
 }

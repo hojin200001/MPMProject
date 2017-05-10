@@ -8,17 +8,23 @@
 <script type="text/javascript" src="js/main/addr.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <link rel="stylesheet" href="css/main/join.css" type="text/css">
-<script type="text/javascript" src="bootstrap/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/main/join2.css" type="text/css">
 </head>
 <body>
-	<div class="container">
-		<div class="header">
-
-			<div class="imgArea">
-				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" />
+	<div class="hader">
+		<div class="hader_div">
+			<div class="hader_div_1">
+				<img alt="홈으로" src="img/main/logoB_07.png">
 			</div>
-			<p>
+			<div class="hader_div_2">
+				<p></p>
+				<a href="index.do">HOME</a>
+				<a>|</a>
+				<a href="login.do">로그인</a>
+			</div>
 		</div>
+	</div>
+	<div class="container">
 		<div class="content" align="center">
 			<section> <article id="rcorners1"> <br>
 			<table class="table1">

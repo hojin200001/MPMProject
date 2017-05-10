@@ -1,10 +1,13 @@
 package service;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import model.ComBoard;
-import model.ComDay;
+import model.ComUser;
 import model.NomalBoard;
 
 public interface ComService {
@@ -31,6 +34,8 @@ public interface ComService {
 
 	public ComBoard comView(int cnum);
 	
-	//comday
+	public File getAttachedFile(String id);
+	
+	public int insertComUser(ComUser comUser, MultipartFile file);
 
 }

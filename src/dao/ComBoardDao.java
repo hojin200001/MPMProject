@@ -11,6 +11,7 @@ import model.NomalBoard;
 public interface ComBoardDao {
 	//comUser
 	public ComUser selectOne(HashMap<String, Object> params);
+	public int insertComUser(ComUser comUser);
 	//comBoard
 	public List<NomalBoard> selectNomalBoardDesc();
 	public HashMap<String, Object> comBoardList();
