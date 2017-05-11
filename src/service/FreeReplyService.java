@@ -10,6 +10,6 @@ public interface FreeReplyService {
 	public void updateReply(FreeReplyVo freeReplyVo);
 	public void deleteReply(int num);
 	public FreeReplyVo readReply(int reNum);
-	public List<FreeReplyVo> readReplyList();
+	public List<FreeReplyVo> readReplyList(int num);
 	
 }

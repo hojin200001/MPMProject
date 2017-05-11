@@ -147,6 +147,17 @@ width: 25%;
 .reply{
 	border: 1;
 }
+
+.footer {
+	padding: 10px 0;
+	background-color: #f2f2f2;
+	text-align: center
+	font-size: 10px;
+}
+.replyList{
+	border-top: 1px solid lightgray;
+}
+
 textarea {
     width: 80%;
     height: 100px;
@@ -199,9 +210,10 @@ textarea {
   				<img class="imageBack" src="img/free/m12338793364.jpg" width="900" height="180" />
   	</div>
   	<br>
+  	<div class="table">
 	<table class="table table-condensed">
 		<tr>
-			<td colspan="4" style="font-size: 20">${freeBoard.title}</td>
+			<td colspan="4" style="font-size: 25px" >${freeBoard.title}</td>
 		</tr>
 		<tr>
 			<td>글쓴이/${freeBoard.createName}</td>	
@@ -209,7 +221,7 @@ textarea {
 			<td>작성일/<fmt:formatDate value="${freeBoard.createDay}" pattern="yyyy-MM-dd"/></td>
 		</tr>	
 		<tr>
-			<td colspan="4">${freeBoard.conValue}</td>
+			<td colspan="4" style="height: 350px;">${freeBoard.conValue}</td>
 		</tr>
 	</table>
 	<c:choose>
@@ -220,9 +232,25 @@ textarea {
 	</c:choose>
 	<input type="button" value="돌아가기" onclick="location.href='freeBoardList.do'">
 	</div>
+	</div>
 	<br>
 	
 	<div class="reply">
+		
+		<c:forEach items="${freereply}" var="freereply">
+		<div class="replyList">
+		<dl>
+			<dd>
+			${freereply.reName}  | ${freereply.reDay}
+			<a style="float: right">삭제  </a>  <a style="float: right">수정  |</a>	
+			</dd>
+			
+			<dt>${freereply.teText}</dt>
+		
+		</dl>
+		</div>	
+		</c:forEach>
+		
 		<form action="replyWrite.do"  method="post" name="frm">
 		<input type="hidden" name="reName" value="${user.id}"> 
 		<input type="hidden" name="num" value="${freeBoard.num}">
@@ -230,20 +258,11 @@ textarea {
 			<input type="submit" value="댓글">
 		</form>
 		
-		<c:forEach items="${freereplyList}" var="freereply">
-		--------------------------------------------------------
-		<dl>
-			<dt>${freereply.reName}| ${freereply.reDay}</dt>
-			
-			<dd>${freereply.teText}</dd>
-		
-		</dl>	
-		</c:forEach>
 	</div>
 	
 	
 	
-	<dir id="footer">
+	<div class="footer" style="display: inline-block;">
 		<div class="company" style="float: left; width: 50% ">
 			<p>(주)MPM 네트웍스</p>
 			<address>
@@ -268,7 +287,7 @@ textarea {
 			<span>Copyright &copy; </span> <strong>(주)MPM 네트웍스.</strong> <span>All Rights Reserved.</span>
 		</p>
 		
-	</dir>
+	</div>
 </div>
 
 
