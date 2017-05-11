@@ -17,12 +17,16 @@ import org.springframework.web.servlet.View;
 
 import model.FreeBoard;
 import service.FreeBoardService;
+import service.FreeReplyService;
 
 @Controller
 public class FreeBoardController {
 	
 	@Autowired
 	private FreeBoardService freeBoardService;
+	
+	@Autowired
+	private FreeReplyService fReplyService;
 	
 	@RequestMapping("freeBoardList.do")
 	public ModelAndView freeBoardList(		
@@ -69,7 +73,7 @@ public class FreeBoardController {
 		
 		mav.addObject(freeBoardService.readFreeBoard(num));
 		mav.setViewName("/freeBoard/freeBoardView");
-		
+		fReplyService.readReplyList();
 		return mav;
 	}
 	

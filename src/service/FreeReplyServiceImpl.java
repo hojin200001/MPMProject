@@ -2,20 +2,31 @@ package service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import dao.FreeReplyDao;
 import model.FreeReplyVo;
 
-public class FreeReplyServiceImpl implements FreeReplyService{
 
+@Service
+public class FreeReplyServiceImpl implements FreeReplyService{
+	
+	@Autowired
+	private FreeReplyDao fReplyDao;
+	
 	@Override
-	public void writeReply(FreeReplyVo freeReply) {
+	public void writeReply(FreeReplyVo freeReplyVo) {
 		// TODO Auto-generated method stub
-		
+		System.out.println(freeReplyVo);
+		fReplyDao.insertFreeReply(freeReplyVo);
 	}
 
 	@Override
-	public void updateReply(FreeReplyVo freeReply) {
+	public void updateReply(FreeReplyVo freeReplyVo) {
 		// TODO Auto-generated method stub
 		
+		fReplyDao.updateFreeReply(freeReplyVo);
 	}
 
 	@Override
@@ -33,7 +44,7 @@ public class FreeReplyServiceImpl implements FreeReplyService{
 	@Override
 	public List<FreeReplyVo> readReplyList() {
 		// TODO Auto-generated method stub
-		return null;
+		return fReplyDao.selectAll();
 	}
 	
 }
