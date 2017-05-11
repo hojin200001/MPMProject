@@ -172,7 +172,8 @@ textarea {
 -->
 
 </style>
-<script type="text/javascript" src="script/freeBoard.js"></script>
+<script type="text/javascript" src="js/reply/freeBoardReply.js"></script>
+
 </head>
 <body>
 

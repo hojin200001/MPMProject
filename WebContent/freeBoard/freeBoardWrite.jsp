@@ -150,6 +150,7 @@ width: 25%;
 
 </style>
 <link rel="stylesheet" type="text/css" href="css/board.css">
+<script type="text/javascript" src="js/board/freeBoard.js"></script>
 </head>
 <body>
 

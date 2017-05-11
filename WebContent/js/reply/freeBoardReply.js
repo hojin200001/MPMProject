@@ -4,8 +4,12 @@ function fr_replyDelete(){
         return;
     }
     var form = document.form2;
-
-    form.action="replyDelete.do";
+    var a = $(this).click.val();
+    var b = a+"";
+    var c = b.split(',');
+    var reNum = c.[0];
+    var num = c.[1];
+    form.action="replyDelete.do?reNum="+reNum+"&num="+num;
     form.reNum.value=reNum;
     form.submit();    
 }
