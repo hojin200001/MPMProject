@@ -55,4 +55,3 @@ function fn_replyUpdateCancel(){
     updateReno = updateRememo = null;
 } 
 
-출처: http://forest71.tistory.com/49 [SW 개발이 좋은 사람]
