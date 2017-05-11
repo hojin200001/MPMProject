@@ -144,7 +144,20 @@ width: 25%;
 	height: 100px;
 	width: 100%;
 }
-
+.reply{
+	border: 1;
+}
+textarea {
+    width: 80%;
+    height: 100px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
 -->
 
 </style>
@@ -188,8 +201,7 @@ width: 25%;
   	<br>
 	<table class="table table-condensed">
 		<tr>
-			<td>제목</td>
-			<td colspan="3">${freeBoard.title}</td>
+			<td colspan="4" style="font-size: 20">${freeBoard.title}</td>
 		</tr>
 		<tr>
 			<td>글쓴이/${freeBoard.createName}</td>	
@@ -210,7 +222,7 @@ width: 25%;
 	</div>
 	<br>
 	
-	<div>
+	<div class="reply">
 		<form action="replyWrite.do"  method="post" name="frm">
 		<input type="hidden" name="reName" value="${user.id}"> 
 		<input type="hidden" name="num" value="${freeBoard.num}">
