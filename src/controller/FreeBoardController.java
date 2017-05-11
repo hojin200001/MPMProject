@@ -65,7 +65,8 @@ public class FreeBoardController {
 	
 	@RequestMapping("freeBoardView.do")
 	public ModelAndView freeBoardView(int num){
-		
+		//System.out.println(10000);
+		//System.out.println(num);
 		ModelAndView mav = new ModelAndView();
 		
 		//게시물 번호에 해당하는 게시물 정보가져오기

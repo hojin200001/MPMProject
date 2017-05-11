@@ -1,17 +1,16 @@
 
-function fr_replyDelete(){
+function fr_replyDelete(reNum,num){
     if (!confirm("삭제하시겠습니까?")) {
         return;
     }
     var form = document.form2;
-    var a = $(this).click.val();
-    var b = a+"";
-    var c = b.split(',');
-    var reNum = c.[0];
-    var num = c.[1];
-    form.action="replyDelete.do?reNum="+reNum+"&num="+num;
+
+    form.action="replyDelete.do";
+    form.num.value=num;
     form.reNum.value=reNum;
     form.submit();    
+
+    //location.href='replyDelete.do?num='+num+"&reNum="+reNum;
 }
 
 var updateReNum = updateTeText = null;

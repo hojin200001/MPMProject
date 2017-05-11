@@ -243,14 +243,30 @@ textarea {
 		<dl>
 			<dd>
 			${freereply.reName}  | ${freereply.reDay}
-			<a id="${freereply.reNum}" style="float: right"value="${freereply.reNum}, ${freeBoard.num}">삭제  </a>  <a style="float: right">수정  |</a>	
+			
+			<a href="#" onclick="replyDelete.do?num=${freeBoard.num}&reNum=${freerply.reNum}" style="float: right;">삭제</a>  <a style="float: right">수정  |</a>
+<%-- 			<a href="replyDelete.do?num=${freeBoard.num}&reNum=${freerply.reNum}" style="float: right;">삭제</a>  <a style="float: right">수정  |</a> --%>
+<%-- 			<a href="#" style="float: right" onclick="fr_replyDelete('<c:out value="${freereply.reNum}"/>, <c:out value="${freeBoard.num}"/>')">삭제  </a>  <a style="float: right">수정  |</a>	 --%>
 			
 			</dd>
 			
 			<dt>${freereply.teText}</dt>
 		
 		</dl>
+		
 		</div>	
+		
+		<div id="replyDiv" style="display:none">
+		    <form name="form2" action="freeReplySave.do" method="post">
+		        <input type="hidden" name="num"> 
+		        <input type="hidden" name="reNum"> 
+		        <textarea name="rememo" rows="3" cols="60" maxlength="500"></textarea>
+		        <a href="#" onclick="fn_replyUpdateSave()">저장</a>
+		        <a href="#" onclick="fn_replyUpdateCancel()">취소</a>
+		    </form>
+		</div>
+
+		
 		</c:forEach>
 		
 		<form action="replyWrite.do"  method="post" name="frm">
