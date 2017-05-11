@@ -76,4 +76,5 @@ public class NomalController {
 		mav.setViewName("nomal/nomalView");
 		return mav;
 	}
+	
 }

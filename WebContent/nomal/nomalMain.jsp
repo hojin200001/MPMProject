@@ -147,6 +147,17 @@ width: 25%;
 <link rel="stylesheet" type="text/css" href="css/main/jquery.bxslider.css">
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
 <link rel="stylesheet" type="text/css" href="css/main/nomalMain.css">
+<script type="text/javascript">
+
+function logOut(){
+	var url = "logoutForm.do";
+	window.open(
+			url, 
+			"_blank_1", 
+			"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
+}
+
+</script>
 </head>
 
 <body>
@@ -195,7 +206,7 @@ width: 25%;
 			</div>
 			<%}else{%>
 			<div>${user.name}님 환영합니다. &nbsp;&nbsp;&nbsp;
-			<a href="logoutForm.do">로그아웃</a></li>
+			<a href="#" onclick="logOut()">로그아웃</a></li>
   			<li><a href="#">마이 페이지</a></li>
 			</div>
 			<%} %>

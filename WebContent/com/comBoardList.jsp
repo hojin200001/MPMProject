@@ -128,6 +128,15 @@ td>a{
 .tr_contents_2{
 	text-align: left;
 }
+.footer {
+	padding: 10px 0;
+	background-color: #f2f2f2;
+	text-align: center
+}
+
+.copy {
+	font-size: 10px;
+}
 </style>
 
 </head>
@@ -245,7 +254,7 @@ td>a{
 			<c:when test="${comBoard ne '[]'}">
 		<tr style="background-color:  #f2f2f2">
 			<th>근무지</th>
-			<th>업무내용/신청인원</th>
+			<th>등록 글 제목/신청인원</th>
 			<th>업무기간</th>
 			<th>급여</th>
 			<th>등록일</th>
@@ -308,7 +317,15 @@ td>a{
 			검색어 <input type="text" name="keyword">
 			<input type="submit" value="검색">
 	</tr> --> 
-
+	<div class="footer">
+		<div class="copy">
+			<address>
+				서울특별시 강남구 역삼동 819-10 한빛교육센터 강의실,<br> 대표연락처 : 1577-0000, FAX :
+				052-000-0000, E-mail : asdf@naver.com
+			</address>
+			<p>Copyrights 2017~~~~ MPMcompany All rights Reserved</p>
+		</div>
+		<!-- end .footer -->
 </div>
 </body>
 </html>
