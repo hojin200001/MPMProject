@@ -243,7 +243,8 @@ textarea {
 		<dl>
 			<dd>
 			${freereply.reName}  | ${freereply.reDay}
-			<a style="float: right" href="replyDelete.do?reNum=${freereply.reNum}&num=${freeBoard.num}">삭제  </a>  <a style="float: right">수정  |</a>	
+			<a id="${freereply.reNum}" style="float: right"value="${freereply.reNum}, ${freeBoard.num}">삭제  </a>  <a style="float: right">수정  |</a>	
+			
 			</dd>
 			
 			<dt>${freereply.teText}</dt>
