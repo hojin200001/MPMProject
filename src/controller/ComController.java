@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import model.ComBoard;
 import model.FreeBoard;
+import model.InComBoard;
 import model.NomalBoard;
 import service.ComService;
 import service.FreeBoardService;
@@ -49,8 +50,11 @@ public class ComController {
 	@RequestMapping("comView.do")
 	public ModelAndView boardView(HttpSession session, int cnum){
 		ModelAndView mav = new ModelAndView();
+		List<InComBoard> ico= cservice.selectIncomBoard(cnum);
 		mav.addObject("user" , session.getAttribute("user"));
 		mav.addObject(cservice.comView(cnum));
+		mav.addObject("inComBoard",ico);
+		mav.addObject("inCount", cservice.InComBoardCount(cnum));
 		mav.setViewName("com/comView");
 		return mav;
 	}
@@ -67,6 +71,7 @@ public class ComController {
 			cb = cservice.comBoardList(page, (String)map.get("id"), boardsPerPage);
 			mav.addObject("PerPage",boardsPerPage);
 			mav.addObject("search_type", search_type);
+			mav.addObject("icbrList", cservice.inComBoardCount());
 			mav.addAllObjects(cb);
 			mav.setViewName("/com/comBoardList");
 		}else if(session.getAttribute("user") != null && (int)session.getAttribute("userInfo") == 1){
@@ -114,7 +119,11 @@ public class ComController {
 		cservice.deleteComBoard(cnum, (String)user.get("id"));
 		return "redirect:comBoardList.do";
 	}
-	
+	@RequestMapping("deleteInComBoard.do")
+	public String deleteInComBoard(int cnum, String nomalId){
+		cservice.deleteInComBoard(cnum, nomalId);
+		return "redirect:comView.do?cnum="+cnum;
+	}
 	//------------------------------------------------------------------------------------------------------------------------------------//
 	//시간계산 지우지 마시길
 	public List<String >getTime(List<FreeBoard> list){

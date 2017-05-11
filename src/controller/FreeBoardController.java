@@ -17,12 +17,16 @@ import org.springframework.web.servlet.View;
 
 import model.FreeBoard;
 import service.FreeBoardService;
+import service.FreeReplyService;
 
 @Controller
 public class FreeBoardController {
 	
 	@Autowired
 	private FreeBoardService freeBoardService;
+	
+	@Autowired
+	private FreeReplyService fReplyService;
 	
 	@RequestMapping("freeBoardList.do")
 	public ModelAndView freeBoardList(		
@@ -68,8 +72,10 @@ public class FreeBoardController {
 		//서비스의 readBoard
 		
 		mav.addObject(freeBoardService.readFreeBoard(num));
+		mav.addObject("freereply",fReplyService.readReplyList(num));
+		System.out.println(fReplyService.readReplyList(num));
 		mav.setViewName("/freeBoard/freeBoardView");
-		
+		fReplyService.readReplyList();
 		return mav;
 	}
 	
@@ -121,18 +127,9 @@ public class FreeBoardController {
 		
 	}
 	
-	@RequestMapping("freeBoardCheckPass.do")
-	public String freeBoardCheckPass(String id,HttpSession session){
+	@RequestMapping("updateCheckForm.do")
+	public String freeBoardupdateCheckForm(FreeBoard freeBoard,HttpSession session){
 
-//		String pass = freeBoardService.getPass(id);
-//		String loginPass = ;
-//		
-//		if(){
-//			
-//		}
-//		else{
-//			
-//		}
 		
 		return null;
 	}

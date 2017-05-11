@@ -180,10 +180,13 @@ width: 25%;
 	    <li><a href="#">공지사항</a></li>
 	</ul>
    </nav>
-
+	<div class="imgArea2" >
+  				<img class="imageBack" src="img/free/m12338793364.jpg" width="900" height="180" />
+  	</div>
+  	<br>
 
 <div id="wrap" align="center">
-	<h1>게시글 등록</h1>
+	
 	
 		<form action="freeBoardWrite.do" method="post" name="frm">
 		<table class="table table-condensed">
@@ -205,7 +208,8 @@ width: 25%;
 		
 		</table>
 		
-		<input type="submit" value="등록" onclick="return insertCheck()">
+		<input type="submit" value="완료" onclick="return insertCheck()">
+		<input type="button" value="취소" onclick="location.href='freeBoardList.do'">
 		</form>
 
 
