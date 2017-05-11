@@ -13,9 +13,8 @@
   	<select id="getCount" parameterType="java.util.HashMap" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
     	select count(*) from comBoard where comId="${id}"
     </select>
-    
     <select id="selectBoardPage" parameterType="java.util.HashMap" resultType="comBoard">
-    	select * from comBoard where comId = '${id}' order by Cnum desc limit #{offset} ,#{boardsPerPage}
+    	select c.* from(select a.*, b.CstartDay, b.CendDay from comboard a, comDay b where a.Cnum=b.Cnum) c where c.comId=${id} order by Cnum desc limit #{offset} ,#{boardsPerPage};
     </select>
      <update id="comCountUpdate" parameterType="java.util.HashMap">
         update comBoard set Ccount = #{ccount} where Cnum = #{cnum}
@@ -42,6 +41,18 @@
   		select * from comUser where comId = '${id}'
   	</select>
   	<!-- inComBoard -->
+  	<select id="selectIncomBoard" parameterType="java.util.HashMap" resultType="inComBoard">
+  		select * from incomboard where Cnum=${cnum}
+  	</select>
+  	<select id="InComBoardCount" parameterType="java.util.HashMap" resultType="int">
+  		select count(Cnum) from incomboard where Cnum=${cnum}
+  	</select>
+  	<delete id="deleteInComBoard" parameterType="java.util.HashMap">
+  		delete from incomboard where Cnum=${cnum} and nomalId='${nomalId}'
+  	</delete>
+  	<select id="inComBoardCount" resultType="inComBoardRe">
+  		select Count(c.Cnum) as Count, c.Cnum from comBoard d, incomBoard c where c.Cnum =  d.Cnum
+  	</select>
   	<!-- comDay -->
  	<insert id="insertComDay" parameterType="comDay">
  		insert into comday values(${cnum}, '${cstartDay}', '${cendDay}', ${deadline})
@@ -55,4 +66,12 @@
  	<delete id="deleteComDay" parameterType="java.util.HashMap">
  		delete from comday where Cnum=${cnum}
  	</delete>
+ 	<!-- 회원가입 -->
+ 	<insert id="insertComUser" parameterType="comUser">
+ 		insert into comUser values('${comId}','${comName}','${comEmail}', '${comPass}','${comMname}','${comPhone}','${comPhone2}', '${comAddr}','${comAddr2}','${comNum}','${comPhto}', now(), 0)
+ 	</insert>
+ 	<!-- id 중복확인 -->
+ 	  <select id="selectIdCheck" parameterType="java.util.HashMap" resultType="comUser">
+    	select * from comUser where comId ='${id}';
+    </select>
   </mapper>

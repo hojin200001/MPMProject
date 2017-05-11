@@ -17,6 +17,15 @@
 <link rel="stylesheet" type="text/css" href="css/com/comMain_con.css">
 </head>
 <script type="text/javascript">
+
+function logOut(){
+	var url = "logoutForm.do";
+	window.open(
+			url, 
+			"_blank_1", 
+			"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
+}
+
 </script>
 <body>
 <div class="container">
@@ -35,7 +44,8 @@
 	  <ul id="menu">
 	    <li><a href="index.do">홈으로</a></li>
 	    <li><a href="comSearch.do">인력찾기</a></li>
-	    <li><a href="comBoardList.do">구직 정보</a>
+	    <li>
+	    	<a href="comBoardList.do">구직 정보</a>
 	    	<ul>
 	    		<li><a href="comBoardList.do">구직 등록 현황</a></li>
 	    		<li><a href="comWriteForm.do">구직 등록하기</a></li>	
@@ -69,7 +79,7 @@
 			</div>
 			<%}else{%>
 			<div>${user.name}님 환영합니다. &nbsp;&nbsp;&nbsp;
-			<a href="logoutForm.do">로그아웃</a></li>
+			<a href="#" onclick="logOut()">로그아웃</a></li>
   			<li><a href="#">마이 페이지</a></li>
 			</div>
 			<%} %>

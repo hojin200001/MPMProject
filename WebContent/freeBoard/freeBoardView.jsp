@@ -144,7 +144,31 @@ width: 25%;
 	height: 100px;
 	width: 100%;
 }
+.reply{
+	border: 1;
+}
 
+.footer {
+	padding: 10px 0;
+	background-color: #f2f2f2;
+	text-align: center
+	font-size: 10px;
+}
+.replyList{
+	border-top: 1px solid lightgray;
+}
+
+textarea {
+    width: 80%;
+    height: 100px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
 -->
 
 </style>
@@ -157,7 +181,7 @@ width: 25%;
 	<div class="header">
   		<div class="searchArea">
   			<div class="imgArea">
-  				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로"/>
+  				<a href="index.do"><img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" /></a>
   			</div>
   			<dir class="searchsdumi"></dir>
   			<dir class="searchs">
@@ -182,20 +206,25 @@ width: 25%;
    </nav>
 
 	<div>
-	<h4>자유게시판</h4>
+	<div class="imgArea2" >
+  				<img class="imageBack" src="img/free/m12338793364.jpg" width="900" height="180" />
+  	</div>
+  	<br>
+<<<<<<< HEAD
+=======
+  	<div class="table">
+>>>>>>> cdf2d34813135f8ea4b5d997b7e7bb181173b1e4
 	<table class="table table-condensed">
 		<tr>
-			<td>제목</td>
-			<td colspan="3">${freeBoard.title}</td>
+			<td colspan="4" style="font-size: 25px" >${freeBoard.title}</td>
 		</tr>
 		<tr>
-			<td>글쓴이/조회수</td>	
-			<td>${freeBoard.createName}/${freeBoard.freeCount}</td>
-			<td>작성일</td>
-			<td><fmt:formatDate value="${freeBoard.createDay}" pattern="yyyy-MM-dd"/></td>
+			<td>글쓴이/${freeBoard.createName}</td>	
+			<td>조회수/${freeBoard.freeCount}</td>
+			<td>작성일/<fmt:formatDate value="${freeBoard.createDay}" pattern="yyyy-MM-dd"/></td>
 		</tr>	
 		<tr>
-			<td colspan="4">${freeBoard.conValue}</td>
+			<td colspan="4" style="height: 350px;">${freeBoard.conValue}</td>
 		</tr>
 	</table>
 	<c:choose>
@@ -206,9 +235,93 @@ width: 25%;
 	</c:choose>
 	<input type="button" value="돌아가기" onclick="location.href='freeBoardList.do'">
 	</div>
+<<<<<<< HEAD
+	<br>
+	
+	<div>
+=======
+	</div>
+	<br>
+	
+	<div class="reply">
+		
+		<c:forEach items="${freereply}" var="freereply">
+		<div class="replyList">
+		<dl>
+			<dd>
+			${freereply.reName}  | ${freereply.reDay}
+			<a style="float: right">삭제  </a>  <a style="float: right">수정  |</a>	
+			</dd>
+			
+			<dt>${freereply.teText}</dt>
+		
+		</dl>
+		</div>	
+		</c:forEach>
+		
+>>>>>>> cdf2d34813135f8ea4b5d997b7e7bb181173b1e4
+		<form action="replyWrite.do"  method="post" name="frm">
+		<input type="hidden" name="reName" value="${user.id}"> 
+		<input type="hidden" name="num" value="${freeBoard.num}">
+			<textarea name="teText"></textarea>
+			<input type="submit" value="댓글">
+		</form>
+		
+<<<<<<< HEAD
+		<c:forEach items="${freereplyList}" var="freereply">
+		--------------------------------------------------------
+		<dl>
+			<dt>${freereply.reName}| ${freereply.reDay}</dt>
+			
+			<dd>${freereply.teText}</dd>
+		
+		</dl>	
+		</c:forEach>
+	</div>
 	
 	
+	
+	<dir id="footer">
+=======
+	</div>
+	
+	
+	
+	<div class="footer" style="display: inline-block;">
+>>>>>>> cdf2d34813135f8ea4b5d997b7e7bb181173b1e4
+		<div class="company" style="float: left; width: 50% ">
+			<p>(주)MPM 네트웍스</p>
+			<address>
+				서울특별시 강남구 테헤란로 9832 동관 201층&nbsp;(주)MPM 네트웍스 <span>|</span> 공동 대표이사 : 김태완 박영환 박주영<br />
+				<em>사업자등록번호 : 617-812-48252234 <span>|</span> 부가통신사업 : 제17021047호 <span>|</span> 통신판매업신고 : 제2017-서울강남-3543525호<br />
+				직업정보제공사업 신고번호 : 서울강남 제2017-30호</em>
+			</address>
+		</div>
+		<div class="customer" style="float: left; width: 50% ">
+			<p>고객지원</p>
+			<p>평일 : 09:00 ~ 18:00 (점심12~13시), 토요일 : 09:00 ~ 13:00</p>
+			<p>전화 : 1919-82828</p>
+			<p>FAX : 02-1919-8219</p>
+			<p class="email"><a href="mailto:help@MPM.co.kr">help@MPM.co.kr</a></p>
+			<p class="faq"><a href="#">자주묻는 질문보기</a></p>
+			<p class="qna"><a href="#">온라인 문의</a></p>
+			
+			<p class="customerChatBtn"><a href="#">상담톡</a></p>
+			
+		</div>
+		<p class="copyright">
+			<span>Copyright &copy; </span> <strong>(주)MPM 네트웍스.</strong> <span>All Rights Reserved.</span>
+		</p>
+		
+<<<<<<< HEAD
+	</dir>
+=======
+	</div>
+>>>>>>> cdf2d34813135f8ea4b5d997b7e7bb181173b1e4
 </div>
+
+
+
 
 </body>
 </html>

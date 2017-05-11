@@ -11,134 +11,8 @@
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
 <link rel="stylesheet" type="text/css" href="css/main/public_header.css">
 <link rel="stylesheet" type="text/css" href="css/main/SkyBanner.css">
+<link rel="stylesheet" type="text/css" href="css/com/comBoardList.css">
 <title>Insert title here</title>
-<style type="text/css">
-
-/* 컨텐츠*/
-.contents_top{
-	padding-top: 5px;
-	border-bottom: 1px solid #b5b5b5;
-}
-.contents_top>span{
-	font-size: 12px;
-	cursor: pointer;
-}
-.contents_top2{
-	border-bottom: 3px solid #b5b5b5;
-	font-size: 12px;
-	height: 25px;
-}
-.contents_top2_1{
-	width:49%;
-	float: left;
-}
-.contents_top2_2{
-	width: 49%; 
-	float: right;
-	text-align: right;
-}
-.contents_top2 .top2_1{
-	font-size: 15px;
-	font-weight: bold;
-}
-.top2_2>span{
-	color:#ff5400;
-}
-.contents_top3{
-	padding-top:12px;
-	height: 20px;
-	color: #959595;
-	font-size: 12px;
-}
-.contents_top3>div>a:HOVER{
-	cursor: pointer;
-}
-.contents_top3_div{
-	width: 49%;
-	float: left;
-}
-.contents_top3_div2{
-	width: 49%;
-	float: right;
-	text-align: right;
-	padding-bottom: 5px;
-}
-.contents_top3_div2>select{
-	background-color: #fff;
-	border: 1px solid #bbb;
-}
-#contents_top_id, #contents_top_id2, #contents_top_id3{
-	text-decoration: none;
-}
-#contents_top_id:HOVER, #contents_top_id2:HOVER, #contents_top_id3:HOVER{
-	text-decoration:underline;
-}
-.contents_top3 a.on{
-	color: #000;
-	font-weight: bold;
-	font-size: 13px;
-}
-.contents_top3 a.off{
-	color: #B8B8B8;
-}
-.contents_bottom{
-	display: inline-block;
-	width: 30px;
-	height: 24px;
-	border: 1px solid #bbb;
-	padding: 6px 0 0;
-    margin: 0 2px;
-    text-align: center;
-    border-radius: 2px;
-    text-decoration: none;
-    color: #000;
-}
-.contents_bottom:HOVER{
-	font-weight: bold;
-    border: 1px solid #83c9ff;
-    color: #267cd3;
-}
-
-#on{
-	font-weight: bold;
-    border: 1px solid #83c9ff;
-    color: #267cd3;
-	
-}
-/* 테이블 */
-table {
-	border-collapse: collapse;
-	width: 100%;
-}
-
-th, td {
-	border-bottom: 1px solid #b5b5b5;
-	padding: 15px;
-	text-align: center;
-}
-td>a{
-	text-decoration: none;
-}
-.tr_contents:HOVER {
-	background-color: #DAFFFF;
-}
-.tr_contents>td>a:HOVER{
-	cursor: pointer;
-}
-.tr_contents_2{
-	text-align: left;
-}
-.footer {
-	padding: 10px 0;
-	background-color: #f2f2f2;
-	text-align: center
-}
-
-.copy {
-	font-size: 10px;
-}
-</style>
-
 </head>
 <body>
 <div class="container">
@@ -254,7 +128,7 @@ td>a{
 			<c:when test="${comBoard ne '[]'}">
 		<tr style="background-color:  #f2f2f2">
 			<th>근무지</th>
-			<th>등록 글 제목/신청인원</th>
+			<th>등록 글 제목</th>
 			<th>업무기간</th>
 			<th>급여</th>
 			<th>등록일</th>
@@ -265,11 +139,27 @@ td>a{
 					<tr class="tr_contents">
 						<td>${c.carea}</td>
 						<td class="tr_contents_2"><a href="comView.do?cnum=${c.cnum}">${c.ctitle}</a></td>
-						<td>${c.comName}</td>
+						<td>${c.cday} 일</td>
 						<td>${c.cpay}</td>
-						<td><fmt:formatDate value="${c.createDay}" pattern="yyyy-MM-dd"/></td>
-						<td></td>
-						<td> 0/${c.cwokers}명</td>
+						<td style="font-size: 12px;font-weight: bold;"><fmt:formatDate value="${c.createDay}" pattern="yyyy-MM-dd"/></td>
+						<td style="font-size: 12px;font-weight: bold;">${c.cendDay}</td>
+						<c:forEach items="${icbrList}" var="d">
+							<c:choose>
+								<c:when test="${c.cnum == d.cnum}">
+									<c:choose>
+										<c:when test="${d.count > c.cwokers}">
+											<td><span style="color:red;">${d.count}</span>/${c.cwokers}명</td>
+										</c:when>
+										<c:otherwise>
+											<td><span>${d.count}</span>/${c.cwokers}명</td>
+										</c:otherwise>
+									</c:choose>
+								</c:when>
+								<c:otherwise>
+									<td> 0/${c.cwokers}명</td>
+								</c:otherwise>						
+							</c:choose>
+						</c:forEach>
 					</tr>
 					</c:forEach>
 					<tr>
@@ -279,7 +169,6 @@ td>a{
 						<a class="contents_bottom" id="" href="boardList.do?page=${start-1}&type=${type}&keyword=${keyword}">이전</a>
 					</c:if>
 					<c:forEach begin="${start}" end="${end <last? end: last}" var="i">
-						
 						<c:choose>
 							<c:when test="${i == current }">
 								<a class="contents_bottom" id="on">${i}</a>
@@ -288,15 +177,11 @@ td>a{
 								<a class="contents_bottom" id="" href="comBoardList.do?page=${i}&boardsPerPage=${PerPage}">${i}</a>				
 							</c:otherwise>
 						</c:choose>
-							
 					</c:forEach>
-					
 					<c:if test="${end < last}">
 						<a class="contents_bottom" id="" href="boardList.do?page=${end+1}&type=${type}&keyword=${keyword}">다음</a>
 						<a class="contents_bottom" id="" href="boardList.do?page=${last}&type=${type}&keyword=${keyword}">마지막</a>
-					
 					</c:if>
-					
 					</td>
 			</c:when>
 			<c:otherwise>

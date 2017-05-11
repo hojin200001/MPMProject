@@ -1,12 +1,19 @@
 package service;
 
+import java.io.File;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import dao.NomalDao;
+import model.ComBoard;
+import model.ComDay;
+import model.ComUser;
 import model.NomalBoard;
 import model.NomalUser;
 @Service
@@ -38,15 +45,31 @@ public class NomalServiceImpl implements NomalService{
 	}
 
 	@Override
-	public List<NomalBoard> selectLimitDesc() {
-		List<NomalBoard> list = nDao.selectLimitDesc();
+	public List<ComBoard> selectLimitDesc() {
+		List<ComBoard> list = nDao.selectLimitDesc();
 		return list;
 	}
 
 	@Override
-	public int areaJobNum(String area) {
-		// TODO Auto-generated method stub
-		return nDao.areaJobNum(area);
+	public HashMap<String, Object> areaJobNum(String json){
+		ObjectMapper mapper = new ObjectMapper();
+		HashMap<String, Object> map = null;
+		try {
+			map = (HashMap)mapper.readValue(new File(json), HashMap.class);
+			for ( String key : map.keySet() ){
+				for (Iterator localIterator = ((List)map.get(key)).iterator(); localIterator.hasNext(); ){
+					Object obj = localIterator.next();
+					HashMap<String, Object> iw = new HashMap<>();
+					iw.put("kiring", ((HashMap)obj).get("value").toString());
+					((HashMap)obj).put("num", nDao.areaJobNum(iw));
+				}
+			}
+		}
+		
+		catch(Exception e){
+			System.out.println(e.toString());
+		}
+		return map;
 	}
 
 	@Override
@@ -76,7 +99,6 @@ public class NomalServiceImpl implements NomalService{
 		params.put("offset", getOffset(page));
 		params.put("boardsPerPage", 10);
 		result.put("nomalBoard", nDao.selectBoardPage(params));
-		System.out.println(nDao.selectBoardPage(params));
 		return result;
 	}
 
@@ -100,4 +122,57 @@ public class NomalServiceImpl implements NomalService{
 		// TODO Auto-generated method stub
 		return (page - 1)*10;
 	}
+	//일반 회원가입
+	@Override
+	public int insertNomalUser(NomalUser nomaluser) {
+		int re  = nDao.insertNomalUser(nomaluser);
+		return re;
+	}
+
+	@Override
+	public String idCheck(String id) {
+		String msg;
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("id", id);
+		NomalUser nu = nDao.selectIdCheck(map);
+		if(nu == null){
+			msg = "사용 가능한 아이디 입니다";
+		}else{
+			msg = "존재하는 아이디 입니다. 재 입력해 주세요";
+		}
+		return msg;
+	}
+	
+	@Override
+	public HashMap<String, Object> getNomalBoardListByCondition(int page, 
+			//@RequestParam(required=false) HashMap<String, Object> cb, 
+			@RequestParam(required=false) List cb, 
+			@RequestParam(required=false) String rb,
+			@RequestParam(required=false) String ar) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> params = new HashMap<>();
+		HashMap<String, Object> result = new HashMap<>();
+		params.put("cb", cb);
+		params.put("rb", rb);
+		params.put("ar", ar);
+		params.put("offset", getOffset(page));
+		params.put("boardsPerPage", 10);
+		
+		result.put("nomalBoard", nDao.selectSearchByKeyword(params));
+		result.put("current", page);
+		result.put("start", getStartPage(page));
+		result.put("end", getEndPage(page));
+		result.put("last", getLastPage(nDao.getCountSearchByKeyword(params)));
+
+		return result;
+	}
+
+	@Override
+	public int insertNomalBoard(NomalBoard nomalBoard) {
+		// TODO Auto-generated method stub
+		nomalBoard.setNphone(nDao.getPhoneNum(nomalBoard));
+		nDao.insertNomalBoard(nomalBoard);
+		return 0;
+	}
+
 }

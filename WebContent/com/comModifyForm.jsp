@@ -139,7 +139,7 @@
 								<div class="td_area_5_div1_1">
 									<span>＊주소검색 : </span> <input type="text" id="sample5_address"
 										placeholder="주소" name="carea" value="${comboard.carea}"> <input type="button"
-										onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+										onclick="sample6_execDaumPostcode()" value="주소 검색"><br>
 								</div>
 								<div class="td_area_5_div1_2">
 									<span>＊상세주소 : </span> <input type="text" id="address2"

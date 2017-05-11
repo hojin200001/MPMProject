@@ -1,17 +1,23 @@
 package service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import dao.ComBoardDao;
 import model.ComBoard;
 import model.ComDay;
 import model.ComUser;
+import model.InComBoard;
+import model.InComBoardRe;
 import model.NomalBoard;
+import model.NomalUser;
 @Service
 @Aspect
 public class ComServiceImpl implements ComService{
@@ -157,6 +163,80 @@ public class ComServiceImpl implements ComService{
 		cd =cdao.deleteComBoard(n);
 		}
 		return cd;
+	}
+
+	@Override
+	public File getAttachedFile(String id) {
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("id", id);
+		ComUser com = cdao.selectOne(params);
+		String fileName = com.getComPhto();  //DB에 저장된 파일 이름 얻어내기
+		String path = "/ComRogo/attach/";
+		return new File(path + fileName);
+	}
+
+	@Override
+	public int insertComUser(ComUser comUser,  MultipartFile file) {
+		String path = "/ComRogo/attach/";
+		File dir = new File(path);
+		if(!dir.exists()){
+			dir.mkdirs();
+		}
+		String fileName = file.getOriginalFilename();
+		File attachedFile = new File(path, fileName);
+		
+		try{
+			file.transferTo(attachedFile);
+			comUser.setComPhto(fileName);
+		}catch(IllegalStateException | IOException e){
+			e.printStackTrace();
+		}
+		int re = cdao.insertComUser(comUser);
+		return re;
+	}
+	@Override
+	public String idCheck(String id) {
+		String msg;
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("id", id);
+		ComUser nu = cdao.selectIdCheck(map);
+		if(nu == null){
+			msg = "사용 가능한 아이디 입니다";
+		}else{
+			msg = "존재하는 아이디 입니다. 재 입력해 주세요";
+		}
+		return msg;
+	}
+
+	@Override
+	public List<InComBoard> selectIncomBoard(int cnum) {
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("cnum", cnum);
+		List<InComBoard> ico = cdao.selectIncomBoard(map);
+		return ico;
+	}
+
+	@Override
+	public int deleteInComBoard(int cnum, String nomalId) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("cnum", cnum);
+		map.put("nomalId", nomalId);
+		int re = cdao.deleteInComBoard(map);
+		return 0;
+	}
+
+	@Override
+	public int InComBoardCount(int cnum) {
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("cnum", cnum);
+		int re = cdao.InComBoardCount(map);
+		return re;
+	}
+
+	@Override
+	public List<InComBoardRe> inComBoardCount() {
+		List<InComBoardRe> icbr = cdao.inComBoardCount();
+		return icbr;
 	}
 
 }
