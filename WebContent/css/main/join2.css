@@ -1,0 +1,52 @@
+
+body{
+	background-color: #ebedee;
+}
+
+.hader{
+	margin-top: -10px;
+	height: 50px;
+	background-color: #fff;
+}
+.hader_div{
+	border: 1px solid red;
+	width: 50%;
+	margin: 0 auto;
+}
+.hader_div_1{
+	width: 100px;
+	float: left;
+	margin-left: 150px;
+}
+
+.hader_div_1>img{
+	height: 50px;
+}
+.hader_div_2{
+	width: 200px;
+	height: 50px;
+	float: right;
+	margin-right: 50px;
+}
+.hader_div_2>a{
+	font-size: 12px;
+	text-decoration:none;
+	color:#000;
+}
+section{
+	margin-top: 50px;
+}
+#rcorners2{
+	background-color: #fff;
+}
+.footer {
+	padding: 10px 0;
+	text-align:center
+}
+.copy{
+	font-size: 10px;
+}
+.copy address{
+	line-height: 18px;
+    color: #646464;
+}

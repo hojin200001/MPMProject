@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 
  */
 
@@ -23,30 +23,30 @@ function loginCheck(){
 //회원가입 폼에서 사용자 입력을 확인
 function joinCheck(){
 	
-	if(document.frm.name.value.length==0){
-		alert('이름을 입력해주세요.');
+	if(document.frm.comMname.value.length==0){
+		alert('담당 매니저명을 입력해 주세요');
 		frm.name.focus();	
 		return false;
 	}
 	
-	if(document.frm.nomalId.value.length == 0){
+	if(document.frm.comId.value.length == 0){
 		alert('아이디를 입력해주세요.');
 		frm.userid.focus();
 		return false;
 	}
 	
-	if(document.frm.nomalPass.value.length < 4){
+	if(document.frm.comId.value.length < 4){
 		alert('아이디는 4글자 이상이어야 합니다.');
 		frm.userid.focus();
 		return false;
 	}
-	if(document.frm.nomalPass.value ==""){
+	if(document.frm.comPass.value ==""){
 		alert('암호는 반드시 입력해야합니다.');
 		frm.pwd.focus();
 		return false;
 	}
 	
-	if(document.frm.nomalPass.value != document.frm.pwd_check.value){
+	if(document.frm.comPass.value != document.frm.pwd_check.value){
 		alert('암호가 일치하지 않습니다.');
 		frm.pwd.focus();
 		return false;
@@ -57,27 +57,22 @@ function joinCheck(){
 		frm.reid.focus();
 		return false;
 	}
-	if(document.frm.age.value.length == 0) {
-		alert("나이를 입력헤 주세요");
+	if(document.frm.comName.value.length == 0) {
+		alert("기업명을 입력해 주세요");
 		frm.age.focus();
 		return false;
 	}
-	if(document.frm.age.value.length < 18) {
-		alert("미성년자는 가입할 수 없습니다.");
-		frm.age.focus();
-		return false;
-	}
-	if(document.frm.add.value.length == 0) {
+	if(document.frm.comAddr.value.length == 0) {
 		alert("주소를 입력해 주세요.");
 		frm.age.focus();
 		return false;
 	}
-	if(document.frm.phone.value.length == 0) {
+	if(document.frm.comPhone.value.length == 0) {
 		alert("전화번호를 입력해 주세요");
 		frm.age.focus();
 		return false;
 	}
-	if(document.frm.email.value.length == 0) {
+	if(document.frm.comEmail.value.length == 0) {
 		alert("이메일을 입력해 주세요");
 		frm.age.focus();
 		return false;
@@ -124,12 +119,12 @@ function updateCheck(){
 //아이디 중복체크
 //아이디가 입력되어있는지 확인
 function idCheck(){
-	if(document.frm.nomalId.value == "") {
+	if(document.frm.comId.value == "") {
 		alert("아이디를 입력하여 주십시오");
-		document.frm.nomalId.focus();
+		document.frm.comId.focus();
 		return;
 	}
-	var url = "idCheck.do?nomalId=" + document.frm.nomalId.value;
+	var url = "idCheckCom.do?comId=" + document.frm.comId.value;
 	window.open(
 			url, 
 			"_blank_1", 

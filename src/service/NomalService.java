@@ -24,4 +24,8 @@ public interface NomalService {
 	
 	//현재 페이지에서 보여줄 게시물의 시작지점
 	public int getOffset(int page);
+	//일반 회원가입
+	public int insertNomalUser(NomalUser nomaluser);
+	//아이디 체크
+	public String idCheck(String id);
 }

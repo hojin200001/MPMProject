@@ -11,6 +11,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import model.ComBoard;
 import model.FreeBoard;
 import model.NomalBoard;
 import service.ComService;
@@ -48,7 +50,7 @@ public class ComController {
 	public ModelAndView boardView(HttpSession session, int cnum){
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("user" , session.getAttribute("user"));
-		mav.addObject(cservice.boardView(cnum));
+		mav.addObject(cservice.comView(cnum));
 		mav.setViewName("com/comView");
 		return mav;
 	}
@@ -59,7 +61,6 @@ public class ComController {
 										@RequestParam(defaultValue="1") int search_type,
 										HttpSession session){
 		ModelAndView mav = new ModelAndView();
-		System.out.println(search_type);
 		if(session.getAttribute("user") != null && (int)session.getAttribute("userInfo") ==2){
 			HashMap<String , Object> map = (HashMap<String, Object>) session.getAttribute("user");
 			HashMap<String, Object> cb = new HashMap<>();
@@ -85,10 +86,35 @@ public class ComController {
 		return "/com/comWriteForm";
 	}
 	@RequestMapping("comWrite.do")
-	public ModelAndView comWrite(){
+	public String comWrite(ComBoard comBoard){
+		cservice.insertComBoard(comBoard);
+		return "redirect:comBoardList.do ";
+	}
+	@RequestMapping("comModifyForm.do")
+	public ModelAndView comModifyForm(HttpSession session, int cnum){
 		ModelAndView mav = new ModelAndView();
+		HashMap<String, Object> user = new HashMap<>();
+		user = (HashMap<String, Object>) session.getAttribute("user");
+		ComBoard comboard = new ComBoard();
+		comboard = cservice.selectComBoardOne((String)user.get("id"), cnum);
+		mav.addObject("comboard", comboard);
+		mav.setViewName("/com/comModifyForm");
 		return mav;
 	}
+	@RequestMapping("comModify.do")
+	public String comModify(ComBoard comboard){
+		cservice.updateComBoard(comboard);
+		
+		return "redirect:comBoardList.do";
+	}
+	@RequestMapping("comDelete.do")
+	public String comDelete(HttpSession session, int cnum ){
+		HashMap<String, Object> user = new HashMap<>();
+		user = (HashMap<String, Object>)session.getAttribute("user");
+		cservice.deleteComBoard(cnum, (String)user.get("id"));
+		return "redirect:comBoardList.do";
+	}
+	
 	//------------------------------------------------------------------------------------------------------------------------------------//
 	//시간계산 지우지 마시길
 	public List<String >getTime(List<FreeBoard> list){
