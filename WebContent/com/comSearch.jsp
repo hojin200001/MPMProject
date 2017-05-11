@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
 <link rel="stylesheet" type="text/css" href="css/main/public_header.css">
 <link rel="stylesheet" type="text/css" href="css/main/SkyBanner.css">
+
 <title>Insert title here</title>
 <style type="text/css">
 <!--
@@ -15,6 +16,7 @@
 	padding-top: 5px;
 	border-bottom: 1px solid #b5b5b5;
 }
+
 
 .contents_top>span {
 	font-size: 12px;
@@ -52,18 +54,18 @@
 	background-color: #fbfbfb;
 	
 }
-.divSearch_1, .divSearch_2, .divSearch_3, .divSearch_4{
+.divSearch_1, #divSearch_2, .divSearch_3, #divSearch_4{
 	width: 100%;
 	border: 1px solid #d5d5d5;
 }
 .divSearch_1,.divSearch_3{
 	height: 50px;
 }
-.divSearch_2, .divSearch_4{
-	min-height: 161px;
+#divSearch_2, #divSearch_4{
+	min-height: 130px;
 }
-.divSearch_2{
-	background-color: #fff;
+#divSearch_2{
+	height: 200px;
 }
 .divSearch_4{
 	background-color: #fff;
@@ -105,7 +107,7 @@
 	background-color: #f3f3f4;
 }
 .divSearch_2_div_div{
-	width: 10.82%;
+	width: 10.81%;
 	height: 35px;
 	border-right: 1px solid #bbb;
     border-bottom: 1px solid #bbb;
@@ -114,19 +116,21 @@
 	text-align: center;
 	padding-top: 5px;
 }
+.divSearch_2_div_div:HOVER{
+	cursor: pointer;
+}
 .divSearch_2_div2{
 	width: 100%;
 	height: auto;
-}
-.divSearch_2_div2>ul{
 	list-style:none;
 }
-.divSearch_2_div2>ul>li{
+.divSearch_2_div2>li{
 	padding-right:90px;
 	margin-top: 5px;
+	margin-left: 5px;
 	float: left;
 }
-.divSearch_2_div2>ul>li:HOVER{
+.divSearch_2_div2>li:HOVER{
 	cursor: pointer;
 	font-weight: bold;
 }
@@ -136,7 +140,14 @@
 	border: 1px solid #d5d5d5;
 	float: left;
 	margin-left: 2px;
+	text-align: center;
+	cursor: pointer;
 }
+.divSearch_4_div:HOVER{
+	color:#fff;
+	background-color: #0f4579;
+}
+
 .divSearch_5{
 	width: 100%;
 	height: 150px;
@@ -197,6 +208,11 @@
 	background-color: #505050;
     color: #fff;
 }
+.divSearch_2{
+	border-left: 1px solid #5da3d3;
+	border-right: 1px solid #5da3d3;
+}
+
 .divTable_Top{
 	width: 85%;
 	margin: 0 auto;
@@ -234,6 +250,8 @@
 	width: 85px;
 	margin: 0 auto;
 }
+
+
 table{
    	border-collapse: collapse;
     width: 85%;
@@ -273,9 +291,93 @@ tr{
 </style>
 <script type="text/javascript">
 $(window).load(function(){
-	$(".divSearch_2").hide();
-	$(".divSearch_4").hide();
+	$("#divSearch_2").hide();
+	$("#divSearch_2").val('1');
+	$("#divSearch_4").hide();
+	$("#divSearch_4").val('1');
+	
+	var area = 'seoul';
+	$.ajax({
+		url:"json/area.json",
+		dataType: "json",
+		success: function(result){
+			$.each(result[area], function(key){
+				$.each(result[area][key], function(key, value){
+					$('.divSearch_2_div2').append(
+							"<li onclick='area2(\""+value+","+area+"\")'><a>"+value+"</a></li>");
+				});
+			});
+		}
+	});
 });
+function area(e){
+	var value = e;
+	$('.divSearch_2_div2 li').remove();
+	$.ajax({
+		url:"json/area.json",
+		dataType: "json",
+		success: function(result){
+			$.each(result[value], function(key){
+				$.each(result[value][key], function(key, value){
+					$('.divSearch_2_div2').append(
+							"<li ><a onclick='area2(\""+value+","+e+"\")'>"+value+"</a></li>");
+				});
+			});
+		}
+	});
+}
+function areaSearch(){
+	if($('#divSearch_2').val() == 1){
+		$("#divSearch_2").show();
+		$("#divSearch_4").hide();
+		$(".divSearch_3").css("border-left", "1px solid #d5d5d5");
+		$(".divSearch_3").css("border-right", "1px solid #d5d5d5");
+		$(".divSearch_3").css("border-top", "1px solid #d5d5d5");
+		$("#divSearch_2").val('2');
+		$("#divSearch_2").css("border-left", "2px solid #5da3d3");
+		$("#divSearch_2").css("border-right", "2px solid #5da3d3");
+		$("#divSearch_2").css("border-bottom", "2px solid #5da3d3");
+		$(".divSearch_1").css("border-left", "2px solid #5da3d3");
+		$(".divSearch_1").css("border-right", "2px solid #5da3d3");
+		$(".divSearch_1").css("border-top", "2px solid #5da3d3");
+	}else{
+		$("#divSearch_2").hide();
+		$("#divSearch_2").val('1');
+		$(".divSearch_1").css("border-left", "1px solid #d5d5d5");
+		$(".divSearch_1").css("border-right", "1px solid #d5d5d5");
+		$(".divSearch_1").css("border-top", "1px solid #d5d5d5");
+	}
+}
+function jobSearch(){
+	if($("#divSearch_4").val() == 1){
+		$("#divSearch_4").show();
+		$("#divSearch_2").hide();
+		$(".divSearch_1").css("border-left", "1px solid #d5d5d5");
+		$(".divSearch_1").css("border-right", "1px solid #d5d5d5");
+		$(".divSearch_1").css("border-top", "1px solid #d5d5d5");
+		$("#divSearch_4").val('2');
+		$("#divSearch_4").css("border-left", "2px solid #5da3d3");
+		$("#divSearch_4").css("border-right", "2px solid #5da3d3");
+		$("#divSearch_4").css("border-bottom", "2px solid #5da3d3");
+		$(".divSearch_3").css("border-left", "2px solid #5da3d3");
+		$(".divSearch_3").css("border-right", "2px solid #5da3d3");
+		$(".divSearch_3").css("border-top", "2px solid #5da3d3");
+	}else{
+		$("#divSearch_4").hide();
+		$("#divSearch_4").val('1');
+		$(".divSearch_3").css("border-left", "1px solid #d5d5d5");
+		$(".divSearch_3").css("border-right", "1px solid #d5d5d5");
+		$(".divSearch_3").css("border-top", "1px solid #d5d5d5");
+	}	
+	
+}
+function carrer(e){
+	var a = e;
+	$('divSearch_3_1 span').remove();
+	$('divSearch_3_1 img').remove();
+	$('divSearch_3_1').append("<span>"+a+"</span><img alt='삭제하기' src='img/com/Xicon.png'>");
+	
+}
 </script>
 </head>
 <body>
@@ -355,78 +457,123 @@ $(window).load(function(){
 		<div  class="divSearch">
 			<div class="divSearch_1">
 				<span>지역선택</span>
-				<div class="divSearch_1_1">
+				<div class="divSearch_1_1" onclick="areaSearch()">
 					<div class="divSearch_1_1_1">
 						<span>서울 강남구</span>
 						<img alt="삭제하기" src="img/com/Xicon.png">
 					</div>
 				</div>
 			</div>
-			<div class="divSearch_2">
+			<div value = "" id="divSearch_2" class="">
 				<div class="divSearch_2_div">
-					<div  class="divSearch_2_div_div">지역1</div>
-					<div  class="divSearch_2_div_div">지역2</div>
-					<div  class="divSearch_2_div_div">지역3</div>
-					<div  class="divSearch_2_div_div">지역4</div>
-					<div  class="divSearch_2_div_div">지역5</div>
-					<div  class="divSearch_2_div_div">지역6</div>
-					<div  class="divSearch_2_div_div">지역7</div>
-					<div  class="divSearch_2_div_div">지역8</div>
-					<div  class="divSearch_2_div_div">지역9</div>
-					<div  class="divSearch_2_div_div">지역10</div>
-					<div  class="divSearch_2_div_div">지역11</div>
-					<div  class="divSearch_2_div_div">지역12</div>
-					<div  class="divSearch_2_div_div">지역13</div>
-					<div  class="divSearch_2_div_div">지역14</div>
-					<div  class="divSearch_2_div_div">지역15</div>
-					<div  class="divSearch_2_div_div">지역16</div>
-					<div  class="divSearch_2_div_div">지역17</div>
-					<div  class="divSearch_2_div_div">지역18</div>
+					<div  class="divSearch_2_div_div" onclick="area('seoul')" id = "seoul">서울</div>
+					<div  class="divSearch_2_div_div" onclick="area('pusan')" value="pusan" id="pusan">부산</div>
+					<div  class="divSearch_2_div_div" onclick="area('daegu')"value="daegu" id="daegu">대구</div>
+					<div  class="divSearch_2_div_div" onclick="area('incheon')"value="incheon" id="incheon">인천</div>
+					<div  class="divSearch_2_div_div" onclick="area('gwangju')" value="gwangju" id ="gwangju">광주</div>
+					<div  class="divSearch_2_div_div" onclick="area('daejun')" value="daejun" id="daejun">대전</div>
+					<div  class="divSearch_2_div_div" onclick="area('ulsan')" value="ulsan" id="ulsan">울산</div>
+					<div  class="divSearch_2_div_div">세종</div>
+					<div  class="divSearch_2_div_div" onclick="area('kyunggi')" value="kyunggi" id="kyunggi">경기</div>
+					<div  class="divSearch_2_div_div" onclick="area('kyungnam')" value="kyungnam" id="kyungnam">경남</div>
+					<div  class="divSearch_2_div_div" onclick="area('kyungbuk')" value="kyungbuk" id="kyungbuk">경북</div>
+					<div  class="divSearch_2_div_div" onclick="area('chungnam')"value="chungnam" id="chungnam">충남</div>
+					<div  class="divSearch_2_div_div" onclick="area('chungbuk')" value="chungbuk" id="chungbuk">충북</div>
+					<div  class="divSearch_2_div_div"  onclick="area('jeonnam')" value="jeonnam" id="jeonnam">전남</div>
+					<div  class="divSearch_2_div_div" onclick="area('jeonbuk')"value="jeonbuk" id="jeonbuk">전북</div>
+					<div  class="divSearch_2_div_div" onclick="area('kangwon')" value="kangwon" id="kangwon">강원</div>
+					<div  class="divSearch_2_div_div" onclick="area('jeju')" value="jeju" id="jeju">제주</div>
+					<div  class="divSearch_2_div_div">전국</div>
 				</div>
 				<div class="divSearch_2_div2">
-					<ul>
-						<li><label>구역1</label></li>
-						<li><label>구역1</label></li>
-						<li><label>구역1</label></li>
-						<li><label>구역1</label></li>
-						<li><label>구역1</label></li>
-						<li><label>구역1</label></li>
-						<li><label>구역1</label></li>
-						<li><label>구역1</label></li>
-						<li><label>구역1</label></li>
-						<li><label>구역1</label></li>
-						<li><label>구역1</label></li>
-					</ul>
 				</div>
+				<script type="text/javascript">
+					function area2(e){
+						var a = e+"";
+						var b = a.split(',');
+						var ku = b[0];
+						var si = b[1];
+						if(si == 'seoul'){
+							si='서울';
+						}else if(si == 'pusan'){
+							si='부산';
+						}
+						else if(si == 'daegu'){
+							si='대구';
+						}
+						else if(si == 'incheon'){
+							si='인천';
+						}
+						else if(si == 'gwangju'){
+							si='광주';
+						}
+						else if(si == 'daejun'){
+							si='대전';
+						}
+						else if(si == 'ulsan'){
+							si='울산';
+						}
+						else if(si == 'kyunggi'){
+							si='경기';
+						}
+						else if(si == 'kyungnam'){
+							si='경남';
+						}
+						else if(si == 'kyungbuk'){
+							si='경북';
+						}
+						else if(si == 'chungnam'){
+							si='충남';
+						}
+						else if(si == 'chungbuk'){
+							si='충북';
+						}
+						else if(si == 'jeonnam'){
+							si='전남';
+						}
+						else if(si == 'jeonbuk'){
+							si='전북';
+						}
+						else if(si == 'kangwon'){
+							si='강원';
+						}
+						else if(si == 'jeju'){
+							si='제주';
+						}
+						$(".divSearch_1_1_1 span").remove();
+						$(".divSearch_1_1_1 img").remove();
+						$(".divSearch_1_1_1").append(
+						"<span>"+si+" "+ku+"</span><img alt='삭제하기' src='img/com/Xicon.png'>");
+					}
+					
+				</script>
 			</div>
 			<div class="divSearch_3">
-				<span>직업선택</span><div class="divSearch_3_1"></div>
+				<span>직업선택</span><div class="divSearch_3_1" onclick="jobSearch()"></div>
 			</div>
-			<div class="divSearch_4">
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
-				<div class="divSearch_4_div">어짜고저짜고</div>
+			<div class="" id ="divSearch_4" value="">
+				<div class="divSearch_4_div" onclick="carrer('거푸집기능사')">거푸집기능사</div>
+				<div class="divSearch_4_div" onclick="carrer('건축도장기능사')">건축도장기능사</div>
+				<div class="divSearch_4_div" onclick="carrer('건설기계기능사')">건설기계기능사</div>
+				<div class="divSearch_4_div" onclick="carrer('건축목공기능사')">건축목공기능사</div>
+				<div class="divSearch_4_div" onclick="carrer('금속기사')">금속기사</div>
+				<div class="divSearch_4_div" onclick="carrer('기계기술사')">기계기술사</div>
+				<div class="divSearch_4_div" onclick="carrer('금형기술사')">금형기술사</div>
+				<div class="divSearch_4_div" onclick="carrer('기계정비산업기사')">기계정비산업기사</div>
+				<div class="divSearch_4_div" onclick="carrer('기계조립산업기사')">기계조립산업기사</div>
+				<div class="divSearch_4_div" onclick="carrer('도배기능사')">도배기능사</div>
+				<div class="divSearch_4_div"onclick="carrer('마장기능사')">마장기능사</div>
+				<div class="divSearch_4_div" onclick="carrer('배관산업기사')">배관산업기사</div>
+				<div class="divSearch_4_div" onclick="carrer('석공기능사')">석공기능사</div>
+				<div class="divSearch_4_div"onclick="carrer('연삭기능사')">연삭기능사</div>
+				<div class="divSearch_4_div" onclick="carrer('용접기술사')">용접기술사</div>
+				<div class="divSearch_4_div" onclick="carrer('유리시공기능사')">유리시공기능사</div>
+				<div class="divSearch_4_div" onclick="carrer('일반기계기사')">일반기계기사</div>
+				<div class="divSearch_4_div" onclick="carrer('전기공사기사')">전기공사기사</div>
+				<div class="divSearch_4_div" onclick="carrer('전기산업기사')">전기산업기사</div>
+				<div class="divSearch_4_div" onclick="carrer('전자기사')">전자기사</div>
+				<div class="divSearch_4_div" onclick="carrer('토목기사')">토목기사</div>
+				<div class="divSearch_4_div" onclick="carrer('포장기사')">포장기사</div>
 			</div>
 			<div class="divSearch_5">
 				<div class="divSearch_5_1">
