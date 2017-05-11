@@ -32,15 +32,18 @@ public class FreeReplyController {
 	}
 	
 	@RequestMapping("replyDelete.do")
-	public void deleteReply(int num){
+	public String deleteReply(int reNum , int num){
 		
+		freeReplyService.deleteReply(reNum);
+		
+		return "redirect:freeBoardView.do?num="+num;
 	}
 	
 	@RequestMapping("replyList")
-	public List<FreeReplyVo> readReplyList(){
+	public List<FreeReplyVo> readReplyList(int num){
 		
 		ModelAndView mav = new ModelAndView();
-		List<FreeReplyVo> freereply = freeReplyService.readReplyList();
+		List<FreeReplyVo> freereply = freeReplyService.readReplyList(num);
 		
 		return freereply;
 		

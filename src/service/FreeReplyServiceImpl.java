@@ -30,9 +30,9 @@ public class FreeReplyServiceImpl implements FreeReplyService{
 	}
 
 	@Override
-	public void deleteReply(int num) {
+	public void deleteReply(int reNum) {
 		// TODO Auto-generated method stub
-		
+		fReplyDao.deleteFreeReply(reNum);
 	}
 
 	@Override
@@ -42,9 +42,9 @@ public class FreeReplyServiceImpl implements FreeReplyService{
 	}
 
 	@Override
-	public List<FreeReplyVo> readReplyList() {
+	public List<FreeReplyVo> readReplyList(int num) {
 		// TODO Auto-generated method stub
-		return fReplyDao.selectAll();
+		return fReplyDao.selectReply(num);
 	}
 	
 }

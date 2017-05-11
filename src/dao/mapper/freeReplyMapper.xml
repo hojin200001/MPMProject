@@ -17,8 +17,8 @@
 		delete from freeReply where reNum = #{reNum}
 	</delete>
 
-	<select id="selectAll" resultType="freeReplyVo">	
-		select * from freeReply
+	<select id="selectReply" resultType="freeReplyVo">	
+		select * from freeReply where num=#{num}
 	</select>
 
 

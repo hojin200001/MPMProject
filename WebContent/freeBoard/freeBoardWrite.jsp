@@ -197,12 +197,12 @@ width: 25%;
 
 			<tr>
 				<th>제목</th>
-				<td><input type="text" name="title" size="70" >* 필수</td>
+				<td><input type="text" name="title" size="70"  placeholder="제목을 입력해주세요.">* 필수</td>
 			</tr>
 		
 			<tr>
 				<th>내용</th>
-				<td><textarea rows="15" cols="70" name="conValue"></textarea>* 필수 </td>
+				<td><textarea rows="15" cols="70" name="conValue"  placeholder="내용을 입력해주세요."></textarea>* 필수 </td>
 				
 			</tr>
 		
