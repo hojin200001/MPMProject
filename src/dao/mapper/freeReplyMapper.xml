@@ -17,8 +17,13 @@
 		delete from freeReply where reNum = #{reNum}
 	</delete>
 
+<<<<<<< HEAD
 	<select id="selectAll" resultType="freeReplyVo">	
 		select * from freeReply
+=======
+	<select id="selectReply" resultType="freeReplyVo">	
+		select * from freeReply where num=#{num}
+>>>>>>> cdf2d34813135f8ea4b5d997b7e7bb181173b1e4
 	</select>
 
 

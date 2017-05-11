@@ -144,7 +144,31 @@ width: 25%;
 	height: 100px;
 	width: 100%;
 }
+.reply{
+	border: 1;
+}
 
+.footer {
+	padding: 10px 0;
+	background-color: #f2f2f2;
+	text-align: center
+	font-size: 10px;
+}
+.replyList{
+	border-top: 1px solid lightgray;
+}
+
+textarea {
+    width: 80%;
+    height: 100px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
 -->
 
 </style>
@@ -186,10 +210,13 @@ width: 25%;
   				<img class="imageBack" src="img/free/m12338793364.jpg" width="900" height="180" />
   	</div>
   	<br>
+<<<<<<< HEAD
+=======
+  	<div class="table">
+>>>>>>> cdf2d34813135f8ea4b5d997b7e7bb181173b1e4
 	<table class="table table-condensed">
 		<tr>
-			<td>제목</td>
-			<td colspan="3">${freeBoard.title}</td>
+			<td colspan="4" style="font-size: 25px" >${freeBoard.title}</td>
 		</tr>
 		<tr>
 			<td>글쓴이/${freeBoard.createName}</td>	
@@ -197,7 +224,7 @@ width: 25%;
 			<td>작성일/<fmt:formatDate value="${freeBoard.createDay}" pattern="yyyy-MM-dd"/></td>
 		</tr>	
 		<tr>
-			<td colspan="4">${freeBoard.conValue}</td>
+			<td colspan="4" style="height: 350px;">${freeBoard.conValue}</td>
 		</tr>
 	</table>
 	<c:choose>
@@ -208,9 +235,31 @@ width: 25%;
 	</c:choose>
 	<input type="button" value="돌아가기" onclick="location.href='freeBoardList.do'">
 	</div>
+<<<<<<< HEAD
 	<br>
 	
 	<div>
+=======
+	</div>
+	<br>
+	
+	<div class="reply">
+		
+		<c:forEach items="${freereply}" var="freereply">
+		<div class="replyList">
+		<dl>
+			<dd>
+			${freereply.reName}  | ${freereply.reDay}
+			<a style="float: right">삭제  </a>  <a style="float: right">수정  |</a>	
+			</dd>
+			
+			<dt>${freereply.teText}</dt>
+		
+		</dl>
+		</div>	
+		</c:forEach>
+		
+>>>>>>> cdf2d34813135f8ea4b5d997b7e7bb181173b1e4
 		<form action="replyWrite.do"  method="post" name="frm">
 		<input type="hidden" name="reName" value="${user.id}"> 
 		<input type="hidden" name="num" value="${freeBoard.num}">
@@ -218,6 +267,7 @@ width: 25%;
 			<input type="submit" value="댓글">
 		</form>
 		
+<<<<<<< HEAD
 		<c:forEach items="${freereplyList}" var="freereply">
 		--------------------------------------------------------
 		<dl>
@@ -232,6 +282,13 @@ width: 25%;
 	
 	
 	<dir id="footer">
+=======
+	</div>
+	
+	
+	
+	<div class="footer" style="display: inline-block;">
+>>>>>>> cdf2d34813135f8ea4b5d997b7e7bb181173b1e4
 		<div class="company" style="float: left; width: 50% ">
 			<p>(주)MPM 네트웍스</p>
 			<address>
@@ -256,7 +313,11 @@ width: 25%;
 			<span>Copyright &copy; </span> <strong>(주)MPM 네트웍스.</strong> <span>All Rights Reserved.</span>
 		</p>
 		
+<<<<<<< HEAD
 	</dir>
+=======
+	</div>
+>>>>>>> cdf2d34813135f8ea4b5d997b7e7bb181173b1e4
 </div>
 
 

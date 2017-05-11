@@ -72,6 +72,8 @@ public class FreeBoardController {
 		//서비스의 readBoard
 		
 		mav.addObject(freeBoardService.readFreeBoard(num));
+		mav.addObject("freereply",fReplyService.readReplyList(num));
+		System.out.println(fReplyService.readReplyList(num));
 		mav.setViewName("/freeBoard/freeBoardView");
 		fReplyService.readReplyList();
 		return mav;
