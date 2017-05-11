@@ -21,15 +21,37 @@
 .textbottom_div_1{
 	width: 80%;
 	margin: 0 auto;
+	overflow:auto; 
+}
+.textbottom_div_1_1{
+	margin-top: 10px;
+	background-color: #0f4579;
+	border-radius: 10px;
+}
+.textbottom_div_1_1>span{
+	color: #fff;
 }
 .textbottom_div_1_1_1{
-	font-size: 15px;
+	font-size: 14px;
 }
 .textbottom_div_1_1_2{
 	font-size: 14px;
 }
-.textbottom_div_1_1_2{
+.textbottom_div_1_1_3{
 	font-size: 13px;
+}
+.textbottom_div_re{
+	width: 100%;
+	text-align: right;
+}
+.textbottom_div_re_span1{
+	margin-right: 20px;
+}
+.textbottom_div_re_span2{
+	color: red;
+}
+.textbottom_div_re_span3{
+	margin-right: 150px;
 }
 </style>
 </head>
@@ -150,10 +172,21 @@
 				</tr>
 			</table>
 			<div class="textbottom">
+				<div class="textbottom_div_re">
+				<span class="textbottom_div__re_span1">신청자 현황</span>
+				<c:choose>
+					<c:when test="${inCount <= comBoard.cwokers}">
+						<span class="">${inCount}</span>
+					</c:when>
+					<c:when test="${inCount > comBoard.cwokers}">
+						<span class="textbottom_div_re_span2">${inCount}</span>
+					</c:when>
+				</c:choose>
+				<span class="textbottom_div_re_span3">/${comBoard.cwokers}</span></div>
 				<div class="textAreas">
 					<textarea rows="10" name="ctext" placeholder="상세 내용을 작성해 주세요" style="font-size: 14px;">${comBoard.ctext}</textarea>
 				</div>
-				<div class="textbottom_div">
+				<div class="textbottom_div" style="background-color: #fff;">
 					<div class="textbottom_div_1">
 						<c:forEach items="${inComBoard}" var="in">
 						<div class="textbottom_div_1_1">
@@ -162,7 +195,7 @@
 							<span class="textbottom_div_1_1_3">
 								<fmt:formatDate value="${in.joinDay}" pattern="MM월dd일 HH시mm분ss"/>
 							</span>
-							<img alt="삭제하기" src="img/com/Xicon.png">
+							<img alt="삭제하기" src="img/com/Xicon.png" style="cursor: pointer;" onclick="location.href='deleteInComBoard.do?cnum=${comBoard.cnum}&nomalId=${in.nomalId}'">
 						</div>
 						</c:forEach>
 					</div>

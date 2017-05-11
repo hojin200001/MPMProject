@@ -128,7 +128,7 @@
 			<c:when test="${comBoard ne '[]'}">
 		<tr style="background-color:  #f2f2f2">
 			<th>근무지</th>
-			<th>등록 글 제목/신청인원</th>
+			<th>등록 글 제목</th>
 			<th>업무기간</th>
 			<th>급여</th>
 			<th>등록일</th>
@@ -139,11 +139,27 @@
 					<tr class="tr_contents">
 						<td>${c.carea}</td>
 						<td class="tr_contents_2"><a href="comView.do?cnum=${c.cnum}">${c.ctitle}</a></td>
-						<td>${c.comName}</td>
+						<td>${c.cday} 일</td>
 						<td>${c.cpay}</td>
-						<td><fmt:formatDate value="${c.createDay}" pattern="yyyy-MM-dd"/></td>
-						<td></td>
-						<td> 0/${c.cwokers}명</td>
+						<td style="font-size: 12px;font-weight: bold;"><fmt:formatDate value="${c.createDay}" pattern="yyyy-MM-dd"/></td>
+						<td style="font-size: 12px;font-weight: bold;">${c.cendDay}</td>
+						<c:forEach items="${icbrList}" var="d">
+							<c:choose>
+								<c:when test="${c.cnum == d.cnum}">
+									<c:choose>
+										<c:when test="${d.count > c.cwokers}">
+											<td><span style="color:red;">${d.count}</span>/${c.cwokers}명</td>
+										</c:when>
+										<c:otherwise>
+											<td><span>${d.count}</span>/${c.cwokers}명</td>
+										</c:otherwise>
+									</c:choose>
+								</c:when>
+								<c:otherwise>
+									<td> 0/${c.cwokers}명</td>
+								</c:otherwise>						
+							</c:choose>
+						</c:forEach>
 					</tr>
 					</c:forEach>
 					<tr>
@@ -153,7 +169,6 @@
 						<a class="contents_bottom" id="" href="boardList.do?page=${start-1}&type=${type}&keyword=${keyword}">이전</a>
 					</c:if>
 					<c:forEach begin="${start}" end="${end <last? end: last}" var="i">
-						
 						<c:choose>
 							<c:when test="${i == current }">
 								<a class="contents_bottom" id="on">${i}</a>
@@ -162,15 +177,11 @@
 								<a class="contents_bottom" id="" href="comBoardList.do?page=${i}&boardsPerPage=${PerPage}">${i}</a>				
 							</c:otherwise>
 						</c:choose>
-							
 					</c:forEach>
-					
 					<c:if test="${end < last}">
 						<a class="contents_bottom" id="" href="boardList.do?page=${end+1}&type=${type}&keyword=${keyword}">다음</a>
 						<a class="contents_bottom" id="" href="boardList.do?page=${last}&type=${type}&keyword=${keyword}">마지막</a>
-					
 					</c:if>
-					
 					</td>
 			</c:when>
 			<c:otherwise>

@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import model.ComBoard;
 import model.ComUser;
 import model.InComBoard;
+import model.InComBoardRe;
 import model.NomalBoard;
 
 public interface ComService {
@@ -41,4 +42,7 @@ public interface ComService {
 	//아이디 체크
 	public String idCheck(String id);
 	public List<InComBoard> selectIncomBoard(int cnum);
+	public int deleteInComBoard(int cnum, String nomalId);
+	public int InComBoardCount(int cnum);
+	public List<InComBoardRe> inComBoardCount();
 }

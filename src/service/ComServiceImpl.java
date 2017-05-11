@@ -15,6 +15,7 @@ import model.ComBoard;
 import model.ComDay;
 import model.ComUser;
 import model.InComBoard;
+import model.InComBoardRe;
 import model.NomalBoard;
 import model.NomalUser;
 @Service
@@ -213,6 +214,29 @@ public class ComServiceImpl implements ComService{
 		map.put("cnum", cnum);
 		List<InComBoard> ico = cdao.selectIncomBoard(map);
 		return ico;
+	}
+
+	@Override
+	public int deleteInComBoard(int cnum, String nomalId) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("cnum", cnum);
+		map.put("nomalId", nomalId);
+		int re = cdao.deleteInComBoard(map);
+		return 0;
+	}
+
+	@Override
+	public int InComBoardCount(int cnum) {
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("cnum", cnum);
+		int re = cdao.InComBoardCount(map);
+		return re;
+	}
+
+	@Override
+	public List<InComBoardRe> inComBoardCount() {
+		List<InComBoardRe> icbr = cdao.inComBoardCount();
+		return icbr;
 	}
 
 }
