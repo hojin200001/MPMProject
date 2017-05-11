@@ -8,7 +8,7 @@
   	 <sql id="ntitle">
         <choose>
             <when test="ntitle != null">
-                #{ntitle}
+                '${ntitle}'
             </when>
             <otherwise>
                 '제목없음'
@@ -18,7 +18,7 @@
     <sql id="ntext">
         <choose>
             <when test="ntext != ntext">
-                #{ntext}
+                '${ntext}'
             </when>
             <otherwise>
                 '내용없음'
@@ -30,12 +30,12 @@
   		select * from nomalUser where nomalId = '${id}'
   	</select>
   	
-  	<select id="selectLimitDesc" resultType="nomalBoard">
-  		select * from nomalBoard order by Nnum desc limit 4
+  	<select id="selectLimitDesc" resultType="comBoard">
+  		select * from comBoard order by Cnum desc limit 10
   	</select>
   	
-  	<select id = "areaJobNum" parameterType="String" resultType="int">
-  		select count(*) from comboard where Carea like '%강남%'
+  	<select id = "areaJobNum" parameterType="java.util.HashMap" resultType="int">
+  		select count(*) from comboard where Carea like '%${kiring}%'
   	</select>
   	
   	<select id="nomalView" parameterType="java.util.HashMap" resultType="nomalBoard">
@@ -64,4 +64,34 @@
     <select id="selectIdCheck" parameterType="java.util.HashMap" resultType="nomalUser">
     	select * from nomalUser where nomalId ='${id}';
     </select>
+    
+    <select id="selectSearchByKeyword" parameterType="java.util.HashMap" resultType="nomalBoard">
+    	select * from nomalBoard
+    	where 1=1
+    	<if test="!(cb eq null)"> and
+    		<foreach collection="cb" item="c" separator="or " open="(" close=")"> Njob like '%${c}%'</foreach>
+    	</if>
+    	<if test="!(rb eq null)"> and Ncareer like '%${rb}%'</if>
+    	<if test="!(ar eq null)"> and Narea like '%${ar}%'</if>
+    	order by Nnum desc limit #{offset}, #{boardsPerPage}
+    </select>
+    
+    <select id="getCountSearchByKeyword" parameterType="java.util.HashMap" resultType="int">
+    	select count(*) from nomalBoard
+    	where 1=1
+    	<if test="!(cb eq null)"> and
+    		<foreach collection="cb" item="c" separator="or " open="(" close=")"> Njob like '%${c}%'</foreach>
+    	</if>
+    	<if test="!(rb eq null)"> and Ncareer like '%${rb}%'</if>
+    	<if test="!(ar eq null)"> and Narea like '%${ar}%'</if>
+    </select>
+
+    <insert id="insertNomalBoard" parameterType="nomalBoard">
+    	insert into nomalBoard values(0,'${ntitle}','${ntext}','${njob}','${ncareer}','${nphone}','${nemail}','${nday}',now(),'${ntext}',0,'${nomalId}')
+    </insert>
+    
+    <select id="getPhoneNum" parameterType="nomalBoard" resultType="String">
+    	select Nphone from nomaluser where nomalId='${nomalId}'
+    </select>
+    
   </mapper>

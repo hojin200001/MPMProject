@@ -3,14 +3,17 @@ package service;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.RequestParam;
+
+import model.ComBoard;
 import model.NomalBoard;
 import model.NomalUser;
 
 public interface NomalService {
 	public NomalUser selectOne(String id);
 	public HashMap<String, Object> getLogin(String id, String pass);
-	public List<NomalBoard> selectLimitDesc();
-	public int areaJobNum(String area);
+	public List<ComBoard> selectLimitDesc();
+	public HashMap<String, Object> areaJobNum(String json);
 	public NomalBoard boardView(int nnum);
 	public HashMap<String, Object> nomalBoardList(int page);
 	//네이게이터의 첫번째 번호 얻기
@@ -27,5 +30,12 @@ public interface NomalService {
 	//일반 회원가입
 	public int insertNomalUser(NomalUser nomaluser);
 	//아이디 체크
+	public int insertNomalBoard(NomalBoard nomalBoard);
 	public String idCheck(String id);
+	
+	public HashMap<String, Object> getNomalBoardListByCondition(int page, 
+			@RequestParam(required=false) List cb,
+			@RequestParam(required=false) String rb,
+			@RequestParam(required=false) String ar);
+
 }

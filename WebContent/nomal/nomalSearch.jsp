@@ -61,7 +61,7 @@ a.commentLink {
 		<li>오늘의 구인 현황 : </li>
 	</ul>
 </nav>
-<form action="comBoardList.do" id="formTest" method="post"> 
+<form action="nomalBoardList.do" id="formTest" name="area" method="post"> 
 
 <div class="quote">
 <p style="text-align: right;">
@@ -184,11 +184,12 @@ a.commentLink {
 <div id="checkDiv">
 	<ol></ol>
 </div>	
-<div id="radioDiv">	
+<div>
+	<h6>경력 선택</h6>
 	<p>
-		라디오1<input type="radio" name="radiobox" value="으으으으으음" /> 
-		라디오2<input type="radio" name="radiobox" value="으으으으으음1"/> 
-		라디오3<input type="radio" name="radiobox" value="으으으으으음2"/>   
+		1년<input type="radio" name="radiobox" value="1년"/> 
+		2년<input type="radio" name="radiobox" value="2년"/> 
+		3년<input type="radio" name="radiobox" value="3년"/>   
 	</p>
 </div>
 
@@ -203,14 +204,12 @@ var wh;
  
 function formSubmit(){
 	$("#formTest").submit();
-	$("#formTest2").submit();
-	$("#formTest3").submit();
 }
  
 function areaPass(area){
 	wh=area;
 	$.ajax({
-		url : "area2.json", //데이터를 요청할 URL주소
+		url : "nomal/area.json", //데이터를 요청할 URL주소
 		dataType : "json",
 		success : function(result){
 			
@@ -226,14 +225,14 @@ function areaPass(area){
 
 function jobs(){
 	$.ajax({
-		url : "job.json", //데이터를 요청할 URL주소
+		url : "nomal/job.json", //데이터를 요청할 URL주소
 		dataType : "json",
 		success : function(result){
 			$("#checkDiv ol").empty();
 			$.each(result.job, function(i,d){
 				$("#checkDiv ol").append(
 					//"<input type=" + "'" + "checkbox" + "'"  + " name=" + "'" + "checkbox" + "'"  + " value=" + d["value"] + "/>" + d["value"]
-					"<input type=" + "checkbox" + " name=" + "checkbox" + " value=" + d["value"] + "/>" + d["value"]
+					"<input type=" + "checkbox" + " name=" + "checkbox" + " value=" + d["value"] + ">" + d["value"]
 				);
 			});
 		}
@@ -246,13 +245,15 @@ function jobsd(){
  
 function areaChoose(vl){
 	var text = vl;
-	if($('#test5').val()==null){
+	/*if($('#test5').val()==null){
 		$('#test5').val(text);
 	}
 	else{
 		var testEx = $('#test5').val() + vl +', ';
 		$('#test5').val(testEx);
-	}
+	}*/
+	
+	$('#test5').val(text);
 };
 </script>
  
