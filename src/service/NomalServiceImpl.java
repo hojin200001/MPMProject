@@ -175,4 +175,10 @@ public class NomalServiceImpl implements NomalService{
 		return 0;
 	}
 
+	@Override
+	public void sse() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
