@@ -99,7 +99,7 @@
     border: 1px solid #d5d5d5;
     background: #e5f3ff;
 }
-.divSearch_1_1_1, .divSearch_1_3_1{
+.divSearch_1_1_1, .divSearch_3_1{
 	color :#728fb0;
 }
 .divSearch_2_div{
@@ -373,9 +373,9 @@ function jobSearch(){
 }
 function carrer(e){
 	var a = e;
-	$('divSearch_3_1 span').remove();
-	$('divSearch_3_1 img').remove();
-	$('divSearch_3_1').append("<span>"+a+"</span><img alt='삭제하기' src='img/com/Xicon.png'>");
+	$('.divSearch_3_1 span').remove();
+	$('.divSearch_3_1 img').remove();
+	$('.divSearch_3_1').append("<span>"+a+"</span><img alt='삭제하기' src='img/com/Xicon.png'>");
 	
 }
 </script>
@@ -549,7 +549,9 @@ function carrer(e){
 				</script>
 			</div>
 			<div class="divSearch_3">
-				<span>직업선택</span><div class="divSearch_3_1" onclick="jobSearch()"></div>
+				<span>직업선택</span><div class="divSearch_3_1" onclick="jobSearch()">
+					<div class="divSearch_1_3_1"></div>
+				</div>
 			</div>
 			<div class="" id ="divSearch_4" value="">
 				<div class="divSearch_4_div" onclick="carrer('거푸집기능사')">거푸집기능사</div>
@@ -614,7 +616,7 @@ function carrer(e){
 		</div>
 		<div class="divTable_Top">
 			<div class= "Top_1">
-				<span class="Top_1_span1">전체 구인 공고</span>
+				<span class="Top_1_span1">전체 구직 공고</span>
 				<span class="Top_1_span2">/</span>
 				<span class="Top_1_span3">567</span>
 			</div>
@@ -636,10 +638,9 @@ function carrer(e){
 			<table>
 				<tr>
 					<th>지역</th>
-					<th>업체이름/제목</th>
+					<th>작성자/제목</th>
 					<th>근무일</th>
 					<th>급여</th>
-					<th>마감일</th>
 					<th>등록시간</th>
 				</tr>
 				<tr>
@@ -647,7 +648,6 @@ function carrer(e){
 					<td>아무게업체/아하하하이히히히</td>
 					<td>3일</td>
 					<td>100000</td>
-					<td>2017-10-11</td>
 					<td>1시간30분전</td>
 				</tr>
 				<tr>
@@ -655,7 +655,6 @@ function carrer(e){
 					<td>아무게업체/아하하하이히히히</td>
 					<td>3일</td>
 					<td>100000</td>
-					<td>2017-10-11</td>
 					<td>1시간30분전</td>
 				</tr>
 				<tr>
@@ -663,7 +662,6 @@ function carrer(e){
 					<td>아무게업체/아하하하이히히히</td>
 					<td>3일</td>
 					<td>100000</td>
-					<td>2017-10-11</td>
 					<td>1시간30분전</td>
 				</tr>
 				<tr>
@@ -671,7 +669,6 @@ function carrer(e){
 					<td>아무게업체/아하하하이히히히</td>
 					<td>3일</td>
 					<td>100000</td>
-					<td>2017-10-11</td>
 					<td>1시간30분전</td>
 				</tr>
 				<tr>
@@ -679,7 +676,6 @@ function carrer(e){
 					<td>아무게업체/아하하하이히히히</td>
 					<td>3일</td>
 					<td>100000</td>
-					<td>2017-10-11</td>
 					<td>1시간30분전</td>
 				</tr>
 				<tr>
@@ -687,7 +683,6 @@ function carrer(e){
 					<td>아무게업체/아하하하이히히히</td>
 					<td>3일</td>
 					<td>100000</td>
-					<td>2017-10-11</td>
 					<td>1시간30분전</td>
 				</tr>
 				<tr>
