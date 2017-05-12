@@ -17,21 +17,19 @@
 		delete from freeReply where reNum = #{reNum}
 	</delete>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+	<select id="selectAll" resultType="freeReplyVo">	
+		select * from freeReply
+	</select>
+>>>>>>> projecting
+>>>>>>> 4ef854f14d0ee49c84eae739dfb83c94bf34437d
 	<select id="selectReply" resultType="freeReplyVo">	
 		select * from freeReply where num=#{num}
 	</select>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </mapper>

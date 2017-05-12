@@ -211,7 +211,14 @@ textarea {
   				<img class="imageBack" src="img/free/m12338793364.jpg" width="900" height="180" />
   	</div>
   	<br>
+<<<<<<< HEAD
   	<div class="table">
+=======
+<<<<<<< HEAD
+=======
+  	<div class="table">
+>>>>>>> cdf2d34813135f8ea4b5d997b7e7bb181173b1e4
+>>>>>>> 4ef854f14d0ee49c84eae739dfb83c94bf34437d
 	<table class="table table-condensed">
 		<tr>
 			<td colspan="4" style="font-size: 25px" >${freeBoard.title}</td>
@@ -233,6 +240,14 @@ textarea {
 	</c:choose>
 	<input type="button" value="돌아가기" onclick="location.href='freeBoardList.do'">
 	</div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+	<br>
+	
+	<div>
+=======
+>>>>>>> 4ef854f14d0ee49c84eae739dfb83c94bf34437d
 	</div>
 	<br>
 	
@@ -286,18 +301,34 @@ textarea {
 		
 >>>>>>> d5e75ef75b0488467f8f0d03c534acca7d03fe2a
 		</c:forEach>
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 4ef854f14d0ee49c84eae739dfb83c94bf34437d
 		<form action="replyWrite.do"  method="post" name="frm">
 		<input type="hidden" name="reName" value="${user.id}"> 
 		<input type="hidden" name="num" value="${freeBoard.num}">
 			<textarea name="teText" placeholder="댓글을 달아주세요."></textarea>
 			<input type="submit" value="댓글">
 		</form>
+<<<<<<< HEAD
 		
 	</div>
 	
 	
 	
+=======
+		<c:forEach items="${freereplyList}" var="freereply">
+		<dl>
+			<dt>${freereply.reName}| ${freereply.reDay}</dt>
+			
+			<dd>${freereply.teText}</dd>
+		
+		</dl>	
+		</c:forEach>
+	</div>
+	
+>>>>>>> 4ef854f14d0ee49c84eae739dfb83c94bf34437d
 	<div class="footer" style="display: inline-block;">
 		<div class="company" style="float: left; width: 50% ">
 			<p>(주)MPM 네트웍스</p>
@@ -323,6 +354,10 @@ textarea {
 			<span>Copyright &copy; </span> <strong>(주)MPM 네트웍스.</strong> <span>All Rights Reserved.</span>
 		</p>
 		
+<<<<<<< HEAD
+=======
+	</dir>
+>>>>>>> 4ef854f14d0ee49c84eae739dfb83c94bf34437d
 	</div>
 </div>
 

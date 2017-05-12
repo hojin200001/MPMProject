@@ -44,7 +44,8 @@ function logOut(){
 	  <ul id="menu">
 	    <li><a href="index.do">홈으로</a></li>
 	    <li><a href="comSearch.do">인력찾기</a></li>
-	    <li><a href="comBoardList.do">구직 정보</a>
+	    <li>
+	    	<a href="comBoardList.do">구직 정보</a>
 	    	<ul>
 	    		<li><a href="comBoardList.do">구직 등록 현황</a></li>
 	    		<li><a href="comWriteForm.do">구직 등록하기</a></li>	

@@ -1,5 +1,15 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: YOUNG_HWAN
 Build-Jdk: 1.8.0_121
+=======
+<<<<<<< HEAD
+Built-By: asxzq
+Build-Jdk: 1.8.0_131
+=======
+Built-By: HB07-05
+Build-Jdk: 1.8.0_111
+>>>>>>> projecting
+>>>>>>> 4ef854f14d0ee49c84eae739dfb83c94bf34437d
 Created-By: Maven Integration for Eclipse
 

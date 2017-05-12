@@ -70,7 +70,7 @@ $(document).ready(function(){
             </ul>
             <p class="sub_txt">
             	<a href="nomalSignup.do">구직등록</a> / 
-            	<a href="index.do">일자리검색</a> / 
+            	<a href="nomalSearch.do">일자리검색</a> / 
             	<a href="index.do">지역별 일자리</a>
             </p>
         </div>

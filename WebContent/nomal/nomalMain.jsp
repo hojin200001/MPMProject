@@ -1,152 +1,22 @@
-<%@page import="model.FreeBoard"%>
-<%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
 <meta name="viewport" content="width=device-width">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="js/main/boardInfo.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>무제 문서</title>
-<style type="text/css">
-<!--
-/* 요기부터 나의 CSS */
-.sideLogin{
-	margin-top: 10px;
-	height:120px;
-	border: 2px solid #c0c0c0; 
-	border-top: 3px solid #0d73d1;
-	background-color: #ffffff;
-}
-.loginArea p{
-	padding-top: 10px;
-	font-size: 12px;
-}
-.loginArea div a{
-	text-decoration:none;
-}
-.loginBtn{
-	margin: 0 auto;
-	height: 35px;
-	width: 200px;
-	border: 2px solid #c0c0c0; 
-	background-color: #EAEAEA;
-	text-align: center;
-}
-
-.search{
-	padding-left: 20px;
-	float: left;
-	font-size: 12px;
-}
-.LoginJoin{
-	padding-right:	20px;
-	float: right;
-	font-size: 12px;
-	
-}
-.recentHelp, .recentFreeTable{
-	height: auto;
-	border-top: 3px solid #0d73d1;
-    border-left: 1px solid #0d73d1;
-    border-right: 1px solid #0d73d1;
-    
-}
-.recentFreeTable{
-margin-top: 30px;
-}
-.bestinfo{
- margin-left: 20px;
-}
-.bestinfo p{
-	margin-top: 10px;
-}
-.searchs{
-	height: 100px;
-}
-.searchArea{
-	margin : 0 auto;
-}
-.searchText{
-    width: 350px;
-    padding: 9px;
-    float: left;
-    border: 3px solid #034f96;
-    background: #fff;
-}
-.searchIcn{
-    float: left;
-    background: #034f96;
-    cursor: pointer;
-}
-.table6_6{
-	margin: 20px auto;
-}
-.table6_6 table {
-	width:300%;
-	margin:15px 0;
-	border:0;
-}
-.table6_6 th {
-
-	color:#000000;
-}
-.table6_6,.table6_6 th,.table6_6 td {
-	font-size:10em;
-	text-align:center;
-	padding:4px;
-	border-collapse:collapse;
-}
-.table6_6 th{
-	border: 2px solid blue;
-	border-width:1px 0 1px 0;
-	font-size: 14px;
-}
-.table6_6 td {
-	border: 1px solid #111111;
-	border-width:1px 0 1px 0;
-	font-size: 10px;
-}
-.table6_6 tr {
-	border: 1px solid #ffffff;
-}
-.table6_6 tr:nth-child(even){
-	background-color:#ffffff;
-}
-.n2 {
-	width:400px;
-}
-.imgArea{
-	width: 100%; 
-	text-align: center;
-	padding-top: 10px;
-}
-.imageLogo{
-	width: 250px; 
-	height: 110px; 
-	padding-right: 40px;
-}
-.searchs{
-	padding-top: 0px;
-}
-.searchsdumi{
-float: left;
-width: 25%;
-}
-.Shortcut{
-	height: 100px;
-	width: 100%;
-}
-
--->
-
-</style>
 <script src="js/main/jquery.bxslider.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/main/jquery.bxslider.css">
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
 <link rel="stylesheet" type="text/css" href="css/main/nomalMain.css">
+<link rel="stylesheet" type="text/css" href="css/com/comMain_con.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+</head>
 <script type="text/javascript">
 
 function logOut(){
@@ -155,6 +25,11 @@ function logOut(){
 			url, 
 			"_blank_1", 
 			"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
+}
+
+function showValues(){
+	var key=document.shows.njob.options[document.shows.njob.selectedIndex].value;
+	document.shows.tabless.value = key;
 }
 
 </script>
@@ -177,7 +52,13 @@ function logOut(){
 	  <ul id="menu">
 	    <li><a href="index.do">홈으로</a></li>
 	    <li><a href="comBoardList.do">일자리찾기</a></li>
-	    <li><a href="nomalBoardList.do">일자리등록하기</a></li>
+	    <li>
+	    	<a href="nomalBoardList.do">일자리등록정보</a>
+	    	<ul>
+	    		<li><a href="nomalBoardList.do">구인 등록 현황</a></li>
+	    		<li><a href="nomalWriteForm.do">구인 등록하기</a></li>	
+	    	</ul>
+	    </li>
 	    <li>
 	        <a href="#">게시판</a>
 	        <ul>
@@ -213,10 +94,17 @@ function logOut(){
 		</div>
 	</div>
 	<div class="Shortcut">
-		<div class="ShortcutMain">뭔가 등록할 자리임</div>
+		<div class="ShortcutMain"> <!-- 우측의 6개 숏컷 가이드 -->
+			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick4.png"/></div><div>구인검색</div></div>
+			<div class="ShortcutMain_dvi" onclick="location.href='comWriteForm.do'"><div><img src="img/main/Newquick2.png"/></div><div>구직등록</div></div>
+			<div class="ShortcutMain_dvi" onclick="location.href='comBoardList.do'"><div ><img src="img/main/Newquick1.png"/></div><div>구직 등록현황</div></div>
+			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick5.png"/></div><div>구인검색 가이드</div></div>
+			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick7.png"/></div><div>구직등록 가이드</div></div>
+			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick6.png"/></div><div>공지사항</div></div>
+		</div>
 	</div>
 	<div class="Advertising">
-		<ul class="bxslider">
+		<ul class="bxslider"><!-- 광고판 3개 사진 -->
   			<li><img src="img/main/advertising/1.jpg"/></li>
   			<li><img src="img/main/advertising/2.png"/></li>
   			<li><img src="img/main/advertising/3.jpg"/></li>
@@ -227,8 +115,8 @@ function logOut(){
 		  mode: 'fade', // 옵션들을 다중으로 쓸경우 , 로 옵션들을 구분시켜줍니다. 중요포인트입니다.
 		  auto: true,
 		  autoHover: true,
-		  pause: 7000,
-		  speed: 5000,
+		  pause: 2000,
+		  speed: 1000,
 		  controls : false
 		});
 	</script>
@@ -236,67 +124,79 @@ function logOut(){
   <div class="content">
   	<div class="recentHelp">
     	<div class="bestinfo">
-    		<p>최근 올라온 구인공고 <span>Best4</span></p>
-				<table class="table6_6">
-				<tr>
-					<th>지역</th><th class="n2">구인 광고 내용</th><th>업무 기간</th><th>급여</th><th>등록일</th>
-				</tr>
- 				<c:forEach items="${nomalList}" var="nn">
-				<tr>
-					<td>${nn.narea}</td>
-					<td class="n2"><a href="nomalView.do?nnum=${nn.nnum}">${nn.ntitle}</a></td>
-					<td>${nn.nday}</td>
-					<td>${nn.ncareer}</td>
-					<td>${nn.narea}</td>
-				</tr>
-				</c:forEach> 
-				
-				<tr>
-					<td>test</td>
-					<td class="n2">test</td>
-					<td>test</td>
-					<td>test</td>
-					<td>test</td>
-				</tr>
-				
-				</table>
+    		<p class="info_p">＊최근  구인공고</p>
+				<div class="infoBox">
+				<c:forEach items="${comList}" var="c" varStatus="r">
+				<div class="first_info">
+				<c:choose>
+					<c:when test="${r.count <= 5}">
+						<div class="info_span1">${c.cjob}</div>
+					</c:when>
+					<c:when test="${r.count > 5}">
+						<div class="info_span1_1">${c.cjob}</div>
+					</c:when>
+				</c:choose>
+					<div class="info_span2"><span>${c.ctitle}</span></div>
+					<div class="info_span2" id="span_info">
+						<span class="span_info_in">${c.cday}</span><span class="span_info_in">${c.carea}</span><span>${c.ccarrer}</span>
+					</div>					
+					<a></a>
+				</div>
+				</c:forEach>					
+    		</div>
     	</div>
-    </div>
-    <div class="recentFreeTable">
-    	<div class="bestinfo">
-    		<p>최근 등록된 자유 게시판</p>
-				<table class="table6_6">
-				<tr>
-					<th>게시판 번호</th><th class="n2">게시판 제목</th><th>등록인</th><th>등록 날짜</th><th>조회수</th>
-				</tr>
-				<c:forEach items="${freeList}" var="f">
-						<tr>
-						<td>${f.num}</td>
-						<td class="n2"><a href="#">${f.title}</a></td>
-						<td>${f.createName}</td>
-						<td>${f.createDay}</td>
-						<td>${f.freeCount}</td>
-					</tr>	
-				</c:forEach>
-<%-- 				<%	List<FreeBoard> list = (List<FreeBoard>)request.getAttribute("freeList");
-					for(int i = 0; i<list.size(); i++){%>
-					<tr>
-						<td><%=list.get(i).getNum()%></td>
-						<td class="n2"><a href="#"><%=list.get(i).getTitle()%></a></td>
-						<td><%=list.get(i).getCreateName()%></td>
-						<td><%=list.get(i).getCreateDay()%></td>
-						<td><%=list.get(i).getFreeCount()%></td>
-					</tr>	
-				<%}%> --%>
-				</table>
-    	</div>
-    </div>
-    <div class="infoArea" style="border: 1px solid red;">
-    	<div class="RegionInfo">
-    		*지역별 구인현황* 강남 :${gangnam} , 대전 : , 대구 : , 부산 : 
-    	</div>
-    	<div class="Notice">
-    		공지 게시판 테이블 (최근 5개)오른쪽부분으로
+    <div class="recentFreeTable" >
+    	<p>＊자유게시판 & 공지사항</p>
+			<div id="boardTabs">
+			    <ul class="tabs">
+			        <li class="active" rel="tab1">자유게시판</li>
+			        <li rel="tab2">지역별 구인현황</li>
+			    </ul>
+			    <div class="tab_container">
+			        <div id="tab1" class="tab_content">
+						<c:forEach items="${freeList}" var="f" varStatus="fst">
+							<ul class="tab_content_in">
+								<c:forEach items="${timeList}" var="t" varStatus="tst">
+									<c:if test="${fst.count eq tst.count}">
+										<c:choose>
+											<c:when test="${fn:contains(t, '일전') or fn:contains(t, '어제')}">
+												<li class="content_in_li"><img src="img/main/dumy.png"/></li>
+											</c:when>
+											<c:otherwise>
+												<li class="content_in_li"><img src="img/main/new.png"/></li>
+											</c:otherwise>
+										</c:choose>
+									</c:if>
+								</c:forEach>
+								<li class="content_in_lis" id="content_item"><span><a href="">${f.title}</a></span></li>
+								<li class="content_in_lis" id="content_item2"><span>${f.createName}</span></li>
+								<c:forEach items="${timeList}" var="t2" varStatus="tst2">
+								 	<c:if test="${fst.count eq tst2.count}">
+										<li class="content_in_lis" id="content_item3"><span>${t2}</span></li>
+								 	</c:if>
+								</c:forEach>
+							</ul>
+						</c:forEach>
+			        </div>
+			        <!-- #tab1 -->
+			        <div id="tab2" class="tab_content">
+						<form name="shows">
+							<select id="keyType" onchange="showValues()" name='njob'>
+								<c:forEach items="${area}" var="a">
+									<option value="${a.value}">${a.key}</option>
+								</c:forEach>
+							</select>
+							
+							<textarea cols="30" rows="2" name="tabless">
+						
+							</textarea>
+						</form>
+			        </div>
+			        <!-- #tab2 -->
+			    </div>
+			    <!-- .tab_container -->
+			</div>
+			<!-- #container -->
     	</div>
     </div>
     <!-- end .content --></div>
@@ -310,4 +210,3 @@ function logOut(){
   <!-- end .container --></div>
 </body>
 </html>
->>>>>>> a950c31dfc2dc9c9a2d5faa82dff2ad19faf978f
