@@ -37,17 +37,23 @@ public class FreeReplyController {
 	}
 	
 	@RequestMapping("replyList")
+<<<<<<< HEAD
+=======
 	public List<FreeReplyVo> readReplyList(){
 		
 		ModelAndView mav = new ModelAndView();
 		List<FreeReplyVo> freereply = freeReplyService.readReplyList();
 		return freereply;
 	}
+>>>>>>> projecting
 	public List<FreeReplyVo> readReplyList(int num){
 		
 		ModelAndView mav = new ModelAndView();
 		List<FreeReplyVo> freereply = freeReplyService.readReplyList(num);
+<<<<<<< HEAD
+=======
 		
+>>>>>>> projecting
 		return freereply;
 		
 		
