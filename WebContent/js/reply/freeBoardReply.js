@@ -3,6 +3,7 @@ function fr_replyDelete(reNum,num){
     if (!confirm("삭제하시겠습니까?")) {
         return;
     }
+<<<<<<< HEAD
     location.href="replyDelete.do?num="+num+"&reNum="+reNum;
     //var form = document.form2;  
    // form.action="replyDelete.do";
@@ -10,6 +11,16 @@ function fr_replyDelete(reNum,num){
     //form.reNum.value=reNum;
     //form.num.value=num;
     //form.submit();
+=======
+    var form = document.form2;
+
+    form.action="replyDelete.do";
+    form.num.value=num;
+    form.reNum.value=reNum;
+    form.submit();    
+
+    //location.href='replyDelete.do?num='+num+"&reNum="+reNum;
+>>>>>>> d5e75ef75b0488467f8f0d03c534acca7d03fe2a
 }
 
 var updateReNum = updateTeText = null;

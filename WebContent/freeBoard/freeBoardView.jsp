@@ -243,13 +243,21 @@ textarea {
 		<dl>
 			<dd>
 			${freereply.reName}  | ${freereply.reDay}
+<<<<<<< HEAD
 			<a href="#" style="float: right" onclick="fr_replyDelete(${freereply.reNum},${freeBoard.num})">삭제  </a>  <a style="float: right">수정  |</a>	
+=======
+			
+			<a href="#" onclick="replyDelete.do?num=${freeBoard.num}&reNum=${freerply.reNum}" style="float: right;">삭제</a>  <a style="float: right">수정  |</a>
+<%-- 			<a href="replyDelete.do?num=${freeBoard.num}&reNum=${freerply.reNum}" style="float: right;">삭제</a>  <a style="float: right">수정  |</a> --%>
+<%-- 			<a href="#" style="float: right" onclick="fr_replyDelete('<c:out value="${freereply.reNum}"/>, <c:out value="${freeBoard.num}"/>')">삭제  </a>  <a style="float: right">수정  |</a>	 --%>
+>>>>>>> d5e75ef75b0488467f8f0d03c534acca7d03fe2a
 			
 			</dd>
 			
 			<dt>${freereply.teText}</dt>
 		
 		</dl>
+<<<<<<< HEAD
 		</div>
 		
 		<div id="replyDiv" style="width: 99%; display:none">
@@ -257,12 +265,26 @@ textarea {
 		        <input type="hidden" name="reNum"> 
 		        <input type="hidden" name="num"> 
 		        <textarea name="teText" rows="3" cols="60" maxlength="500"></textarea>
+=======
+		
+		</div>	
+		
+		<div id="replyDiv" style="display:none">
+		    <form name="form2" action="freeReplySave.do" method="post">
+		        <input type="hidden" name="num"> 
+		        <input type="hidden" name="reNum"> 
+		        <textarea name="rememo" rows="3" cols="60" maxlength="500"></textarea>
+>>>>>>> d5e75ef75b0488467f8f0d03c534acca7d03fe2a
 		        <a href="#" onclick="fn_replyUpdateSave()">저장</a>
 		        <a href="#" onclick="fn_replyUpdateCancel()">취소</a>
 		    </form>
 		</div>
 
+<<<<<<< HEAD
 			
+=======
+		
+>>>>>>> d5e75ef75b0488467f8f0d03c534acca7d03fe2a
 		</c:forEach>
 		
 		<form action="replyWrite.do"  method="post" name="frm">
