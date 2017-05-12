@@ -243,14 +243,26 @@ textarea {
 		<dl>
 			<dd>
 			${freereply.reName}  | ${freereply.reDay}
-			<a id="${freereply.reNum}" style="float: right"value="${freereply.reNum}, ${freeBoard.num}">삭제  </a>  <a style="float: right">수정  |</a>	
+			<a href="#" style="float: right" onclick="fr_replyDelete(${freereply.reNum},${freeBoard.num})">삭제  </a>  <a style="float: right">수정  |</a>	
 			
 			</dd>
 			
 			<dt>${freereply.teText}</dt>
 		
 		</dl>
-		</div>	
+		</div>
+		
+		<div id="replyDiv" style="width: 99%; display:none">
+		    <form name="form2" action="replySave.do" method="post">
+		        <input type="hidden" name="reNum"> 
+		        <input type="hidden" name="num"> 
+		        <textarea name="teText" rows="3" cols="60" maxlength="500"></textarea>
+		        <a href="#" onclick="fn_replyUpdateSave()">저장</a>
+		        <a href="#" onclick="fn_replyUpdateCancel()">취소</a>
+		    </form>
+		</div>
+
+			
 		</c:forEach>
 		
 		<form action="replyWrite.do"  method="post" name="frm">

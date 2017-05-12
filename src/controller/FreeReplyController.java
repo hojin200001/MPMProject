@@ -33,7 +33,8 @@ public class FreeReplyController {
 	
 	@RequestMapping("replyDelete.do")
 	public String deleteReply(int reNum , int num){
-		
+		System.out.println(reNum);
+		System.out.println(num);
 		freeReplyService.deleteReply(reNum);
 		
 		return "redirect:freeBoardView.do?num="+num;
