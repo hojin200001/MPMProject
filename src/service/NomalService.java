@@ -37,5 +37,7 @@ public interface NomalService {
 			@RequestParam(required=false) List cb,
 			@RequestParam(required=false) String rb,
 			@RequestParam(required=false) String ar);
+	
+	public void sse();
 
 }
