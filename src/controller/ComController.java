@@ -83,8 +83,11 @@ public class ComController {
 	}
 	
 	@RequestMapping("comSearch.do")
-	public String comSearch(){
-		return "/com/comSearch";
+	public ModelAndView comSearch(){
+		ModelAndView mav = new ModelAndView();
+		dao.FreeBoardDao.this.
+		
+		return mav;
 	}
 	@RequestMapping("comWriteForm.do")
 	public String comWriteForm(){

@@ -258,18 +258,13 @@ textarea {
 		</dl>
 		</div>	
 		</c:forEach>
-		
->>>>>>> cdf2d34813135f8ea4b5d997b7e7bb181173b1e4
 		<form action="replyWrite.do"  method="post" name="frm">
 		<input type="hidden" name="reName" value="${user.id}"> 
 		<input type="hidden" name="num" value="${freeBoard.num}">
 			<textarea name="teText"></textarea>
 			<input type="submit" value="댓글">
 		</form>
-		
-<<<<<<< HEAD
 		<c:forEach items="${freereplyList}" var="freereply">
-		--------------------------------------------------------
 		<dl>
 			<dt>${freereply.reName}| ${freereply.reDay}</dt>
 			
@@ -279,16 +274,7 @@ textarea {
 		</c:forEach>
 	</div>
 	
-	
-	
-	<dir id="footer">
-=======
-	</div>
-	
-	
-	
 	<div class="footer" style="display: inline-block;">
->>>>>>> cdf2d34813135f8ea4b5d997b7e7bb181173b1e4
 		<div class="company" style="float: left; width: 50% ">
 			<p>(주)MPM 네트웍스</p>
 			<address>
@@ -313,11 +299,8 @@ textarea {
 			<span>Copyright &copy; </span> <strong>(주)MPM 네트웍스.</strong> <span>All Rights Reserved.</span>
 		</p>
 		
-<<<<<<< HEAD
 	</dir>
-=======
 	</div>
->>>>>>> cdf2d34813135f8ea4b5d997b7e7bb181173b1e4
 </div>
 
 
