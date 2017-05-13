@@ -15,6 +15,7 @@
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
 <link rel="stylesheet" type="text/css" href="css/main/nomalMain.css">
 <link rel="stylesheet" type="text/css" href="css/com/comMain_con.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
 </head>
 <script type="text/javascript">
 
@@ -24,6 +25,11 @@ function logOut(){
 			url, 
 			"_blank_1", 
 			"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
+}
+
+function showValues(){
+	var key=document.shows.njob.options[document.shows.njob.selectedIndex].value;
+	document.shows.tabless.value = key;
 }
 
 </script>
@@ -174,7 +180,17 @@ function logOut(){
 			        </div>
 			        <!-- #tab1 -->
 			        <div id="tab2" class="tab_content">
-			        	지역
+						<form name="shows">
+							<select id="keyType" onchange="showValues()" name='njob'>
+								<c:forEach items="${area}" var="a">
+									<option value="${a.value}">${a.key}</option>
+								</c:forEach>
+							</select>
+							
+							<textarea cols="30" rows="2" name="tabless">
+						
+							</textarea>
+						</form>
 			        </div>
 			        <!-- #tab2 -->
 			    </div>
