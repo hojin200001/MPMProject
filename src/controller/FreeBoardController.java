@@ -17,12 +17,16 @@ import org.springframework.web.servlet.View;
 
 import model.FreeBoard;
 import service.FreeBoardService;
+import service.FreeReplyService;
 
 @Controller
 public class FreeBoardController {
 	
 	@Autowired
 	private FreeBoardService freeBoardService;
+	
+	@Autowired
+	private FreeReplyService fReplyService;
 	
 	@RequestMapping("freeBoardList.do")
 	public ModelAndView freeBoardList(		
@@ -68,18 +72,24 @@ public class FreeBoardController {
 		//서비스의 readBoard
 		
 		mav.addObject(freeBoardService.readFreeBoard(num));
+		mav.addObject("freereply",fReplyService.readReplyList(num));
+		System.out.println(fReplyService.readReplyList(num));
 		mav.setViewName("/freeBoard/freeBoardView");
-		
+		fReplyService.readReplyList(num);
 		return mav;
 	}
 	
 	@RequestMapping("freeBoardUpdateForm.do")
-	public void modifyForm(Model model, int num, HttpSession session){
+	public ModelAndView modifyForm(Model model, int num, HttpSession session){
+		
 		//DB에서 가져온 게시판 정보 하나 : 데이터
 		//modifyForm.jsp 페이지 : view
 		//서비스의 getBoard
+		ModelAndView mav = new ModelAndView();
 		
-		model.addAttribute(freeBoardService.getFreeBoard(num));	
+		mav.addObject(freeBoardService.getFreeBoard(num));
+		mav.setViewName("/freeBoard/freeBoardUpdateForm");
+		return mav;
 		
 	}
 	
@@ -92,52 +102,44 @@ public class FreeBoardController {
 		return "redirect:freeBoardView.do?num="+freeBoard.getNum();
 	}
 	
-	@RequestMapping("writeForm.do")
+	@RequestMapping("freeBoardWriteForm.do")
 	public String writeForm(HttpSession session){
 		
 		if(session.getAttribute("user")!=null){
-			return "freeBoardWrite";
+			return "/freeBoard/freeBoardWrite";
 		}
 		else{
 			return "redirect:login.do";
 		}
 	}
 	
-	@RequestMapping("write.do")
+	@RequestMapping("freeBoardWrite.do")
 	public String write(FreeBoard freeBoard){		
 		//게시글 작성하기
 		//페이지에서 파라미터 얻어와서 DB에 저장
-		
 		freeBoardService.writeFreeBoard(freeBoard);
-		return "redirect:view.do?num="+freeBoard.getNum();
+		return "redirect:freeBoardView.do?num="+freeBoard.getNum();
 		
 	}
 	
-	@RequestMapping("freeBoardCheckPassForm.do")
-	public void freeBoardCheckPassForm(){
+	@RequestMapping("deleteCheckForm.do")
+	public void freeBoardDeleteCheckForm(int num){
 		
 	}
 	
-	@RequestMapping("freeBoardCheckPass.do")
-	public String freeBoardCheckPass(String id,HttpSession session){
+	@RequestMapping("updateCheckForm.do")
+	public String freeBoardupdateCheckForm(FreeBoard freeBoard,HttpSession session){
 
-//		String pass = freeBoardService.getPass(id);
-//		String loginPass = ;
-//		
-//		if(){
-//			
-//		}
-//		else{
-//			
-//		}
 		
 		return null;
 	}
 	
 	
 	@RequestMapping("freeBoardDelete.do")
-	public void freeBoardDelete(){
+	public String freeBoardDelete(int num){
 		
+		freeBoardService.deleteFreeBoard(num);
+		return "redirect:freeBoardList.do";
 	}
 	
 	

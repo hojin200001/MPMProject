@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="dao.FreeReplyDao">
+
+	<insert id="insertFreeReply" parameterType="freeReplyVo" useGeneratedKeys="true" keyProperty="reNum">
+		insert into freeReply values(0, #{num}, #{reName}, #{teText}, now())
+	</insert>
+
+	<update id="updateFreeReply" parameterType="freeReplyVo">
+		update freeReply set teText = #{teText}
+	</update>
+
+	<delete id="deleteFreeReply" parameterType="int">
+		delete from freeReply where reNum = #{reNum}
+	</delete>
+
+<<<<<<< HEAD
+
+=======
+	<select id="selectAll" resultType="freeReplyVo">	
+		select * from freeReply
+	</select>
+>>>>>>> projecting
+	<select id="selectReply" resultType="freeReplyVo">	
+		select * from freeReply where num=#{num}
+	</select>
+
+
+</mapper>
+  

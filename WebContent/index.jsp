@@ -25,6 +25,15 @@ $(document).ready(function(){
 	});  // ul에 있는 class명을 기준으로 선언을 합니다. 즉, 이미지구성요소들을 감싸고있는 객체에 선언해 줍니다. 
 });
 </script>
+<script>
+			function logOut(){
+				var url = "logoutForm.do";
+				window.open(
+						url, 
+						"_blank_1", 
+						"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
+			}
+		</script>
 </head>
 
 <body>
@@ -44,7 +53,7 @@ $(document).ready(function(){
 			<a href="login.do">로그인</a></li>
 		<li><a href="joinForm.do">회원 가입</a></li><%
 			}else{%>${user.name}님 환영합니다. &nbsp;&nbsp;&nbsp;
-		<a href="logoutForm.do">로그아웃</a></li>
+		<a href="#" onclick="logOut()">로그아웃</a></li>
   		<li><a href="#">마이 페이지</a></li>
   		<%}%>
   	</ul>
@@ -61,7 +70,7 @@ $(document).ready(function(){
             </ul>
             <p class="sub_txt">
             	<a href="nomalSignup.do">구직등록</a> / 
-            	<a href="index.do">일자리검색</a> / 
+            	<a href="nomalSearch.do">일자리검색</a> / 
             	<a href="index.do">지역별 일자리</a>
             </p>
         </div>

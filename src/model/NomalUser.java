@@ -8,6 +8,7 @@ public class NomalUser {
 	private int age;
 //	주소 add(not null)			varchar(40)
 	private String add;
+	private String add2;
 //	전화번호 phone(not null)		varchar(20)
 	private String phone;
 //	가입일 joinDay				date
@@ -23,10 +24,22 @@ public class NomalUser {
 //	포인트 nomalPoint			int
 	private int nomalPoint;
 //	정보공개유무 inpoDis(not null)		boolean
-//	private Boolean inpoDis;
+	private int inpoDis;
 	
+	public int getInpoDis() {
+		return inpoDis;
+	}
+	public void setInpoDis(int inpoDis) {
+		this.inpoDis = inpoDis;
+	}
 	public String getName() {
 		return name;
+	}
+	public String getAdd2() {
+		return add2;
+	}
+	public void setAdd2(String add2) {
+		this.add2 = add2;
 	}
 	public void setName(String name) {
 		this.name = name;

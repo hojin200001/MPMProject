@@ -1,0 +1,68 @@
+﻿.SkyBanner{
+	position: fixed; 
+	left:20px; 
+	width: 130px; 
+	border:1px solid #0f4579;
+	background-color: #f8f8f8;
+}
+.SkyBanner>div>div>img:HOVER{
+	cursor: pointer;
+}
+.Sky_blank{
+	height: 20px; 
+	border: 1px solid #0f4579;
+	background-color: #0f4579;
+}
+.Sky_contents{
+	border-bottom: 1px solid #949494;
+}
+.Sky_contents>ul{
+	font-size: 13px;
+}
+.Sky_contents>ul>li{
+	margin-left: -20px;
+}
+.Sky_contents>ul>li>a{
+	color: #000;
+	text-decoration:none;
+}
+
+.Sky_topinfo{
+	height: 30px;
+	background-color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+.Sky_topinfo>span>a{
+	color: #ff5400;
+}
+.Sky_info{
+	border-top: 1px solid #949494;
+	border-bottom: 1px solid #949494;
+}
+.Sky_info>a{
+	text-decoration: none;
+}
+.Sky_info_p{
+	text-align: center;
+	font-size: 12px;
+}
+#Sky_info_p2, #Sky_info_p3, #Sky_info_p4{
+	margin-top: -10px;
+	color:#000;
+}
+#Sky_info_p{
+	color:#3973cb;
+}
+#Sky_info_p3{
+	color: #999;
+}
+#Sky_info_p4>span{
+	color:#717171;
+}
+.Sky_bottom{
+	font-size:15px; 
+	text-align: center;
+}

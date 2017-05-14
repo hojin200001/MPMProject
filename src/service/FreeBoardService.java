@@ -13,7 +13,8 @@ public interface FreeBoardService {
 
 	public int writeFreeBoard(FreeBoard freeBoard);
 	public int updateFreeBoard(FreeBoard freeBoard);
-	public int deleteFreeBoard(int num);
+	public void deleteFreeBoard(int num);
+	//게시물 정보 하나 가져오기+조회수up
 	public FreeBoard readFreeBoard(int num);
 	
 	//게시물 페이지 정보 구하기

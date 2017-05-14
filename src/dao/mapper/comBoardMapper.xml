@@ -4,50 +4,74 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="dao.ComBoardDao">
-  
-    	 <sql id="ctitle">
-        <choose>
-            <when test="ctitle != null">
-                #{ctitle}
-            </when>
-            <otherwise>
-                '제목없음'
-            </otherwise>
-        </choose>
-    </sql>
-    <sql id="ctext">
-        <choose>
-            <when test="ctext != ctext">
-                #{ctext}
-            </when>
-            <otherwise>
-                '내용없음'
-            </otherwise>
-        </choose>
-    </sql>
+ 
     
   	<select id="selectNomalBoardDesc" resultType="nomalBoard">
   		select * from nomalBoard order by Nnum desc limit 10
   	</select>
   	
-  	<select id="getCount" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
-    	select count(*) from comBoard
+  	<select id="getCount" parameterType="java.util.HashMap" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
+    	select count(*) from comBoard where comId="${id}"
     </select>
-    
     <select id="selectBoardPage" parameterType="java.util.HashMap" resultType="comBoard">
-    	select * from comBoard order by Cnum desc limit #{offset} ,#{boardsPerPage}
+    	select c.* from(select a.*, b.CstartDay, b.CendDay from comboard a, comDay b where a.Cnum=b.Cnum) c where c.comId=${id} order by Cnum desc limit #{offset} ,#{boardsPerPage};
     </select>
-    
-     <update id="comUpdate" parameterType="comBoard">
-        update comBoard set
-        Ccount = #{ccount}, Cjob = #{cjob}, ComEmail = #{comEmail},
-        Ctitle = <include refid="ctitle"/>,
-        Ctext = <include refid="ctext"/>
-        where Cnum = #{cnum}
+     <update id="comCountUpdate" parameterType="java.util.HashMap">
+        update comBoard set Ccount = #{ccount} where Cnum = #{cnum}
     </update>
     
   	<select id="comView" parameterType="java.util.HashMap" resultType="comBoard">
   		select * from comBoard where Cnum=${cnum}
   	</select>
   	
+  	<insert id="insertComBoard" parameterType="comBoard">
+  		insert into comBoard values(0,'${comName}','${ctitle}','${carea}','${cjob}','${ccarrer}','${comPhone}','${comEmail}',${cday},${cwokers},${cpay},'${ctext}',0,now(),'${comId}','${cxy}');
+  	</insert>
+  	<select id="selectCnum" parameterType="java.util.HashMap" resultType="int">
+  		select Cnum from comboard where comId='${comId}' order by Cnum desc limit 1;
+  	</select>
+   	<update id="updateComBoard" parameterType="comBoard">
+  		update comBoard set Ctitle = '${ctitle}', Carea = '${carea}', Cjob='${cjob}', Ccarrer='${ccarrer}', Cday=${cday}, Cwokers=${cwokers}, Cpay=${cpay}, Ctext='${ctext}', Cxy='${cxy}' where Cnum=${cnum} 
+  	</update>
+  	<delete id="deleteComBoard" parameterType="java.util.HashMap">
+  		delete from comboard where Cnum=${cnum}
+  	</delete>
+  	<!-- comUser -->
+  	<select id="selectOne" parameterType="java.util.HashMap" resultType="comUser">
+  		select * from comUser where comId = '${id}'
+  	</select>
+  	<!-- inComBoard -->
+  	<select id="selectIncomBoard" parameterType="java.util.HashMap" resultType="inComBoard">
+  		select * from incomboard where Cnum=${cnum}
+  	</select>
+  	<select id="InComBoardCount" parameterType="java.util.HashMap" resultType="int">
+  		select count(Cnum) from incomboard where Cnum=${cnum}
+  	</select>
+  	<delete id="deleteInComBoard" parameterType="java.util.HashMap">
+  		delete from incomboard where Cnum=${cnum} and nomalId='${nomalId}'
+  	</delete>
+  	<select id="inComBoardCount" resultType="inComBoardRe">
+  		select Count(c.Cnum) as Count, c.Cnum from comBoard d, incomBoard c where c.Cnum =  d.Cnum
+  	</select>
+  	<!-- comDay -->
+ 	<insert id="insertComDay" parameterType="comDay">
+ 		insert into comday values(${cnum}, '${cstartDay}', '${cendDay}', ${deadline})
+ 	</insert>
+ 	<select id="selectComDayOne" parameterType="java.util.HashMap" resultType="comDay">
+ 		select * from comDay where Cnum=${cnum}
+ 	</select>
+ 	<update id="updateComDay" parameterType="comDay">
+ 		update comday set CstartDay='${cstartDay}', CendDay='${cendDay}' where Cnum=${cnum};
+ 	</update>
+ 	<delete id="deleteComDay" parameterType="java.util.HashMap">
+ 		delete from comday where Cnum=${cnum}
+ 	</delete>
+ 	<!-- 회원가입 -->
+ 	<insert id="insertComUser" parameterType="comUser">
+ 		insert into comUser values('${comId}','${comName}','${comEmail}', '${comPass}','${comMname}','${comPhone}','${comPhone2}', '${comAddr}','${comAddr2}','${comNum}','${comPhto}', now(), 0)
+ 	</insert>
+ 	<!-- id 중복확인 -->
+ 	  <select id="selectIdCheck" parameterType="java.util.HashMap" resultType="comUser">
+    	select * from comUser where comId ='${id}';
+    </select>
   </mapper>
