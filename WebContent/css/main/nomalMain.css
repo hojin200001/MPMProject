@@ -39,7 +39,7 @@ a:hover, a:active, a:focus { /* 이 선택기 그룹은 마우스를 사용하�
 }
 .header {
 	text-align:center;
-	height: 190px;
+	height: 100px;
 }
 .side {
 	width: 25%;

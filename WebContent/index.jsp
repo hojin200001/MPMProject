@@ -8,23 +8,8 @@
 <!-- <link href="bootStrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="bootstrap/bootstrap.min.js"></script> -->
 <script src="js/main/jquery.bxslider.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/main/jquery.bxslider.css">
-<link rel="stylesheet" type="text/css" href="css/main/main.css">
-
-<script>
-$(document).ready(function(){
-	  $('.bxslider').bxSlider({
-		  minSlides: 2,
-	  maxSlides: 2,
-	  slideWidth: 750,
-	  slideMargin: 10,
-	  auto: true,
-	  pause: 10000,
-	  speed: 5000,
-	  autoHover: true
-	});  // ul에 있는 class명을 기준으로 선언을 합니다. 즉, 이미지구성요소들을 감싸고있는 객체에 선언해 줍니다. 
-});
-</script>
+<link rel="stylesheet" type="text/css" href="css/main/jquery.bxslider.css?var=1">
+<link rel="stylesheet" type="text/css" href="css/main/main.css?var=1">
 <script>
 			function logOut(){
 				var url = "logoutForm.do";
@@ -37,16 +22,6 @@ $(document).ready(function(){
 </head>
 
 <body>
-
-<div class="container">
-  <div class="header">
-  	<ul class="bxslider">
-  		<li><a><img src="img/main/1.PNG" /></a></li>
-  		<li><a><img src="img/main/2.PNG" /></a></li>
-  		<li><a><img src="img/main/3.PNG" /></a></li>
-  		<li><a><img src="img/main/4.PNG" /></a></li>
-</ul>
-    <!-- end .header --></div>
   <div class="naviLine">
 	 <ul class="headerNev">
   		<li class="Nev1"><%if(session.getAttribute("user")==null){%>
@@ -58,6 +33,8 @@ $(document).ready(function(){
   		<%}%>
   	</ul>
   </div>
+<div class="container" style="background-image: url('img/main/bg_intro.jpg');">
+	<div class="container_d"></div>
   <div class="content">
   	<div class="conSpace" style="text-align: center; margin-bottom: 5px; padding-right: 10px;">
   		<img class="logoImage" src="img/main/logoB_07.png" alt="인력몬 로고" style="width: 250px; height: 130px;"/>

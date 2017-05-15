@@ -35,7 +35,6 @@
 			</article> <article id="rcorners2">
 			<form action="nomalJoinIndex.do" name="frm">
 				<table width="500px">
-
 					<tr>
 						<td width="100px"></td>
 						<td colspan="2" valign="top">
@@ -50,7 +49,7 @@
 						<td valign="top"><span class="font2">*</font2></td>
 						<td><input type="text" name="nomalId" size="10" id="nomalId"> <input
 							type="button" value="중복 체크" onclick="idCheck()"> <input
-							type="hidden" name="reid"></td>
+							type="hidden" name="reid" value="1"></td>
 					</tr>
 					<tr>
 						<td>암호</td>
