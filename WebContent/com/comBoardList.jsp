@@ -9,18 +9,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
-<link rel="stylesheet" type="text/css" href="css/main/public_header.css">
-<link rel="stylesheet" type="text/css" href="css/main/SkyBanner.css">
-<link rel="stylesheet" type="text/css" href="css/com/comBoardList.css">
+<link rel="stylesheet" type="text/css" href="css/main/public_header.css?var=1">
+<link rel="stylesheet" type="text/css" href="css/main/SkyBanner.css?var=1">
+<link rel="stylesheet" type="text/css" href="css/com/comBoardList.css?var=1">
 <title>Insert title here</title>
 </head>
 <body>
 <div class="container">
  <div class="header">
-  		<div class="searchArea">
-  			<div class="imgArea">
+  				<div class="searchArea">
+  			<dir class="searchs">
   				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로"/>
-  			</div>
+  				<div class="serachs_div">
+	  				<input type="text" alt="전체검색" class="searchText"><img src="img/main/btn_search.gif" alt="홈으로" style="float: left;"/></input>
+  				</div>
+  			</dir>
   		</div>	
     <!-- end .header --></div>
    <nav style="margin-top: 20px;">

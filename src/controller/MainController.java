@@ -30,9 +30,13 @@ public class MainController {
 	}
 
 	@RequestMapping("login.do")
-	public String longin(HttpServletRequest req, HttpSession session) {
-		session.setAttribute("hrefs", req.getHeader("referer"));
-		return "/login/login";
+	public  ModelAndView longin(HttpServletRequest req, HttpSession session, @RequestParam(defaultValue = "0")String a) {
+		ModelAndView mav = new  ModelAndView();
+		String https = req.getHeader("referer");
+		session.setAttribute("hrefs", https);
+		mav.addObject("loginfo", a);
+		mav.setViewName("/login/login");
+		return mav;
 	}
 
 	@RequestMapping("loginCheck.do")
