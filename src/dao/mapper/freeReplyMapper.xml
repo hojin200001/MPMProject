@@ -16,7 +16,6 @@
 	<delete id="deleteFreeReply" parameterType="int">
 		delete from freeReply where reNum = #{reNum}
 	</delete>
-
 	<select id="selectReply" resultType="freeReplyVo">	
 		select * from freeReply where num=#{num}
 	</select>

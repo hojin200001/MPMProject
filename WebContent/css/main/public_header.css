@@ -46,11 +46,17 @@ body {
 	padding-top: 10px;
 }
 .imageLogo{
+<<<<<<< HEAD
+	width: 250px; 
+	height: 110px; 
+	padding-right: 40px;
+=======
 	float: left;
 	padding-top: 30px;
 	width: 200px; 
 	height: 70px; 
 	margin-left: 20%;
+>>>>>>> 1cf57158b3e85c49ef3f7ca6196f65878cef9f72
 }
 .footer {
 	padding: 10px 0;
