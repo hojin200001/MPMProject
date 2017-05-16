@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/board/freeBoard.js"></script>
+  <script type="text/javascript" src="js/board/freeBoard.js?var=1"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
@@ -149,7 +149,7 @@ width: 25%;
 -->
 
 </style>
-<link rel="stylesheet" type="text/css" href="css/board.css">
+
 </head>
 <body>
 
@@ -181,7 +181,7 @@ width: 25%;
 	</ul>
    </nav>
 	<div class="imgArea2" >
-  				<img class="imageBack" src="img/free/m12338793364.jpg" width="900" height="180" />
+  				<img class="imageBack" src="img/free/success-health-header-1280x200-2.jpg" />
   	</div>
   	<br>
 
@@ -189,20 +189,22 @@ width: 25%;
 	
 	
 		<form action="freeBoardWrite.do" method="post" name="frm">
-		<table class="table table-condensed">
+		<input type="hidden" name="createName" value="${user.id}">
+		<table class="table table-condensed" style="width: 100%">
 			<tr>
 				<th>글쓴이</th>
-				<td><input type="text" name="createName" value="${user.id}" readonly>* 필수 </td>
+<%-- 				<td><input type="text" name="createName" value="${user.id}" readonly>* 필수 </td> --%>
+				<td>${user.id} </td>
 			</tr>
 
 			<tr>
-				<th>제목</th>
-				<td><input type="text" name="title" size="70" >* 필수</td>
+				<th>제목*</th>
+				<td><input type="text" name="title" size="70"  placeholder="제목을 입력해주세요."></td>
 			</tr>
 		
 			<tr>
-				<th>내용</th>
-				<td><textarea rows="15" cols="70" name="conValue"></textarea>* 필수 </td>
+				<th>내용*</th>
+				<td><textarea rows="15" cols="70" name="conValue"  placeholder="내용을 입력해주세요."></textarea> </td>
 				
 			</tr>
 		
@@ -211,8 +213,6 @@ width: 25%;
 		<input type="submit" value="완료" onclick="return insertCheck()">
 		<input type="button" value="취소" onclick="location.href='freeBoardList.do'">
 		</form>
-
-
 </div>
 </div>
 </body>

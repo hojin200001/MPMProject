@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
 <head>
@@ -26,21 +26,46 @@
 	<div class="container">
 		<div class="header">
 			<div class="searchArea">
-				<div class="imgArea">
-					<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" />
-				</div>
-			</div>
+  			<dir class="searchs">
+  				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로"/>
+  				<div class="serachs_div">
+	  				<input type="text" alt="전체검색" class="searchText"><img src="img/main/btn_search.gif" alt="검색" style="float: left;"/></input>
+  				</div>
+  			</dir>
+  		</div>	
 			<!-- end .header -->
 		</div>
 		<nav style="margin-top: 20px;">
 		<ul id="menu">
-			<li><a href="index.do">홈으로</a></li>
-			<li><a href="#">인력찾기</a></li>
-			<li><a href="comBoardList.do">구직 정보</a>
-				<ul>
-					<li><a href="comBoardList.do">구직 등록 현황</a></li>
-					<li><a href="comWriteForm.do">구직 등록하기</a></li>
-				</ul></li>
+			<c:choose>
+		  		<c:when test="${userInfo == 1}">
+					<li><a href="nomalMain.do">홈으로</a></li>
+		  			<li><a href="comBoardList.do">일자리찾기</a></li>
+				    <li><a href="nomalBoardList.do">일자리등록정보</a>
+				    	<ul>
+				    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
+				    		<li><a href="nomalWriteForm.do">구직 등록하기</a></li>	
+				    	</ul></li>
+		  		</c:when>
+		  		<c:when test="${userInfo ==2}">
+					<li><a href="comMain.do">홈으로</a></li>
+		  			<li><a href="comSearch.do">인력찾기</a></li>
+					<li><a href="comBoardList.do">구직 정보</a>
+					<ul>
+						<li><a href="comBoardList.do">구직 등록 현황</a></li>
+						<li><a href="comWriteForm.do">구직 등록하기</a></li>
+					</ul></li>
+		  		</c:when>
+		  		<c:otherwise>
+					<li><a href="comMain.do">홈으로</a></li>
+		  			<li><a href="comSearch.do">인력찾기</a></li>
+					<li><a href="comBoardList.do">구직 정보</a>
+					<ul>
+						<li><a href="comBoardList.do">구직 등록 현황</a></li>
+						<li><a href="comWriteForm.do">구직 등록하기</a></li>
+					</ul></li>
+		  		</c:otherwise>
+		  	</c:choose>
 			<li><a href="#">게시판</a>
 				<ul>
 					<li><a href="freeBoardList.do">자유게시판</a></li>

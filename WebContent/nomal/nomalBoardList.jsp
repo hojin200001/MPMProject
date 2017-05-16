@@ -157,6 +157,7 @@ td>a{
   				</div>
   			</dir>
   		</div>	
+<<<<<<< HEAD
     <!-- end .header -->
     </div>
 	<nav style="margin-top: 20px;">
@@ -184,6 +185,51 @@ td>a{
 	
 	
 	<div class="SkyBanner">
+=======
+    <!-- end .header --></div>
+   <nav style="margin-top: 20px;">
+	  <ul id="menu">
+	    <c:choose>
+	  		<c:when test="${userInfo == 1}">
+			    <li><a href="nomalMain.do">홈으로</a></li>
+	  			<li><a href="comBoardList.do">일자리찾기</a></li>
+			    <li><a href="nomalBoardList.do">일자리등록정보</a>
+			    	<ul>
+			    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
+			    		<li><a href="nomalWriteForm.do">구직 등록하기</a></li>	
+			    	</ul></li>
+	  		</c:when>
+	  		<c:when test="${userInfo ==2}">
+			    <li><a href="comMain.do">홈으로</a></li>
+	  			<li><a href="comSearch.do">인력찾기</a></li>
+				<li><a href="comBoardList.do">구직 정보</a>
+				<ul>
+					<li><a href="comBoardList.do">구직 등록 현황</a></li>
+					<li><a href="comWriteForm.do">구직 등록하기</a></li>
+				</ul></li>
+	  		</c:when>
+	  		<c:otherwise>
+			    <li><a href="nomalMain.do">홈으로</a></li>
+	  			<li><a href="comBoardList.do">일자리찾기</a></li>
+			    <li><a href="nomalBoardList.do">일자리등록정보</a>
+			    	<ul>
+			    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
+			    		<li><a href="nomalWriteForm.do">구직 등록하기</a></li>	
+			    	</ul></li>
+	  		</c:otherwise>
+	  	</c:choose>
+	    <li>
+	        <a href="#">게시판</a>
+	        <ul>
+	            <li><a href="freeBoardList.do">자유게시판</a></li>
+	            <li><a href="#">후기게시판</a></li>
+	        </ul>
+	    </li>
+	    <li><a href="#">공지사항</a></li>
+	</ul>
+   </nav>
+     <div class="SkyBanner">
+>>>>>>> e857cc08d3510f863b3f7fa504f617f8b5999176
    		<div class="Sky_blank" ></div>
    		<div class="Sky_contents">
    			<ul>

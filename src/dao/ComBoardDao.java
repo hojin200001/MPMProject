@@ -41,4 +41,5 @@ public interface ComBoardDao {
 	
 	//InComBoard 카운터 구해서 테이블 번호 가져오는것
 	public List<InComBoardRe> inComBoardCount();
+	public int insertInComBoard(HashMap<String, Object> params);
 }

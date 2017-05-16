@@ -24,8 +24,10 @@ import model.ComBoard;
 import model.FreeBoard;
 import model.InComBoard;
 import model.NomalBoard;
+import model.NomalUser;
 import service.ComService;
 import service.FreeBoardService;
+import service.NomalService;
 
 @Controller
 public class ComController {
@@ -33,6 +35,8 @@ public class ComController {
 	private FreeBoardService fservice;
 	@Autowired
 	private ComService cservice;
+	@Autowired
+	private NomalService nservice;
 	
 	@RequestMapping("comMain.do")
 	public ModelAndView comMain(){
@@ -131,10 +135,13 @@ public class ComController {
 		cservice.deleteInComBoard(cnum, nomalId);
 		return "redirect:comView.do?cnum="+cnum;
 	}
-	@RequestMapping("test.do")
-	public String test(){
-		return "/join/test1";	
-}
+	@RequestMapping("attendThis.do")
+	public String attendThis(int cnum, String userId){
+		String id = userId;
+		NomalUser user = nservice.selectOne(id);
+		int re = cservice.insertInComBoard(cnum, user);
+		return"redirect:comView.do?cnum="+cnum;
+	}
 	//------------------------------------------------------------------------------------------------------------------------------------//
 	//시간계산 지우지 마시길
 	public List<String >getTime(List<FreeBoard> list){

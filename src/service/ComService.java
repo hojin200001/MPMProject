@@ -11,6 +11,7 @@ import model.ComUser;
 import model.InComBoard;
 import model.InComBoardRe;
 import model.NomalBoard;
+import model.NomalUser;
 
 public interface ComService {
 	//로그인
@@ -43,7 +44,13 @@ public interface ComService {
 	public String idCheck(String id);
 	public List<InComBoard> selectIncomBoard(int cnum);
 	public int deleteInComBoard(int cnum, String nomalId);
-	public int InComBoardCount(int cnum);
 	public List<InComBoardRe> inComBoardCount();
+<<<<<<< HEAD
 	public int comarea(HashMap<String, Object> comarea);
+=======
+	
+	//inComBoard
+	public int InComBoardCount(int cnum);
+	public int insertInComBoard(int cnum, NomalUser nuser);
+>>>>>>> e857cc08d3510f863b3f7fa504f617f8b5999176
 }

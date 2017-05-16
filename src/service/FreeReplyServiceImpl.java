@@ -1,5 +1,6 @@
 package service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class FreeReplyServiceImpl implements FreeReplyService{
 	@Override
 	public void writeReply(FreeReplyVo freeReplyVo) {
 		// TODO Auto-generated method stub
-		System.out.println(freeReplyVo);
+		
 		fReplyDao.insertFreeReply(freeReplyVo);
 	}
 
@@ -30,9 +31,13 @@ public class FreeReplyServiceImpl implements FreeReplyService{
 	}
 
 	@Override
-	public void deleteReply(int num) {
+	public void deleteReply(int reNum) {
 		// TODO Auto-generated method stub
 		
+		//HashMap<String, Object> reNum = new HashMap<>();
+		//reNum.put("reNum", ReNum);
+		
+		fReplyDao.deleteFreeReply(reNum);
 	}
 
 	@Override
@@ -42,11 +47,13 @@ public class FreeReplyServiceImpl implements FreeReplyService{
 	}
 
 	@Override
+<<<<<<< HEAD
 
+=======
+>>>>>>> e857cc08d3510f863b3f7fa504f617f8b5999176
 	public List<FreeReplyVo> readReplyList(int num) {
 		// TODO Auto-generated method stub
 		return fReplyDao.selectReply(num);
-
 	}
 
 }

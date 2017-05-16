@@ -53,6 +53,9 @@
   	<select id="inComBoardCount" resultType="inComBoardRe">
   		select Count(c.Cnum) as Count, c.Cnum from comBoard d, incomBoard c where c.Cnum =  d.Cnum
   	</select>
+  	<insert id="insertInComBoard" parameterType="java.util.HashMap">
+  		insert incomboard values(${cnum}, '${nomalId}', '${phone}', now())
+  	</insert>
   	<!-- comDay -->
  	<insert id="insertComDay" parameterType="comDay">
  		insert into comday values(${cnum}, '${cstartDay}', '${cendDay}', ${deadline})
