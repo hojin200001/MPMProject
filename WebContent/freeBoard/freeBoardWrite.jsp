@@ -211,8 +211,6 @@ width: 25%;
 		<input type="submit" value="완료" onclick="return insertCheck()">
 		<input type="button" value="취소" onclick="location.href='freeBoardList.do'">
 		</form>
-
-
 </div>
 </div>
 </body>

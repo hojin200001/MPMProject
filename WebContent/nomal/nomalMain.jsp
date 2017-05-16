@@ -11,12 +11,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>무제 문서</title>
 <script src="js/main/jquery.bxslider.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/main/jquery.bxslider.css">
-<link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
-<link rel="stylesheet" type="text/css" href="css/main/nomalMain.css">
-<link rel="stylesheet" type="text/css" href="css/com/comMain_con.css">
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
-</head>
+<link rel="stylesheet" type="text/css" href="css/main/jquery.bxslider.css?var=2">
+<link rel="stylesheet" type="text/css" href="css/main/menuBar.css?var=2">
+<link rel="stylesheet" type="text/css" href="css/main/public_header.css?var=2">
+<link rel="stylesheet" type="text/css" href="css/com/comMain_con.css?var=2">
 <script type="text/javascript">
 
 function logOut(){
@@ -34,31 +32,49 @@ function showValues(){
 
 </script>
 </head>
-
 <body>
 <div class="container">
-  <div class="header">
-  		<div class="searchArea">
-  			<div class="imgArea">
-  				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로"/>
-  			</div>
-  			<dir class="searchsdumi"></dir>
-  			<dir class="searchs">
-	  		<input type="text" alt="전체검색" class="searchText"/><img src="img/main/btn_search.gif" alt="홈으로" style="float: left;"/>
-  			</dir>
-  		</div>	
-    <!-- end .header --></div>
+		<div class="header">
+			<div class="searchArea">
+				<dir class="searchs">
+					<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" />
+					<div class="serachs_div">
+						<input type="text" alt="전체검색" class="searchText"><img
+							src="img/main/btn_search.gif" alt="홈으로" style="float: left;" /></input>
+					</div>
+				</dir>
+			</div>
+			<!-- end .header -->
+		</div>
    <nav style="margin-top: 20px;">
 	  <ul id="menu">
 	    <li><a href="index.do">홈으로</a></li>
-	    <li><a href="comBoardList.do">일자리찾기</a></li>
-	    <li>
-	    	<a href="nomalBoardList.do">일자리등록정보</a>
-	    	<ul>
-	    		<li><a href="nomalBoardList.do">구인 등록 현황</a></li>
-	    		<li><a href="nomalWriteForm.do">구인 등록하기</a></li>	
-	    	</ul>
-	    </li>
+	    <c:choose>
+	  		<c:when test="${userInfo == 1}">
+	  			<li><a href="comBoardList.do">일자리찾기</a></li>
+			    <li><a href="nomalBoardList.do">일자리등록정보</a>
+			    	<ul>
+			    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
+			    		<li><a href="nomalWriteForm.do">구직 등록하기</a></li>	
+			    	</ul></li>
+	  		</c:when>
+	  		<c:when test="${userInfo ==2}">
+	  			<li><a href="comSearch.do">인력찾기</a></li>
+				<li><a href="comBoardList.do">구직 정보</a>
+				<ul>
+					<li><a href="comBoardList.do">구직 등록 현황</a></li>
+					<li><a href="comWriteForm.do">구직 등록하기</a></li>
+				</ul></li>
+	  		</c:when>
+	  		<c:otherwise>
+	  			<li><a href="comBoardList.do">일자리찾기</a></li>
+			    <li><a href="nomalBoardList.do">일자리등록정보</a>
+			    	<ul>
+			    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
+			    		<li><a href="nomalWriteForm.do">구직 등록하기</a></li>	
+			    	</ul></li>
+	  		</c:otherwise>
+	  	</c:choose>
 	    <li>
 	        <a href="#">게시판</a>
 	        <ul>
@@ -71,38 +87,64 @@ function showValues(){
    </nav>
   <div class="side">
 	<div class="sideLogin">
-		<div class="loginArea">
-		<%if(session.getAttribute("user")==null){%>
-			<p>보다안전하게 인력몬 사이트를 이용하세요</p>
-			<div class="loginBtn">
-				<a href="login.do" clsss="loginComent"><i><span>인력몬</span>로그인</i></a>
+				<div class="loginArea" style="text-align: center;">
+					<%
+						if (session.getAttribute("user") == null) {
+					%>
+					<div class="loginArea_div">
+						<div class="loginArea_div_1">
+							<img src="img/main/nomallogin.png" alt="일반 회원 로그인"
+								onclick="location.href='login.do?a=2'" />
+						</div>
+						<div class="loginArea_div_2">
+							<img src="img/main/comlogin.png" alt="기업회원 로그인"
+								onclick="location.href='login.do?a=1'" />
+						</div>
+					</div>
+					<div class="loginArea_div2">
+						<a class="loginArea_div2_a" href="joinForm.do">회원가입</a> <span>l</span>
+						<a class="loginArea_div2_a2" href="#">아이디 찾기</a> <span>l</span> <a
+							class="loginArea_div2_a3" href="#">비밀번호 찾기</a>
+					</div>
+					<%
+						} else {
+					%>
+
+					<div class="loginArea_div3">
+						<img src="img/com/mans.png" alt="일반회원" />
+					</div>
+					<div class="loginArea_div4">
+						<c:choose>
+							<c:when test="${userInfo == 1}">
+								<span class="loginArea_div4_1" onclick="logOut()"><span>로그아웃</span></span>
+								<span class="loginArea_div4_2"><span>일반</span>회원</span><br> 
+								<span class="loginArea_div4_3"><span>${user.name}</span>님</span><br>
+								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
+							</c:when>
+							<c:when test="${userInfo == 2}">
+								<span class="loginArea_div4_1" onclick="logOut()"><span>로그아웃</span></span>
+								<span class="loginArea_div4_2"><span>기업</span>회원</span><br> 
+								<span class="loginArea_div4_3"><span>${user.name}</span>님</span><br>
+								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
+							</c:when>
+						</c:choose>
+					</div>
+					<%
+						}
+					%>
+				</div>
 			</div>
-			<div class="loginBottom">
-				<a href="joinForm.do" class="LoginJoin">회원가입</a>
-				<span class="search">
-				<a>아이디 찾기</a>
-				/
-				<a>비밀번호 찾기</a>
-				</span>
-			</div>
-			<%}else{%>
-			<div>${user.name}님 환영합니다. &nbsp;&nbsp;&nbsp;
-			<a href="#" onclick="logOut()">로그아웃</a></li>
-  			<li><a href="#">마이 페이지</a></li>
-			</div>
-			<%} %>
-		</div>
-	</div>
 	<div class="Shortcut">
 		<div class="ShortcutMain"> <!-- 우측의 6개 숏컷 가이드 -->
-			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick4.png"/></div><div>구인검색</div></div>
-			<div class="ShortcutMain_dvi" onclick="location.href='comWriteForm.do'"><div><img src="img/main/Newquick2.png"/></div><div>구직등록</div></div>
-			<div class="ShortcutMain_dvi" onclick="location.href='comBoardList.do'"><div ><img src="img/main/Newquick1.png"/></div><div>구직 등록현황</div></div>
+			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick3.png"/></div><div>구직검색</div></div>
+			<div class="ShortcutMain_dvi" onclick="nomalWriteCheck()"><div><img src="img/main/Newquick2.png"/></div><div>구직등록</div></div>
+			<div class="ShortcutMain_dvi" onclick="nomalBoardListCheck()"><div ><img src="img/main/Newquick1.png"/></div><div>구직 등록현황</div></div>
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick5.png"/></div><div>구인검색 가이드</div></div>
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick7.png"/></div><div>구직등록 가이드</div></div>
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick6.png"/></div><div>공지사항</div></div>
 		</div>
 	</div>
+	
 	<div class="Advertising">
 		<ul class="bxslider"><!-- 광고판 3개 사진 -->
   			<li><img src="img/main/advertising/1.jpg"/></li>
@@ -123,6 +165,75 @@ function showValues(){
     <!-- end .sidebar1 --></div>
   <div class="content">
   	<div class="recentHelp">
+  		<div class="recentHelp_1">
+					<p class="recentHelp_1_p"><span>일자리</span> 검색</p>
+					<div class="recentHelp_1_d">
+					<div class="recentHelp_1_div">
+						<ul style="list-style: none;">
+							<li><span>키워드 입력</span>
+								<div style="float: right; margin-right: 40px;">
+									<dt class="recentHelp_1_dt">
+										<input type="text" />
+									</dt>
+									<dd class="recentHelp_1_dd">
+										<a href="#">검색</a>
+									</dd>
+								</div></li>
+						</ul>
+					</div>
+					<div class="recentHelp_1_div2">
+						<ul style="list-style: none;">
+							<li style="float: left;width: 50%;">
+								<dl style="float: left;">
+									<dt style="float: left;" class="recentHelp_1_div2_dt">전문분야</dt>
+									<dd style="padding-left: 30px;" class="recentHelp_1_div2_dd">
+										<select id='fruits' name='license' style="width:195px;height: 32px">
+												<option value='' selected>-- 다중선택 --</option>
+												<option value=''>거푸집기능사</option>
+												<option value=''>건설기계기술사</option>
+												<option value=''>건축도장기능사</option>
+												<option value=''>건축목공기능사</option>
+												<option value=''>관광통역안내사</option>
+												<option value=''>금속기사</option>
+												<option value=''>금형기술사</option>
+												<option value=''>기계기술사</option>
+												<option value=''>기계정비산업기사</option>
+												<option value=''>기계조립산업기사</option>
+												<option value=''>도배기능사</option>
+												<option value=''>미장기능사</option>
+												<option value=''>배관산업기사</option>
+												<option value=''>석공기능사</option>
+												<option value=''>연삭기능사</option>
+												<option value=''>석공기능사</option>
+												<option value=''>용접기술사</option>
+												<option value=''>유리시공기능사</option>
+												<option value=''>일반기계기사</option>
+												<option value=''>전기공사기사</option>
+												<option value=''>전기산업기사</option>
+												<option value=''>전자기사</option>
+												<option value=''>토목기사</option>
+												<option value=''>포장기사</option>
+										</select>
+									</dd>
+								</dl>
+							</li>
+							<li style="float: left;width: 50%;">
+								<dl style="width: 100%;">
+									<dt style="margin-left: 9px;" class="recentHelp_1_div2_dt2">경력</dt>
+									<dd style="padding-left: 10px;" class="recentHelp_1_div2_dd2">
+										<select id="careerType" name="careerType"
+											title="경력 선택"><option value="">전체</option>
+											<option value="0">무관</option>
+											<option value="1">신입</option>
+											<option value="2">경력</option>
+										</select>
+									</dd>
+								</dl>
+							</li>
+						</ul>
+					</div>
+					</div>
+				</div>
     	<div class="bestinfo">
     		<p class="info_p">＊최근  구인공고</p>
 				<div class="infoBox">
@@ -136,9 +247,20 @@ function showValues(){
 						<div class="info_span1_1">${c.cjob}</div>
 					</c:when>
 				</c:choose>
-					<div class="info_span2"><span>${c.ctitle}</span></div>
+					<div class="info_span2" id="info_span2"><a href="comView.do?cnum=${c.cnum}" style="color: #0372ab; text-decoration:none">${c.ctitle}</a></div>
 					<div class="info_span2" id="span_info">
-						<span class="span_info_in">${c.cday}</span><span class="span_info_in">${c.carea}</span><span>${c.ccarrer}</span>
+						<span class="span_info_in">${c.cday}</span>
+							<c:choose>
+								<c:when test="${fn:length(c.carea) > 19}">
+									<span class="span_info_in">
+										<c:out value="${fn:substring(c.carea, 0, 19)}"></c:out>...
+									</span>
+								</c:when>
+								<c:otherwise>
+									<span class="span_info_in">${c.carea}</span>
+								</c:otherwise>
+							</c:choose>							
+						<span>${c.ccarrer}</span>
 					</div>					
 					<a></a>
 				</div>
@@ -208,5 +330,35 @@ function showValues(){
         </div>
     <!-- end .footer --></div>
   <!-- end .container --></div>
+  <script>
+		function nomalWriteCheck(){
+			var a = '${userInfo}';
+			if(a == ''){
+				alert('로그인 후 이용해주세요');
+				location.href='login.do';
+			}else{
+				if(a == 2) {
+					alert("기업회원은 이용하실 수 없습니다.");
+				}else{
+					location.href='nomalWriteForm.do';
+				}	
+			}
+			
+		}
+		function nomalBoardListCheck(){
+			var a = '${userInfo}';
+			if(a ==''){
+				alert('로그인 후 이용해주세요');
+				location.href='login.do';
+			}else{
+				if(a == 2) {
+					alert("기업회원은 이용하실 수 없습니다.");
+				}else{
+					location.href='nomalBoardList.do';
+				}	
+			}
+			
+		}
+	</script>
 </body>
 </html>

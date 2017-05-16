@@ -239,4 +239,14 @@ public class ComServiceImpl implements ComService{
 		return icbr;
 	}
 
+	@Override
+	public int insertInComBoard(int cnum, NomalUser nuser) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("cnum", cnum);
+		map.put("nomalId", nuser.getNomalId());
+		map.put("phone", nuser.getPhone());
+		int re = cdao.insertInComBoard(map);
+		return re;
+	}
+
 }

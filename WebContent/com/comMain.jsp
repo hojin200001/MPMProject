@@ -46,12 +46,32 @@
 		<nav style="margin-top: 20px;">
 		<ul id="menu">
 			<li><a href="index.do">홈으로</a></li>
-			<li><a href="comSearch.do">인력찾기</a></li>
-			<li><a href="comBoardList.do">구직 정보</a>
-				<ul>
-					<li><a href="comBoardList.do">구직 등록 현황</a></li>
-					<li><a href="comWriteForm.do">구직 등록하기</a></li>
-				</ul></li>
+			<c:choose>
+		  		<c:when test="${userInfo == 1}">
+		  			<li><a href="comBoardList.do">일자리찾기</a></li>
+				    <li><a href="nomalBoardList.do">일자리등록정보</a>
+				    	<ul>
+				    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
+				    		<li><a href="nomalWriteForm.do">구직 등록하기</a></li>	
+				    	</ul></li>
+		  		</c:when>
+		  		<c:when test="${userInfo ==2}">
+		  			<li><a href="comSearch.do">인력찾기</a></li>
+					<li><a href="comBoardList.do">구직 정보</a>
+					<ul>
+						<li><a href="comBoardList.do">구직 등록 현황</a></li>
+						<li><a href="comWriteForm.do">구직 등록하기</a></li>
+					</ul></li>
+		  		</c:when>
+		  		<c:otherwise>
+		  			<li><a href="comSearch.do">인력찾기</a></li>
+					<li><a href="comBoardList.do">구직 정보</a>
+					<ul>
+						<li><a href="comBoardList.do">구직 등록 현황</a></li>
+						<li><a href="comWriteForm.do">구직 등록하기</a></li>
+					</ul></li>
+		  		</c:otherwise>
+		  	</c:choose>
 			<li><a href="#">게시판</a>
 				<ul>
 					<li><a href="freeBoardList.do">자유게시판</a></li>
@@ -89,10 +109,20 @@
 						<img src="img/com/mans.png" alt="일반회원" />
 					</div>
 					<div class="loginArea_div4">
-						<span class="loginArea_div4_1" onclick="logOut()"><span>로그아웃</span></span>
-						<span class="loginArea_div4_2"><span>일반</span>회원</span><br> <span
-							class="loginArea_div4_3"><span>${user.name}</span>님</span><br>
+						<c:choose>
+							<c:when test="${userInfo == 1}">
+								<span class="loginArea_div4_1" onclick="logOut()"><span>로그아웃</span></span>
+								<span class="loginArea_div4_2"><span>일반</span>회원</span><br> 
+								<span class="loginArea_div4_3"><span>${user.name}</span>님</span><br>
 								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
+							</c:when>
+							<c:when test="${userInfo == 2}">
+								<span class="loginArea_div4_1" onclick="logOut()"><span>로그아웃</span></span>
+								<span class="loginArea_div4_2"><span>기업</span>회원</span><br> 
+								<span class="loginArea_div4_3"><span>${user.name}</span>님</span><br>
+								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
+							</c:when>
+						</c:choose>
 					</div>
 					<%
 						}
@@ -171,7 +201,7 @@
 			</div>
 			<div class="recentHelp">
 				<div class="recentHelp_1">
-					<p class="recentHelp_1_p"><span>인제</span>검색</p>
+					<p class="recentHelp_1_p"><span>인재</span>검색</p>
 					<div class="recentHelp_1_d">
 					<div class="recentHelp_1_div">
 						<ul style="list-style: none;">
@@ -252,12 +282,22 @@
 										<div class="info_span1_1">${n.njob}</div>
 									</c:when>
 								</c:choose>
-								<div class="info_span2">
-									<span>${n.ntitle}</span>
+								<div class="info_span2" id="info_span2">
+									<a href="" style="color: #0372ab; text-decoration:none;">${n.ntitle}</a>
 								</div>
 								<div class="info_span2" id="span_info">
-									<span class="span_info_in">${n.nday}</span><span
-										class="span_info_in">${n.narea}</span><span>${n.ncareer}</span>
+									<span class="span_info_in">${n.nday}</span>
+									<c:choose>
+										<c:when test="${fn:length(n.narea) > 19}">
+											<span class="span_info_in">
+												<c:out value="${fn:substring(n.narea, 0, 19)}"></c:out>...
+											</span>
+										</c:when>
+										<c:otherwise>
+											<span class="span_info_in">${n.narea}</span>
+										</c:otherwise>
+									</c:choose>						
+									<span>${n.ncareer}</span>
 								</div>
 								<a></a>
 							</div>

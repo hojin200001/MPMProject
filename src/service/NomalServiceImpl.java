@@ -22,8 +22,10 @@ public class NomalServiceImpl implements NomalService{
 	private NomalDao nDao;
 
 	public NomalUser selectOne(String id) {
-		System.out.println();
-		return null;
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("id", id);
+		NomalUser user = nDao.selectOne(map);
+		return user;
 	}
 	
 	public HashMap<String, Object> getLogin(String id, String pass){

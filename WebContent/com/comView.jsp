@@ -10,7 +10,8 @@
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
 <link rel="stylesheet" type="text/css" href="css/main/public_header.css?var=1">
 <link rel="stylesheet" type="text/css" href="css/main/SkyBanner.css?var=1">
-<link rel="stylesheet" type="text/css" href="css/com/conView.css?var=1">
+<link rel="stylesheet" type="text/css" href="css/com/comView.css?var=1">
+<link rel="stylesheet" type="text/css" href="css/com/comView2.css?var=1">
 
 <!-- 다음지도 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -18,63 +19,53 @@
 	src="//apis.daum.net/maps/maps3.js?apikey=5df6011222b3cbeedfefde1c00f1b101&libraries=services"></script>
 <title>게시물 상세보기</title>
 <style type="text/css">
-.textbottom_div_1{
-	width: 80%;
-	margin: 0 auto;
-	overflow:auto; 
-}
-.textbottom_div_1_1{
-	margin-top: 10px;
-	background-color: #0f4579;
-	border-radius: 10px;
-}
-.textbottom_div_1_1>span{
-	color: #fff;
-}
-.textbottom_div_1_1_1{
-	font-size: 14px;
-}
-.textbottom_div_1_1_2{
-	font-size: 14px;
-}
-.textbottom_div_1_1_3{
-	font-size: 13px;
-}
-.textbottom_div_re{
-	width: 100%;
-	text-align: right;
-}
-.textbottom_div_re_span1{
-	margin-right: 20px;
-}
-.textbottom_div_re_span2{
-	color: red;
-}
-.textbottom_div_re_span3{
-	margin-right: 150px;
-}
+
 </style>
 </head>
 <body>
-	
 	<div class="container">
 		<div class="header">
 			<div class="searchArea">
-				<div class="imgArea">
-					<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" />
-				</div>
-			</div>
+  			<dir class="searchs">
+  				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로"/>
+  				<div class="serachs_div">
+	  				<input type="text" alt="전체검색" class="searchText"><img src="img/main/btn_search.gif" alt="홈으로" style="float: left;"/></input>
+  				</div>
+  			</dir>
+  		</div>	
 			<!-- end .header -->
 		</div>
 		<nav style="margin-top: 20px;">
 		<ul id="menu">
-			<li><a href="index.do">홈으로</a></li>
-			<li><a href="#">인력찾기</a></li>
-			<li><a href="comBoardList.do">구직 정보</a>
-				<ul>
-					<li><a href="comBoardList.do">구직 등록 현황</a></li>
-					<li><a href="comWriteForm.do">구직 등록하기</a></li>
-				</ul></li>
+			<c:choose>
+		  		<c:when test="${userInfo == 1}">
+					<li><a href="nomalMain.do">홈으로</a></li>
+		  			<li><a href="comBoardList.do">일자리찾기</a></li>
+				    <li><a href="nomalBoardList.do">일자리등록정보</a>
+				    	<ul>
+				    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
+				    		<li><a href="nomalWriteForm.do">구직 등록하기</a></li>	
+				    	</ul></li>
+		  		</c:when>
+		  		<c:when test="${userInfo ==2}">
+					<li><a href="comMain.do">홈으로</a></li>
+		  			<li><a href="comSearch.do">인력찾기</a></li>
+					<li><a href="comBoardList.do">구직 정보</a>
+					<ul>
+						<li><a href="comBoardList.do">구직 등록 현황</a></li>
+						<li><a href="comWriteForm.do">구직 등록하기</a></li>
+					</ul></li>
+		  		</c:when>
+		  		<c:otherwise>
+					<li><a href="comMain.do">홈으로</a></li>
+		  			<li><a href="comSearch.do">인력찾기</a></li>
+					<li><a href="comBoardList.do">구직 정보</a>
+					<ul>
+						<li><a href="comBoardList.do">구직 등록 현황</a></li>
+						<li><a href="comWriteForm.do">구직 등록하기</a></li>
+					</ul></li>
+		  		</c:otherwise>
+		  	</c:choose>
 			<li><a href="#">게시판</a>
 				<ul>
 					<li><a href="freeBoardList.do">자유게시판</a></li>
@@ -132,7 +123,7 @@
 			</div>
 			<div class="contents_top2_2">
 				<input type="button" value="되돌아가기"
-					onclick="location.href='comBoardList.do'">
+					onclick="history.back()">
 			</div>
 		</div>
 		<div style="background-color: #ebedee">
@@ -186,25 +177,76 @@
 				<div class="textAreas">
 					<textarea rows="10" name="ctext" placeholder="상세 내용을 작성해 주세요" style="font-size: 14px;">${comBoard.ctext}</textarea>
 				</div>
-				<div class="textbottom_div" style="background-color: #fff;">
+				<div class="textbottom_div" style="background-color: #fff; overflow: auto;">
 					<div class="textbottom_div_1">
-						<c:forEach items="${inComBoard}" var="in">
+						<c:forEach items="${inComBoard}" var="in" varStatus="a">
 						<div class="textbottom_div_1_1">
-							<span class="textbottom_div_1_1_1" >${in.nomalId}</span>
+							<span class="textbottom_div_1_1_1" id="textbottom${a.count}" name="${in.nomalId}">${in.nomalId}</span>
 							<span class="textbottom_div_1_1_2">HP.${in.phone}</span>
 							<span class="textbottom_div_1_1_3">
 								<fmt:formatDate value="${in.joinDay}" pattern="MM월dd일 HH시mm분ss"/>
 							</span>
-							<img alt="삭제하기" src="img/com/Xicon.png" style="cursor: pointer;" onclick="location.href='deleteInComBoard.do?cnum=${comBoard.cnum}&nomalId=${in.nomalId}'">
+							<c:choose>
+								<c:when test="${userInfo == 2}">
+									<img alt="삭제하기" src="img/com/Xicon.png" style="cursor: pointer;" onclick="location.href='deleteInComBoard.do?cnum=${comBoard.cnum}&nomalId=${in.nomalId}'">
+								</c:when>
+							</c:choose>
 						</div>
 						</c:forEach>
 					</div>
 				</div>
 			</div>
 			<div class="textbottom_button">
-				<input type="button" value="수정하기" onclick="location.href='comModifyForm.do?cnum=${comBoard.cnum}'">
-				<input type="button" value="삭제하기" onclick="checkDelete(${comBoard.cnum})">
+				<c:choose>
+					<c:when test="${userInfo == 2 or userInfo ==0}">
+						<input type="button" value="수정하기" onclick="location.href='comModifyForm.do?cnum=${comBoard.cnum}'">
+						<input type="button" value="삭제하기" onclick="checkDelete(${comBoard.cnum})">
+					</c:when>
+					<c:when test="${userInfo == 1}">
+						<input type="button" value="참가 신청하기" onclick="attendThis('${user.id}')"> 
+						<input type="button" value="참가 취소하기" onclick="location.href='deleteInComBoard.do?cnum=${comBoard.cnum}&nomalId=${user.id}'">
+					</c:when>
+				</c:choose>
 			</div>
+			<script type="text/javascript">
+				function attendThis(e){
+					var Now = new Date();
+					var startTime = '${comBoard.cstartDay}';
+					var y = startTime.substring(0,4);
+					var m = startTime.substring(5,7);
+					var d = startTime.substring(8,10);
+					var start = new Date(m+"/"+d+"/"+y);
+					var endTime= '${comBoard.cendDay}';
+					var y2 = endTime.substring(0,4);
+					var m2 = endTime.substring(5,7);
+					var d2 = endTime.substring(8,10);
+					var end = new Date(m2+"/"+d2+"/"+y2);
+					/* 여기는 보드쪽 */
+					var id = e;
+					var cnum = '${comBoard.cnum}';
+					var boole = 'a';
+					var count = $(".textbottom_div_1 > .textbottom_div_1_1") .size();
+					if(Now.getTime < start.getTime()){
+						alert("아직 신청일이 아닙니다.");
+					}else if(Now.getTime()>end.getTime()){
+						alert("신청일이 지났습니다.");
+					}else{
+						if(count != null){
+							for(var a = 1; a<=count; a++){
+								var val =$("#textbottom"+a).attr('name');
+								if(id == val){
+									boole = "b";
+								} 
+							}
+							if(boole =="a"){
+								location.href='attendThis.do?cnum='+cnum+'&userId='+id;
+							}else{
+								alert("이미 신청이 되어있는 아이디 입니다.");
+							}
+						}
+					}
+				}
+			</script>
 		</div>
 	</div>
 	<script type="text/javascript" src="js/com/map.js"></script>
@@ -230,7 +272,6 @@
 				location.href='comDelete.do?cnum='+a;
 			}else{
 			}
-		
 		}
 	</script>
 	<div class="footer">
