@@ -187,7 +187,7 @@ width: 25%;
 	</ul>
     </nav>
 	<div class="imgArea2" >
-  				<img class="imageBack" src="img/free/m12338793364.jpg" width="900" height="180" />
+  				<img class="imageBack" src="img/free/success-health-header-1280x200-2.jpg"/>
 	</div>
   	<br>
 	
@@ -254,7 +254,8 @@ width: 25%;
 	</table>
 	</form>
 	<form class="form-horizontal" action="freeBoardWriteForm.do" name="frm" method="post">
-	<input type="submit" value="게시글 등록"></form>
+	<input type="submit" value="게시글 등록">
+	</form>
 	<br>
 	<br>
 	

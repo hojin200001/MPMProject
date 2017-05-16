@@ -117,11 +117,18 @@ public class FreeBoardController {
 	}
 	
 	@RequestMapping("freeBoardWrite.do")
-	public String write(FreeBoard freeBoard){		
+	public String write(FreeBoard freeBoard,HttpSession session){		
 		//게시글 작성하기
 		//페이지에서 파라미터 얻어와서 DB에 저장
-		freeBoardService.writeFreeBoard(freeBoard);
-		return "redirect:freeBoardView.do?num="+freeBoard.getNum();
+		
+		if(session.getAttribute("userInfo")!=null){
+			freeBoardService.writeFreeBoard(freeBoard);
+			return "redirect:freeBoardView.do?num="+freeBoard.getNum();			
+		}
+		else{
+			return "re";
+		}
+		
 		
 	}
 	

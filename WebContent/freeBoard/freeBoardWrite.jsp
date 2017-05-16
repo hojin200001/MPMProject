@@ -182,7 +182,7 @@ width: 25%;
 	</ul>
    </nav>
 	<div class="imgArea2" >
-  				<img class="imageBack" src="img/free/m12338793364.jpg" width="900" height="180" />
+  				<img class="imageBack" src="img/free/success-health-header-1280x200-2.jpg" />
   	</div>
   	<br>
 
