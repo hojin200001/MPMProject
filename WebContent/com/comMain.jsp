@@ -76,6 +76,7 @@
 								onclick="location.href='login.do?a=1'" />
 						</div>
 					</div>
+					
 					<div class="loginArea_div2">
 						<a class="loginArea_div2_a" href="joinForm.do">회원가입</a> <span>l</span>
 						<a class="loginArea_div2_a2" href="#">아이디 찾기</a> <span>l</span> <a

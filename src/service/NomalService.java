@@ -3,6 +3,8 @@ package service;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 import model.ComBoard;
@@ -33,11 +35,12 @@ public interface NomalService {
 	public int insertNomalBoard(NomalBoard nomalBoard);
 	public String idCheck(String id);
 	
+	
+	
 	public HashMap<String, Object> getNomalBoardListByCondition(int page, 
 			@RequestParam(required=false) List cb,
 			@RequestParam(required=false) String rb,
 			@RequestParam(required=false) String ar);
 	
-	public void sse();
-
+	public int userarea(HashMap<String, Object> userarea);
 }

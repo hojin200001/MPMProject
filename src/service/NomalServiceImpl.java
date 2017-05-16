@@ -1,9 +1,14 @@
 package service;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +40,9 @@ public class NomalServiceImpl implements NomalService{
 			if(user.getNomalPass().equals(pass)){
 				map2.put("name", user.getName());
 				map2.put("id",user.getNomalId());
+				String[] userarea= user.getAddress().split(" ");
+				System.out.println(userarea[1]);
+				map2.put("userarea", userarea[1]);
 				return map2;
 			}else{
 				return null;
@@ -94,8 +102,13 @@ public class NomalServiceImpl implements NomalService{
 		result.put("end", getEndPage(page));
 		result.put("last", getLastPage(nDao.getCount()));
 		result.put("totalPage", nDao.getCount());
-		
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
 		HashMap<String, Object> params = new HashMap<>();
+		params.put("TimeCom", sf.format(cal.getTime()));
+		params.put("TimeNomal", sf.format(cal.getTime()));
+		result.put("todayTimeCom", nDao.listComNum(params));
+		result.put("todayTimeNomal", nDao.listNomalNum(params));
 		params.put("offset", getOffset(page));
 		params.put("boardsPerPage", 10);
 		result.put("nomalBoard", nDao.selectBoardPage(params));
@@ -157,6 +170,9 @@ public class NomalServiceImpl implements NomalService{
 		params.put("ar", ar);
 		params.put("offset", getOffset(page));
 		params.put("boardsPerPage", 10);
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
+		params.put("todayTime", sf.format(cal.getTime()));
 		
 		result.put("nomalBoard", nDao.selectSearchByKeyword(params));
 		result.put("current", page);
@@ -176,9 +192,9 @@ public class NomalServiceImpl implements NomalService{
 	}
 
 	@Override
-	public void sse() {
-		// TODO Auto-generated method stub
-		
+	public int userarea(HashMap<String, Object> userarea) {
+		return nDao.userarea(userarea);
 	}
+
 
 }

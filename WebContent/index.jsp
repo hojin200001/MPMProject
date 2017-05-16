@@ -11,14 +11,14 @@
 <link rel="stylesheet" type="text/css" href="css/main/jquery.bxslider.css?var=1">
 <link rel="stylesheet" type="text/css" href="css/main/main.css?var=1">
 <script>
-			function logOut(){
-				var url = "logoutForm.do";
-				window.open(
-						url, 
-						"_blank_1", 
-						"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
-			}
-		</script>
+	function logOut(){
+		var url = "logoutForm.do";
+		window.open(
+			url, 
+			"_blank_1", 
+			"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
+	}
+</script>
 </head>
 
 <body>
@@ -84,5 +84,16 @@
         </div>
     <!-- end .footer --></div>
   <!-- end .container --></div>
+  
+  
+
+<script type="text/javascript">
+$(window).load(function(){
+	//if(ObjectUtils.isEmpty(${area})){location.href="areasel.do"}
+	location.href="areasel.do"
+});
+</script>
+
+
 </body>
 </html>

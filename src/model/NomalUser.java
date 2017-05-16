@@ -7,8 +7,8 @@ public class NomalUser {
 //	나이 age(not null)			int
 	private int age;
 //	주소 add(not null)			varchar(40)
-	private String add;
-	private String add2;
+	private String address;
+	private String address2;
 //	전화번호 phone(not null)		varchar(20)
 	private String phone;
 //	가입일 joinDay				date
@@ -25,21 +25,15 @@ public class NomalUser {
 	private int nomalPoint;
 //	정보공개유무 inpoDis(not null)		boolean
 	private int inpoDis;
-	
-	public int getInpoDis() {
-		return inpoDis;
-	}
-	public void setInpoDis(int inpoDis) {
-		this.inpoDis = inpoDis;
+	@Override
+	public String toString() {
+		return "NomalUser [name=" + name + ", age=" + age + ", address=" + address + ", address2=" + address2
+				+ ", phone=" + phone + ", joinDay=" + joinDay + ", email=" + email + ", nomalId=" + nomalId
+				+ ", nomalPass=" + nomalPass + ", license=" + license + ", nomalPoint=" + nomalPoint + ", inpoDis="
+				+ inpoDis + "]";
 	}
 	public String getName() {
 		return name;
-	}
-	public String getAdd2() {
-		return add2;
-	}
-	public void setAdd2(String add2) {
-		this.add2 = add2;
 	}
 	public void setName(String name) {
 		this.name = name;
@@ -50,11 +44,17 @@ public class NomalUser {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public String getAdd() {
-		return add;
+	public String getAddress() {
+		return address;
 	}
-	public void setAdd(String add) {
-		this.add = add;
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getAddress2() {
+		return address2;
+	}
+	public void setAddress2(String address2) {
+		this.address2 = address2;
 	}
 	public String getPhone() {
 		return phone;
@@ -98,11 +98,12 @@ public class NomalUser {
 	public void setNomalPoint(int nomalPoint) {
 		this.nomalPoint = nomalPoint;
 	}
-
-	@Override
-	public String toString() {
-		return "nomalUser [name=" + name + ", age=" + age + ", add=" + add + ", phone=" + phone + ", joinDay=" + joinDay
-				+ ", email=" + email + ", nomalId=" + nomalId + ", nomalPass=" + nomalPass + ", license=" + license
-				+ ", nomalPoint=" + nomalPoint + "]";
+	public int getInpoDis() {
+		return inpoDis;
 	}
+	public void setInpoDis(int inpoDis) {
+		this.inpoDis = inpoDis;
+	}
+	
+	
 }

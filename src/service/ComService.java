@@ -45,4 +45,5 @@ public interface ComService {
 	public int deleteInComBoard(int cnum, String nomalId);
 	public int InComBoardCount(int cnum);
 	public List<InComBoardRe> inComBoardCount();
+	public int comarea(HashMap<String, Object> comarea);
 }

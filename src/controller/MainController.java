@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,7 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
+import model.ComBoard;
 import model.ComUser;
+import model.FreeBoard;
 import model.NomalUser;
 import service.ComService;
 import service.NomalService;
@@ -49,16 +52,26 @@ public class MainController {
 		HashMap<String, Object> map = new HashMap<>();
 		if (radios == 1) {
 			map = nservice.getLogin(id, pass);
+			session.setAttribute("userarea", map.get("userarea"));
 		} else if (radios == 2) {
 			map = cservice.getLogin(id, pass);
+			session.setAttribute("comarea", map.get("comarea"));
 		}
 		if (map != null) {
 			session.setAttribute("user", map);
 			session.setAttribute("userInfo", radios);
-			return "redirect:" + url2;
+			return "redirect:" + url2;	
 		} else {
 			return "redirect:login.do";
 		}
+	}
+	
+	@RequestMapping("areasel.do")
+	public String test(HttpSession session,
+			HttpServletRequest request){
+		String pathSet = request.getSession().getServletContext().getRealPath("/json/area.json");
+		session.setAttribute("area",nservice.areaJobNum(pathSet));
+		return "redirect:index.do";
 	}
 
 	@RequestMapping("logoutForm.do")

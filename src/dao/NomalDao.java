@@ -33,4 +33,10 @@ public interface NomalDao {
 	public int insertNomalBoard(NomalBoard nomal);
 	
 	public String getPhoneNum(NomalBoard nb);
+	
+	public int listComNum(HashMap<String, Object> params);
+	public int listNomalNum(HashMap<String, Object> params);
+	
+	public int userarea(HashMap<String, Object> params);
+	public int comarea(HashMap<String, Object> params);
 }

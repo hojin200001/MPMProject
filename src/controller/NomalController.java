@@ -37,11 +37,10 @@ public class NomalController {
 		ModelAndView mav = new ModelAndView();
 		List<FreeBoard> list= fservice.selectLimitDesc();
 		List<ComBoard> list2= nservice.selectLimitDesc();
-		//mav.addObject("gangnam", nservice.areaJobNum("강남"));
-		String pathSet = request.getSession().getServletContext().getRealPath("/nomal/area.json");
+		//String pathSet = request.getSession().getServletContext().getRealPath("/json/area.json");
 		mav.addObject("freeList",list);
 		mav.addObject("comList",list2);
-		mav.addObject("area",nservice.areaJobNum(pathSet));
+		//mav.addObject("area",nservice.areaJobNum(pathSet));
 		mav.setViewName("/nomal/nomalMain");
 		return mav;
 	}
@@ -65,10 +64,11 @@ public class NomalController {
 			@RequestParam(defaultValue="1") int page,
 			@RequestParam(value="checkbox", required=false) List checkbox,
 			@RequestParam(value="radiobox", required=false) String radiobox,
-			@RequestParam(value="area", required=false) String area){
+			@RequestParam(value="area", required=false) String area,
+			HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		HashMap<String, Object> nb = new HashMap<>();
-		//HashMap<String, Object> check = new HashMap<>();
+		session.getAttribute("area");
 
 		if(ObjectUtils.isEmpty(checkbox) && ObjectUtils.isEmpty(radiobox) && ObjectUtils.isEmpty(area)){
 			nb = nservice.nomalBoardList(page);
@@ -85,6 +85,13 @@ public class NomalController {
 			mav.addObject("rb", radiobox);
 			mav.addObject("cb", checkbox);
 			mav.addAllObjects(nb);
+			
+		}
+		if(session.getAttribute("userarea").equals(null)){
+		}else{
+			HashMap<String, Object> userarea = new HashMap<>();
+			userarea.put("userarea", session.getAttribute("userarea"));
+			session.setAttribute("userareanum", nservice.userarea(userarea));
 		}
 		mav.setViewName("/nomal/nomalBoardList");
 		return mav;

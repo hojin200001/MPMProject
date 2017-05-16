@@ -2,6 +2,8 @@ package service;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.ComBoardDao;
+import dao.NomalDao;
 import model.ComBoard;
 import model.ComDay;
 import model.ComUser;
@@ -23,6 +26,8 @@ import model.NomalUser;
 public class ComServiceImpl implements ComService{
 	@Autowired(required = false)
 	private ComBoardDao cdao;
+	@Autowired(required = false)
+	private NomalDao nDao;
 	@Override
 	public List<NomalBoard> selectNomalBoardDesc() {
 		List<NomalBoard> list = cdao.selectNomalBoardDesc(); 
@@ -65,7 +70,14 @@ public class ComServiceImpl implements ComService{
 		result.put("last", getLastPage(cdao.getCount(resultid), boardsPerPage));
 		result.put("totalPage", cdao.getCount(resultid));
 		
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
 		HashMap<String, Object> params = new HashMap<>();
+		params.put("TimeCom", sf.format(cal.getTime()));
+		params.put("TimeNomal", sf.format(cal.getTime()));
+		result.put("todayTimeCom", nDao.listComNum(params));
+		result.put("todayTimeNomal", nDao.listNomalNum(params));
+		
 		params.put("offset", getOffset(page, boardsPerPage));
 		params.put("boardsPerPage", boardsPerPage);
 		params.put("id", id);
@@ -117,6 +129,9 @@ public class ComServiceImpl implements ComService{
 			if(user.getComPass().equals(pass)){
 				map2.put("name", user.getComName());
 				map2.put("id",user.getComId());
+				String[] userarea= user.getComAddr().split(" ");
+				System.out.println(userarea[1]);
+				map2.put("comarea", userarea[1]);
 				return map2;
 			}else{
 				return null;
@@ -237,6 +252,11 @@ public class ComServiceImpl implements ComService{
 	public List<InComBoardRe> inComBoardCount() {
 		List<InComBoardRe> icbr = cdao.inComBoardCount();
 		return icbr;
+	}
+
+	@Override
+	public int comarea(HashMap<String, Object> comarea) {
+		return nDao.userarea(comarea);
 	}
 
 }

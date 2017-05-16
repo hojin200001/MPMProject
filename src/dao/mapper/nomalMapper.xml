@@ -91,7 +91,23 @@
     </insert>
     
     <select id="getPhoneNum" parameterType="nomalBoard" resultType="String">
-    	select Nphone from nomaluser where nomalId='${nomalId}'
+    	select phone from nomaluser where nomalId='${nomalId}'
+    </select>
+    
+    <select id="listComNum" parameterType="java.util.HashMap" resultType="int">
+    	select count(*) from comboard where date(CreateDay)='${TimeCom}'
+    </select>
+    
+    <select id="listNomalNum" parameterType="java.util.HashMap" resultType="int">
+    	select count(*) from nomalboard where date(NjoinDay)='${TimeNomal}'
+    </select>
+    
+    <select id="userarea" parameterType="java.util.HashMap" resultType="int">
+    	select count(*) from comboard where Carea like '%${userarea}%'
+    </select>
+    
+    <select id="comarea" parameterType="java.util.HashMap" resultType="int">
+    	select count(*) from nomalboard where Narea like '%${comarea}%'
     </select>
     
   </mapper>

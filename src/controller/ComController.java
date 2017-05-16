@@ -79,6 +79,12 @@ public class ComController {
 		}else{
 			mav.setViewName("/login/loginAlert_login");
 		}
+		if(session.getAttribute("comarea").equals(null)){
+		}else{
+			HashMap<String, Object> userarea = new HashMap<>();
+			userarea.put("comarea", session.getAttribute("comarea"));
+			session.setAttribute("comareanum", cservice.comarea(userarea));
+		}
 		return mav;
 	}
 	
