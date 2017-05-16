@@ -212,7 +212,7 @@ width: 25%;
 		</c:forEach>
 		
 		<tr>
-			<td colspan="5">
+			<td colspan="5" align="center">
 			
 				<c:if test="${start != 1}">
 					<a href="freeBoardList.do?page=1&type=${type}&keyword=${keyword}">[처음]</a>
