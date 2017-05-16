@@ -173,6 +173,7 @@ textarea {
 
 </style>
 <script type="text/javascript" src="js/reply/freeBoardReply.js"></script>
+<script type="text/javascript" src="js/board/freeBoard.js?var=1"></script>
 
 </head>
 <body>
@@ -252,15 +253,15 @@ textarea {
 		<dl>
 			<dd>
 			${freereply.reName}  | ${freereply.reDay}
-
-			<a href="#" style="float: right" onclick="fr_replyDelete(${freereply.reNum},${freeBoard.num})">삭제  </a>  <a style="float: right">수정  |</a>	
-
+			<c:choose>
+				<c:when test="${user.id eq freereply.reName}">
+					<a href="#" style="float: right" onclick="fr_replyDelete(${freereply.reNum},${freeBoard.num})">삭제  </a>  <a style="float: right">수정  |</a>	
 			
-			<a href="#" onclick="replyDelete.do?num=${freeBoard.num}&reNum=${freerply.reNum}" style="float: right;">삭제</a>  <a style="float: right">수정  |</a>
-<%-- 			<a href="replyDelete.do?num=${freeBoard.num}&reNum=${freerply.reNum}" style="float: right;">삭제</a>  <a style="float: right">수정  |</a> --%>
-<%-- 			<a href="#" style="float: right" onclick="fr_replyDelete('<c:out value="${freereply.reNum}"/>, <c:out value="${freeBoard.num}"/>')">삭제  </a>  <a style="float: right">수정  |</a>	 --%>
-
-			
+		<%-- 			<a href="#" onclick="replyDelete.do?num=${freeBoard.num}&reNum=${freerply.reNum}" style="float: right;">삭제</a>  <a style="float: right">수정  |</a> --%>
+		<%-- 			<a href="replyDelete.do?num=${freeBoard.num}&reNum=${freerply.reNum}" style="float: right;">삭제</a>  <a style="float: right">수정  |</a> --%>
+		<%-- 			<a href="#" style="float: right" onclick="fr_replyDelete('<c:out value="${freereply.reNum}"/>, <c:out value="${freeBoard.num}"/>')">삭제  </a>  <a style="float: right">수정  |</a>	 --%>
+				</c:when>
+			</c:choose>
 			</dd>
 			
 			<dt>${freereply.teText}</dt>
@@ -295,9 +296,10 @@ textarea {
 		<form action="replyWrite.do"  method="post" name="frm">
 		<input type="hidden" name="reName" value="${user.id}"> 
 		<input type="hidden" name="num" value="${freeBoard.num}">
-			<textarea name="teText" placeholder="댓글을 달아주세요."></textarea>
+			<textarea name="teText" placeholder="댓글을 달아주세요." onfocus="loginCheck('${user}')"></textarea>
 			<input type="submit" value="댓글">
 		</form>
+		
 		
 	</div>
 	
