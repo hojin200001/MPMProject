@@ -150,11 +150,11 @@ body{
 					<div class="col-sm-offset-2 col-sm-10">
 						<div class="checkbox">
 							<c:choose>
-								<c:when test="${fn:contains(hrefs, 'comMain')}">
+								<c:when test="${loginfo eq '1'}">
 									<input type="radio" name="radios" value="1">일반회원
 	      	<input type="radio" name="radios" value="2" checked="checked" id="checkbox_radio">기업회원
-      	</c:when>
-								<c:when test="${fn:contains(hrefs, 'nomalMain')}">
+	      	</c:when>
+								<c:when test="${loginfo eq '2'}">
 									<input type="radio" name="radios" value="1" checked="checked">일반회원
 	      	<input type="radio" name="radios" value="2" id="checkbox_radio">기업회원
       	</c:when>

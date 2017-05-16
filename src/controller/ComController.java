@@ -84,6 +84,7 @@ public class ComController {
 	
 	@RequestMapping("comSearch.do")
 	public String comSearch(){
+//		ModelAndView mav = new ModelAndView();
 		return "/com/comSearch";
 	}
 	@RequestMapping("comWriteForm.do")

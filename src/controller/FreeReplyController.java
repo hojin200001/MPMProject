@@ -37,16 +37,24 @@ public class FreeReplyController {
 	}
 	
 	@RequestMapping("replyList")
+<<<<<<< HEAD
 	public List<FreeReplyVo> readReplyList(){
 		
 		ModelAndView mav = new ModelAndView();
 		List<FreeReplyVo> freereply = freeReplyService.readReplyList();
 		return freereply;
 	}
+=======
+
+>>>>>>> 1cf57158b3e85c49ef3f7ca6196f65878cef9f72
 	public List<FreeReplyVo> readReplyList(int num){
 		
 		ModelAndView mav = new ModelAndView();
 		List<FreeReplyVo> freereply = freeReplyService.readReplyList(num);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1cf57158b3e85c49ef3f7ca6196f65878cef9f72
 		return freereply;
 		
 		
