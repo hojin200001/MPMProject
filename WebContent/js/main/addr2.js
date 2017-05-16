@@ -51,12 +51,6 @@ function joinCheck(){
 		frm.pwd.focus();
 		return false;
 	}
-	
-	if(document.frm.reid.value.length == 0) {
-		alert("중복 체크를 하지 않았습니다.");
-		frm.reid.focus();
-		return false;
-	}
 	if(document.frm.comName.value.length == 0) {
 		alert("기업명을 입력해 주세요");
 		frm.age.focus();

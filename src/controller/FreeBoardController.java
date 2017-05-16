@@ -76,11 +76,9 @@ public class FreeBoardController {
 		mav.addObject("freereply",fReplyService.readReplyList(num));
 		
 		mav.setViewName("/freeBoard/freeBoardView");
-<<<<<<< HEAD
-		
-=======
+
 		fReplyService.readReplyList(num);
->>>>>>> 4ef854f14d0ee49c84eae739dfb83c94bf34437d
+
 		return mav;
 	}
 	

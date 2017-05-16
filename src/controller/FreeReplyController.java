@@ -34,40 +34,17 @@ public class FreeReplyController {
 	
 	@RequestMapping("replyDelete.do")
 	public String deleteReply(int reNum , int num){
-<<<<<<< HEAD
-		System.out.println(reNum);
-=======
-		System.out.println(0);
->>>>>>> d5e75ef75b0488467f8f0d03c534acca7d03fe2a
-		System.out.println(num);
+
 		freeReplyService.deleteReply(reNum);
 		return "redirect:freeBoardView.do?num="+num;
 	}
 	
-	@RequestMapping("replyList")
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-	public List<FreeReplyVo> readReplyList(){
-		
-		ModelAndView mav = new ModelAndView();
-		List<FreeReplyVo> freereply = freeReplyService.readReplyList();
-		return freereply;
-	}
->>>>>>> projecting
->>>>>>> 4ef854f14d0ee49c84eae739dfb83c94bf34437d
+	@RequestMapping("replyList.do")
 	public List<FreeReplyVo> readReplyList(int num){
 		
 		ModelAndView mav = new ModelAndView();
 		List<FreeReplyVo> freereply = freeReplyService.readReplyList(num);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 4ef854f14d0ee49c84eae739dfb83c94bf34437d
-		
->>>>>>> projecting
+
 		return freereply;
 		
 		

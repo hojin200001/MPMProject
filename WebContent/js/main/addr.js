@@ -52,21 +52,21 @@ function joinCheck(){
 		return false;
 	}
 	
-	if(document.frm.reid.value.length == 0) {
+/*	if(document.frm.reid.value.length == 0) {
 		alert("중복 체크를 하지 않았습니다.");
 		frm.reid.focus();
 		return false;
-	}
+	}*/
 	if(document.frm.age.value.length == 0) {
 		alert("나이를 입력헤 주세요");
 		frm.age.focus();
 		return false;
 	}
-	if(document.frm.age.value.length < 18) {
+/*	if(document.frm.age.value < 18) {
 		alert("미성년자는 가입할 수 없습니다.");
 		frm.age.focus();
 		return false;
-	}
+	}*/
 	if(document.frm.add.value.length == 0) {
 		alert("주소를 입력해 주세요.");
 		frm.age.focus();
@@ -125,6 +125,7 @@ function updateCheck(){
 //아이디가 입력되어있는지 확인
 function idCheck(){
 	if(document.frm.nomalId.value == "") {
+		document.frm.reid.val("a");
 		alert("아이디를 입력하여 주십시오");
 		document.frm.nomalId.focus();
 		return;

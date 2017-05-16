@@ -50,7 +50,7 @@
 						<td valign="top"><span class="font2">*</font2></td>
 						<td><input type="text" name="comId" size="10" id="comId"> <input
 							type="button" value="중복 체크" onclick="idCheck()"> <input
-							type="hidden" name="reid"></td>
+							type="hidden" name="reid" value ="1"></td>
 					</tr>
 					<tr>
 						<td>암호</td>

@@ -16,6 +16,7 @@
 	<delete id="deleteFreeReply" parameterType="int">
 		delete from freeReply where reNum = #{reNum}
 	</delete>
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 =======
@@ -27,6 +28,8 @@
 	</select>
 >>>>>>> projecting
 >>>>>>> 4ef854f14d0ee49c84eae739dfb83c94bf34437d
+=======
+>>>>>>> 376048410347aa711fb11dd7c8e25473339e6f4a
 	<select id="selectReply" resultType="freeReplyVo">	
 		select * from freeReply where num=#{num}
 	</select>

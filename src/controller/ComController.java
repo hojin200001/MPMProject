@@ -83,11 +83,9 @@ public class ComController {
 	}
 	
 	@RequestMapping("comSearch.do")
-	public ModelAndView comSearch(){
-		ModelAndView mav = new ModelAndView();
-		dao.FreeBoardDao.this.
-		
-		return mav;
+	public String comSearch(){
+//		ModelAndView mav = new ModelAndView();
+		return "/com/comSearch";
 	}
 	@RequestMapping("comWriteForm.do")
 	public String comWriteForm(){
@@ -127,6 +125,10 @@ public class ComController {
 		cservice.deleteInComBoard(cnum, nomalId);
 		return "redirect:comView.do?cnum="+cnum;
 	}
+	@RequestMapping("test.do")
+	public String test(){
+		return "/join/test1";	
+}
 	//------------------------------------------------------------------------------------------------------------------------------------//
 	//시간계산 지우지 마시길
 	public List<String >getTime(List<FreeBoard> list){

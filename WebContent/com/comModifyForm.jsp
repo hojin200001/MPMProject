@@ -11,9 +11,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
-<link rel="stylesheet" type="text/css" href="css/main/public_header.css">
-<link rel="stylesheet" type="text/css" href="css/main/SkyBanner.css">
-<link rel="stylesheet" type="text/css" href="css/com/comWrite_con.css">
+<link rel="stylesheet" type="text/css" href="css/main/public_header.css?var=1">
+<link rel="stylesheet" type="text/css" href="css/main/SkyBanner.css?var=1">
+<link rel="stylesheet" type="text/css" href="css/com/comWrite_con.css?var=1">
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <!-- 다음지도 -->
