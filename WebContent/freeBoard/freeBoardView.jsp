@@ -172,7 +172,9 @@ textarea {
 -->
 
 </style>
-<script type="text/javascript" src="script/freeBoard.js"></script>
+<script type="text/javascript" src="js/reply/freeBoardReply.js"></script>
+<script type="text/javascript" src="js/board/freeBoard.js?var=1"></script>
+
 </head>
 <body>
 
@@ -207,13 +209,14 @@ textarea {
 
 	<div>
 	<div class="imgArea2" >
-  				<img class="imageBack" src="img/free/m12338793364.jpg" width="900" height="180" />
+  				<img class="imageBack" src="img/free/success-health-header-1280x200-2.jpg"/>
   	</div>
   	<br>
-<<<<<<< HEAD
-=======
+
   	<div class="table">
->>>>>>> cdf2d34813135f8ea4b5d997b7e7bb181173b1e4
+
+  	<div class="table">
+
 	<table class="table table-condensed">
 		<tr>
 			<td colspan="4" style="font-size: 25px" >${freeBoard.title}</td>
@@ -235,6 +238,15 @@ textarea {
 	</c:choose>
 	<input type="button" value="돌아가기" onclick="location.href='freeBoardList.do'">
 	</div>
+<<<<<<< HEAD
+=======
+
+	<br>
+	
+	<div>
+
+	</div>
+>>>>>>> 93b0108f7b1c3f32af339b6e627945a711f134cf
 	<br>
 	
 	<div class="reply">
@@ -244,20 +256,56 @@ textarea {
 		<dl>
 			<dd>
 			${freereply.reName}  | ${freereply.reDay}
-			<a style="float: right">삭제  </a>  <a style="float: right">수정  |</a>	
+			<c:choose>
+				<c:when test="${user.id eq freereply.reName}">
+					<a href="#" style="float: right" onclick="fr_replyDelete(${freereply.reNum},${freeBoard.num})">삭제  </a>  <a style="float: right">수정  |</a>	
+			
+		<%-- 			<a href="#" onclick="replyDelete.do?num=${freeBoard.num}&reNum=${freerply.reNum}" style="float: right;">삭제</a>  <a style="float: right">수정  |</a> --%>
+		<%-- 			<a href="replyDelete.do?num=${freeBoard.num}&reNum=${freerply.reNum}" style="float: right;">삭제</a>  <a style="float: right">수정  |</a> --%>
+		<%-- 			<a href="#" style="float: right" onclick="fr_replyDelete('<c:out value="${freereply.reNum}"/>, <c:out value="${freeBoard.num}"/>')">삭제  </a>  <a style="float: right">수정  |</a>	 --%>
+				</c:when>
+			</c:choose>
 			</dd>
 			
 			<dt>${freereply.teText}</dt>
 		
 		</dl>
+
+		</div>
+		
+		<div id="replyDiv" style="width: 99%; display:none">
+		    <form name="form2" action="replySave.do" method="post">
+		        <input type="hidden" name="reNum"> 
+		        <input type="hidden" name="num"> 
+		        <textarea name="teText" rows="3" cols="60" maxlength="500"></textarea>
+
+		
 		</div>	
+		
+		<div id="replyDiv" style="display:none">
+		    <form name="form2" action="freeReplySave.do" method="post">
+		        <input type="hidden" name="num"> 
+		        <input type="hidden" name="reNum"> 
+		        <textarea name="rememo" rows="3" cols="60" maxlength="500"></textarea>
+
+		        <a href="#" onclick="fn_replyUpdateSave()">저장</a>
+		        <a href="#" onclick="fn_replyUpdateCancel()">취소</a>
+		    </form>
+		</div>
+
+
 		</c:forEach>
+
 		<form action="replyWrite.do"  method="post" name="frm">
 		<input type="hidden" name="reName" value="${user.id}"> 
 		<input type="hidden" name="num" value="${freeBoard.num}">
-			<textarea name="teText"></textarea>
+			<textarea name="teText" placeholder="댓글을 달아주세요." onfocus="loginCheck('${user}')"></textarea>
 			<input type="submit" value="댓글">
 		</form>
+		
+		
+	</div>
+	
 		<c:forEach items="${freereplyList}" var="freereply">
 		<dl>
 			<dt>${freereply.reName}| ${freereply.reDay}</dt>
@@ -293,7 +341,6 @@ textarea {
 			<span>Copyright &copy; </span> <strong>(주)MPM 네트웍스.</strong> <span>All Rights Reserved.</span>
 		</p>
 		
-	</dir>
 	</div>
 </div>
 
