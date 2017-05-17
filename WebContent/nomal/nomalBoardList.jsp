@@ -12,10 +12,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
-<link rel="stylesheet" type="text/css" href="css/main/public_header.css?var=1">
+<link rel="stylesheet" type="text/css" href="css/main/public_header.css?var=2">
 <link rel="stylesheet" type="text/css" href="css/main/SkyBanner.css?var=1">
 <link rel="stylesheet" type="text/css" href="css/com/comBoardList.css?var=1">
 <title>Insert title here</title>
+
 <style type="text/css">
 
 /* 컨텐츠*/
@@ -150,42 +151,13 @@ td>a{
  <div class="header">
   				<div class="searchArea">
   			<dir class="searchs">
-  				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로"/>
+  				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" style="margin-top: 40px;"/>
   				<div class="serachs_div">
-	  				<input type="text" alt="전체검색" class="searchText" style="margin-top: 11px; margin-left: -20px;">
-	  				<img src="img/main/btn_search.gif" alt="홈으로" style="float: left; margin-top: 17px; margin-left: 0px;"/></input>
+	  				<input type="text" alt="전체검색" class="searchText" style="margin-top: 11px;padding: 8.4px;">
+	  				<img src="img/main/btn_search.gif" alt="홈으로" style="float: left; margin-top: 11px; margin-left: 0px;"/></input>
   				</div>
   			</dir>
   		</div>	
-<<<<<<< HEAD
-    <!-- end .header -->
-    </div>
-	<nav style="margin-top: 20px;">
-		<ul id="menu">
-			<li><a href="index.do">홈으로</a></li>
-			<li><a href="comBoardList.do">일자리찾기</a></li>
-			<li><a href="nomalBoardList.do">일자리등록정보</a>
-				<ul>
-					<li><a href="nomalBoardList.do">구인 등록 현황</a></li>
-					<li><a href="nomalWriteForm.do">구인 등록하기</a></li>	
-				</ul>
-			</li>
-			<li>
-				<a href="#">게시판</a>
-				<ul>
-					<li><a href="freeBoardList.do">자유게시판</a></li>
-					<li><a href="#">후기게시판</a></li>
-				</ul>
-			</li>
-			<li><a href="#">공지사항</a></li>
-		</ul>
-	</nav>
-	
-	
-	
-	
-	<div class="SkyBanner">
-=======
     <!-- end .header --></div>
    <nav style="margin-top: 20px;">
 	  <ul id="menu">
@@ -229,7 +201,6 @@ td>a{
 	</ul>
    </nav>
      <div class="SkyBanner">
->>>>>>> e857cc08d3510f863b3f7fa504f617f8b5999176
    		<div class="Sky_blank" ></div>
    		<div class="Sky_contents">
    			<ul>

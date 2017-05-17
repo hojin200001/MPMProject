@@ -150,7 +150,7 @@ td>a{
  <div class="header">
   		<div class="searchArea">
   			<dir class="searchs">
-  				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로"/>
+  				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" style="margin-top: 30px;"/>
   				<div class="serachs_div">
 	  				<input type="text" alt="전체검색" class="searchText">
 	  				<img src="img/main/btn_search.gif" alt="홈으로" style="float: left;"/></input>

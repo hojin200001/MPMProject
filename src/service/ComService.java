@@ -45,12 +45,11 @@ public interface ComService {
 	public List<InComBoard> selectIncomBoard(int cnum);
 	public int deleteInComBoard(int cnum, String nomalId);
 	public List<InComBoardRe> inComBoardCount();
-<<<<<<< HEAD
+
 	public int comarea(HashMap<String, Object> comarea);
-=======
-	
+
 	//inComBoard
 	public int InComBoardCount(int cnum);
 	public int insertInComBoard(int cnum, NomalUser nuser);
->>>>>>> e857cc08d3510f863b3f7fa504f617f8b5999176
+
 }
