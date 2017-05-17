@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import model.ComBoard;
 import model.FreeBoard;
 import model.NomalBoard;
+import service.ComService;
 import service.FreeBoardService;
 import service.NomalService;
 
@@ -30,6 +31,9 @@ public class NomalController {
 	
 	@Autowired
 	private FreeBoardService fservice;
+	
+	@Autowired
+	private ComService cservice;
 
 	@RequestMapping("nomalMain.do")
 	public ModelAndView selectDesc(HttpSession session,
@@ -40,6 +44,22 @@ public class NomalController {
 		//String pathSet = request.getSession().getServletContext().getRealPath("/json/area.json");
 		mav.addObject("freeList",list);
 		mav.addObject("comList",list2);
+		HashMap<String, Object> map = new HashMap<>();
+		List<Integer> counts = null;
+		if(session.getAttribute("user") != null){
+			map = (HashMap<String, Object>) session.getAttribute("user");
+			map.put("userInfo", session.getAttribute("userInfo"));
+			if((int)map.get("userInfo") == 2){
+				counts = cservice.comMcounts((String)map.get("id"));
+				mav.addObject("countNew", counts.get(0));
+				mav.addObject("countAll", counts.get(1));
+			}else{
+				counts = nservice.nomalMcounts((String)map.get("id"));
+				mav.addObject("countNew", counts.get(0));
+				mav.addObject("countAll", counts.get(1));
+			}
+			
+		}
 		//mav.addObject("area",nservice.areaJobNum(pathSet));
 		mav.setViewName("/nomal/nomalMain");
 		return mav;

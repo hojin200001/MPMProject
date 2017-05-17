@@ -109,5 +109,23 @@
     <select id="comarea" parameterType="java.util.HashMap" resultType="int">
     	select count(*) from nomalboard where Narea like '%${comarea}%'
     </select>
-    
+    <!-- nomal메세지 알람 -->
+    <insert id="insertNomalM" parameterType="nomalM">
+    	insert into nomalM values(0, ${cnum}, '${nomalId}', '${nmtext}', 0, now())
+    </insert>
+    <delete id="deleteNomalM" parameterType="java.util.HashMap">
+    	delete from nomalM where nmnum=${nmnum}
+    </delete>
+    <select id="nomalMcountNew" parameterType="java.util.HashMap" resultType="int">
+    	select count(*) from nomalM where nomalId='${id}' and reception = 0
+    </select>
+    <select id="nomalMcountAll" parameterType="java.util.HashMap" resultType="int">
+    	select count(*) from nomalM where nomalId ='${id}'
+    </select>
+    <select id="selectNomalM" parameterType="java.util.HashMap" resultType="nomalM">
+    	select * from nomalM where nomalId='${id}' order by nmnum desc limit #{offset} ,#{boardsPerPage}
+    </select>
+    <select id="getCountM" parameterType="java.util.HashMap" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
+    	select count(*) from nomalM where nomalId='${id}' 
+    </select>
   </mapper>

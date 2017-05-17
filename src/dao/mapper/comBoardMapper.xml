@@ -36,6 +36,9 @@
   	<delete id="deleteComBoard" parameterType="java.util.HashMap">
   		delete from comboard where Cnum=${cnum}
   	</delete>
+  	<select id="selectComBoardOneM" parameterType="java.util.HashMap" resultType="comBoard">
+  		select * from comboard where Cnum= ${cnum}
+  	</select>
   	<!-- comUser -->
   	<select id="selectOne" parameterType="java.util.HashMap" resultType="comUser">
   		select * from comUser where comId = '${id}'
@@ -76,5 +79,24 @@
  	<!-- id 중복확인 -->
  	  <select id="selectIdCheck" parameterType="java.util.HashMap" resultType="comUser">
     	select * from comUser where comId ='${id}';
+    </select>
+    <!-- 메세지알람 -->
+    <insert id="insertComM" parameterType="comM">
+    	insert into comM values(0, ${cnum},'${nomalId}', '${comId}','${cmtext}', 0 , now())
+    </insert>
+    <delete id="deleteComM" parameterType="java.util.HashMap">
+    	delete from comM where cmnum=${cmnum}
+    </delete>
+    <select id="comMcountNew" parameterType="java.util.HashMap" resultType="int">
+    	select count(*) from comM where comId='${id}' and reception = 0
+    </select>
+    <select id="comMcountAll" parameterType="java.util.HashMap" resultType="int">
+    	select count(*) from comM where comId ='${id}'
+    </select>
+    <select id="selectComM" parameterType="java.util.HashMap" resultType="comM">
+    	select * from comM where comId='${id}' order by cmnum desc limit #{offset} ,#{boardsPerPage}
+    </select>
+    <select id="getCountM" parameterType="java.util.HashMap" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
+    	select count(*) from comM where comId='${id}' 
     </select>
   </mapper>

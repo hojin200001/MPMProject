@@ -27,6 +27,12 @@
 				.open(url, "_blank_1",
 						"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
 	}
+	function Mesege() {
+		var url = "mesegeForm.do";
+		window
+		.open(url, "_blank_1",
+				"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+	}
 </script>
 </head>
 <body>
@@ -116,12 +122,24 @@
 								<span class="loginArea_div4_2"><span>일반</span>회원</span><br> 
 								<span class="loginArea_div4_3"><span>${user.name}</span>님</span><br>
 								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
+								<span style="font-size: 13px; margin-right: 30px;">메세지 : 
+									<c:choose>
+										<c:when test="${countNew ==0}"><a>0</a></c:when>
+										<c:when test="${countNew > 0}"><a style="color: red; cursor:pointer;" onclick="Mesege()">${countNew}</a></c:when>											 
+									</c:choose>/${countAll}
+								</span>
 							</c:when>
 							<c:when test="${userInfo == 2}">
 								<span class="loginArea_div4_1" onclick="logOut()"><span>로그아웃</span></span>
 								<span class="loginArea_div4_2"><span>기업</span>회원</span><br> 
 								<span class="loginArea_div4_3"><span>${user.name}</span>님</span><br>
 								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
+								<span style="font-size: 13px; margin-right: 30px;">메세지 : 
+									<c:choose>
+										<c:when test="${countNew ==0}"><a>0</a></c:when>
+										<c:when test="${countNew > 0}"><a style="color:red; cursor:pointer;" onclick="Mesege()">${countNew}</a></c:when>											 
+									</c:choose>/${countAll}
+								</span>
 							</c:when>
 						</c:choose>
 					</div>
@@ -284,7 +302,7 @@
 									</c:when>
 								</c:choose>
 								<div class="info_span2" id="info_span2">
-									<a href="" style="color: #0372ab; text-decoration:none;">${n.ntitle}</a>
+									<a href="nomalView.do?nnum=${n.nnum}" style="color: #0372ab; text-decoration:none;">${n.ntitle}</a>
 								</div>
 								<div class="info_span2" id="span_info">
 									<span class="span_info_in">${n.nday}</span>

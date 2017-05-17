@@ -120,6 +120,13 @@
 								<span class="loginArea_div4_3"><span>${user.name}</span>님</span>
 								<br>
 								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
+								<span style="font-size: 13px; margin-right: 30px;">메세지 : 
+									<c:choose>
+										<c:when test="${countNew ==0}"><a>0</a></c:when>
+										<c:when test="${countNew > 0}"><a style="color: red; cursor:pointer;" onclick="Mesege()">${countNew}</a></c:when>											 
+									</c:choose>/${countAll}
+								</span>
+								
 							</c:when>
 							<c:when test="${userInfo == 2}">
 								<span class="loginArea_div4_1" onclick="logOut()"><span>로그아웃</span></span>
@@ -128,6 +135,13 @@
 								<span class="loginArea_div4_3"><span>${user.name}</span>님</span>
 								<br>
 								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
+								<span style="font-size: 13px; margin-right: 30px;">메세지 : 
+									<c:choose>
+										<c:when test="${countNew ==0}"><a>0</a></c:when>
+										<c:when test="${countNew > 0}"><a style="color: red; cursor:pointer;" onclick="Mesege()">${countNew}</a></c:when>											 
+									</c:choose>/${countAll}
+								</span>
+								
 							</c:when>
 						</c:choose>
 					</div>

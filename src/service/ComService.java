@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import model.ComBoard;
+import model.ComM;
 import model.ComUser;
 import model.InComBoard;
 import model.InComBoardRe;
@@ -52,6 +53,10 @@ public interface ComService {
 	//inComBoard
 	public int InComBoardCount(int cnum);
 	public int insertInComBoard(int cnum, NomalUser nuser);
-
+	//메세지 알람
+	public int insertComM(int cnum, String id, int userInfo);
+	public List<Integer> comMcounts(String id);
+	public HashMap<String, Object> selectComM(int page, String id);
+	public int deleteMesege(int cmnum);
 
 }

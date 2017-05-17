@@ -5,6 +5,7 @@ import java.util.List;
 
 import model.ComBoard;
 import model.ComDay;
+import model.ComM;
 import model.ComUser;
 import model.InComBoard;
 import model.InComBoardRe;
@@ -27,6 +28,7 @@ public interface ComBoardDao {
 	public int updateComBoard(ComBoard comboard);
 	public int updateComDay(ComDay comday);
 	public int deleteComBoard(HashMap<String, Integer> n);
+	public ComBoard selectComBoardOneM(HashMap<String, Integer> params);
 	//incomBoard
 	public List<InComBoard> selectIncomBoard(HashMap<String, Integer> n);
 	public int deleteInComBoard(HashMap<String, Object> n);
@@ -42,4 +44,14 @@ public interface ComBoardDao {
 	//InComBoard 카운터 구해서 테이블 번호 가져오는것
 	public List<InComBoardRe> inComBoardCount();
 	public int insertInComBoard(HashMap<String, Object> params);
+	
+	//comM(메세지 알림)
+	public int insertComM(ComM comm);
+	public int deleteComM(HashMap<String, Object> params);
+	public List<ComM> selectComM(HashMap<String, Object> params);
+	public ComM selectComMOne(HashMap<String, Object> params);
+	public int comMcountNew(HashMap<String, Object> params);
+	public int comMcountAll(HashMap<String, Object> params);
+	public int changeComM(HashMap<String, Object> params);
+	public int getCountM(HashMap<String, Object> params);
 }

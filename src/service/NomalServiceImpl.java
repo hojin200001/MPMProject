@@ -2,6 +2,7 @@ package service;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -20,6 +21,7 @@ import model.ComBoard;
 import model.ComDay;
 import model.ComUser;
 import model.NomalBoard;
+import model.NomalM;
 import model.NomalUser;
 @Service
 public class NomalServiceImpl implements NomalService{
@@ -187,7 +189,6 @@ public class NomalServiceImpl implements NomalService{
 
 	@Override
 	public int insertNomalBoard(NomalBoard nomalBoard) {
-		// TODO Auto-generated method stub
 		nomalBoard.setNphone(nDao.getPhoneNum(nomalBoard));
 		nDao.insertNomalBoard(nomalBoard);
 		return 0;
@@ -198,5 +199,55 @@ public class NomalServiceImpl implements NomalService{
 		return nDao.userarea(userarea);
 	}
 
+	@Override
+	public int insertNomalM(int cnum, String id, int userInfo) {
+		NomalM nomalm = new NomalM();
+		nomalm.setCnum(cnum);
+		nomalm.setNomalId(id);
+		if(userInfo == 1){
+			nomalm.setNmtext("신청");
+		}else{
+			nomalm.setNmtext("거절");
+		}
+		nDao.insertNomalM(nomalm);
+		return 0;
+	}
+
+	@Override
+	public List<Integer> nomalMcounts(String id) {
+		List<Integer> counts = new ArrayList();
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("id", id);
+		counts.add(nDao.nomalMcountAll(map));
+		counts.add(nDao.nomalMcountNew(map));
+		return counts;
+	}
+	public int deleteMesege(int mnum) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("nmnum", mnum);
+		int re = nDao.deleteNomalM(map);
+		return 0;
+	}
+
+	@Override
+	public HashMap<String, Object> selectNomalM(int page, String id) {
+		HashMap<String, Object> results = new HashMap<>();	
+		HashMap<String, Object> result = new HashMap<>();
+		HashMap<String, Object> re = new HashMap<>();
+		re.put("id", id);
+		result.put("current", page);
+		result.put("start", getStartPage(page));
+		result.put("end", getEndPage(page));
+		result.put("last", getLastPage(nDao.getCountM(re)));
+		result.put("totalPage", nDao.getCountM(re));
+		
+		results.put("offset", getOffset(page));
+		results.put("boardsPerPage", 5);
+		results.put("id", id);
+		
+		result.put("mBoard", nDao.selectNomalM(results));
+		
+		return result;
+	}
 
 }

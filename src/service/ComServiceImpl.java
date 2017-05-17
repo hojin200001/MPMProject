@@ -3,10 +3,12 @@ package service;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.catalina.filters.CsrfPreventionFilter;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import dao.ComBoardDao;
 import dao.NomalDao;
 import model.ComBoard;
 import model.ComDay;
+import model.ComM;
 import model.ComUser;
 import model.InComBoard;
 import model.InComBoardRe;
@@ -270,6 +273,63 @@ public class ComServiceImpl implements ComService{
 		int re = cdao.insertInComBoard(map);
 		return re;
 
+	}
+
+	@Override
+	public int insertComM(int cnum, String id, int userInfo) {
+		HashMap<String, Integer> map = new HashMap<>();
+		ComM comm = new ComM();
+		map.put("cnum", cnum);
+		ComBoard cb = cdao.selectComBoardOneM(map);
+		comm.setCnum(cnum);
+		comm.setNomalId(id);
+		if(userInfo == 1){
+			comm.setCmtext("신청");
+		}else{
+			comm.setCmtext("거절");
+		}
+		comm.setComId(cb.getComId());
+		int re = cdao.insertComM(comm);
+		return re;
+	}
+
+	@Override
+	public List<Integer> comMcounts(String id) {
+		List<Integer> counts = new ArrayList();
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("id", id);
+		counts.add(cdao.comMcountAll(map));
+		counts.add(cdao.comMcountNew(map));
+		return counts;
+	}
+
+	@Override
+	public HashMap<String, Object> selectComM(int page, String id) {
+		HashMap<String, Object> results = new HashMap<>();	
+		HashMap<String, Object> result = new HashMap<>();
+		HashMap<String, Object> re = new HashMap<>();
+		re.put("id", id);
+		result.put("current", page);
+		result.put("start", getStartPage(page));
+		result.put("end", getEndPage(page));
+		result.put("last", getLastPage(cdao.getCountM(re), 5));
+		result.put("totalPage", cdao.getCountM(re));
+		
+		results.put("offset", getOffset(page, 5));
+		results.put("boardsPerPage", 5);
+		results.put("id", id);
+		
+		result.put("mBoard", cdao.selectComM(results));
+		
+		return result;
+	}
+
+	@Override
+	public int deleteMesege(int cmnum) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("cmnum", cmnum);
+		int re = cdao.deleteComM(map);
+		return re;
 	}
 
 }
