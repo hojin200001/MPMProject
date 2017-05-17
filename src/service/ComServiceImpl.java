@@ -265,6 +265,10 @@ public class ComServiceImpl implements ComService{
 		map.put("phone", nuser.getPhone());
 		int re = cdao.insertInComBoard(map);
 		return re;
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2167db8af18cf7e4a2ed13d2f813ce3d4666006
 	}
 
 }

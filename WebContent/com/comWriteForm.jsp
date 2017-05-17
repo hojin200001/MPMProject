@@ -26,13 +26,14 @@
 	<div class="container">
 		<div class="header">
 			<div class="searchArea">
-  			<dir class="searchs">
-  				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로"/>
-  				<div class="serachs_div">
-	  				<input type="text" alt="전체검색" class="searchText"><img src="img/main/btn_search.gif" alt="검색" style="float: left;"/></input>
-  				</div>
-  			</dir>
-  		</div>	
+				<dir class="searchs">
+					<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" style="padding-top: 30px;"/>
+					<div class="serachs_div">
+						<input type="text" alt="전체검색" class="searchText"><img
+							src="img/main/btn_search.gif" alt="홈으로" style="float: left;" /></input>
+					</div>
+				</dir>
+			</div>
 			<!-- end .header -->
 		</div>
 		<nav style="margin-top: 20px;">
