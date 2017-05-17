@@ -43,4 +43,7 @@ public interface NomalService {
 			@RequestParam(required=false) String ar);
 	
 	public int userarea(HashMap<String, Object> userarea);
+	
+	public int nomalBoardModify(NomalBoard nomalBoard);
+	
 }

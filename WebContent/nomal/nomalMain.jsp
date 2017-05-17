@@ -51,7 +51,7 @@
 			<li><a href="index.do">홈으로</a></li>
 			<c:choose>
 				<c:when test="${userInfo == 1}">
-					<li><a href="comBoardList.do">일자리찾기</a></li>
+					<li><a href="nomalSearch.do">일자리찾기</a></li>
 					<li><a href="nomalBoardList.do">일자리등록정보</a>
 						<ul>
 							<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
@@ -67,7 +67,7 @@
 						</ul></li>
 				</c:when>
 				<c:otherwise>
-					<li><a href="comBoardList.do">일자리찾기</a></li>
+					<li><a href="nomalSearch.do">일자리찾기</a></li>
 					<li><a href="nomalBoardList.do">일자리등록정보</a>
 						<ul>
 							<li><a href="nomalBoardList.do">구직 등록 현황</a></li>

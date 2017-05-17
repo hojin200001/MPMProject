@@ -33,10 +33,12 @@
 	height: 45px;
 }
 .contents_top2_1{
+	margin-top:-5px;
 	width:70%;
 	float: left;
 }
 .contents_top2_2{
+	margin-top:-5px;
 	width: 20%; 
 	float: right;
 	text-align: right;
@@ -247,7 +249,7 @@ td>a{
 </div>
 
 		<div class="contents_top2_2">
-			<input type="button" value="구직등록하기" onclick="location.href='nomalWriteForm.do'">
+			<input class="btn btn-primary" type="button" value="구직등록하기" onclick="location.href='nomalWriteForm.do'">
 		</div>
 	</div> 
 	<div class="contents_top3">
@@ -297,61 +299,6 @@ td>a{
 		</div>
 	</div>
 	
-
-<div>
-
-<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" 
-aria-controls="collapseExample2">
-   직업 보기
-</button>
-<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" 
-aria-controls="collapseExample3">
-   경력 선택
-</button>
-<button class="btn btn-primary btn-block" type="button" data-target="#collapseExample" aria-expanded="false" 
-aria-controls="collapseExample" style="margin-bottom: 0px">
-  지역 보기
-</button>
-<form action="nomalBoardList.do" id="formTest" name="area" method="post"> 
-<div id="collapseExample">
-	<div class="well" style="margin-bottom: 0px">
-		<input type="text" class="form-control" name="area" readonly="readonly" id="test5">
-		<p>지역 선택</p>
-		<div id="gd">
-			<div></div>
-		</div>
-		<div id="awesomet">
-			<p>관할지역</p>
-			<div></div>
-		</div>
-	</div>
-</div>
-
-<div class="collapse" id="collapseExample2">
-	<div class="well" style="margin-bottom: 0px">
-		<div id="checkDiv">
-			<div></div>
-		</div>
-	</div>
-</div>
-
-<div class="collapse" id="collapseExample3">
-	<div class="well" style="margin-bottom: 0px">
-		<h5>경력 선택</h5>
-		<p style="font-size: 13px">
-		1년<input type="radio" name="radiobox" value="1년"/> 
-		2년<input type="radio" name="radiobox" value="2년"/> 
-		3년<input type="radio" name="radiobox" value="3년"/>   
-		</p>
-	</div>
-</div>
-<div class="well">
-<input class="btn btn-info" type="submit" value="검색" align="middle"/>
-</div>
-
-</form>
-</div>
-
 
 <table>
 	<c:choose>
@@ -413,6 +360,18 @@ aria-controls="collapseExample" style="margin-bottom: 0px">
 		
    
    </table>
+   
+   	<div class="footer">
+		<div class="copy">
+			<address>
+				서울특별시 강남구 역삼동 819-10 한빛교육센터 강의실,<br> 대표연락처 : 1577-0000, FAX :
+				052-000-0000, E-mail : asdf@naver.com
+			</address>
+			<p>Copyrights 2017~~~~ MPMcompany All rights Reserved</p>
+		</div>
+		<!-- end .footer -->
+	</div>
+   
    </div>
 
 

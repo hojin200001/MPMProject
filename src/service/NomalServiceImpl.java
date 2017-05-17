@@ -171,7 +171,7 @@ public class NomalServiceImpl implements NomalService{
 		params.put("rb", rb);
 		params.put("ar", ar);
 		params.put("offset", getOffset(page));
-		params.put("boardsPerPage", 10);
+		params.put("boardsPerPage", 5);
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
 		params.put("todayTime", sf.format(cal.getTime()));
@@ -186,7 +186,7 @@ public class NomalServiceImpl implements NomalService{
 	}
 
 	@Override
-	public int insertNomalBoard(NomalBoard nomalBoard) {
+	public int insertNomalBoard(NomalBoard nomalBoard){
 		// TODO Auto-generated method stub
 		nomalBoard.setNphone(nDao.getPhoneNum(nomalBoard));
 		nDao.insertNomalBoard(nomalBoard);
@@ -194,8 +194,15 @@ public class NomalServiceImpl implements NomalService{
 	}
 
 	@Override
-	public int userarea(HashMap<String, Object> userarea) {
+	public int userarea(HashMap<String, Object> userarea){
 		return nDao.userarea(userarea);
+	}
+
+	@Override
+	public int nomalBoardModify(NomalBoard nomal){
+		// TODO Auto-generated method stub
+		nDao.nomalBoardModify(nomal);
+		return nomal.getNnum();
 	}
 
 

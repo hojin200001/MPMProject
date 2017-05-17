@@ -15,6 +15,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,7 +57,7 @@ public class ComController {
 		ModelAndView mav = new ModelAndView();
 		List<InComBoard> ico= cservice.selectIncomBoard(cnum);
 		mav.addObject("user" , session.getAttribute("user"));
-		mav.addObject(cservice.comView(cnum));
+		mav.addObject(cservice.comVie(cnum));
 		mav.addObject("inComBoard",ico);
 		mav.addObject("inCount", cservice.InComBoardCount(cnum));
 		mav.setViewName("com/comView");
@@ -83,20 +84,72 @@ public class ComController {
 		}else{
 			mav.setViewName("/login/loginAlert_login");
 		}
-		if(session.getAttribute("comarea").equals(null)){
-		}else{
-			HashMap<String, Object> userarea = new HashMap<>();
-			userarea.put("comarea", session.getAttribute("comarea"));
-			session.setAttribute("comareanum", cservice.comarea(userarea));
-		}
+//		if(session.getAttribute("comarea").equals(null)){
+//		}else{
+//			HashMap<String, Object> userarea = new HashMap<>();
+//			userarea.put("comarea", session.getAttribute("comarea"));
+//			session.setAttribute("comareanum", cservice.comarea(userarea));
+//		}
 		return mav;
 	}
 	
-	@RequestMapping("comSearch.do")
-	public String comSearch(){
-//		ModelAndView mav = new ModelAndView();
-		return "/com/comSearch";
+	
+	
+	
+	@RequestMapping("comView2.do")
+	public ModelAndView boardView2(int cnum){
+		ModelAndView mav = new ModelAndView();
+		mav.addObject(cservice.comVie(cnum));
+		System.out.println("왜 안될까");
+		mav.setViewName("com/comView");
+		return mav;
 	}
+	
+	
+	
+	
+	
+	
+	@RequestMapping("comSearch.do")
+	public ModelAndView comSearch(
+			@RequestParam(defaultValue="1") int page,
+			@RequestParam(value="checkbox", required=false) List checkbox,
+			@RequestParam(value="radiobox", required=false) String radiobox,
+			@RequestParam(value="area", required=false) String area,
+			HttpSession session){
+		ModelAndView mav = new ModelAndView();
+		
+		if(ObjectUtils.isEmpty(checkbox) && ObjectUtils.isEmpty(radiobox) && ObjectUtils.isEmpty(area)){
+		}else{
+			HashMap<String, Object> nlist = nservice.getNomalBoardListByCondition(page, checkbox, radiobox, area);
+			mav.addObject("nomalBoard", nlist.get("nomalBoard"));
+			mav.addAllObjects(nlist);
+			mav.addObject("ar", area);
+			mav.addObject("rb", radiobox);
+			mav.addObject("cb", checkbox);
+			}
+		mav.setViewName("/com/comSearch");
+		return mav;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("comWriteForm.do")
 	public String comWriteForm(){
 		return "/com/comWriteForm";

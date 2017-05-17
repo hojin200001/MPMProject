@@ -39,4 +39,6 @@ public interface NomalDao {
 	
 	public int userarea(HashMap<String, Object> params);
 	public int comarea(HashMap<String, Object> params);
+	
+	public void nomalBoardModify(NomalBoard nomal);
 }

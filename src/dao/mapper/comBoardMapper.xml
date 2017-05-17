@@ -77,4 +77,26 @@
  	  <select id="selectIdCheck" parameterType="java.util.HashMap" resultType="comUser">
     	select * from comUser where comId ='${id}';
     </select>
+    
+    <select id="selectSearchByKeyword" parameterType="java.util.HashMap" resultType="comBoard">
+    	select * from comBoard
+    	where 1=1
+    	<if test="!(cb eq null)"> and
+    		<foreach collection="cb" item="c" separator="or " open="(" close=")"> Cjob like '%${c}%'</foreach>
+    	</if>
+    	<if test="!(rb eq null)"> and Ccarrer like '%${rb}%'</if>
+    	<if test="!(ar eq null)"> and Carea like '%${ar}%'</if>
+    	order by Cnum desc limit #{offset}, #{boardsPerPage}
+    </select>
+    
+    <select id="getCountSearchByKeyword" parameterType="java.util.HashMap" resultType="int">
+    	select count(*) from comBoard
+    	where 1=1
+    	<if test="!(cb eq null)"> and
+    		<foreach collection="cb" item="c" separator="or " open="(" close=")"> Cjob like '%${c}%'</foreach>
+    	</if>
+    	<if test="!(rb eq null)"> and Ccarrer like '%${rb}%'</if>
+    	<if test="!(ar eq null)"> and Carea like '%${ar}%'</if>
+    </select>
+    
   </mapper>

@@ -10,6 +10,7 @@ import java.util.List;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.ComBoardDao;
@@ -105,6 +106,18 @@ public class ComServiceImpl implements ComService{
 		// TODO Auto-generated method stub
 		return (page - 1)*boardsPerPage;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public ComBoard comView(int cnum) {
 		// TODO Auto-generated method stub
@@ -112,7 +125,14 @@ public class ComServiceImpl implements ComService{
 		n.put("cnum", cnum);
 		ComBoard cb = cdao.comView(n);
 		ComDay cd = cdao.selectComDayOne(n);
+		System.out.println("출력 전");
+		System.out.println(cb.getCstartDay());
+		System.out.println(cd.getCstartDay());
+		
 		cb.setCstartDay(cd.getCstartDay());
+		
+		
+		System.out.println("여긴거같은데");
 		cb.setCendDay(cd.getCendDay());
 		if(cb !=null){
 			n.put("ccount",cb.getCcount()+1);
@@ -120,6 +140,18 @@ public class ComServiceImpl implements ComService{
 		}
 		return cb;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public HashMap<String, Object> getLogin(String id, String pass) {
 		HashMap<String, Object> map = new HashMap<>();
 		HashMap<String, Object> map2 = new HashMap<>();
@@ -264,6 +296,45 @@ public class ComServiceImpl implements ComService{
 		map.put("phone", nuser.getPhone());
 		int re = cdao.insertInComBoard(map);
 		return re;
+	}
+	
+	@Override
+	public HashMap<String, Object> getComBoardListByCondition(int page, 
+			//@RequestParam(required=false) HashMap<String, Object> cb, 
+			@RequestParam(required=false) List cb, 
+			@RequestParam(required=false) String rb,
+			@RequestParam(required=false) String ar) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> params = new HashMap<>();
+		HashMap<String, Object> result = new HashMap<>();
+		params.put("cb", cb);
+		params.put("rb", rb);
+		params.put("ar", ar);
+		int n = (page - 1)*10;
+		params.put("offset", n);
+		params.put("boardsPerPage", 5);
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
+		params.put("todayTime", sf.format(cal.getTime()));
+		result.put("comBoard", cdao.selectSearchByKeyword(params));
+		result.put("current", page);
+		result.put("start", getStartPage(page));
+		result.put("end", getEndPage(page));
+		int c = (nDao.getCountSearchByKeyword(params)-1)/10 + 1;
+		result.put("last", c);
+
+		return result;
+	}
+
+	@Override
+	public ComBoard comVie(int cnum) {
+		// TODO Auto-generated method stub
+		HashMap<String, Integer> n = new HashMap<>();
+		n.put("cnum", cnum);
+		System.out.println("들어오긴 했냐");
+		ComBoard cb = cdao.comView(n);
+		System.out.println("여기까지 오긴 허냐");
+		return cb;
 	}
 
 }

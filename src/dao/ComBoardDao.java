@@ -20,7 +20,14 @@ public interface ComBoardDao {
 	public HashMap<String, Object> comBoardList();
 	public int getCount(HashMap<String, Object> params);
 	public List<ComBoard> selectBoardPage(HashMap<String, Object> params);
+	
+	
+	
 	public ComBoard comView(HashMap<String, Integer> n);
+	
+	
+	
+	
 	public void comCountUpdate(HashMap<String, Integer> n);
 	public int insertComBoard(ComBoard comboard);
 	public int selectCnum(HashMap<String, Object> params);
@@ -42,4 +49,6 @@ public interface ComBoardDao {
 	//InComBoard 카운터 구해서 테이블 번호 가져오는것
 	public List<InComBoardRe> inComBoardCount();
 	public int insertInComBoard(HashMap<String, Object> params);
+	public List<ComBoard> selectSearchByKeyword(HashMap<String, Object> params);
+	public int getCountSearchByKeyword(HashMap<String, Object> params);
 }

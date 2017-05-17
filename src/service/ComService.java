@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import model.ComBoard;
@@ -50,4 +51,11 @@ public interface ComService {
 	//inComBoard
 	public int InComBoardCount(int cnum);
 	public int insertInComBoard(int cnum, NomalUser nuser);
+	
+	public HashMap<String, Object> getComBoardListByCondition(int page, 
+			@RequestParam(required=false) List cb,
+			@RequestParam(required=false) String rb,
+			@RequestParam(required=false) String ar);
+	
+	public ComBoard comVie(int cnum);
 }

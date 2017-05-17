@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import model.ComBoard;
 import model.FreeBoard;
 import model.NomalBoard;
+import service.ComService;
 import service.FreeBoardService;
 import service.NomalService;
 
@@ -30,6 +31,9 @@ public class NomalController {
 	
 	@Autowired
 	private FreeBoardService fservice;
+	
+	@Autowired
+	private ComService cservice;
 
 	@RequestMapping("nomalMain.do")
 	public ModelAndView selectDesc(HttpSession session,
@@ -53,8 +57,23 @@ public class NomalController {
 	}
 	
 	@RequestMapping("nomalSearch.do")
-	public ModelAndView searchPage(){
+	public ModelAndView nomalSearch(
+			@RequestParam(defaultValue="1") int page,
+			@RequestParam(value="checkbox", required=false) List checkbox,
+			@RequestParam(value="radiobox", required=false) String radiobox,
+			@RequestParam(value="area", required=false) String area,
+			HttpSession session){
 		ModelAndView mav = new ModelAndView();
+		
+		if(ObjectUtils.isEmpty(checkbox) && ObjectUtils.isEmpty(radiobox) && ObjectUtils.isEmpty(area)){
+		}else{
+			HashMap<String, Object> nlist = cservice.getComBoardListByCondition(page, checkbox, radiobox, area);
+			mav.addObject("comBoard", nlist.get("comBoard"));
+			mav.addAllObjects(nlist);
+			mav.addObject("ar", area);
+			mav.addObject("rb", radiobox);
+			mav.addObject("cb", checkbox);
+			}
 		mav.setViewName("/nomal/nomalSearch");
 		return mav;
 	}
@@ -70,29 +89,23 @@ public class NomalController {
 		HashMap<String, Object> nb = new HashMap<>();
 		session.getAttribute("area");
 
-		if(ObjectUtils.isEmpty(checkbox) && ObjectUtils.isEmpty(radiobox) && ObjectUtils.isEmpty(area)){
+		//if(ObjectUtils.isEmpty(checkbox) && ObjectUtils.isEmpty(radiobox) && ObjectUtils.isEmpty(area)){
 			nb = nservice.nomalBoardList(page);
 			mav.addAllObjects(nb);
-		}else{
-			if(!(ObjectUtils.isEmpty(checkbox))){
-//				for(int i=0; i<checkbox.size(); i++){
-//					String n = Integer.toString(i);
-//					check.put(n, checkbox.get(i));	
-//				}
-			}
-			nb = nservice.getNomalBoardListByCondition(page, checkbox, radiobox, area);
-			mav.addObject("ar", area);
-			mav.addObject("rb", radiobox);
-			mav.addObject("cb", checkbox);
-			mav.addAllObjects(nb);
-			
-		}
-		if(session.getAttribute("userarea").equals(null)){
-		}else{
-			HashMap<String, Object> userarea = new HashMap<>();
-			userarea.put("userarea", session.getAttribute("userarea"));
-			session.setAttribute("userareanum", nservice.userarea(userarea));
-		}
+//		}else{
+//			nb = nservice.getNomalBoardListByCondition(page, checkbox, radiobox, area);
+//			mav.addObject("ar", area);
+//			mav.addObject("rb", radiobox);
+//			mav.addObject("cb", checkbox);
+//			mav.addAllObjects(nb);
+//			
+//		}
+//		if(ObjectUtils.isEmpty(session.getAttribute("userarea"))){
+//		}else{
+//			HashMap<String, Object> userarea = new HashMap<>();
+//			userarea.put("userarea", session.getAttribute("userarea"));
+//			session.setAttribute("userareanum", nservice.userarea(userarea));
+//		}
 		mav.setViewName("/nomal/nomalBoardList");
 		return mav;
 	}
@@ -116,4 +129,20 @@ public class NomalController {
 		nservice.insertNomalBoard(nomal);
 		return "redirect:nomalBoardList.do ";
 	}
+	
+	@RequestMapping("nomalModifyForm.do")
+	public ModelAndView nomalBoardModify(int num){
+		ModelAndView mav = new ModelAndView();
+		mav.addObject(nservice.boardView(num));
+		mav.setViewName("nomal/nomalModifyForm");
+		return mav;
+	}
+	
+	@RequestMapping("nomalModify.do")
+	public String nomalBoardModifyDo(NomalBoard nomal){
+		nservice.nomalBoardModify(nomal);
+		return "redirect:nomalBoardList.do";
+	}
+	
+	
 }

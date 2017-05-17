@@ -60,8 +60,20 @@ public class MainController {
 		if (map != null) {
 			session.setAttribute("user", map);
 			session.setAttribute("userInfo", radios);
+			
+			
+			
+			
+			
 			return "redirect:" + url2;	
 		} else {
+			
+			
+			
+			
+			
+			
+			
 			return "redirect:login.do";
 		}
 	}
