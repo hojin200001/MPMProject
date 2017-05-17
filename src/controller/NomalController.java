@@ -87,7 +87,8 @@ public class NomalController {
 			mav.addAllObjects(nb);
 			
 		}
-		if(session.getAttribute("userarea").equals(null)){
+		if(ObjectUtils.isEmpty(session.getAttribute("userarea"))){
+			session.setAttribute("userareanum", "x");
 		}else{
 			HashMap<String, Object> userarea = new HashMap<>();
 			userarea.put("userarea", session.getAttribute("userarea"));

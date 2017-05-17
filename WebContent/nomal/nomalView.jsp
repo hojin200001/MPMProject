@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
 <link rel="stylesheet" type="text/css" href="css/main/public_header.css?var=1">
 <link rel="stylesheet" type="text/css" href="css/main/SkyBanner.css?var=1">
-<link rel="stylesheet" type="text/css" href="css/com/conView.css?var=1">
+<link rel="stylesheet" type="text/css" href="css/com/comView.css?var=1">
 
 <title>게시물 상세보기</title>
 <style type="text/css">
@@ -132,7 +132,7 @@
 			</div>
 			<div class="contents_top2_2">
 				<input type="button"  class="btn btn-primary" value="작성하기"
-					onclick="location.href='nomalWriteForm.do'">
+					style="float: right;" onclick="location.href='nomalWriteForm.do'">
 			</div>
 		</div>
 	<div style="background-color: #ebedee">

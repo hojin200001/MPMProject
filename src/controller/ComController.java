@@ -15,6 +15,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -83,7 +84,8 @@ public class ComController {
 		}else{
 			mav.setViewName("/login/loginAlert_login");
 		}
-		if(session.getAttribute("comarea").equals(null)){
+		if(ObjectUtils.isEmpty(session.getAttribute("comarea"))){
+			session.setAttribute("comareanum", "x");
 		}else{
 			HashMap<String, Object> userarea = new HashMap<>();
 			userarea.put("comarea", session.getAttribute("comarea"));

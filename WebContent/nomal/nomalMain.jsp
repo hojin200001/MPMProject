@@ -12,36 +12,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>무제 문서</title>
 <script src="js/main/jquery.bxslider.min.js"></script>
-<<<<<<< HEAD
-<link rel="stylesheet" type="text/css"
-	href="css/main/jquery.bxslider.css?var=1">
-<link rel="stylesheet" type="text/css" href="css/main/menuBar.css?var=1">
-<link rel="stylesheet" type="text/css"
-	href="css/main/public_header.css?var=1">
-<link rel="stylesheet" type="text/css"
-	href="css/com/comMain_con.css?var=1">
-=======
 <link rel="stylesheet" type="text/css" href="css/main/jquery.bxslider.css?var=2">
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css?var=2">
 <link rel="stylesheet" type="text/css" href="css/main/public_header.css?var=2">
 <link rel="stylesheet" type="text/css" href="css/com/comMain_con.css?var=2">
 <script type="text/javascript">
 
-function logOut(){
-	var url = "logoutForm.do";
-	window.open(
-			url, 
-			"_blank_1", 
-			"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
-}
-
-function showValues(){
-	var key=document.shows.njob.options[document.shows.njob.selectedIndex].value;
-	document.shows.tabless.value = key;
-}
->>>>>>> e857cc08d3510f863b3f7fa504f617f8b5999176
-
-<script type="text/javascript">
 	function logOut() {
 		var url = "logoutForm.do";
 		window
@@ -57,11 +33,7 @@ function showValues(){
 </script>
 </head>
 <body>
-<<<<<<< HEAD
-	<div class="container">
-=======
 <div class="container">
->>>>>>> e857cc08d3510f863b3f7fa504f617f8b5999176
 		<div class="header">
 			<div class="searchArea">
 				<dir class="searchs">
@@ -74,7 +46,6 @@ function showValues(){
 			</div>
 			<!-- end .header -->
 		</div>
-<<<<<<< HEAD
 		
 		
 	<nav style="margin-top: 20px;">
@@ -400,8 +371,8 @@ function showValues(){
 						<span>${c.ccarrer}</span>
 					</div>					
 					<a></a>
->>>>>>> e857cc08d3510f863b3f7fa504f617f8b5999176
 				</div>
+				</c:forEach>
 				<div class="content_advertising_2">
 					<img src="img/com/aaaa.png" alt="파트너 모집" />
 				</div>
@@ -565,29 +536,6 @@ function showValues(){
 				</address>
 				<p>Copyrights 2017~~~~ MPMcompany All rights Reserved</p>
 			</div>
-<<<<<<< HEAD
-			<!-- end .footer -->
-		</div>
-		<!-- end .container -->
-	</div>
-
-<script type="text/javascript">
-$(window).load(function(){
-   $.ajax({
-      url : "json/job.json",
-      dataType : "json",
-      success : function(result){
-         $.each(result.job, function(i,d){
-            $("#fruits").append(
-               "<option value=" + d["value"] + ">" + d["value"] + "</option>"
-            );
-         });
-      }
-   });
-});
-</script>	
-
-=======
 			<!-- #container -->
     	</div>
     </div>
@@ -629,7 +577,19 @@ $(window).load(function(){
 			}
 			
 		}
+		$(window).load(function(){
+			   $.ajax({
+			      url : "json/job.json",
+			      dataType : "json",
+			      success : function(result){
+			         $.each(result.job, function(i,d){
+			            $("#fruits").append(
+			               "<option value=" + d["value"] + ">" + d["value"] + "</option>"
+			            );
+			         });
+			      }
+			   });
+			});
 	</script>
->>>>>>> e857cc08d3510f863b3f7fa504f617f8b5999176
 </body>
 </html>

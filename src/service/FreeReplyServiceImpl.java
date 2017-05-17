@@ -47,10 +47,6 @@ public class FreeReplyServiceImpl implements FreeReplyService{
 	}
 
 	@Override
-<<<<<<< HEAD
-
-=======
->>>>>>> e857cc08d3510f863b3f7fa504f617f8b5999176
 	public List<FreeReplyVo> readReplyList(int num) {
 		// TODO Auto-generated method stub
 		return fReplyDao.selectReply(num);

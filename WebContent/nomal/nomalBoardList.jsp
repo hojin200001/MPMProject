@@ -157,35 +157,6 @@ td>a{
   				</div>
   			</dir>
   		</div>	
-<<<<<<< HEAD
-    <!-- end .header -->
-    </div>
-	<nav style="margin-top: 20px;">
-		<ul id="menu">
-			<li><a href="index.do">홈으로</a></li>
-			<li><a href="comBoardList.do">일자리찾기</a></li>
-			<li><a href="nomalBoardList.do">일자리등록정보</a>
-				<ul>
-					<li><a href="nomalBoardList.do">구인 등록 현황</a></li>
-					<li><a href="nomalWriteForm.do">구인 등록하기</a></li>	
-				</ul>
-			</li>
-			<li>
-				<a href="#">게시판</a>
-				<ul>
-					<li><a href="freeBoardList.do">자유게시판</a></li>
-					<li><a href="#">후기게시판</a></li>
-				</ul>
-			</li>
-			<li><a href="#">공지사항</a></li>
-		</ul>
-	</nav>
-	
-	
-	
-	
-	<div class="SkyBanner">
-=======
     <!-- end .header --></div>
    <nav style="margin-top: 20px;">
 	  <ul id="menu">
@@ -229,7 +200,6 @@ td>a{
 	</ul>
    </nav>
      <div class="SkyBanner">
->>>>>>> e857cc08d3510f863b3f7fa504f617f8b5999176
    		<div class="Sky_blank" ></div>
    		<div class="Sky_contents">
    			<ul>

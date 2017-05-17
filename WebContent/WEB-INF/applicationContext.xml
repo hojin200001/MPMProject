@@ -61,11 +61,7 @@
 		<property name="mapperInterface" value="dao.ComBoardDao"></property>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
-<<<<<<< HEAD
 	<bean id="freeReplyDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
-=======
-	<bean id="feeReplyDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
->>>>>>> e857cc08d3510f863b3f7fa504f617f8b5999176
 		<property name="mapperInterface" value="dao.FreeReplyDao"></property>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
