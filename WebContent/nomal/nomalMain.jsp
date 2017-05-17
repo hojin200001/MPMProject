@@ -39,7 +39,7 @@ function showValues(){
 	var key=document.shows.njob.options[document.shows.njob.selectedIndex].value;
 	document.shows.tabless.value = key;
 }
->>>>>>> e857cc08d3510f863b3f7fa504f617f8b5999176
+
 
 <script type="text/javascript">
 	function logOut() {

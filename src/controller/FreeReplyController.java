@@ -39,12 +39,7 @@ public class FreeReplyController {
 		return "redirect:freeBoardView.do?num="+num;
 	}
 	
-<<<<<<< HEAD
-	@RequestMapping("replyList")
-
-=======
 	@RequestMapping("replyList.do")
->>>>>>> e857cc08d3510f863b3f7fa504f617f8b5999176
 	public List<FreeReplyVo> readReplyList(int num){
 		
 		ModelAndView mav = new ModelAndView();

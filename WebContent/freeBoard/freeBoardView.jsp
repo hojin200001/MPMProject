@@ -238,15 +238,7 @@ textarea {
 	</c:choose>
 	<input type="button" value="돌아가기" onclick="location.href='freeBoardList.do'">
 	</div>
-<<<<<<< HEAD
-=======
 
-	<br>
-	
-	<div>
-
-	</div>
->>>>>>> 93b0108f7b1c3f32af339b6e627945a711f134cf
 	<br>
 	
 	<div class="reply">
