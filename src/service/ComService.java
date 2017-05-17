@@ -54,7 +54,7 @@ public interface ComService {
 	//inComBoard
 	public int InComBoardCount(int cnum);
 	public int insertInComBoard(int cnum, NomalUser nuser);
-<<<<<<< HEAD
+
 	
 	public HashMap<String, Object> getComBoardListByCondition(int page, 
 			@RequestParam(required=false) List cb,
@@ -62,12 +62,10 @@ public interface ComService {
 			@RequestParam(required=false) String ar);
 	
 	public ComBoard comVie(int cnum);
-=======
 	//메세지 알람
 	public int insertComM(int cnum, String id, int userInfo);
 	public List<Integer> comMcounts(String id);
 	public HashMap<String, Object> selectComM(int page, String id);
 	public int deleteMesege(int cmnum);
 
->>>>>>> 6bf5e6c954890f12737f1f1031bf4d108204f100
 }

@@ -102,7 +102,6 @@ public class ComController {
 		}else{
 			mav.setViewName("/login/loginAlert_login");
 		}
-<<<<<<< HEAD
 //		if(session.getAttribute("comarea").equals(null)){
 //		}else{
 //			HashMap<String, Object> userarea = new HashMap<>();
@@ -121,15 +120,6 @@ public class ComController {
 		mav.addObject(cservice.comVie(cnum));
 		System.out.println("왜 안될까");
 		mav.setViewName("com/comView");
-=======
-		if(ObjectUtils.isEmpty(session.getAttribute("comarea"))){
-			session.setAttribute("comareanum", "x");
-		}else{
-			HashMap<String, Object> userarea = new HashMap<>();
-			userarea.put("comarea", session.getAttribute("comarea"));
-			session.setAttribute("comareanum", cservice.comarea(userarea));
-		}
->>>>>>> 6bf5e6c954890f12737f1f1031bf4d108204f100
 		return mav;
 	}
 	

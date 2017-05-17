@@ -108,7 +108,6 @@ public class NomalController {
 		//if(ObjectUtils.isEmpty(checkbox) && ObjectUtils.isEmpty(radiobox) && ObjectUtils.isEmpty(area)){
 			nb = nservice.nomalBoardList(page);
 			mav.addAllObjects(nb);
-<<<<<<< HEAD
 //		}else{
 //			nb = nservice.getNomalBoardListByCondition(page, checkbox, radiobox, area);
 //			mav.addObject("ar", area);
@@ -123,29 +122,7 @@ public class NomalController {
 //			userarea.put("userarea", session.getAttribute("userarea"));
 //			session.setAttribute("userareanum", nservice.userarea(userarea));
 //		}
-=======
-		}else{
-			if(!(ObjectUtils.isEmpty(checkbox))){
-//				for(int i=0; i<checkbox.size(); i++){
-//					String n = Integer.toString(i);
-//					check.put(n, checkbox.get(i));	
-//				}
-			}
-			nb = nservice.getNomalBoardListByCondition(page, checkbox, radiobox, area);
-			mav.addObject("ar", area);
-			mav.addObject("rb", radiobox);
-			mav.addObject("cb", checkbox);
-			mav.addAllObjects(nb);
-			
-		}
-		if(ObjectUtils.isEmpty(session.getAttribute("userarea"))){
-			session.setAttribute("userareanum", "x");
-		}else{
-			HashMap<String, Object> userarea = new HashMap<>();
-			userarea.put("userarea", session.getAttribute("userarea"));
-			session.setAttribute("userareanum", nservice.userarea(userarea));
-		}
->>>>>>> 6bf5e6c954890f12737f1f1031bf4d108204f100
+
 		mav.setViewName("/nomal/nomalBoardList");
 		return mav;
 	}

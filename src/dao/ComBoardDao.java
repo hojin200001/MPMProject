@@ -51,11 +51,8 @@ public interface ComBoardDao {
 	//InComBoard 카운터 구해서 테이블 번호 가져오는것
 	public List<InComBoardRe> inComBoardCount();
 	public int insertInComBoard(HashMap<String, Object> params);
-<<<<<<< HEAD
 	public List<ComBoard> selectSearchByKeyword(HashMap<String, Object> params);
 	public int getCountSearchByKeyword(HashMap<String, Object> params);
-=======
-	
 	//comM(메세지 알림)
 	public int insertComM(ComM comm);
 	public int deleteComM(HashMap<String, Object> params);
@@ -65,5 +62,4 @@ public interface ComBoardDao {
 	public int comMcountAll(HashMap<String, Object> params);
 	public int changeComM(HashMap<String, Object> params);
 	public int getCountM(HashMap<String, Object> params);
->>>>>>> 6bf5e6c954890f12737f1f1031bf4d108204f100
 }

@@ -80,7 +80,6 @@
  	  <select id="selectIdCheck" parameterType="java.util.HashMap" resultType="comUser">
     	select * from comUser where comId ='${id}';
     </select>
-<<<<<<< HEAD
     
     <select id="selectSearchByKeyword" parameterType="java.util.HashMap" resultType="comBoard">
     	select * from comBoard
@@ -103,7 +102,6 @@
     	<if test="!(ar eq null)"> and Carea like '%${ar}%'</if>
     </select>
     
-=======
     <!-- 메세지알람 -->
     <insert id="insertComM" parameterType="comM">
     	insert into comM values(0, ${cnum},'${nomalId}', '${comId}','${cmtext}', 0 , now())
@@ -123,5 +121,4 @@
     <select id="getCountM" parameterType="java.util.HashMap" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
     	select count(*) from comM where comId='${id}' 
     </select>
->>>>>>> 6bf5e6c954890f12737f1f1031bf4d108204f100
   </mapper>

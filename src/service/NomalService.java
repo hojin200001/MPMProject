@@ -43,14 +43,11 @@ public interface NomalService {
 			@RequestParam(required=false) String ar);
 	
 	public int userarea(HashMap<String, Object> userarea);
-<<<<<<< HEAD
-	
+
 	public int nomalBoardModify(NomalBoard nomalBoard);
 	
-=======
 	public int insertNomalM(int cnum, String id, int userInfo);
 	public List<Integer> nomalMcounts(String id);
 	public HashMap<String, Object> selectNomalM(int page, String id);
 	public int deleteMesege(int nmnum);
->>>>>>> 6bf5e6c954890f12737f1f1031bf4d108204f100
 }

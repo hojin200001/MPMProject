@@ -188,12 +188,7 @@ public class NomalServiceImpl implements NomalService{
 	}
 
 	@Override
-<<<<<<< HEAD
-	public int insertNomalBoard(NomalBoard nomalBoard){
-		// TODO Auto-generated method stub
-=======
 	public int insertNomalBoard(NomalBoard nomalBoard) {
->>>>>>> 6bf5e6c954890f12737f1f1031bf4d108204f100
 		nomalBoard.setNphone(nDao.getPhoneNum(nomalBoard));
 		nDao.insertNomalBoard(nomalBoard);
 		return 0;
@@ -205,14 +200,12 @@ public class NomalServiceImpl implements NomalService{
 	}
 
 	@Override
-<<<<<<< HEAD
 	public int nomalBoardModify(NomalBoard nomal){
 		// TODO Auto-generated method stub
 		nDao.nomalBoardModify(nomal);
 		return nomal.getNnum();
 	}
 
-=======
 	public int insertNomalM(int cnum, String id, int userInfo) {
 		NomalM nomalm = new NomalM();
 		nomalm.setCnum(cnum);
@@ -262,6 +255,5 @@ public class NomalServiceImpl implements NomalService{
 		
 		return result;
 	}
->>>>>>> 6bf5e6c954890f12737f1f1031bf4d108204f100
 
 }

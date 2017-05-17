@@ -41,10 +41,10 @@ public interface NomalDao {
 	
 	public int userarea(HashMap<String, Object> params);
 	public int comarea(HashMap<String, Object> params);
-<<<<<<< HEAD
+
 	
 	public void nomalBoardModify(NomalBoard nomal);
-=======
+
 	//nomalM(메세지 알람)
 	public int insertNomalM(NomalM nomalm);
 	public int deleteNomalM(HashMap<String, Object> params);
@@ -54,5 +54,4 @@ public interface NomalDao {
 	public int nomalMcountAll(HashMap<String, Object> params);
 	public int changeNomalM(HashMap<String, Object> params);
 	public int getCountM(HashMap<String, Object> params);
->>>>>>> 6bf5e6c954890f12737f1f1031bf4d108204f100
 }
