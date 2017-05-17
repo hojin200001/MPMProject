@@ -157,7 +157,8 @@ td>a{
 	  				<img src="img/main/btn_search.gif" alt="홈으로" style="float: left; margin-top: 11px; margin-left: 0px;"/></input>
   				</div>
   			</dir>
-  		</div>	
+
+  		</div>
     <!-- end .header --></div>
    <nav style="margin-top: 20px;">
 	  <ul id="menu">

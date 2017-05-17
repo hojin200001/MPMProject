@@ -38,11 +38,6 @@ public class FreeReplyController {
 		freeReplyService.deleteReply(reNum);
 		return "redirect:freeBoardView.do?num="+num;
 	}
-<<<<<<< HEAD
-	
-=======
->>>>>>> d2167db8af18cf7e4a2ed13d2f813ce3d4666006
-
 	@RequestMapping("replyList.do")
 	public List<FreeReplyVo> readReplyList(int num){
 		
