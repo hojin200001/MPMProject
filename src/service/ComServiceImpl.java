@@ -256,8 +256,12 @@ public class ComServiceImpl implements ComService{
 
 	@Override
 	public int comarea(HashMap<String, Object> comarea) {
+<<<<<<< HEAD
 		return nDao.userarea(comarea);
 	}
+=======
+		return nDao.userarea(comarea);}
+>>>>>>> a95063d6c255ce32daa58715693f3fd4df79f28f
 	public int insertInComBoard(int cnum, NomalUser nuser) {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("cnum", cnum);
@@ -266,9 +270,12 @@ public class ComServiceImpl implements ComService{
 		int re = cdao.insertInComBoard(map);
 		return re;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> d2167db8af18cf7e4a2ed13d2f813ce3d4666006
+=======
+>>>>>>> a95063d6c255ce32daa58715693f3fd4df79f28f
 	}
 
 }

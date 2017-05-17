@@ -46,12 +46,16 @@ public interface ComService {
 	public int deleteInComBoard(int cnum, String nomalId);
 	public List<InComBoardRe> inComBoardCount();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
+=======
+>>>>>>> a95063d6c255ce32daa58715693f3fd4df79f28f
 	public int comarea(HashMap<String, Object> comarea);
 	
 	//inComBoard
 	public int InComBoardCount(int cnum);
 	public int insertInComBoard(int cnum, NomalUser nuser);
+<<<<<<< HEAD
 =======
 
 	public int comarea(HashMap<String, Object> comarea);
@@ -61,4 +65,6 @@ public interface ComService {
 	public int insertInComBoard(int cnum, NomalUser nuser);
 
 >>>>>>> d2167db8af18cf7e4a2ed13d2f813ce3d4666006
+=======
+>>>>>>> a95063d6c255ce32daa58715693f3fd4df79f28f
 }
