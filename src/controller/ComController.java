@@ -22,9 +22,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import model.ComBoard;
+import model.ComM;
 import model.FreeBoard;
 import model.InComBoard;
 import model.NomalBoard;
+import model.NomalM;
 import model.NomalUser;
 import service.ComService;
 import service.FreeBoardService;
@@ -40,8 +42,24 @@ public class ComController {
 	private NomalService nservice;
 	
 	@RequestMapping("comMain.do")
-	public ModelAndView comMain(){
+	public ModelAndView comMain(HttpSession session){
 		ModelAndView mav = new ModelAndView();
+		HashMap<String, Object> map = new HashMap<>();
+		List<Integer> counts = null;
+		if(session.getAttribute("user") != null){
+			map = (HashMap<String, Object>) session.getAttribute("user");
+			map.put("userInfo", session.getAttribute("userInfo"));
+			if((int)map.get("userInfo") == 2){
+				counts = cservice.comMcounts((String)map.get("id"));
+				mav.addObject("countNew", counts.get(0));
+				mav.addObject("countAll", counts.get(1));
+			}else{
+				counts = nservice.nomalMcounts((String)map.get("id"));
+				mav.addObject("countNew", counts.get(0));
+				mav.addObject("countAll", counts.get(1));
+			}
+			
+		}
 		List<FreeBoard> flist= fservice.selectLimitDesc();
 		List<NomalBoard> nlist = cservice.selectNomalBoardDesc();
 		List<String>timeList = getTime(flist);
@@ -84,6 +102,7 @@ public class ComController {
 		}else{
 			mav.setViewName("/login/loginAlert_login");
 		}
+<<<<<<< HEAD
 //		if(session.getAttribute("comarea").equals(null)){
 //		}else{
 //			HashMap<String, Object> userarea = new HashMap<>();
@@ -102,6 +121,15 @@ public class ComController {
 		mav.addObject(cservice.comVie(cnum));
 		System.out.println("왜 안될까");
 		mav.setViewName("com/comView");
+=======
+		if(ObjectUtils.isEmpty(session.getAttribute("comarea"))){
+			session.setAttribute("comareanum", "x");
+		}else{
+			HashMap<String, Object> userarea = new HashMap<>();
+			userarea.put("comarea", session.getAttribute("comarea"));
+			session.setAttribute("comareanum", cservice.comarea(userarea));
+		}
+>>>>>>> 6bf5e6c954890f12737f1f1031bf4d108204f100
 		return mav;
 	}
 	
@@ -184,15 +212,23 @@ public class ComController {
 		return "redirect:comBoardList.do";
 	}
 	@RequestMapping("deleteInComBoard.do")
-	public String deleteInComBoard(int cnum, String nomalId){
+	public String deleteInComBoard(int cnum, String nomalId, HttpSession session){
+		String id = nomalId;
+		int userInfo = (int)session.getAttribute("userInfo");
 		cservice.deleteInComBoard(cnum, nomalId);
+		int res = cservice.insertComM(cnum, id, userInfo);
+		int ress = nservice.insertNomalM(cnum, id, userInfo);
 		return "redirect:comView.do?cnum="+cnum;
+		
 	}
 	@RequestMapping("attendThis.do")
-	public String attendThis(int cnum, String userId){
+	public String attendThis(int cnum, String userId, HttpSession session){
 		String id = userId;
+		int userInfo = (int)session.getAttribute("userInfo");
 		NomalUser user = nservice.selectOne(id);
 		int re = cservice.insertInComBoard(cnum, user);
+		int res = cservice.insertComM(cnum, id, userInfo);
+		int ress = nservice.insertNomalM(cnum, id, userInfo);
 		return"redirect:comView.do?cnum="+cnum;
 	}
 	//------------------------------------------------------------------------------------------------------------------------------------//

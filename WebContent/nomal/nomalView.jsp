@@ -132,7 +132,7 @@
 			</div>
 			<div class="contents_top2_2">
 				<input type="button"  class="btn btn-primary" value="작성하기"
-					onclick="location.href='nomalWriteForm.do'">
+					style="float: right;" onclick="location.href='nomalWriteForm.do'">
 			</div>
 		</div>
 	<div style="background-color: #ebedee">

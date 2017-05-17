@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import model.ComBoard;
+import model.ComM;
 import model.NomalBoard;
+import model.NomalM;
 import model.NomalUser;
 
 public interface NomalDao {
@@ -39,6 +41,18 @@ public interface NomalDao {
 	
 	public int userarea(HashMap<String, Object> params);
 	public int comarea(HashMap<String, Object> params);
+<<<<<<< HEAD
 	
 	public void nomalBoardModify(NomalBoard nomal);
+=======
+	//nomalM(메세지 알람)
+	public int insertNomalM(NomalM nomalm);
+	public int deleteNomalM(HashMap<String, Object> params);
+	public List<NomalM> selectNomalM(HashMap<String, Object> params);
+	public NomalM selectNomalMOne(HashMap<String, Object> params);
+	public int nomalMcountNew(HashMap<String, Object> params);
+	public int nomalMcountAll(HashMap<String, Object> params);
+	public int changeNomalM(HashMap<String, Object> params);
+	public int getCountM(HashMap<String, Object> params);
+>>>>>>> 6bf5e6c954890f12737f1f1031bf4d108204f100
 }

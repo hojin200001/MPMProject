@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import model.ComBoard;
+import model.ComM;
 import model.ComUser;
 import model.InComBoard;
 import model.InComBoardRe;
@@ -46,11 +47,14 @@ public interface ComService {
 	public List<InComBoard> selectIncomBoard(int cnum);
 	public int deleteInComBoard(int cnum, String nomalId);
 	public List<InComBoardRe> inComBoardCount();
+
+
 	public int comarea(HashMap<String, Object> comarea);
-	
+
 	//inComBoard
 	public int InComBoardCount(int cnum);
 	public int insertInComBoard(int cnum, NomalUser nuser);
+<<<<<<< HEAD
 	
 	public HashMap<String, Object> getComBoardListByCondition(int page, 
 			@RequestParam(required=false) List cb,
@@ -58,4 +62,12 @@ public interface ComService {
 			@RequestParam(required=false) String ar);
 	
 	public ComBoard comVie(int cnum);
+=======
+	//메세지 알람
+	public int insertComM(int cnum, String id, int userInfo);
+	public List<Integer> comMcounts(String id);
+	public HashMap<String, Object> selectComM(int page, String id);
+	public int deleteMesege(int cmnum);
+
+>>>>>>> 6bf5e6c954890f12737f1f1031bf4d108204f100
 }

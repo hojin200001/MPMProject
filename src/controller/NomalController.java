@@ -44,6 +44,22 @@ public class NomalController {
 		//String pathSet = request.getSession().getServletContext().getRealPath("/json/area.json");
 		mav.addObject("freeList",list);
 		mav.addObject("comList",list2);
+		HashMap<String, Object> map = new HashMap<>();
+		List<Integer> counts = null;
+		if(session.getAttribute("user") != null){
+			map = (HashMap<String, Object>) session.getAttribute("user");
+			map.put("userInfo", session.getAttribute("userInfo"));
+			if((int)map.get("userInfo") == 2){
+				counts = cservice.comMcounts((String)map.get("id"));
+				mav.addObject("countNew", counts.get(0));
+				mav.addObject("countAll", counts.get(1));
+			}else{
+				counts = nservice.nomalMcounts((String)map.get("id"));
+				mav.addObject("countNew", counts.get(0));
+				mav.addObject("countAll", counts.get(1));
+			}
+			
+		}
 		//mav.addObject("area",nservice.areaJobNum(pathSet));
 		mav.setViewName("/nomal/nomalMain");
 		return mav;
@@ -92,6 +108,7 @@ public class NomalController {
 		//if(ObjectUtils.isEmpty(checkbox) && ObjectUtils.isEmpty(radiobox) && ObjectUtils.isEmpty(area)){
 			nb = nservice.nomalBoardList(page);
 			mav.addAllObjects(nb);
+<<<<<<< HEAD
 //		}else{
 //			nb = nservice.getNomalBoardListByCondition(page, checkbox, radiobox, area);
 //			mav.addObject("ar", area);
@@ -106,6 +123,29 @@ public class NomalController {
 //			userarea.put("userarea", session.getAttribute("userarea"));
 //			session.setAttribute("userareanum", nservice.userarea(userarea));
 //		}
+=======
+		}else{
+			if(!(ObjectUtils.isEmpty(checkbox))){
+//				for(int i=0; i<checkbox.size(); i++){
+//					String n = Integer.toString(i);
+//					check.put(n, checkbox.get(i));	
+//				}
+			}
+			nb = nservice.getNomalBoardListByCondition(page, checkbox, radiobox, area);
+			mav.addObject("ar", area);
+			mav.addObject("rb", radiobox);
+			mav.addObject("cb", checkbox);
+			mav.addAllObjects(nb);
+			
+		}
+		if(ObjectUtils.isEmpty(session.getAttribute("userarea"))){
+			session.setAttribute("userareanum", "x");
+		}else{
+			HashMap<String, Object> userarea = new HashMap<>();
+			userarea.put("userarea", session.getAttribute("userarea"));
+			session.setAttribute("userareanum", nservice.userarea(userarea));
+		}
+>>>>>>> 6bf5e6c954890f12737f1f1031bf4d108204f100
 		mav.setViewName("/nomal/nomalBoardList");
 		return mav;
 	}

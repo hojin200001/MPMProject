@@ -12,28 +12,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>무제 문서</title>
 <script src="js/main/jquery.bxslider.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="css/main/jquery.bxslider.css?var=2">
+<link rel="stylesheet" type="text/css" href="css/main/jquery.bxslider.css?var=2">
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css?var=2">
-<link rel="stylesheet" type="text/css"
-	href="css/main/public_header.css?var=2">
-<link rel="stylesheet" type="text/css"
-	href="css/com/comMain_con.css?var=2">
-	<script type="text/javascript">
-		function logOut() {
-			var url = "logoutForm.do";
-			window
-					.open(url, "_blank_1",
-							"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
-		}
-		function showValues() {
-			var key = document.shows.njob.options[document.shows.njob.selectedIndex].value;
-			document.shows.tabless.value = key;
-		}
-	</script>
+<link rel="stylesheet" type="text/css" href="css/main/public_header.css?var=2">
+<link rel="stylesheet" type="text/css" href="css/com/comMain_con.css?var=2">
+<script type="text/javascript">
+
+	function logOut() {
+		var url = "logoutForm.do";
+		window
+				.open(url, "_blank_1",
+						"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
+	}
+	
+	function showValues(){
+		var key=document.shows.njob.options[document.shows.njob.selectedIndex].value;
+		document.shows.tabless.value = key;
+	}
+	
+</script>
 </head>
 <body>
-	<div class="container">
+<div class="container">
 		<div class="header">
 			<div class="searchArea">
 				<dir class="searchs">
@@ -120,6 +120,13 @@
 								<span class="loginArea_div4_3"><span>${user.name}</span>님</span>
 								<br>
 								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
+								<span style="font-size: 13px; margin-right: 30px;">메세지 : 
+									<c:choose>
+										<c:when test="${countNew ==0}"><a>0</a></c:when>
+										<c:when test="${countNew > 0}"><a style="color: red; cursor:pointer;" onclick="Mesege()">${countNew}</a></c:when>											 
+									</c:choose>/${countAll}
+								</span>
+								
 							</c:when>
 							<c:when test="${userInfo == 2}">
 								<span class="loginArea_div4_1" onclick="logOut()"><span>로그아웃</span></span>
@@ -128,6 +135,13 @@
 								<span class="loginArea_div4_3"><span>${user.name}</span>님</span>
 								<br>
 								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
+								<span style="font-size: 13px; margin-right: 30px;">메세지 : 
+									<c:choose>
+										<c:when test="${countNew ==0}"><a>0</a></c:when>
+										<c:when test="${countNew > 0}"><a style="color: red; cursor:pointer;" onclick="Mesege()">${countNew}</a></c:when>											 
+									</c:choose>/${countAll}
+								</span>
+								
 							</c:when>
 						</c:choose>
 					</div>
@@ -136,73 +150,40 @@
 					%>
 				</div>
 			</div>
-			<div class="Shortcut">
-				<div class="ShortcutMain">
-					<!-- 우측의 6개 숏컷 가이드 -->
-					<div class="ShortcutMain_dvi">
-						<div>
-							<img src="img/main/Newquick3.png" />
-						</div>
-						<div>구직검색</div>
-					</div>
-					<div class="ShortcutMain_dvi" onclick="nomalWriteCheck()">
-						<div>
-							<img src="img/main/Newquick2.png" />
-						</div>
-						<div>구직등록</div>
-					</div>
-					<div class="ShortcutMain_dvi" onclick="nomalBoardListCheck()">
-						<div>
-							<img src="img/main/Newquick1.png" />
-						</div>
-						<div>구직 등록현황</div>
-					</div>
-					<div class="ShortcutMain_dvi">
-						<div>
-							<img src="img/main/Newquick5.png" />
-						</div>
-						<div>구인검색 가이드</div>
-					</div>
-					<div class="ShortcutMain_dvi">
-						<div>
-							<img src="img/main/Newquick7.png" />
-						</div>
-						<div>구직등록 가이드</div>
-					</div>
-					<div class="ShortcutMain_dvi">
-						<div>
-							<img src="img/main/Newquick6.png" />
-						</div>
-						<div>공지사항</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="Advertising">
-				<ul class="bxslider">
-					<!-- 광고판 3개 사진 -->
-					<li><img src="img/main/advertising/1.jpg" /></li>
-					<li><img src="img/main/advertising/2.png" /></li>
-					<li><img src="img/main/advertising/3.jpg" /></li>
-				</ul>
-			</div>
-			<script>
-				$('.bxslider').bxSlider({
-					mode : 'fade', // 옵션들을 다중으로 쓸경우 , 로 옵션들을 구분시켜줍니다. 중요포인트입니다.
-					auto : true,
-					autoHover : true,
-					pause : 2000,
-					speed : 1000,
-					controls : false
-				});
-			</script>
-			<!-- end .sidebar1 -->
+	<div class="Shortcut">
+		<div class="ShortcutMain"> <!-- 우측의 6개 숏컷 가이드 -->
+			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick3.png"/></div><div>구직검색</div></div>
+			<div class="ShortcutMain_dvi" onclick="nomalWriteCheck()"><div><img src="img/main/Newquick2.png"/></div><div>구직등록</div></div>
+			<div class="ShortcutMain_dvi" onclick="nomalBoardListCheck()"><div ><img src="img/main/Newquick1.png"/></div><div>구직 등록현황</div></div>
+			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick5.png"/></div><div>구인검색 가이드</div></div>
+			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick7.png"/></div><div>구직등록 가이드</div></div>
+			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick6.png"/></div><div>공지사항</div></div>
 		</div>
-		<div class="content">
+	</div>
+	
+	<div class="Advertising">
+		<ul class="bxslider"><!-- 광고판 3개 사진 -->
+  			<li><img src="img/main/advertising/1.jpg"/></li>
+  			<li><img src="img/main/advertising/2.png"/></li>
+  			<li><img src="img/main/advertising/3.jpg"/></li>
+		</ul>
+	</div>
+	<script>
+	$('.bxslider').bxSlider({
+		  mode: 'fade', // 옵션들을 다중으로 쓸경우 , 로 옵션들을 구분시켜줍니다. 중요포인트입니다.
+		  auto: true,
+		  autoHover: true,
+		  pause: 2000,
+		  speed: 1000,
+		  controls : false
+		});
+	</script>
+    <!-- end .sidebar1 --></div>
+  <div class="content">
 			<div class="recentHelp">
 				<div class="recentHelp_1">
 					<p class="recentHelp_1_p">
-						<span>인제</span>검색
+						<span>일자리</span>검색
 					</p>
 					<div class="recentHelp_1_d">
 						<div class="recentHelp_1_div">
