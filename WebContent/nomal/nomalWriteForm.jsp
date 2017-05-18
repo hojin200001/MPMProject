@@ -97,17 +97,18 @@
 		</div>
 		<div class="contents_top2" style="padding-top: 10px">
 			<div class="contents_top2_1">
-				<span class="top2_1">구인등록 페이지</span>
+				<span class="top2_1">구직등록 페이지</span>
 			</div>
 			<div class="contents_top2_2">
-				<input type="button" value="구인등록하기"
+				<input type="button" value="구직등록하기"
 					onclick="location.href='nomalWriteForm.do'">
 			</div>
 		</div>
 		<form action="nomalWrite.do">
 			<input type="hidden" name="nomalId" value="${user.id}"> <input
 				type="hidden" name="nomalName" value="${user.name}"> <input
-				type="hidden" name="addr2" value="" id="hiddenAddr">
+				type="hidden" name="addr2" value="" id="hiddenAddr"><input
+				type="hidden" name="email" value="${user.email}">
 			<table>
 				<tr class="trs">
 					<td class="td_area_1" colspan="2"><span>구인정보 제목 : </span> <input
@@ -242,30 +243,6 @@
 					<td class="td_area_9"><span> <input
 							style="text-align: right; width: 100px;" type="text" name="nday"
 							placeholder="업무 진행일 입력">
-					</span></td>
-				</tr>
-				<!--  --><tr>
-					<td class="td_area_7"><span>업무 가능일자</span></td>
-					<td class="td_area_9"><span> <label for="txtStartDt">시작일</label><input
-							type="text" id="txtStartDt" name="nstartDay"
-							style="border: 1px solid #d7d7d7;" readonly placeholder="클릭해주세요">
-							<label for="txtEndDt">종료일</label><input type="text" id="txtEndDt"
-							name="nendDay" style="border: 1px solid #d7d7d7;"
-							readonly placeholder="클릭해 주세요">
-					</span></td>
-				</tr>
-				<tr>
-					<td class="td_area_7"><span>요구인원</span></td>
-					<td class="td_area_9"><span> <input type="text"
-							name="nwokers" style="text-align: right; width: 100px;"
-							placeholder="필요한 인원 입력">
-					</span></td>
-				</tr>
-				<tr>
-					<td class="td_area_7"><span>급여</span></td>
-					<td class="td_area_9"><span> <input type="text"
-							name="npay" style="text-align: right; width: 100px;"
-							placeholder="일 급여 입력">
 					</span></td>
 				</tr>
 			</table>

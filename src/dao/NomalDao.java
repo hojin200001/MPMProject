@@ -21,6 +21,7 @@ public interface NomalDao {
 	public void nomalUpdate(NomalBoard nb);
 
 	public int getCount();
+	public int getCountBoardList(HashMap<String, Object> params);
 
 	public List<NomalBoard> selectBoardPage(HashMap<String, Object> params);
 	// 회원가입
