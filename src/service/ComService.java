@@ -67,5 +67,5 @@ public interface ComService {
 	public List<Integer> comMcounts(String id);
 	public HashMap<String, Object> selectComM(int page, String id);
 	public int deleteMesege(int cmnum);
-
+	public int changeComM(HashMap<String, Object> ctu);
 }

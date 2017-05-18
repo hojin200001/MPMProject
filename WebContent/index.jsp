@@ -88,9 +88,8 @@
 
 <script type="text/javascript">
 $(window).load(function(){
-	if($.isEmptyObject{area}){
-		location.href="areasel.do"
-		}
+	if($.isEmptyObject(${area})){
+		location.href = "areasel.do"}
 });
 </script>
 

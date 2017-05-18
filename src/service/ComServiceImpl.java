@@ -297,6 +297,16 @@ public class ComServiceImpl implements ComService{
 
 	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public int insertInComBoard(int cnum, NomalUser nuser) {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("cnum", cnum);
@@ -304,8 +314,17 @@ public class ComServiceImpl implements ComService{
 		map.put("phone", nuser.getPhone());
 		int re = cdao.insertInComBoard(map);
 		return re;
-
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@Override
 	public int insertComM(int cnum, String id, int userInfo) {
@@ -325,6 +344,16 @@ public class ComServiceImpl implements ComService{
 		return re;
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public List<Integer> comMcounts(String id) {
 		List<Integer> counts = new ArrayList();
@@ -397,10 +426,15 @@ public class ComServiceImpl implements ComService{
 		// TODO Auto-generated method stub
 		HashMap<String, Integer> n = new HashMap<>();
 		n.put("cnum", cnum);
-		System.out.println("들어오긴 했냐");
 		ComBoard cb = cdao.comView(n);
-		System.out.println("여기까지 오긴 허냐");
 		return cb;
+	}
+
+	@Override
+	public int changeComM(HashMap<String, Object> ctu) {
+		// TODO Auto-generated method stub
+		cdao.changeComM(ctu);
+		return 0;
 	}
 
 }

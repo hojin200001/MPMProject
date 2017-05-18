@@ -30,6 +30,13 @@
 		document.shows.tabless.value = key;
 	}
 	
+	function Mesege() {
+		var url = "mesegeForm.do";
+		window
+		.open(url, "_blank_1",
+				"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+	}
+	
 </script>
 </head>
 <body>
@@ -115,33 +122,27 @@
 						<c:choose>
 							<c:when test="${userInfo == 1}">
 								<span class="loginArea_div4_1" onclick="logOut()"><span>로그아웃</span></span>
-								<span class="loginArea_div4_2"><span>일반</span>회원</span>
-								<br>
-								<span class="loginArea_div4_3"><span>${user.name}</span>님</span>
-								<br>
+								<span class="loginArea_div4_2"><span>일반</span>회원</span><br> 
+								<span class="loginArea_div4_3"><span>${user.name}</span>님</span><br>
 								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
 								<span style="font-size: 13px; margin-right: 30px;">메세지 : 
 									<c:choose>
 										<c:when test="${countNew ==0}"><a>0</a></c:when>
-										<c:when test="${countNew > 0}"><a style="color: red; cursor:pointer;" onclick="Mesege()">${countNew}</a></c:when>											 
-									</c:choose>/${countAll}
+										<c:when test="${countNew > 0}"><a style="color: red; cursor:pointer;" onclick="Mesege()">${countAll}</a></c:when>											 
+									</c:choose>/${countNew}
 								</span>
-								
 							</c:when>
 							<c:when test="${userInfo == 2}">
 								<span class="loginArea_div4_1" onclick="logOut()"><span>로그아웃</span></span>
-								<span class="loginArea_div4_2"><span>기업</span>회원</span>
-								<br>
-								<span class="loginArea_div4_3"><span>${user.name}</span>님</span>
-								<br>
+								<span class="loginArea_div4_2"><span>기업</span>회원</span><br> 
+								<span class="loginArea_div4_3"><span>${user.name}</span>님</span><br>
 								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
 								<span style="font-size: 13px; margin-right: 30px;">메세지 : 
 									<c:choose>
 										<c:when test="${countNew ==0}"><a>0</a></c:when>
-										<c:when test="${countNew > 0}"><a style="color: red; cursor:pointer;" onclick="Mesege()">${countNew}</a></c:when>											 
-									</c:choose>/${countAll}
+										<c:when test="${countNew > 0}"><a style="color:red; cursor:pointer;" onclick="Mesege()">${countAll}</a></c:when>											 
+									</c:choose>/${countNew}
 								</span>
-								
 							</c:when>
 						</c:choose>
 					</div>
@@ -271,7 +272,7 @@
 					<div id="boardTabs">
 						<ul class="tabs">
 							<li class="active" rel="tab1">자유게시판</li>
-							<li rel="tab2">공지사항</li>
+							<li rel="tab2">지역별 구인등록 현황</li>
 						</ul>
 						<div class="tab_container">
 							<div id="tab1" class="tab_content">
@@ -310,7 +311,42 @@
 
 							<div id="tab2" class="tab_content">
 								<form name="shows">
-									<select id="keyType" onchange="showValues()" name='njob'>
+									<!-- <select id="keyType" onchange="showValues()" name='njob'> -->
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<div class="panel panel-primary">
+<div class="panel-heading">최근 구인공고</div>
+<div class="panel-body panel-warning" id="gaegosaeng">
+<!--<c:forEach items="${area}" var="a">
+
+	<c:forEach items="a.value" var="v">
+	</c:forEach>
+	<button class="btn btn-primary btn-xs" type="button" onclick = "areaChoose('${a.value}')">
+	${a.key}</button>
+</c:forEach>
+</div>
+<table class="table">
+	<thead>
+		<tr>
+
+		</tr>
+	</thead>
+	<span class="badge"></span>
+	<tbody>
+		
+	</tbody>
+
+	
+	
+</table>
+
+			</div>-->
+   
+									
+<select id="keyType" onchange="showValues()" name='njob'>
 										<c:forEach items="${area}" var="a">
 											<option value="${a.value}">${a.key}</option>
 										</c:forEach>
@@ -341,7 +377,9 @@
 	<!-- end .container -->
 	</div>
 	<script>
+	
 		$(window).load(
+
 				function() {
 					$.ajax({
 						url : "json/job.json",
@@ -381,6 +419,7 @@
 				}
 			}
 		}
+		
 	</script>
 </body>
 </html>

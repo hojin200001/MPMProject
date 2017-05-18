@@ -256,4 +256,11 @@ public class NomalServiceImpl implements NomalService{
 		return result;
 	}
 
+	@Override
+	public int changeNomalM(HashMap<String, Object> user) {
+		// TODO Auto-generated method stub
+		nDao.changeNomalM(user);
+		return 0;
+	}
+
 }

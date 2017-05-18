@@ -50,4 +50,5 @@ public interface NomalService {
 	public List<Integer> nomalMcounts(String id);
 	public HashMap<String, Object> selectNomalM(int page, String id);
 	public int deleteMesege(int nmnum);
+	public int changeNomalM(HashMap<String, Object> user);
 }

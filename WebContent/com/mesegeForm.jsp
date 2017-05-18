@@ -17,6 +17,12 @@ margin-top: 10px;
 border-bottom: 3px solid;
 }
 </style>
+<script type="text/javascript">
+function move(num, nnum){
+	opener.location.href="comView2.do?cnum="+num+"&type=1"
+	window.close();
+}
+</script>
 </head>
 <body style="background-color: #f2f2f2;">
 	<div class="hader">
@@ -32,15 +38,20 @@ border-bottom: 3px solid;
 			<c:choose>
 				<c:when test="${userInfo == 1}">
 					<tr>
-						
-						<td><a href="#">${mb.cnum}번 공고에 ${mb.nmtext}하였습니다.</a></td>
+						<td><a href="#" onclick="move(${mb.cnum},);">${mb.cnum}번 공고에 ${mb.nmtext}하였습니다.</a>
+						<c:choose>
+							<c:when test="${mb.reception==1}">(읽음)</c:when>
+						</c:choose></td>
 						<td>${mb.nmtext}</td>
 						<td><fmt:formatDate value="${mb.day}" pattern="yyyy-MM-dd"/><a href="deleteMesege.do?page=${current}&mnum=${mb.nmnum}" style="margin-left: 10px;">삭제</a></td>
 					</tr>
 				</c:when>
 				<c:when test="${userInfo == 2}">
 					<tr>
-						<td><a href="#">${mb.nomalId}님이 ${mb.cnum}번 공고에 ${mb.cmtext}하였습니다.</a></td>
+						<td><a href="#" onclick="move(${mb.cnum},);">${mb.nomalId}님이 ${mb.cnum}번 공고에 ${mb.cmtext}하였습니다.</a>
+						<c:choose>
+							<c:when test="${mb.reception==1}">(읽음)</c:when>
+						</c:choose></td>
 						<td>${mb.cmtext}</td>
 						<td><fmt:formatDate value="${mb.day}" pattern="yyyy-MM-dd"/><a href="deleteMesege.do?page=${current}&mnum=${mb.cmnum}" style="margin-left: 10px;">삭제</a></td>
 					</tr>

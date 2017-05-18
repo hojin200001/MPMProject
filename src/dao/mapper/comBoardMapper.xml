@@ -69,6 +69,9 @@
  	<update id="updateComDay" parameterType="comDay">
  		update comday set CstartDay='${cstartDay}', CendDay='${cendDay}' where Cnum=${cnum};
  	</update>
+ 	<update id="changeComM" parameterType="java.util.HashMap">
+ 		update comm set reception=1 where cnum=${cnum} and comId='${id}';
+ 	</update>
  	<delete id="deleteComDay" parameterType="java.util.HashMap">
  		delete from comday where Cnum=${cnum}
  	</delete>

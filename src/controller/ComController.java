@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -115,10 +116,20 @@ public class ComController {
 	
 	
 	@RequestMapping("comView2.do")
-	public ModelAndView boardView2(int cnum){
+	public ModelAndView boardView2(int cnum,@RequestParam(defaultValue="0")int type,
+			HttpSession session){
 		ModelAndView mav = new ModelAndView();
+		if(type!=0){
+			HashMap<String, Object> user = (HashMap<String, Object>) session.getAttribute("user");
+			user.put("cnum", cnum);
+			if(user.get("userInfo").toString().equals("1")){
+				nservice.changeNomalM(user);
+			}
+			else{
+				cservice.changeComM(user);
+			}
+		}
 		mav.addObject(cservice.comVie(cnum));
-		System.out.println("왜 안될까");
 		mav.setViewName("com/comView");
 		return mav;
 	}
@@ -211,6 +222,18 @@ public class ComController {
 		return "redirect:comView.do?cnum="+cnum;
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("attendThis.do")
 	public String attendThis(int cnum, String userId, HttpSession session){
 		String id = userId;
@@ -221,6 +244,20 @@ public class ComController {
 		int ress = nservice.insertNomalM(cnum, id, userInfo);
 		return"redirect:comView.do?cnum="+cnum;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//------------------------------------------------------------------------------------------------------------------------------------//
 	//시간계산 지우지 마시길
 	public List<String >getTime(List<FreeBoard> list){

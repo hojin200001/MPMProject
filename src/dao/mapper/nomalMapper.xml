@@ -137,4 +137,7 @@
     <select id="getCountM" parameterType="java.util.HashMap" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
     	select count(*) from nomalM where nomalId='${id}' 
     </select>
+ 	<update id="changeNomalM" parameterType="java.util.HashMap">
+ 		update nomalm set reception=1 where cnum=${cnum} and nomalId='${id}';
+ 	</update>
   </mapper>

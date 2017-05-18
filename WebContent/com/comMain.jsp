@@ -125,8 +125,8 @@
 								<span style="font-size: 13px; margin-right: 30px;">메세지 : 
 									<c:choose>
 										<c:when test="${countNew ==0}"><a>0</a></c:when>
-										<c:when test="${countNew > 0}"><a style="color: red; cursor:pointer;" onclick="Mesege()">${countNew}</a></c:when>											 
-									</c:choose>/${countAll}
+										<c:when test="${countNew > 0}"><a style="color: red; cursor:pointer;" onclick="Mesege()">${countAll}</a></c:when>											 
+									</c:choose>/${countNew}
 								</span>
 							</c:when>
 							<c:when test="${userInfo == 2}">
@@ -137,8 +137,8 @@
 								<span style="font-size: 13px; margin-right: 30px;">메세지 : 
 									<c:choose>
 										<c:when test="${countNew ==0}"><a>0</a></c:when>
-										<c:when test="${countNew > 0}"><a style="color:red; cursor:pointer;" onclick="Mesege()">${countNew}</a></c:when>											 
-									</c:choose>/${countAll}
+										<c:when test="${countNew > 0}"><a style="color:red; cursor:pointer;" onclick="Mesege()">${countAll}</a></c:when>											 
+									</c:choose>/${countNew}
 								</span>
 							</c:when>
 						</c:choose>
