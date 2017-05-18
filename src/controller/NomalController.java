@@ -103,10 +103,12 @@ public class NomalController {
 			HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		HashMap<String, Object> nb = new HashMap<>();
+		HashMap<String, Object> user = (HashMap<String, Object>) session.getAttribute("user");
+		String id = (String)user.get("id");
 		session.getAttribute("area");
-
+		
 		//if(ObjectUtils.isEmpty(checkbox) && ObjectUtils.isEmpty(radiobox) && ObjectUtils.isEmpty(area)){
-			nb = nservice.nomalBoardList(page);
+			nb = nservice.nomalBoardList(page, id);
 			mav.addAllObjects(nb);
 //		}else{
 //			nb = nservice.getNomalBoardListByCondition(page, checkbox, radiobox, area);

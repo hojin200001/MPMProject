@@ -17,7 +17,7 @@ public interface NomalService {
 	public List<ComBoard> selectLimitDesc();
 	public HashMap<String, Object> areaJobNum(String json);
 	public NomalBoard boardView(int nnum);
-	public HashMap<String, Object> nomalBoardList(int page);
+	public HashMap<String, Object> nomalBoardList(int page, String id);
 	//네이게이터의 첫번째 번호 얻기
 	public int getStartPage(int page);
 	

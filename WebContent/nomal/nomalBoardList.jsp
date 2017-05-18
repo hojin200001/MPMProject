@@ -311,7 +311,6 @@ td>a{
 				<th>ID</th>
 				<th>주특기</th>
 				<th>등록일</th>
-				<th>한번더 아이디</th>
 				<th>조회수</th>
 			</tr>
 			<c:forEach items="${nomalBoard}" var="n">
@@ -321,7 +320,6 @@ td>a{
 					<td>${n.nomalId}</td>
 					<td>${n.njob}</td>
 					<td><fmt:formatDate value="${n.njoinDay}" pattern="yyyy-MM-dd"/></td>
-					<td>${n.nomalId}</td>
 					<td>${n.ncount}</td>
 				</tr>
 			</c:forEach>

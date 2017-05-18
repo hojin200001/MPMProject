@@ -44,6 +44,7 @@ public class NomalServiceImpl implements NomalService{
 			if(user.getNomalPass().equals(pass)){
 				map2.put("name", user.getName());
 				map2.put("id",user.getNomalId());
+				map2.put("email", user.getEmail());
 				String[] userarea= user.getAddress().split(" ");
 				System.out.println(userarea[1]);
 				map2.put("userarea", userarea[1]);
@@ -99,18 +100,21 @@ public class NomalServiceImpl implements NomalService{
 	}
 
 	@Override
-	public HashMap<String, Object> nomalBoardList(int page) {
+	public HashMap<String, Object> nomalBoardList(int page, String id) {
 		HashMap<String, Object> result = new HashMap<>();
+		HashMap<String, Object> userid = new HashMap<>();
+		userid.put("id", id);
 		result.put("current", page);
 		result.put("start", getStartPage(page));
 		result.put("end", getEndPage(page));
-		result.put("last", getLastPage(nDao.getCount()));
-		result.put("totalPage", nDao.getCount());
+		result.put("last", getLastPage(nDao.getCountBoardList(userid)));
+		result.put("totalPage", nDao.getCountBoardList(userid));
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("TimeCom", sf.format(cal.getTime()));
 		params.put("TimeNomal", sf.format(cal.getTime()));
+		params.put("id", id);
 		result.put("todayTimeCom", nDao.listComNum(params));
 		result.put("todayTimeNomal", nDao.listNomalNum(params));
 		params.put("offset", getOffset(page));
