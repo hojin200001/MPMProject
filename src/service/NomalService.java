@@ -40,7 +40,8 @@ public interface NomalService {
 	public HashMap<String, Object> getNomalBoardListByCondition(int page, 
 			@RequestParam(required=false) List cb,
 			@RequestParam(required=false) String rb,
-			@RequestParam(required=false) String ar);
+			@RequestParam(required=false) String ar,
+			@RequestParam(required=false) String keyword);
 	
 	public int userarea(HashMap<String, Object> userarea);
 

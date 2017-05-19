@@ -92,6 +92,7 @@
     	</if>
     	<if test="!(rb eq null)"> and Ccarrer like '%${rb}%'</if>
     	<if test="!(ar eq null)"> and Carea like '%${ar}%'</if>
+    	<if test="!(kw eq null)"> and Ctitle like '%${kw}%'</if>
     	order by Cnum desc limit #{offset}, #{boardsPerPage}
     </select>
     
@@ -103,6 +104,7 @@
     	</if>
     	<if test="!(rb eq null)"> and Ccarrer like '%${rb}%'</if>
     	<if test="!(ar eq null)"> and Carea like '%${ar}%'</if>
+    	<if test="!(kw eq null)"> and Ntitle like '%${kw}%'</if>
     </select>
     
     <!-- 메세지알람 -->

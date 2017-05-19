@@ -109,18 +109,6 @@ public class ComServiceImpl implements ComService{
 		// TODO Auto-generated method stub
 		return (page - 1)*boardsPerPage;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public ComBoard comView(int cnum) {
 		// TODO Auto-generated method stub
@@ -143,17 +131,6 @@ public class ComServiceImpl implements ComService{
 		}
 		return cb;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	public HashMap<String, Object> getLogin(String id, String pass) {
 		HashMap<String, Object> map = new HashMap<>();
@@ -295,18 +272,6 @@ public class ComServiceImpl implements ComService{
 		return nDao.userarea(comarea);
 	}
 
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public int insertInComBoard(int cnum, NomalUser nuser) {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("cnum", cnum);
@@ -315,17 +280,6 @@ public class ComServiceImpl implements ComService{
 		int re = cdao.insertInComBoard(map);
 		return re;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	@Override
 	public int insertComM(int cnum, String id, int userInfo) {
 		HashMap<String, Integer> map = new HashMap<>();
@@ -344,16 +298,6 @@ public class ComServiceImpl implements ComService{
 		return re;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public List<Integer> comMcounts(String id) {
 		List<Integer> counts = new ArrayList();
@@ -398,7 +342,8 @@ public class ComServiceImpl implements ComService{
 			//@RequestParam(required=false) HashMap<String, Object> cb, 
 			@RequestParam(required=false) List cb, 
 			@RequestParam(required=false) String rb,
-			@RequestParam(required=false) String ar) {
+			@RequestParam(required=false) String ar,
+			@RequestParam(required=false) String keyword) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> params = new HashMap<>();
 		HashMap<String, Object> result = new HashMap<>();

@@ -170,4 +170,12 @@ public class MainController {
 		}
 		return "redirect:mesegeForm.do?page="+page;
 	}
+	@RequestMapping("errer500s.do")
+	public String errer500s(){
+		return "/errer/errer500s";
+	}
+	@RequestMapping("errer400s.do")
+	public String errer400s(){
+		return "/errer/errer400s";
+	}
 }

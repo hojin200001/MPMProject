@@ -85,6 +85,7 @@
     	</if>
     	<if test="!(rb eq null)"> and Ncareer like '%${rb}%'</if>
     	<if test="!(ar eq null)"> and Narea like '%${ar}%'</if>
+    	<if test="!(kw eq null)"> and Ntitle like '%${kw}%'</if>
     	order by Nnum desc limit #{offset}, #{boardsPerPage}
     </select>
     
@@ -96,6 +97,7 @@
     	</if>
     	<if test="!(rb eq null)"> and Ncareer like '%${rb}%'</if>
     	<if test="!(ar eq null)"> and Narea like '%${ar}%'</if>
+    	<if test="!(kw eq null)"> and Ntitle like '%${kw}%'</if>
     </select>
 
     <insert id="insertNomalBoard" parameterType="nomalBoard">

@@ -36,7 +36,23 @@
 		.open(url, "_blank_1",
 				"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
 	}
-	
+	function mainSearch(){
+		var dos= 'nomalSearch.do?page=1&';
+		var keyword =$('.keyword').val(); 
+		var checkbox = $('.license').val();
+		var radiobox = $('#careerType').val();
+		
+			if(keyword.value !=''){
+			dos+='&keyword='+keyword;
+		}
+		if(checkbox.value !=''){
+			dos= dos+'&checkbox='+checkbox;
+		} 
+		if(radiobox.value != ''){
+			dos = dos+'&radiobox='+radiobox;
+		} 
+		location.href=dos;
+	} 
 </script>
 </head>
 <body>
@@ -44,9 +60,9 @@
 		<div class="header">
 			<div class="searchArea">
 				<dir class="searchs">
-					<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" style="padding-top: 30px;" />
+					<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" style="margin-top: 30px;" />
 					<div class="serachs_div">
-						<input type="text" alt="전체검색" class="searchText"><img
+						<input type="text" alt="전체검색" class="searchText" style="padding: 5px;"><img
 							src="img/main/btn_search.gif" alt="홈으로" style="float: left;" /></input>
 					</div>
 				</dir>
@@ -66,20 +82,21 @@
 						</ul></li>
 				</c:when>
 				<c:when test="${userInfo ==2}">
-					<li><a href="comSearch.do">인력찾기</a></li>
-					<li><a href="comBoardList.do">구직 정보</a>
-						<ul>
-							<li><a href="comBoardList.do">구직 등록 현황</a></li>
-							<li><a href="comWriteForm.do">구직 등록하기</a></li>
-						</ul></li>
-				</c:when>
-				<c:otherwise>
-					<li><a href="nomalSearch.do">일자리찾기</a></li>
-					<li><a href="nomalBoardList.do">일자리등록정보</a>
-						<ul>
-							<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
-							<li><a href="nomalWriteForm.do">구직 등록하기</a></li>
-						</ul></li>
+		  			<li><a href="comSearch.do">인력찾기</a></li>
+					<li><a href="comBoardList.do">구인 정보</a>
+					<ul>
+						<li><a href="comBoardList.do">구인 등록 현황</a></li>
+				    		<li><a href="comWriteForm.do">구인 등록하기</a></li>	
+					</ul></li>
+		  		</c:when>
+		  		<c:otherwise>
+					<li><a href="comMain.do">홈으로</a></li>
+		  			<li><a href="comSearch.do">인력찾기</a></li>
+					<li><a href="comBoardList.do">구인 정보</a>
+					<ul>
+						<li><a href="comBoardList.do">구인 등록 현황</a></li>
+				    		<li><a href="comWriteForm.do">구인 등록하기</a></li>	
+					</ul></li>
 				</c:otherwise>
 			</c:choose>
 			<li><a href="#">게시판</a>
@@ -123,9 +140,9 @@
 							<c:when test="${userInfo == 1}">
 								<span class="loginArea_div4_1" onclick="logOut()"><span>로그아웃</span></span>
 								<span class="loginArea_div4_2"><span>일반</span>회원</span><br> 
-								<span class="loginArea_div4_3"><span>${user.name}</span>님</span><br>
+								<span class="loginArea_div4_3" style="margin-right: 70px;"><span>${user.name}</span>님</span><br>
 								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
-								<span style="font-size: 13px; margin-right: 30px;">메세지 : 
+								<span style="font-size: 13px; margin-right: 30px;float: right;">메세지 : 
 									<c:choose>
 										<c:when test="${countNew ==0}"><a>0</a></c:when>
 										<c:when test="${countNew > 0}"><a style="color: red; cursor:pointer;" onclick="Mesege()">${countAll}</a></c:when>											 
@@ -135,9 +152,9 @@
 							<c:when test="${userInfo == 2}">
 								<span class="loginArea_div4_1" onclick="logOut()"><span>로그아웃</span></span>
 								<span class="loginArea_div4_2"><span>기업</span>회원</span><br> 
-								<span class="loginArea_div4_3"><span>${user.name}</span>님</span><br>
+								<span class="loginArea_div4_3" style="margin-right: 70px;"><span>${user.name}</span>님</span><br>
 								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
-								<span style="font-size: 13px; margin-right: 30px;">메세지 : 
+								<span style="font-size: 13px; margin-right: 30px;float: right;">메세지 : 
 									<c:choose>
 										<c:when test="${countNew ==0}"><a>0</a></c:when>
 										<c:when test="${countNew > 0}"><a style="color:red; cursor:pointer;" onclick="Mesege()">${countAll}</a></c:when>											 
@@ -192,10 +209,10 @@
 								<li><span>키워드 입력</span>
 									<div style="float: right; margin-right: 40px;">
 										<dt class="recentHelp_1_dt">
-											<input type="text" />
+											<input type="text" name="keyword" class="keyword"/>
 										</dt>
 										<dd class="recentHelp_1_dd">
-											<a href="#">검색</a>
+											<a href="javascript:;" onclick="mainSearch()">검색</a>
 										</dd>
 									</div></li>
 							</ul>
@@ -206,9 +223,9 @@
 									<dl style="float: left;">
 										<dt style="float: left;" class="recentHelp_1_div2_dt">전문분야</dt>
 										<dd style="padding-left: 30px;" class="recentHelp_1_div2_dd">
-											<select id='fruits' name='license'
+											<select id='fruits' name='license'class="license"
 												style="width: 195px; height: 32px">
-												<option value='' selected>-- 다중선택 --</option>
+												<option value='' selected>-- 선택 --</option>
 											</select>
 										</dd>
 									</dl>
@@ -219,9 +236,10 @@
 										<dd style="padding-left: 10px;" class="recentHelp_1_div2_dd2">
 											<select id="careerType" name="careerType" title="경력 선택"><option
 													value="">전체</option>
-												<option value="0">무관</option>
-												<option value="1">신입</option>
-												<option value="2">경력</option>
+												<option value="없음">없음</option>
+												<option value="1년">1년</option>
+												<option value="2년">2년</option>
+												<option value="3년">3년</option>
 											</select>
 										</dd>
 									</dl>

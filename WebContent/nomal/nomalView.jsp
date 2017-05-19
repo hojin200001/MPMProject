@@ -180,11 +180,14 @@
 		</div>
 	
 		<div class="textbottom_button">
-			<input type="button" class="btn btn-primary" value="목록으로" onclick="location.href='nomalBoardList.do'">
 			<c:choose>
 				<c:when test="${user.id eq nomalBoard.nomalId}">
+					<input type="button" class="btn btn-primary" value="목록으로" onclick="location.href='nomalBoardList.do'">
 					<input type="button" class="btn btn-primary" value="수정하기" onclick="location.href='nomalModifyForm.do?num=${nomalBoard.nnum}'">
 				</c:when>
+				<c:otherwise>
+					<input type="button" class="btn btn-primary" value="목록으로" onclick="location.href='history.back()'">
+				</c:otherwise>
 			</c:choose>
 		</div>
 

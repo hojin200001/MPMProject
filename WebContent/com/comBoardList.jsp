@@ -164,7 +164,7 @@ td>a{
 	    	<c:choose>
 		  		<c:when test="${userInfo == 1}">
 					<li><a href="nomalMain.do">홈으로</a></li>
-		  			<li><a href="comBoardList.do">일자리찾기</a></li>
+		  			<li><a href="nomalSearch.do">일자리찾기</a></li>
 				    <li><a href="nomalBoardList.do">일자리등록정보</a>
 				    	<ul>
 				    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
@@ -174,19 +174,19 @@ td>a{
 		  		<c:when test="${userInfo ==2}">
 					<li><a href="comMain.do">홈으로</a></li>
 		  			<li><a href="comSearch.do">인력찾기</a></li>
-					<li><a href="comBoardList.do">구직 정보</a>
+					<li><a href="comBoardList.do">구인 정보</a>
 					<ul>
-						<li><a href="comBoardList.do">구직 등록 현황</a></li>
-						<li><a href="comWriteForm.do">구직 등록하기</a></li>
+						<li><a href="comBoardList.do">구인 등록 현황</a></li>
+				    		<li><a href="comWriteForm.do">구인 등록하기</a></li>	
 					</ul></li>
 		  		</c:when>
 		  		<c:otherwise>
 					<li><a href="comMain.do">홈으로</a></li>
 		  			<li><a href="comSearch.do">인력찾기</a></li>
-					<li><a href="comBoardList.do">구직 정보</a>
+					<li><a href="comBoardList.do">구인 정보</a>
 					<ul>
-						<li><a href="comBoardList.do">구직 등록 현황</a></li>
-						<li><a href="comWriteForm.do">구직 등록하기</a></li>
+						<li><a href="comBoardList.do">구인 등록 현황</a></li>
+				    		<li><a href="comWriteForm.do">구인 등록하기</a></li>	
 					</ul></li>
 		  		</c:otherwise>
 		  	</c:choose>
@@ -205,8 +205,8 @@ td>a{
    		<div class="Sky_contents">
    			<ul>
    				<li><a href="#">구인검색하기</a></li>
-   				<li><a href="comBoardList.do">구직등록 현황</a></li>
-   				<li><a href="comWriteForm.do">구직등록 하기</a></li>
+   				<li><a href="comBoardList.do">구인등록 현황</a></li>
+   				<li><a href="comWriteForm.do">구인등록 하기</a></li>
    			</ul>
    		</div>
    		<div class="Sky_topinfo"><span>오늘본 공고 <a href="">0</a></span></div>

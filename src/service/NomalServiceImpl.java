@@ -169,13 +169,15 @@ public class NomalServiceImpl implements NomalService{
 			//@RequestParam(required=false) HashMap<String, Object> cb, 
 			@RequestParam(required=false) List cb, 
 			@RequestParam(required=false) String rb,
-			@RequestParam(required=false) String ar) {
+			@RequestParam(required=false) String ar,
+			@RequestParam(required=false) String keyword) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> params = new HashMap<>();
 		HashMap<String, Object> result = new HashMap<>();
 		params.put("cb", cb);
 		params.put("rb", rb);
 		params.put("ar", ar);
+		params.put("kw", keyword);
 		params.put("offset", getOffset(page));
 		params.put("boardsPerPage", 5);
 		Calendar cal = Calendar.getInstance();

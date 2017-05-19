@@ -151,15 +151,15 @@ body{
 						<div class="checkbox">
 							<c:choose>
 								<c:when test="${loginfo eq '1'}">
-									<input type="radio" name="radios" value="1">일반회원
+									<input type="radio" name="radios" value="1" id="checkbox_radio1">일반회원
 	      	<input type="radio" name="radios" value="2" checked="checked" id="checkbox_radio">기업회원
 	      	</c:when>
 								<c:when test="${loginfo eq '2'}">
-									<input type="radio" name="radios" value="1" checked="checked">일반회원
+									<input type="radio" name="radios" value="1" checked="checked"id="checkbox_radio1">일반회원
 	      	<input type="radio" name="radios" value="2" id="checkbox_radio">기업회원
       	</c:when>
 								<c:otherwise>
-									<input type="radio" name="radios" value="1">일반회원
+									<input type="radio" name="radios" value="1"id="checkbox_radio1">일반회원
 	      	<input type="radio" name="radios" value="2"id="checkbox_radio">기업회원
       	</c:otherwise>
 							</c:choose>
@@ -170,7 +170,7 @@ body{
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="submit" class="btn btn-primary btn-lg"
-							onclick="boardCheck()" id="login">Login</button>
+							onclick="return boardCheck()" id="login">Login</button>
 					</div>
 				</div>
 			</form>
@@ -189,8 +189,12 @@ body{
 						alert('작성자를 입력하세요');
 						return false;
 					}
-					if (document.frm.pw.value.length == 0) {
+					if (document.frm.pass.value.length == 0) {
 						alert('비밀번호를 입력하세요');
+						return false;
+					}
+					if(document.frm.radios.value.length == 0){
+						alert('회원분류(일반/기업회원)를 선택하세요');
 						return false;
 					}
 					return true;

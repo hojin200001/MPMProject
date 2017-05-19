@@ -151,7 +151,6 @@ td>a{
 </head>
 <body>
 <div class="container">
-<<<<<<< HEAD
  <div class="header">
   				<div class="searchArea">
   			<dir class="searchs">
@@ -162,48 +161,37 @@ td>a{
   				</div>
   			</dir>
   		</div>
-=======
-  <div class="header">
-  		<div class="searchArea">
-				<dir class="searchs">
-					<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" style="padding-top: 30px;"/>
-					<div class="serachs_div">
-						<input type="text" alt="전체검색" class="searchText"><img
-							src="img/main/btn_search.gif" alt="홈으로" style="float: left;" /></input>
-					</div>
-				</dir>
-			</div>
->>>>>>> 6bf5e6c954890f12737f1f1031bf4d108204f100
+
     <!-- end .header --></div>
    <nav style="margin-top: 20px;">
 	  <ul id="menu">
 	    <c:choose>
 	  		<c:when test="${userInfo == 1}">
 			    <li><a href="nomalMain.do">홈으로</a></li>
-	  			<li><a href="comBoardList.do">일자리찾기</a></li>
+	  			<li><a href="nomalSearch.do">일자리찾기</a></li>
 			    <li><a href="nomalBoardList.do">일자리등록정보</a>
 			    	<ul>
 			    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
-			    		<li><a href="nomalWriteForm.do">구직 등록하기</a></li>	
+				    		<li><a href="nomalWriteForm.do">구직 등록하기</a></li>	
 			    	</ul></li>
 	  		</c:when>
 	  		<c:when test="${userInfo ==2}">
-			    <li><a href="comMain.do">홈으로</a></li>
-	  			<li><a href="comSearch.do">인력찾기</a></li>
-				<li><a href="comBoardList.do">구직 정보</a>
-				<ul>
-					<li><a href="comBoardList.do">구직 등록 현황</a></li>
-					<li><a href="comWriteForm.do">구직 등록하기</a></li>
-				</ul></li>
-	  		</c:when>
-	  		<c:otherwise>
-			    <li><a href="nomalMain.do">홈으로</a></li>
-	  			<li><a href="comBoardList.do">일자리찾기</a></li>
-			    <li><a href="nomalBoardList.do">일자리등록정보</a>
-			    	<ul>
-			    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
-			    		<li><a href="nomalWriteForm.do">구직 등록하기</a></li>	
-			    	</ul></li>
+					<li><a href="comMain.do">홈으로</a></li>
+		  			<li><a href="comSearch.do">인력찾기</a></li>
+					<li><a href="comBoardList.do">구인 정보</a>
+					<ul>
+						<li><a href="comBoardList.do">구인 등록 현황</a></li>
+				    		<li><a href="comWriteForm.do">구인 등록하기</a></li>	
+					</ul></li>
+		  		</c:when>
+		  		<c:otherwise>
+					<li><a href="comMain.do">홈으로</a></li>
+		  			<li><a href="comSearch.do">인력찾기</a></li>
+					<li><a href="comBoardList.do">구인 정보</a>
+					<ul>
+						<li><a href="comBoardList.do">구인 등록 현황</a></li>
+				    		<li><a href="comWriteForm.do">구인 등록하기</a></li>	
+					</ul></li>
 	  		</c:otherwise>
 	  	</c:choose>
 	    <li>

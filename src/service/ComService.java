@@ -59,7 +59,8 @@ public interface ComService {
 	public HashMap<String, Object> getComBoardListByCondition(int page, 
 			@RequestParam(required=false) List cb,
 			@RequestParam(required=false) String rb,
-			@RequestParam(required=false) String ar);
+			@RequestParam(required=false) String ar, 
+			@RequestParam(required=false) String keyword);
 	
 	public ComBoard comVie(int cnum);
 	//메세지 알람

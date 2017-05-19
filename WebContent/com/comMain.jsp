@@ -33,6 +33,22 @@
 		.open(url, "_blank_1",
 				"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
 	}
+	function mainSearch(){
+		var dos= 'comSearch.do?page=1&';
+		var keyword =$('.keyword').val(); 
+		var checkbox = $('.license').val();
+		var radiobox = $('#careerType').val();
+		if(keyword.value !=''){
+			dos+='&keyword='+keyword;
+		}
+		if(checkbox.value !=''){
+			dos= dos+'&checkbox='+checkbox;
+		} 
+		if(radiobox.value != '없음'){
+			dos = dos+'&radiobox='+radiobox;
+		} 
+		location.href=dos;
+	}
 </script>
 </head>
 <body>
@@ -54,7 +70,7 @@
 			<li><a href="index.do">홈으로</a></li>
 			<c:choose>
 		  		<c:when test="${userInfo == 1}">
-		  			<li><a href="comBoardList.do">일자리찾기</a></li>
+		  			<li><a href="nomalSearch.do">일자리찾기</a></li>
 				    <li><a href="nomalBoardList.do">일자리등록정보</a>
 				    	<ul>
 				    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
@@ -63,18 +79,19 @@
 		  		</c:when>
 		  		<c:when test="${userInfo ==2}">
 		  			<li><a href="comSearch.do">인력찾기</a></li>
-					<li><a href="comBoardList.do">구직 정보</a>
+					<li><a href="comBoardList.do">구인 정보</a>
 					<ul>
-						<li><a href="comBoardList.do">구직 등록 현황</a></li>
-						<li><a href="comWriteForm.do">구직 등록하기</a></li>
+						<li><a href="comBoardList.do">구인 등록 현황</a></li>
+				    		<li><a href="comWriteForm.do">구인 등록하기</a></li>	
 					</ul></li>
 		  		</c:when>
 		  		<c:otherwise>
+					<li><a href="comMain.do">홈으로</a></li>
 		  			<li><a href="comSearch.do">인력찾기</a></li>
-					<li><a href="comBoardList.do">구직 정보</a>
+					<li><a href="comBoardList.do">구인 정보</a>
 					<ul>
-						<li><a href="comBoardList.do">구직 등록 현황</a></li>
-						<li><a href="comWriteForm.do">구직 등록하기</a></li>
+						<li><a href="comBoardList.do">구인 등록 현황</a></li>
+				    		<li><a href="comWriteForm.do">구인 등록하기</a></li>	
 					</ul></li>
 		  		</c:otherwise>
 		  	</c:choose>
@@ -161,14 +178,14 @@
 						<div>
 							<img src="img/main/Newquick2.png" />
 						</div>
-						<div>구직등록</div>
+						<div>구인등록</div>
 					</div>
 					<div class="ShortcutMain_dvi"
 						onclick="location.href='comBoardList.do'">
 						<div>
 							<img src="img/main/Newquick1.png" />
 						</div>
-						<div>구직 등록현황</div>
+						<div>구인 등록현황</div>
 					</div>
 					<div class="ShortcutMain_dvi">
 						<div>
@@ -180,7 +197,7 @@
 						<div>
 							<img src="img/main/Newquick7.png" />
 						</div>
-						<div>구직등록 가이드</div>
+						<div>구인등록 가이드</div>
 					</div>
 					<div class="ShortcutMain_dvi">
 						<div>
@@ -227,10 +244,10 @@
 							<li><span>키워드 입력</span>
 								<div style="float: right; margin-right: 40px;">
 									<dt class="recentHelp_1_dt">
-										<input type="text" />
+										<input type="text" name="keyword" class="keyword"/>
 									</dt>
 									<dd class="recentHelp_1_dd">
-										<a href="#">검색</a>
+										<a href="javascript:;" onclick="mainSearch()">검색</a>
 									</dd>
 								</div></li>
 						</ul>
@@ -241,32 +258,32 @@
 								<dl style="float: left;">
 									<dt style="float: left;" class="recentHelp_1_div2_dt">전문분야</dt>
 									<dd style="padding-left: 30px;" class="recentHelp_1_div2_dd">
-										<select id='fruits' name='license' style="width:195px;height: 32px">
-												<option value='' selected>-- 다중선택 --</option>
-												<option value=''>거푸집기능사</option>
-												<option value=''>건설기계기술사</option>
-												<option value=''>건축도장기능사</option>
-												<option value=''>건축목공기능사</option>
-												<option value=''>관광통역안내사</option>
-												<option value=''>금속기사</option>
-												<option value=''>금형기술사</option>
-												<option value=''>기계기술사</option>
-												<option value=''>기계정비산업기사</option>
-												<option value=''>기계조립산업기사</option>
-												<option value=''>도배기능사</option>
-												<option value=''>미장기능사</option>
-												<option value=''>배관산업기사</option>
-												<option value=''>석공기능사</option>
-												<option value=''>연삭기능사</option>
-												<option value=''>석공기능사</option>
-												<option value=''>용접기술사</option>
-												<option value=''>유리시공기능사</option>
-												<option value=''>일반기계기사</option>
-												<option value=''>전기공사기사</option>
-												<option value=''>전기산업기사</option>
-												<option value=''>전자기사</option>
-												<option value=''>토목기사</option>
-												<option value=''>포장기사</option>
+										<select  class="license" id='fruits' name='license' style="width:195px;height: 32px">
+												<option value='' selected>-- 선택 --</option>
+												<option value='거푸집기능사'>거푸집기능사</option>
+												<option value='건설기계기술사'>건설기계기술사</option>
+												<option value='건축도장기능사'>건축도장기능사</option>
+												<option value='건축목공기능사'>건축목공기능사</option>
+												<option value='관광통역안내사'>관광통역안내사</option>
+												<option value='금속기사'>금속기사</option>
+												<option value='금형기술사'>금형기술사</option>
+												<option value='기계기술사'>기계기술사</option>
+												<option value='기계정비산업기사'>기계정비산업기사</option>
+												<option value='기계조립산업기사'>기계조립산업기사</option>
+												<option value='도배기능사'>도배기능사</option>
+												<option value='미장기능사'>미장기능사</option>
+												<option value='배관산업기사'>배관산업기사</option>
+												<option value='석공기능사'>석공기능사</option>
+												<option value='연삭기능사'>연삭기능사</option>
+												<option value='석공기능사'>석공기능사</option>
+												<option value='용접기술사'>용접기술사</option>
+												<option value='유리시공기능사'>유리시공기능사</option>
+												<option value='일반기계기사'>일반기계기사</option>
+												<option value='전기공사기사'>전기공사기사</option>
+												<option value='전기산업기사'>전기산업기사</option>
+												<option value='전자기사'>전자기사</option>
+												<option value='토목기사'>토목기사</option>
+												<option value='포장기사'>포장기사</option>
 										</select>
 									</dd>
 								</dl>
@@ -275,11 +292,11 @@
 								<dl style="width: 100%;">
 									<dt style="margin-left: 9px;" class="recentHelp_1_div2_dt2">경력</dt>
 									<dd style="padding-left: 10px;" class="recentHelp_1_div2_dd2">
-										<select id="careerType" name="careerType"
-											title="경력 선택"><option value="">전체</option>
-											<option value="0">무관</option>
-											<option value="1">신입</option>
-											<option value="2">경력</option>
+										<select id="careerType" name="career"
+											title="경력 선택"><option value="없음">없음</option>
+											<option value="1년">1년</option>
+											<option value="2년">2년</option>
+											<option value="3년">3년</option>
 										</select>
 									</dd>
 								</dl>

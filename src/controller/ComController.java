@@ -145,17 +145,19 @@ public class ComController {
 			@RequestParam(value="checkbox", required=false) List checkbox,
 			@RequestParam(value="radiobox", required=false) String radiobox,
 			@RequestParam(value="area", required=false) String area,
+			@RequestParam(value="keyword", required=false) String keyword,
 			HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		
 		if(ObjectUtils.isEmpty(checkbox) && ObjectUtils.isEmpty(radiobox) && ObjectUtils.isEmpty(area)){
 		}else{
-			HashMap<String, Object> nlist = nservice.getNomalBoardListByCondition(page, checkbox, radiobox, area);
+			HashMap<String, Object> nlist = nservice.getNomalBoardListByCondition(page, checkbox, radiobox, area, keyword);
 			mav.addObject("nomalBoard", nlist.get("nomalBoard"));
 			mav.addAllObjects(nlist);
 			mav.addObject("ar", area);
 			mav.addObject("rb", radiobox);
 			mav.addObject("cb", checkbox);
+			mav.addObject("kw", keyword);
 			}
 		mav.setViewName("/com/comSearch");
 		return mav;
