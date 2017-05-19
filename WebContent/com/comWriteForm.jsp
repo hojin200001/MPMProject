@@ -26,13 +26,14 @@
 	<div class="container">
 		<div class="header">
 			<div class="searchArea">
-  			<dir class="searchs">
-  				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로"/>
-  				<div class="serachs_div">
-	  				<input type="text" alt="전체검색" class="searchText"><img src="img/main/btn_search.gif" alt="검색" style="float: left;"/></input>
-  				</div>
-  			</dir>
-  		</div>	
+				<dir class="searchs">
+					<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" style="padding-top: 30px;"/>
+					<div class="serachs_div">
+						<input type="text" alt="전체검색" class="searchText"><img
+							src="img/main/btn_search.gif" alt="홈으로" style="float: left;" /></input>
+					</div>
+				</dir>
+			</div>
 			<!-- end .header -->
 		</div>
 		<nav style="margin-top: 20px;">
@@ -40,7 +41,7 @@
 			<c:choose>
 		  		<c:when test="${userInfo == 1}">
 					<li><a href="nomalMain.do">홈으로</a></li>
-		  			<li><a href="comBoardList.do">일자리찾기</a></li>
+		  			<li><a href="nomalSearch.do">일자리찾기</a></li>
 				    <li><a href="nomalBoardList.do">일자리등록정보</a>
 				    	<ul>
 				    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
@@ -50,19 +51,19 @@
 		  		<c:when test="${userInfo ==2}">
 					<li><a href="comMain.do">홈으로</a></li>
 		  			<li><a href="comSearch.do">인력찾기</a></li>
-					<li><a href="comBoardList.do">구직 정보</a>
+					<li><a href="comBoardList.do">구인 정보</a>
 					<ul>
-						<li><a href="comBoardList.do">구직 등록 현황</a></li>
-						<li><a href="comWriteForm.do">구직 등록하기</a></li>
+						<li><a href="comBoardList.do">구인 등록 현황</a></li>
+				    		<li><a href="comWriteForm.do">구인 등록하기</a></li>	
 					</ul></li>
 		  		</c:when>
 		  		<c:otherwise>
 					<li><a href="comMain.do">홈으로</a></li>
 		  			<li><a href="comSearch.do">인력찾기</a></li>
-					<li><a href="comBoardList.do">구직 정보</a>
+					<li><a href="comBoardList.do">구인 정보</a>
 					<ul>
-						<li><a href="comBoardList.do">구직 등록 현황</a></li>
-						<li><a href="comWriteForm.do">구직 등록하기</a></li>
+						<li><a href="comBoardList.do">구인 등록 현황</a></li>
+				    		<li><a href="comWriteForm.do">구인 등록하기</a></li>	
 					</ul></li>
 		  		</c:otherwise>
 		  	</c:choose>
@@ -226,26 +227,30 @@
 					<td class="td_area_9"><span> <select id='fruits'
 							name='cjob'>
 								<option value='전체' selected>전체</option>
-								<option value='거푸집기능'>거푸집기능</option>
-								<option value='건설기계기술'>건설기계기술</option>
-								<option value='건축도장기능'>건축도장기능</option>
-								<option value='건축목공기능'>건축목공기능</option>
-								<option value='금속'>금속</option>
-								<option value='금형기술'>금형기술</option>
-								<option value='기계기'>기계기술</option>
-								<option value='기계정비'>기계정비</option>
-								<option value='기계조립'>기계조립</option>
-								<option value='도배기능'>도배기능</option>
-								<option value='미장기능'>미장기능</option>
-								<option value='배관'>배관</option>
-								<option value='석공'>석공</option>
-								<option value='연삭기능'>연삭기능</option>
-								<option value='용접기술'>용접기술</option>
-								<option value='유리시공'>유리시공</option>
-								<option value='일반기계'>일반기계</option>
-								<option value='전기공사'>전기공사</option>
-								<option value='토목'>토목</option>
-								<option value='포장'>포장</option>
+								<option value='거푸집기능사'>거푸집기능사</option>
+								<option value='건설기계기술사'>건설기계기술사</option>
+								<option value='건축도장기능사'>건축도장기능사</option>
+								<option value='건축목공기능사'>건축목공기능사</option>
+								<option value='관광통역안내사'>관광통역안내사</option>
+								<option value='금속기사'>금속기사</option>
+								<option value='금형기술사'>금형기술사</option>
+								<option value='기계기술사'>기계기술사</option>
+								<option value='기계정비산업기사'>기계정비산업기사</option>
+								<option value='기계조립산업기사'>기계조립산업기사</option>
+								<option value='도배기능사'>도배기능사</option>
+								<option value='미장기능사'>미장기능사</option>
+								<option value='배관산업기사'>배관산업기사</option>
+								<option value='석공기능사'>석공기능사</option>
+								<option value='연삭기능사'>연삭기능사</option>
+								<option value='석공기능사'>석공기능사</option>
+								<option value='용접기술사'>용접기술사</option>
+								<option value='유리시공기능사'>유리시공기능사</option>
+								<option value='일반기계기사'>일반기계기사</option>
+								<option value='전기공사기사'>전기공사기사</option>
+								<option value='전기산업기사'>전기산업기사</option>
+								<option value='전자기사'>전자기사</option>
+								<option value='토목기사'>토목기사</option>
+								<option value='포장기사'>포장기사</option>
 						</select>
 					</span></td>
 				</tr>
@@ -253,9 +258,9 @@
 					<td class="td_area_7"><span>경력사항</span></td>
 					<td class="td_area_9"><span> <input type="radio"
 							name="ccarrer" value="없음" checked="checked">없음 <input
-							type="radio" name="ccarrer" value="1년이하">1년이하 <input
-							type="radio" name="ccarrer" value="1~3년">1~3년 <input
-							type="radio" name="ccarrer" value="3년이상">3년이상
+							type="radio" name="ccarrer" value="1년">1년 <input
+							type="radio" name="ccarrer" value="2년">2년 <input
+							type="radio" name="ccarrer" value="3년">3년
 					</span></td>
 				</tr>
 				<tr>

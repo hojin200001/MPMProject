@@ -84,13 +84,12 @@
         </div>
     <!-- end .footer --></div>
   <!-- end .container --></div>
-  
-  
+
 
 <script type="text/javascript">
 $(window).load(function(){
-	//if(ObjectUtils.isEmpty(${area})){location.href="areasel.do"}
-	location.href="areasel.do"
+	if($.isEmptyObject(${area})){
+		location.href = "areasel.do"}
 });
 </script>
 

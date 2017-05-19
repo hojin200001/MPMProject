@@ -10,20 +10,24 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import model.ComBoard;
+import model.ComM;
 import model.FreeBoard;
 import model.InComBoard;
 import model.NomalBoard;
+import model.NomalM;
 import model.NomalUser;
 import service.ComService;
 import service.FreeBoardService;
@@ -39,8 +43,24 @@ public class ComController {
 	private NomalService nservice;
 	
 	@RequestMapping("comMain.do")
-	public ModelAndView comMain(){
+	public ModelAndView comMain(HttpSession session){
 		ModelAndView mav = new ModelAndView();
+		HashMap<String, Object> map = new HashMap<>();
+		List<Integer> counts = null;
+		if(session.getAttribute("user") != null){
+			map = (HashMap<String, Object>) session.getAttribute("user");
+			map.put("userInfo", session.getAttribute("userInfo"));
+			if((int)map.get("userInfo") == 2){
+				counts = cservice.comMcounts((String)map.get("id"));
+				mav.addObject("countNew", counts.get(0));
+				mav.addObject("countAll", counts.get(1));
+			}else{
+				counts = nservice.nomalMcounts((String)map.get("id"));
+				mav.addObject("countNew", counts.get(0));
+				mav.addObject("countAll", counts.get(1));
+			}
+			
+		}
 		List<FreeBoard> flist= fservice.selectLimitDesc();
 		List<NomalBoard> nlist = cservice.selectNomalBoardDesc();
 		List<String>timeList = getTime(flist);
@@ -56,7 +76,7 @@ public class ComController {
 		ModelAndView mav = new ModelAndView();
 		List<InComBoard> ico= cservice.selectIncomBoard(cnum);
 		mav.addObject("user" , session.getAttribute("user"));
-		mav.addObject(cservice.comView(cnum));
+		mav.addObject(cservice.comVie(cnum));
 		mav.addObject("inComBoard",ico);
 		mav.addObject("inCount", cservice.InComBoardCount(cnum));
 		mav.setViewName("com/comView");
@@ -83,20 +103,84 @@ public class ComController {
 		}else{
 			mav.setViewName("/login/loginAlert_login");
 		}
-		if(session.getAttribute("comarea").equals(null)){
-		}else{
-			HashMap<String, Object> userarea = new HashMap<>();
-			userarea.put("comarea", session.getAttribute("comarea"));
-			session.setAttribute("comareanum", cservice.comarea(userarea));
-		}
+//		if(session.getAttribute("comarea").equals(null)){
+//		}else{
+//			HashMap<String, Object> userarea = new HashMap<>();
+//			userarea.put("comarea", session.getAttribute("comarea"));
+//			session.setAttribute("comareanum", cservice.comarea(userarea));
+//		}
 		return mav;
 	}
 	
-	@RequestMapping("comSearch.do")
-	public String comSearch(){
-//		ModelAndView mav = new ModelAndView();
-		return "/com/comSearch";
+	
+	
+	
+	@RequestMapping("comView2.do")
+	public ModelAndView boardView2(int cnum,@RequestParam(defaultValue="0")int type,
+			HttpSession session){
+		ModelAndView mav = new ModelAndView();
+		if(type!=0){
+			HashMap<String, Object> user = (HashMap<String, Object>) session.getAttribute("user");
+			user.put("cnum", cnum);
+			if(user.get("userInfo").toString().equals("1")){
+				nservice.changeNomalM(user);
+			}
+			else{
+				cservice.changeComM(user);
+			}
+		}
+		mav.addObject(cservice.comVie(cnum));
+		mav.setViewName("com/comView");
+		return mav;
 	}
+	
+	
+	
+	
+	
+	
+	@RequestMapping("comSearch.do")
+	public ModelAndView comSearch(
+			@RequestParam(defaultValue="1") int page,
+			@RequestParam(value="checkbox", required=false) List checkbox,
+			@RequestParam(value="radiobox", required=false) String radiobox,
+			@RequestParam(value="area", required=false) String area,
+			@RequestParam(value="keyword", required=false) String keyword,
+			HttpSession session){
+		ModelAndView mav = new ModelAndView();
+		
+		if(ObjectUtils.isEmpty(checkbox) && ObjectUtils.isEmpty(radiobox) && ObjectUtils.isEmpty(area)){
+		}else{
+			HashMap<String, Object> nlist = nservice.getNomalBoardListByCondition(page, checkbox, radiobox, area, keyword);
+			mav.addObject("nomalBoard", nlist.get("nomalBoard"));
+			mav.addAllObjects(nlist);
+			mav.addObject("ar", area);
+			mav.addObject("rb", radiobox);
+			mav.addObject("cb", checkbox);
+			mav.addObject("kw", keyword);
+			}
+		mav.setViewName("/com/comSearch");
+		return mav;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("comWriteForm.do")
 	public String comWriteForm(){
 		return "/com/comWriteForm";
@@ -131,17 +215,51 @@ public class ComController {
 		return "redirect:comBoardList.do";
 	}
 	@RequestMapping("deleteInComBoard.do")
-	public String deleteInComBoard(int cnum, String nomalId){
+	public String deleteInComBoard(int cnum, String nomalId, HttpSession session){
+		String id = nomalId;
+		int userInfo = (int)session.getAttribute("userInfo");
 		cservice.deleteInComBoard(cnum, nomalId);
+		int res = cservice.insertComM(cnum, id, userInfo);
+		int ress = nservice.insertNomalM(cnum, id, userInfo);
 		return "redirect:comView.do?cnum="+cnum;
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("attendThis.do")
-	public String attendThis(int cnum, String userId){
+	public String attendThis(int cnum, String userId, HttpSession session){
 		String id = userId;
+		int userInfo = (int)session.getAttribute("userInfo");
 		NomalUser user = nservice.selectOne(id);
 		int re = cservice.insertInComBoard(cnum, user);
+		int res = cservice.insertComM(cnum, id, userInfo);
+		int ress = nservice.insertNomalM(cnum, id, userInfo);
 		return"redirect:comView.do?cnum="+cnum;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//------------------------------------------------------------------------------------------------------------------------------------//
 	//시간계산 지우지 마시길
 	public List<String >getTime(List<FreeBoard> list){

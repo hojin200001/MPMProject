@@ -2,6 +2,7 @@ package service;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -20,6 +21,7 @@ import model.ComBoard;
 import model.ComDay;
 import model.ComUser;
 import model.NomalBoard;
+import model.NomalM;
 import model.NomalUser;
 @Service
 public class NomalServiceImpl implements NomalService{
@@ -42,6 +44,7 @@ public class NomalServiceImpl implements NomalService{
 			if(user.getNomalPass().equals(pass)){
 				map2.put("name", user.getName());
 				map2.put("id",user.getNomalId());
+				map2.put("email", user.getEmail());
 				String[] userarea= user.getAddress().split(" ");
 				System.out.println(userarea[1]);
 				map2.put("userarea", userarea[1]);
@@ -97,18 +100,21 @@ public class NomalServiceImpl implements NomalService{
 	}
 
 	@Override
-	public HashMap<String, Object> nomalBoardList(int page) {
+	public HashMap<String, Object> nomalBoardList(int page, String id) {
 		HashMap<String, Object> result = new HashMap<>();
+		HashMap<String, Object> userid = new HashMap<>();
+		userid.put("id", id);
 		result.put("current", page);
 		result.put("start", getStartPage(page));
 		result.put("end", getEndPage(page));
-		result.put("last", getLastPage(nDao.getCount()));
-		result.put("totalPage", nDao.getCount());
+		result.put("last", getLastPage(nDao.getCountBoardList(userid)));
+		result.put("totalPage", nDao.getCountBoardList(userid));
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("TimeCom", sf.format(cal.getTime()));
 		params.put("TimeNomal", sf.format(cal.getTime()));
+		params.put("id", id);
 		result.put("todayTimeCom", nDao.listComNum(params));
 		result.put("todayTimeNomal", nDao.listNomalNum(params));
 		params.put("offset", getOffset(page));
@@ -163,15 +169,17 @@ public class NomalServiceImpl implements NomalService{
 			//@RequestParam(required=false) HashMap<String, Object> cb, 
 			@RequestParam(required=false) List cb, 
 			@RequestParam(required=false) String rb,
-			@RequestParam(required=false) String ar) {
+			@RequestParam(required=false) String ar,
+			@RequestParam(required=false) String keyword) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> params = new HashMap<>();
 		HashMap<String, Object> result = new HashMap<>();
 		params.put("cb", cb);
 		params.put("rb", rb);
 		params.put("ar", ar);
+		params.put("kw", keyword);
 		params.put("offset", getOffset(page));
-		params.put("boardsPerPage", 10);
+		params.put("boardsPerPage", 5);
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
 		params.put("todayTime", sf.format(cal.getTime()));
@@ -187,16 +195,78 @@ public class NomalServiceImpl implements NomalService{
 
 	@Override
 	public int insertNomalBoard(NomalBoard nomalBoard) {
-		// TODO Auto-generated method stub
 		nomalBoard.setNphone(nDao.getPhoneNum(nomalBoard));
 		nDao.insertNomalBoard(nomalBoard);
 		return 0;
 	}
 
 	@Override
-	public int userarea(HashMap<String, Object> userarea) {
+	public int userarea(HashMap<String, Object> userarea){
 		return nDao.userarea(userarea);
 	}
 
+	@Override
+	public int nomalBoardModify(NomalBoard nomal){
+		// TODO Auto-generated method stub
+		nDao.nomalBoardModify(nomal);
+		return nomal.getNnum();
+	}
+
+	public int insertNomalM(int cnum, String id, int userInfo) {
+		NomalM nomalm = new NomalM();
+		nomalm.setCnum(cnum);
+		nomalm.setNomalId(id);
+		if(userInfo == 1){
+			nomalm.setNmtext("신청");
+		}else{
+			nomalm.setNmtext("거절");
+		}
+		nDao.insertNomalM(nomalm);
+		return 0;
+	}
+
+	@Override
+	public List<Integer> nomalMcounts(String id) {
+		List<Integer> counts = new ArrayList();
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("id", id);
+		counts.add(nDao.nomalMcountAll(map));
+		counts.add(nDao.nomalMcountNew(map));
+		return counts;
+	}
+	public int deleteMesege(int mnum) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("nmnum", mnum);
+		int re = nDao.deleteNomalM(map);
+		return 0;
+	}
+
+	@Override
+	public HashMap<String, Object> selectNomalM(int page, String id) {
+		HashMap<String, Object> results = new HashMap<>();	
+		HashMap<String, Object> result = new HashMap<>();
+		HashMap<String, Object> re = new HashMap<>();
+		re.put("id", id);
+		result.put("current", page);
+		result.put("start", getStartPage(page));
+		result.put("end", getEndPage(page));
+		result.put("last", getLastPage(nDao.getCountM(re)));
+		result.put("totalPage", nDao.getCountM(re));
+		
+		results.put("offset", getOffset(page));
+		results.put("boardsPerPage", 5);
+		results.put("id", id);
+		
+		result.put("mBoard", nDao.selectNomalM(results));
+		
+		return result;
+	}
+
+	@Override
+	public int changeNomalM(HashMap<String, Object> user) {
+		// TODO Auto-generated method stub
+		nDao.changeNomalM(user);
+		return 0;
+	}
 
 }

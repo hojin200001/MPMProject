@@ -36,24 +36,24 @@ function fr_replyUpdate(reNum){
         oldReno.innerText = updateRememo;
     } 
     
-    form.reno.value=reno;
-    form.rememo.value = reply.innerText;
+    form.reNum.value=reNum;
+    form.teText.value = reply.innerText;
     reply.innerText ="";
     reply.appendChild(replyDiv);
-    updateReno   = reno;
-    updateRememo = form.rememo.value;
-    form.rememo.focus();
+    updateReno   = reNum;
+    updateRememo = form.teText.value;
+    form.teText.focus();
 } 
 
 function fn_replyUpdateSave(){
     var form = document.form2;
-    if (form.rememo.value=="") {
-        alert("글 내용을 입력해주세요.");
-        form.rememo.focus();
-        return;
-    }
+   
+//    if (form.teText.value=="") {
+//        alert("글 내용을 입력해주세요.");
+//        form.teText.focus();
+//        return;
+//    }
     
-    form.action="board5ReplySave";
     form.submit();    
 } 
 

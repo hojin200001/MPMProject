@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
 <link rel="stylesheet" type="text/css" href="css/main/public_header.css?var=1">
 <link rel="stylesheet" type="text/css" href="css/main/SkyBanner.css?var=1">
-<link rel="stylesheet" type="text/css" href="css/com/conView.css?var=1">
+<link rel="stylesheet" type="text/css" href="css/com/comView.css?var=1">
 
 <title>게시물 상세보기</title>
 <style type="text/css">
@@ -132,7 +132,7 @@
 			</div>
 			<div class="contents_top2_2">
 				<input type="button"  class="btn btn-primary" value="작성하기"
-					onclick="location.href='nomalWriteForm.do'">
+					style="float: right;" onclick="location.href='nomalWriteForm.do'">
 			</div>
 		</div>
 	<div style="background-color: #ebedee">
@@ -180,11 +180,14 @@
 		</div>
 	
 		<div class="textbottom_button">
-			<input type="button" class="btn btn-primary" value="목록으로" onclick="location.href='nomalBoardList.do'">
 			<c:choose>
 				<c:when test="${user.id eq nomalBoard.nomalId}">
+					<input type="button" class="btn btn-primary" value="목록으로" onclick="location.href='nomalBoardList.do'">
 					<input type="button" class="btn btn-primary" value="수정하기" onclick="location.href='nomalModifyForm.do?num=${nomalBoard.nnum}'">
 				</c:when>
+				<c:otherwise>
+					<input type="button" class="btn btn-primary" value="목록으로" onclick="location.href='history.back()'">
+				</c:otherwise>
 			</c:choose>
 		</div>
 

@@ -12,6 +12,4 @@ public interface FreeReplyService {
 	public FreeReplyVo readReply(int reNum);
 	public List<FreeReplyVo> readReplyList(int num);
 
-
-
 }

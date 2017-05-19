@@ -150,7 +150,7 @@ td>a{
  <div class="header">
   		<div class="searchArea">
   			<dir class="searchs">
-  				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로"/>
+  				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" style="margin-top: 30px;"/>
   				<div class="serachs_div">
 	  				<input type="text" alt="전체검색" class="searchText">
 	  				<img src="img/main/btn_search.gif" alt="홈으로" style="float: left;"/></input>
@@ -164,7 +164,7 @@ td>a{
 	    	<c:choose>
 		  		<c:when test="${userInfo == 1}">
 					<li><a href="nomalMain.do">홈으로</a></li>
-		  			<li><a href="comBoardList.do">일자리찾기</a></li>
+		  			<li><a href="nomalSearch.do">일자리찾기</a></li>
 				    <li><a href="nomalBoardList.do">일자리등록정보</a>
 				    	<ul>
 				    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
@@ -174,19 +174,19 @@ td>a{
 		  		<c:when test="${userInfo ==2}">
 					<li><a href="comMain.do">홈으로</a></li>
 		  			<li><a href="comSearch.do">인력찾기</a></li>
-					<li><a href="comBoardList.do">구직 정보</a>
+					<li><a href="comBoardList.do">구인 정보</a>
 					<ul>
-						<li><a href="comBoardList.do">구직 등록 현황</a></li>
-						<li><a href="comWriteForm.do">구직 등록하기</a></li>
+						<li><a href="comBoardList.do">구인 등록 현황</a></li>
+				    		<li><a href="comWriteForm.do">구인 등록하기</a></li>	
 					</ul></li>
 		  		</c:when>
 		  		<c:otherwise>
 					<li><a href="comMain.do">홈으로</a></li>
 		  			<li><a href="comSearch.do">인력찾기</a></li>
-					<li><a href="comBoardList.do">구직 정보</a>
+					<li><a href="comBoardList.do">구인 정보</a>
 					<ul>
-						<li><a href="comBoardList.do">구직 등록 현황</a></li>
-						<li><a href="comWriteForm.do">구직 등록하기</a></li>
+						<li><a href="comBoardList.do">구인 등록 현황</a></li>
+				    		<li><a href="comWriteForm.do">구인 등록하기</a></li>	
 					</ul></li>
 		  		</c:otherwise>
 		  	</c:choose>
@@ -205,8 +205,8 @@ td>a{
    		<div class="Sky_contents">
    			<ul>
    				<li><a href="#">구인검색하기</a></li>
-   				<li><a href="comBoardList.do">구직등록 현황</a></li>
-   				<li><a href="comWriteForm.do">구직등록 하기</a></li>
+   				<li><a href="comBoardList.do">구인등록 현황</a></li>
+   				<li><a href="comWriteForm.do">구인등록 하기</a></li>
    			</ul>
    		</div>
    		<div class="Sky_topinfo"><span>오늘본 공고 <a href="">0</a></span></div>
@@ -296,65 +296,7 @@ td>a{
 		</form>
 		</div>
 	</div>
-	
-	
-	
-<div>
 
-<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" 
-aria-controls="collapseExample2">
-   직업 보기
-</button>
-<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" 
-aria-controls="collapseExample3">
-   경력 선택
-</button>
-<button class="btn btn-primary btn-block" type="button" data-target="#collapseExample" aria-expanded="false" 
-aria-controls="collapseExample" style="margin-bottom: 0px">
-  지역 보기
-</button>
-<form action="nomalBoardList.do" id="formTest" name="area" method="post"> 
-<div id="collapseExample">
-	<div class="well" style="margin-bottom: 0px">
-		<input type="text" class="form-control" name="area" readonly="readonly" id="test5">
-		<p>지역 선택</p>
-		<div id="gd">
-			<div></div>
-		</div>
-		<div id="awesomet">
-			<p>관할지역</p>
-			<div></div>
-		</div>
-	</div>
-</div>
-
-<div class="collapse" id="collapseExample2">
-	<div class="well" style="margin-bottom: 0px">
-		<div id="checkDiv">
-			<div></div>
-		</div>
-	</div>
-</div>
-
-<div class="collapse" id="collapseExample3">
-	<div class="well" style="margin-bottom: 0px">
-		<h5>경력 선택</h5>
-		<p style="font-size: 13px">
-		1년<input type="radio" name="radiobox" value="1년"/> 
-		2년<input type="radio" name="radiobox" value="2년"/> 
-		3년<input type="radio" name="radiobox" value="3년"/>   
-		</p>
-	</div>
-</div>
-<div class="well">
-<input class="btn btn-info" type="submit" value="검색" align="middle"/>
-</div>
-
-</form>
-</div>
-	
-	
-	
 	<table>
 		<c:choose>
 			<c:when test="${comBoard ne '[]'}">
@@ -444,67 +386,6 @@ aria-controls="collapseExample" style="margin-bottom: 0px">
 		</div>
 		<!-- end .footer -->
 </div>
-
-<script type="text/javascript">
-var j;
-var wh;
-function areaPass(area){
-   wh=area;
-   console.log(wh);
-   $.ajax({
-      url : "json/area.json",
-      dataType : "json",
-      success : function(result){
-         $("#awesomet div").empty();
-         $.each(result[wh], function(i,d){
-            $("#awesomet div").append(
-                  "<button type=" + "button" + " class=" + "'btn btn-default btn-sm'" + 
-					" onclick = " + "areaChoose(" + "'" + d["value"] +"'" + ");" + ">" + d["value"] +" "+ "</button>"
-            );
-         });
-      }
-   });
-}
-
-$(window).load(function(){
-	$.ajax({
-		url : "json/area2.json",
-		dataType : "json",
-		success : function(result){
-			$("#gd div").empty();
-			$.each(result, function(i,d){
-				var nd;
-				$.each(d, function(key,v){
-					nd=v["id"]
-				});
-				$("#gd div").append(
-					"<button type=" + "button" + " class=" + "'btn btn-info'" + 
-					" onclick = " + "areaPass(" + "'" + i +"'" + ");" +
-					">" + nd + "</button>"
-				);
-			});
-		}
-	});
-	
-   $.ajax({
-      url : "json/job.json",
-      dataType : "json",
-      success : function(result){
-         $("#checkDiv div").empty();
-         $.each(result.job, function(i,d){
-            $("#checkDiv div").append(
-               "<input type=" + "checkbox" + " name=" + "checkbox" + " value=" + d["value"] + ">" + d["value"]
-            );
-         });
-      }
-   });
-});
-
-function areaChoose(vl){
-   var text = vl;
-   $('#test5').val(text);
-};
-</script>
 
 </body>
 </html>

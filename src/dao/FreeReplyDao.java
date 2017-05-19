@@ -11,6 +11,5 @@ public interface FreeReplyDao {
 	public void updateFreeReply(FreeReplyVo freeReplyVo);
 
 	public void deleteFreeReply(int reNum);
-
 	public List<FreeReplyVo> selectReply(int num);
 }

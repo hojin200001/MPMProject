@@ -45,9 +45,12 @@
   	<select id="getCount" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
     	select count(*) from nomalBoard
     </select>
+    <select id="getCountBoardList" parameterType="java.util.HashMap" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
+    	select count(*) from nomalBoard where nomalId='${id}'
+    </select>
     
     <select id="selectBoardPage" parameterType="java.util.HashMap" resultType="nomalBoard">
-    	select * from nomalBoard order by Nnum desc limit #{offset} ,#{boardsPerPage}
+    	select * from nomalBoard where nomalId='${id}' order by Nnum desc limit #{offset} ,#{boardsPerPage}
     </select>
   	
      <update id="nomalUpdate" parameterType="nomalBoard">
@@ -57,9 +60,18 @@
         Ntext = <include refid="ntext"/>
         where Nnum = #{nnum}
     </update>
+    
+    <update id="nomalBoardModify" parameterType="nomalBoard">
+    	update nomalBoard set
+        Ncount = #{ncount}, Njob = #{njob}, Nemail = #{nemail}, Ncareer = #{ncareer},
+        Ntitle = <include refid="ntitle"/>,
+        Ntext = <include refid="ntext"/>
+        where Nnum = #{nnum}
+    </update>
+    
     <!-- 회원가입 -->
     <insert id="insertNomalUser" parameterType="nomalUser">
-    	insert into nomalUser values('${nomalId}', '${nomalPass}', '${name}', ${age},'${add}','${add2}', '${phone}',now(),'${email}','${license}', 0, ${inpoDis})
+    	insert into nomalUser values('${nomalId}', '${nomalPass}', '${name}', ${age},'${address}','${address2}', '${phone}',now(),'${email}','${license}', 0, ${inpoDis})
     </insert>
     <select id="selectIdCheck" parameterType="java.util.HashMap" resultType="nomalUser">
     	select * from nomalUser where nomalId ='${id}';
@@ -73,6 +85,7 @@
     	</if>
     	<if test="!(rb eq null)"> and Ncareer like '%${rb}%'</if>
     	<if test="!(ar eq null)"> and Narea like '%${ar}%'</if>
+    	<if test="!(kw eq null)"> and Ntitle like '%${kw}%'</if>
     	order by Nnum desc limit #{offset}, #{boardsPerPage}
     </select>
     
@@ -84,10 +97,11 @@
     	</if>
     	<if test="!(rb eq null)"> and Ncareer like '%${rb}%'</if>
     	<if test="!(ar eq null)"> and Narea like '%${ar}%'</if>
+    	<if test="!(kw eq null)"> and Ntitle like '%${kw}%'</if>
     </select>
 
     <insert id="insertNomalBoard" parameterType="nomalBoard">
-    	insert into nomalBoard values(0,'${ntitle}','${ntext}','${njob}','${ncareer}','${nphone}','${nemail}','${nday}',now(),'${ntext}',0,'${nomalId}')
+    	insert into nomalBoard values(0,'${ntitle}','${narea}','${njob}','${ncareer}','${nphone}','${nemail}','${nday}',now(),'${ntext}',0,'${nomalId}')
     </insert>
     
     <select id="getPhoneNum" parameterType="nomalBoard" resultType="String">
@@ -109,5 +123,26 @@
     <select id="comarea" parameterType="java.util.HashMap" resultType="int">
     	select count(*) from nomalboard where Narea like '%${comarea}%'
     </select>
-    
+    <!-- nomal메세지 알람 -->
+    <insert id="insertNomalM" parameterType="nomalM">
+    	insert into nomalM values(0, ${cnum}, '${nomalId}', '${nmtext}', 0, now())
+    </insert>
+    <delete id="deleteNomalM" parameterType="java.util.HashMap">
+    	delete from nomalM where nmnum=${nmnum}
+    </delete>
+    <select id="nomalMcountNew" parameterType="java.util.HashMap" resultType="int">
+    	select count(*) from nomalM where nomalId='${id}' and reception = 0
+    </select>
+    <select id="nomalMcountAll" parameterType="java.util.HashMap" resultType="int">
+    	select count(*) from nomalM where nomalId ='${id}'
+    </select>
+    <select id="selectNomalM" parameterType="java.util.HashMap" resultType="nomalM">
+    	select * from nomalM where nomalId='${id}' order by nmnum desc limit #{offset} ,#{boardsPerPage}
+    </select>
+    <select id="getCountM" parameterType="java.util.HashMap" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
+    	select count(*) from nomalM where nomalId='${id}' 
+    </select>
+ 	<update id="changeNomalM" parameterType="java.util.HashMap">
+ 		update nomalm set reception=1 where cnum=${cnum} and nomalId='${id}';
+ 	</update>
   </mapper>

@@ -12,10 +12,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
-<link rel="stylesheet" type="text/css" href="css/main/public_header.css?var=1">
+<link rel="stylesheet" type="text/css" href="css/main/public_header.css?var=2">
 <link rel="stylesheet" type="text/css" href="css/main/SkyBanner.css?var=1">
 <link rel="stylesheet" type="text/css" href="css/com/comBoardList.css?var=1">
 <title>Insert title here</title>
+
 <style type="text/css">
 
 /* 컨텐츠*/
@@ -33,10 +34,12 @@
 	height: 45px;
 }
 .contents_top2_1{
+	margin-top:-5px;
 	width:70%;
 	float: left;
 }
 .contents_top2_2{
+	margin-top:-5px;
 	width: 20%; 
 	float: right;
 	text-align: right;
@@ -150,42 +153,14 @@ td>a{
  <div class="header">
   				<div class="searchArea">
   			<dir class="searchs">
-  				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로"/>
+  				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" style="margin-top: 40px;"/>
   				<div class="serachs_div">
-	  				<input type="text" alt="전체검색" class="searchText" style="margin-top: 11px; margin-left: -20px;">
-	  				<img src="img/main/btn_search.gif" alt="홈으로" style="float: left; margin-top: 17px; margin-left: 0px;"/></input>
+	  				<input type="text" alt="전체검색" class="searchText" style="margin-top: 11px;padding: 8.4px;">
+	  				<img src="img/main/btn_search.gif" alt="홈으로" style="float: left; margin-top: 11px; margin-left: 0px;"/></input>
   				</div>
   			</dir>
-  		</div>	
-<<<<<<< HEAD
-    <!-- end .header -->
-    </div>
-	<nav style="margin-top: 20px;">
-		<ul id="menu">
-			<li><a href="index.do">홈으로</a></li>
-			<li><a href="comBoardList.do">일자리찾기</a></li>
-			<li><a href="nomalBoardList.do">일자리등록정보</a>
-				<ul>
-					<li><a href="nomalBoardList.do">구인 등록 현황</a></li>
-					<li><a href="nomalWriteForm.do">구인 등록하기</a></li>	
-				</ul>
-			</li>
-			<li>
-				<a href="#">게시판</a>
-				<ul>
-					<li><a href="freeBoardList.do">자유게시판</a></li>
-					<li><a href="#">후기게시판</a></li>
-				</ul>
-			</li>
-			<li><a href="#">공지사항</a></li>
-		</ul>
-	</nav>
-	
-	
-	
-	
-	<div class="SkyBanner">
-=======
+
+  		</div>
     <!-- end .header --></div>
    <nav style="margin-top: 20px;">
 	  <ul id="menu">
@@ -200,22 +175,22 @@ td>a{
 			    	</ul></li>
 	  		</c:when>
 	  		<c:when test="${userInfo ==2}">
-			    <li><a href="comMain.do">홈으로</a></li>
-	  			<li><a href="comSearch.do">인력찾기</a></li>
-				<li><a href="comBoardList.do">구직 정보</a>
-				<ul>
-					<li><a href="comBoardList.do">구직 등록 현황</a></li>
-					<li><a href="comWriteForm.do">구직 등록하기</a></li>
-				</ul></li>
-	  		</c:when>
-	  		<c:otherwise>
-			    <li><a href="nomalMain.do">홈으로</a></li>
-	  			<li><a href="comBoardList.do">일자리찾기</a></li>
-			    <li><a href="nomalBoardList.do">일자리등록정보</a>
-			    	<ul>
-			    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
-			    		<li><a href="nomalWriteForm.do">구직 등록하기</a></li>	
-			    	</ul></li>
+					<li><a href="comMain.do">홈으로</a></li>
+		  			<li><a href="comSearch.do">인력찾기</a></li>
+					<li><a href="comBoardList.do">구인 정보</a>
+					<ul>
+						<li><a href="comBoardList.do">구인 등록 현황</a></li>
+				    		<li><a href="comWriteForm.do">구인 등록하기</a></li>	
+					</ul></li>
+		  		</c:when>
+		  		<c:otherwise>
+					<li><a href="comMain.do">홈으로</a></li>
+		  			<li><a href="comSearch.do">인력찾기</a></li>
+					<li><a href="comBoardList.do">구인 정보</a>
+					<ul>
+						<li><a href="comBoardList.do">구인 등록 현황</a></li>
+				    		<li><a href="comWriteForm.do">구인 등록하기</a></li>	
+					</ul></li>
 	  		</c:otherwise>
 	  	</c:choose>
 	    <li>
@@ -229,7 +204,6 @@ td>a{
 	</ul>
    </nav>
      <div class="SkyBanner">
->>>>>>> e857cc08d3510f863b3f7fa504f617f8b5999176
    		<div class="Sky_blank" ></div>
    		<div class="Sky_contents">
    			<ul>
@@ -277,7 +251,7 @@ td>a{
 </div>
 
 		<div class="contents_top2_2">
-			<input type="button" value="구직등록하기" onclick="location.href='nomalWriteForm.do'">
+			<input class="btn btn-primary" type="button" value="구직등록하기" onclick="location.href='nomalWriteForm.do'">
 		</div>
 	</div> 
 	<div class="contents_top3">
@@ -328,61 +302,6 @@ td>a{
 	</div>
 	
 
-<div>
-
-<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" 
-aria-controls="collapseExample2">
-   직업 보기
-</button>
-<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" 
-aria-controls="collapseExample3">
-   경력 선택
-</button>
-<button class="btn btn-primary btn-block" type="button" data-target="#collapseExample" aria-expanded="false" 
-aria-controls="collapseExample" style="margin-bottom: 0px">
-  지역 보기
-</button>
-<form action="nomalBoardList.do" id="formTest" name="area" method="post"> 
-<div id="collapseExample">
-	<div class="well" style="margin-bottom: 0px">
-		<input type="text" class="form-control" name="area" readonly="readonly" id="test5">
-		<p>지역 선택</p>
-		<div id="gd">
-			<div></div>
-		</div>
-		<div id="awesomet">
-			<p>관할지역</p>
-			<div></div>
-		</div>
-	</div>
-</div>
-
-<div class="collapse" id="collapseExample2">
-	<div class="well" style="margin-bottom: 0px">
-		<div id="checkDiv">
-			<div></div>
-		</div>
-	</div>
-</div>
-
-<div class="collapse" id="collapseExample3">
-	<div class="well" style="margin-bottom: 0px">
-		<h5>경력 선택</h5>
-		<p style="font-size: 13px">
-		1년<input type="radio" name="radiobox" value="1년"/> 
-		2년<input type="radio" name="radiobox" value="2년"/> 
-		3년<input type="radio" name="radiobox" value="3년"/>   
-		</p>
-	</div>
-</div>
-<div class="well">
-<input class="btn btn-info" type="submit" value="검색" align="middle"/>
-</div>
-
-</form>
-</div>
-
-
 <table>
 	<c:choose>
 		<c:when test="${nomalBoard ne '[]'}">
@@ -392,7 +311,6 @@ aria-controls="collapseExample" style="margin-bottom: 0px">
 				<th>ID</th>
 				<th>주특기</th>
 				<th>등록일</th>
-				<th>한번더 아이디</th>
 				<th>조회수</th>
 			</tr>
 			<c:forEach items="${nomalBoard}" var="n">
@@ -402,7 +320,6 @@ aria-controls="collapseExample" style="margin-bottom: 0px">
 					<td>${n.nomalId}</td>
 					<td>${n.njob}</td>
 					<td><fmt:formatDate value="${n.njoinDay}" pattern="yyyy-MM-dd"/></td>
-					<td>${n.nomalId}</td>
 					<td>${n.ncount}</td>
 				</tr>
 			</c:forEach>
@@ -443,6 +360,18 @@ aria-controls="collapseExample" style="margin-bottom: 0px">
 		
    
    </table>
+   
+   	<div class="footer">
+		<div class="copy">
+			<address>
+				서울특별시 강남구 역삼동 819-10 한빛교육센터 강의실,<br> 대표연락처 : 1577-0000, FAX :
+				052-000-0000, E-mail : asdf@naver.com
+			</address>
+			<p>Copyrights 2017~~~~ MPMcompany All rights Reserved</p>
+		</div>
+		<!-- end .footer -->
+	</div>
+   
    </div>
 
 

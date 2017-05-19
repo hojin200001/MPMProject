@@ -60,12 +60,23 @@ public class MainController {
 		if (map != null) {
 			session.setAttribute("user", map);
 			session.setAttribute("userInfo", radios);
+			
+			
+			
+			
+			
 			return "redirect:" + url2;	
 		} else {
+			
+			
+			
+			
+			
+			
+			
 			return "redirect:login.do";
 		}
 	}
-	
 	@RequestMapping("areasel.do")
 	public String test(HttpSession session,
 			HttpServletRequest request){
@@ -99,7 +110,6 @@ public class MainController {
 			return "";
 		}
 	}
-
 	@RequestMapping("comJoinFormIndex.do")
 	public String comJoinFormIndex() {
 		return "/join/comJoinForm";
@@ -131,5 +141,41 @@ public class MainController {
 		mav.addObject("comId", comId);
 		mav.setViewName("/join/idCheckCom");
 		return mav;
+	}
+	@RequestMapping("mesegeForm.do")
+	public ModelAndView mesegeForm(@RequestParam(defaultValue="1") int page, HttpSession session){
+		ModelAndView mav = new ModelAndView();
+		HashMap<String, Object> user = null;
+		HashMap<String, Object> re = null;
+		
+		if((int)session.getAttribute("userInfo") == 2){
+			user = (HashMap<String, Object>) session.getAttribute("user");
+			re = cservice.selectComM(page, (String)user.get("id"));
+			mav.addAllObjects(re);
+		}else{
+			user = (HashMap<String, Object>) session.getAttribute("user");
+			re = nservice.selectNomalM(page, (String)user.get("id"));
+			mav.addAllObjects(re);
+		}
+		mav.setViewName("/com/mesegeForm");
+		return mav;
+	}
+	@RequestMapping("deleteMesege.do")
+	public String deleteMesege(int page, int mnum, HttpSession session){
+		int userInfo = (int)session.getAttribute("userInfo");
+		if(userInfo == 2){
+			int re = cservice.deleteMesege(mnum);
+		}else{
+			int re = nservice.deleteMesege(mnum);
+		}
+		return "redirect:mesegeForm.do?page="+page;
+	}
+	@RequestMapping("errer500s.do")
+	public String errer500s(){
+		return "/errer/errer500s";
+	}
+	@RequestMapping("errer400s.do")
+	public String errer400s(){
+		return "/errer/errer400s";
 	}
 }
