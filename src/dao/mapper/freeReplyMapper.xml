@@ -10,7 +10,7 @@
 	</insert>
 
 	<update id="updateFreeReply" parameterType="freeReplyVo">
-		update freeReply set teText = #{teText}
+		update freeReply set teText = #{teText} where reNum = #{reNum}
 	</update>
 
 	<delete id="deleteFreeReply" parameterType="int">

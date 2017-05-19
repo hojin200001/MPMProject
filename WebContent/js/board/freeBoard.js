@@ -14,9 +14,9 @@ function insertCheck(){
       frm.title.focus();
       return false;
    }
-   if(document.frm.contents.value.length==0){
+   if(document.frm.conValue.value.length==0){
       alert('내용을 입력해주세요');
-      frm.contentsValue.focus();
+      frm.conValue.focus();
       return false;
    }
    return true;   
@@ -32,9 +32,9 @@ function updateCheck(){
 	      frm.title.focus();
 	      return false;
 	   }
-	   if(document.frm.contents.value.length==0){
+	   if(document.frm.conValue.value.length==0){
 	      alert('내용을 입력해주세요');
-	      frm.contentsValue.focus();
+	      frm.conValue.focus();
 	      return false;
 	   }
 	   return true;   

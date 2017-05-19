@@ -86,7 +86,6 @@
 					</ul></li>
 		  		</c:when>
 		  		<c:otherwise>
-					<li><a href="comMain.do">홈으로</a></li>
 		  			<li><a href="comSearch.do">인력찾기</a></li>
 					<li><a href="comBoardList.do">구인 정보</a>
 					<ul>
