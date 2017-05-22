@@ -69,7 +69,7 @@ textarea {
 	    	<c:choose>
 		  		<c:when test="${userInfo == 1}">
 					<li><a href="nomalMain.do">홈으로</a></li>
-		  			<li><a href="comBoardList.do">일자리찾기</a></li>
+		  			<li><a href="nomalSearch.do">일자리찾기</a></li>
 				    <li><a href="nomalBoardList.do">일자리등록정보</a>
 				    	<ul>
 				    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
@@ -109,36 +109,6 @@ textarea {
   			<img class="tImage" src="img/free/success-health-header-1280x200-2.jpg" style="width: 100%;"/>
   	</div>
   	<br>
-
-  	<div class="table">
-
-<<<<<<< HEAD
-  	<div class="table">
-
-	<table class="table table-condensed">
-		<tr>
-			<td colspan="4" style="font-size: 25px" >${freeBoard.title}</td>
-		</tr>
-		<tr>
-			<td>글쓴이/${freeBoard.createName}</td>	
-			<td>조회수/${freeBoard.freeCount}</td>
-			<td>작성일/<fmt:formatDate value="${freeBoard.createDay}" pattern="yyyy-MM-dd"/></td>
-		</tr>	
-		<tr>
-			<td colspan="4" style="height: 350px;">${freeBoard.conValue}</td>
-		</tr>
-	</table>
-	<c:choose>
-		<c:when test="${user.id eq freeBoard.createName}">
-			<input id="up" type="button" value="수정" onclick="location.href='freeBoardUpdateForm.do?num=${freeBoard.num}'">
-			<input type="button" value="삭제" onclick="location.href='freeBoardDelete.do?num=${freeBoard.num}'">
-		</c:when>
-	</c:choose>
-	<input type="button" value="돌아가기" onclick="location.href='freeBoardList.do'">
-	</div>
-
-	<br>
-	
 	<div class="reply">
 	  	<div class="table">
 	

@@ -81,7 +81,6 @@ public class NomalController {
 			@RequestParam(value="keyword", required=false) String keyword,
 			HttpSession session){
 		ModelAndView mav = new ModelAndView();
-		
 		if(ObjectUtils.isEmpty(checkbox) && ObjectUtils.isEmpty(radiobox) && ObjectUtils.isEmpty(area)){
 		}else{
 			HashMap<String, Object> nlist = cservice.getComBoardListByCondition(page, checkbox, radiobox, area, keyword);
@@ -161,8 +160,8 @@ public class NomalController {
 	
 	@RequestMapping("nomalModify.do")
 	public String nomalBoardModifyDo(NomalBoard nomal){
-		nservice.nomalBoardModify(nomal);
-		return "redirect:nomalBoardList.do";
+		nservice.nomalBoardModify(nomal);													
+		return "redirect:nomalBoardList.do";		
 	}
 	
 	//---------------좌표로 거리 구하는 함수

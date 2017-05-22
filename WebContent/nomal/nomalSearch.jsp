@@ -167,7 +167,7 @@ td>a{
 	    <c:choose>
 	  		<c:when test="${userInfo == 1}">
 			    <li><a href="nomalMain.do">홈으로</a></li>
-	  			<li><a href="comBoardList.do">일자리찾기</a></li>
+	  			<li><a href="nomalSearch.do">일자리찾기</a></li>
 			    <li><a href="nomalBoardList.do">일자리등록정보</a>
 			    	<ul>
 			    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
@@ -184,13 +184,13 @@ td>a{
 					</ul></li>
 		  		</c:when>
 		  		<c:otherwise>
-					<li><a href="comMain.do">홈으로</a></li>
-		  			<li><a href="comSearch.do">인력찾기</a></li>
-					<li><a href="comBoardList.do">구인 정보</a>
-					<ul>
-						<li><a href="comBoardList.do">구인 등록 현황</a></li>
-				    		<li><a href="comWriteForm.do">구인 등록하기</a></li>	
-					</ul></li>
+					<li><a href="nomalMain.do">홈으로</a></li>
+	  				<li><a href="nomalBoardList.do">일자리찾기</a></li>
+			    	<li><a href="nomalBoardList.do">일자리등록정보</a>
+			    	<ul>
+			    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
+			    		<li><a href="nomalWriteForm.do">구직 등록하기</a></li>	
+			    	</ul></li>
 	  		</c:otherwise>
 	  	</c:choose>
 	    <li>
@@ -346,7 +346,7 @@ style="padding-top: 10px; margin-top: 10px;" aria-controls="collapseExample" sty
 				<td>${c.cjob}</td>
 				<td>${c.ccarrer}</td>
 				<td>${c.carea}</td>
-				<td>${c.cday}</td>
+				<td><fmt:formatDate value="${c.createDay}" pattern="yyyy-MM-dd"/></td>
 			</tr>
 		</c:forEach>
 			<tr>
@@ -362,7 +362,7 @@ style="padding-top: 10px; margin-top: 10px;" aria-controls="collapseExample" sty
 					[${i}]
 				</c:when>
 				<c:otherwise>
-					<a href="nomalSearch.do?page=${i}&area=${ar}">[${i}]</a>				
+					<a href="nomalSearch.do?page=${i}&area=${ar}$keyword=&checkbox=&radiobox=">[${i}]</a>				
 				</c:otherwise>
 			</c:choose>
 				

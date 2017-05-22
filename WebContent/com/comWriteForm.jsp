@@ -20,7 +20,16 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=5df6011222b3cbeedfefde1c00f1b101&libraries=services"></script>
 <title>Insert title here</title>
-
+<script type="text/javascript">
+function titleCheck(){
+	if(document.frm.ctitle.value.length == 0){
+	   alert('제목을 입력해주세요.');
+	   frm.ctitle.focus();
+	   return;
+	   }else{
+	   $("#comForm").submit();}
+	}
+</script>
 </head>
 <body>
 	<div class="container">
@@ -126,7 +135,7 @@
 					onclick="location.href='comWriteForm.do'">
 			</div>
 		</div>
-		<form action="comWrite.do">
+		<form action="comWrite.do" id ="comForm" name="frm">
 			<input type="hidden" name="comId" value="${user.id}"> <input
 				type="hidden" name="comName" value="${user.name}"> <input
 				type="hidden" name="addr2" value="" id="hiddenAddr">
@@ -227,30 +236,6 @@
 					<td class="td_area_9"><span> <select id='fruits'
 							name='cjob'>
 								<option value='전체' selected>전체</option>
-								<option value='거푸집기능사'>거푸집기능사</option>
-								<option value='건설기계기술사'>건설기계기술사</option>
-								<option value='건축도장기능사'>건축도장기능사</option>
-								<option value='건축목공기능사'>건축목공기능사</option>
-								<option value='관광통역안내사'>관광통역안내사</option>
-								<option value='금속기사'>금속기사</option>
-								<option value='금형기술사'>금형기술사</option>
-								<option value='기계기술사'>기계기술사</option>
-								<option value='기계정비산업기사'>기계정비산업기사</option>
-								<option value='기계조립산업기사'>기계조립산업기사</option>
-								<option value='도배기능사'>도배기능사</option>
-								<option value='미장기능사'>미장기능사</option>
-								<option value='배관산업기사'>배관산업기사</option>
-								<option value='석공기능사'>석공기능사</option>
-								<option value='연삭기능사'>연삭기능사</option>
-								<option value='석공기능사'>석공기능사</option>
-								<option value='용접기술사'>용접기술사</option>
-								<option value='유리시공기능사'>유리시공기능사</option>
-								<option value='일반기계기사'>일반기계기사</option>
-								<option value='전기공사기사'>전기공사기사</option>
-								<option value='전기산업기사'>전기산업기사</option>
-								<option value='전자기사'>전자기사</option>
-								<option value='토목기사'>토목기사</option>
-								<option value='포장기사'>포장기사</option>
 						</select>
 					</span></td>
 				</tr>
@@ -299,8 +284,8 @@
 				<textarea rows="10" name="ctext" placeholder="상세 내용을 작성해 주세요"></textarea>
 			</div>
 			<div class="btnArea">
-				<input type="submit" value="등록하기"> <input type="button"
-					value="취소하기">
+				<input type="button" value="등록하기" onclick="titleCheck()"> 
+				<input type="button" value="취소하기">
 			</div>
 		</form>
 	</div>
@@ -316,6 +301,22 @@
 			<p>Copyrights 2017~~~~ MPMcompany All rights Reserved</p>
 		</div>
 		<!-- end .footer -->
+		<script type="text/javascript">
+		$(window).load(function(){
+			   $.ajax({
+			      url : "json/job.json",
+			      dataType : "json",
+			      success : function(result) {
+			         $.each(result.job, function(i, d) {
+			            $("#fruits").append(
+			               "<option value=" + d["value"] + ">"
+			               + d["value"] + "</option>"
+			            );
+			         });
+			      }
+			   });
+			});
+		</script>
 	</div>
 </body>
 </html>

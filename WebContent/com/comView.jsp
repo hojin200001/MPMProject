@@ -157,7 +157,7 @@
 					<td><span>요구인원 : </span><label>${comBoard.cwokers} 명</label></td>
 				</tr>
 				<tr class="trs2">
-					<td><span>신청/마감일 : </span><label>${comBoard.cstartDay} ~ ${comBoard.cendDay}</label></td>
+					<td><span>신청/마감일 : </span><label>${comDay.cstartDay} ~ ${comDay.cendDay}</label></td>
 				</tr>
 				<tr class="trs2">
 					<td><span>급여 : </span><label>${comBoard.cpay}</label></td>
@@ -176,7 +176,7 @@
 				</c:choose>
 				<span class="textbottom_div_re_span3">/${comBoard.cwokers}</span></div>
 				<div class="textAreas">
-					<textarea rows="10" name="ctext" placeholder="상세 내용을 작성해 주세요" style="font-size: 14px;">${comBoard.ctext}</textarea>
+					<textarea rows="10" name="ctext" placeholder="상세 내용을 작성해 주세요" style="font-size: 14px;" readonly="readonly">${comBoard.ctext}</textarea>
 				</div>
 				<div class="textbottom_div" style="background-color: #fff; overflow: auto;">
 					<div class="textbottom_div_1">

@@ -47,7 +47,6 @@ public class ComServiceImpl implements ComService{
 		if(comboard.getAddr2().length() >10){
 			comboard.setCarea(comboard.getAddr2());
 		}
-		System.out.println(comboard.getCtitle());
 		comboard.setCtitle(comboard.getCtitle());
 		comboard.setComPhone(user.getComPhone());
 		comboard.setComEmail(user.getComEmail());
@@ -380,6 +379,14 @@ public class ComServiceImpl implements ComService{
 		// TODO Auto-generated method stub
 		cdao.changeComM(ctu);
 		return 0;
+	}
+
+	@Override
+	public ComDay selectComDay(int cnum) {
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("cnum", cnum);
+		ComDay  cday = cdao.selectComDayOne(map);
+		return cday;
 	}
 
 }

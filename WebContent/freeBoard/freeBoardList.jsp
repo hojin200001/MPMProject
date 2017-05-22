@@ -39,7 +39,7 @@
 	    	<c:choose>
 		  		<c:when test="${userInfo == 1}">
 					<li><a href="nomalMain.do">홈으로</a></li>
-		  			<li><a href="comBoardList.do">일자리찾기</a></li>
+		  			<li><a href="nomalSearch.do">일자리찾기</a></li>
 				    <li><a href="nomalBoardList.do">일자리등록정보</a>
 				    	<ul>
 				    		<li><a href="nomalBoardList.do">구직 등록 현황</a></li>

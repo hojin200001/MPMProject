@@ -8,26 +8,19 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
-import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.util.ObjectUtils;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import model.ComBoard;
-import model.ComM;
 import model.FreeBoard;
 import model.InComBoard;
 import model.NomalBoard;
-import model.NomalM;
 import model.NomalUser;
 import service.ComService;
 import service.FreeBoardService;
@@ -77,6 +70,7 @@ public class ComController {
 		List<InComBoard> ico= cservice.selectIncomBoard(cnum);
 		mav.addObject("user" , session.getAttribute("user"));
 		mav.addObject(cservice.comVie(cnum));
+		mav.addObject("comDay", cservice.selectComDay(cnum));
 		mav.addObject("inComBoard",ico);
 		mav.addObject("inCount", cservice.InComBoardCount(cnum));
 		mav.setViewName("com/comView");
@@ -130,7 +124,7 @@ public class ComController {
 			}
 		}
 		mav.addObject(cservice.comVie(cnum));
-		mav.setViewName("com/comView");
+		mav.setViewName("/com/comView");
 		return mav;
 	}
 	
@@ -162,25 +156,6 @@ public class ComController {
 		mav.setViewName("/com/comSearch");
 		return mav;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@RequestMapping("comWriteForm.do")
 	public String comWriteForm(){
 		return "/com/comWriteForm";
@@ -224,18 +199,6 @@ public class ComController {
 		return "redirect:comView.do?cnum="+cnum;
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@RequestMapping("attendThis.do")
 	public String attendThis(int cnum, String userId, HttpSession session){
 		String id = userId;
@@ -246,20 +209,6 @@ public class ComController {
 		int ress = nservice.insertNomalM(cnum, id, userInfo);
 		return"redirect:comView.do?cnum="+cnum;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	//------------------------------------------------------------------------------------------------------------------------------------//
 	//시간계산 지우지 마시길
 	public List<String >getTime(List<FreeBoard> list){

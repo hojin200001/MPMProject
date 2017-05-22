@@ -66,7 +66,7 @@
     
     <update id="nomalBoardModify" parameterType="nomalBoard">
     	update nomalBoard set
-        Ncount = #{ncount}, Njob = #{njob}, Nemail = #{nemail}, Ncareer = #{ncareer},
+        Ncount = #{ncount}, Njob = #{njob}, Ncareer = #{ncareer},
         Ntitle = <include refid="ntitle"/>,
         Ntext = <include refid="ntext"/>
         where Nnum = #{nnum}

@@ -37,16 +37,30 @@ public class MainController {
 		ModelAndView mav = new  ModelAndView();
 		String https = req.getHeader("referer");
 		session.setAttribute("hrefs", https);
-		mav.addObject("loginfo", a);
-		mav.setViewName("/login/login");
+		if(session.getAttribute("user") ==null){
+			mav.addObject("loginfo", a);
+			mav.setViewName("/login/login");
+		}else{
+			int info = (int) session.getAttribute("userInfo");
+			if(info == 1){
+				mav.setViewName("nomalMain.do");
+			}else{
+				mav.setViewName("comMain.do");
+			}
+		}
 		return mav;
 	}
 
 	@RequestMapping("loginCheck.do")
 	public String getLogin(HttpSession session, String id, String pass, int radios) {
 		String url = (String) session.getAttribute("hrefs");
-		String url2 = url.substring(33);
-		if (url2.equals("")) {
+		System.out.println(url);
+		String url2 = "";
+		if(url.matches(".*nomal.*")){
+			url2 = "nomalMain.do";
+		}else if(url.matches(".*com.*")){
+			url2 = "comMain.do";
+		}else{
 			url2 = "index.do";
 		}
 		HashMap<String, Object> map = new HashMap<>();
@@ -57,42 +71,36 @@ public class MainController {
 			map = cservice.getLogin(id, pass);
 			session.setAttribute("comarea", map.get("comarea"));
 		}
-		if (map != null) {
-			session.setAttribute("user", map);
-			session.setAttribute("userInfo", radios);
-			System.out.println(map);
-			System.out.println(session.getAttribute("userInfo"));
-			if(session.getAttribute("userInfo").equals(1)){
-				//일반유저라면
-				HashMap<String, Object> sql = new HashMap<>();
-				//생성된 해쉬맵에 지역정보를 담고
-				sql.put("userarea", map.get("userarea"));
-				//해쉬맵으로 서비스를 실행해서 전달된 지역 구인정보값읋 세션에 userarea로 저장한다.
-				session.setAttribute("userarea", nservice.userarea(sql));
-				HashMap<String, Object> userbasic = new HashMap<>();
-				userbasic.put("code", session.getAttribute("userInfo"));
-				userbasic.put("id", map.get("id"));
-				session.setAttribute("userbasic", nservice.userbasic(userbasic));
-				System.out.println(nservice.userbasic(userbasic));
-			}
-			else{
-				//업체 로그인이라면 일반 유저의 로그인 상태와 상이함.
-				HashMap<String, Object> sql = new HashMap<>();
-				sql.put("comarea", map.get("comarea"));
-				session.setAttribute("comarea", cservice.comarea(sql));
-				HashMap<String, Object> combasic = new HashMap<>();
-				combasic.put("code", session.getAttribute("userInfo"));
-				combasic.put("id", map.get("id"));
-				session.setAttribute("combasic", nservice.userbasic(combasic));
-				System.out.println(nservice.userbasic(combasic));
-			}
-			
-			
-			return "redirect:" + url2;	
-		} else {
-			
-			return "redirect:login.do";
+		session.setAttribute("user", map);
+		session.setAttribute("userInfo", radios);
+
+		if(session.getAttribute("userInfo").equals(1)){
+			//일반유저라면
+			HashMap<String, Object> sql = new HashMap<>();
+			//생성된 해쉬맵에 지역정보를 담고
+			sql.put("userarea", map.get("userarea"));
+			//해쉬맵으로 서비스를 실행해서 전달된 지역 구인정보값읋 세션에 userarea로 저장한다.
+			session.setAttribute("userarea", nservice.userarea(sql));
+			HashMap<String, Object> userbasic = new HashMap<>();
+			userbasic.put("code", session.getAttribute("userInfo"));
+			userbasic.put("id", map.get("id"));
+			session.setAttribute("userbasic", nservice.userbasic(userbasic));
+			System.out.println(nservice.userbasic(userbasic));
 		}
+		else{
+			//업체 로그인이라면 일반 유저의 로그인 상태와 상이함.
+			HashMap<String, Object> sql = new HashMap<>();
+			sql.put("comarea", map.get("comarea"));
+			session.setAttribute("comarea", cservice.comarea(sql));
+			HashMap<String, Object> combasic = new HashMap<>();
+			combasic.put("code", session.getAttribute("userInfo"));
+			combasic.put("id", map.get("id"));
+			session.setAttribute("combasic", nservice.userbasic(combasic));
+			System.out.println(nservice.userbasic(combasic));
+		}
+		
+		
+		return "redirect:" + url2;
 	}
 	@RequestMapping("areasel.do")
 	public String test(HttpSession session,

@@ -206,6 +206,9 @@ public class NomalServiceImpl implements NomalService{
 
 	@Override
 	public int insertNomalBoard(NomalBoard nomalBoard) {
+		if(nomalBoard.getAddr2().length()>6){
+			nomalBoard.setNarea(nomalBoard.getAddr2());
+		}
 		nomalBoard.setNphone(nDao.getPhoneNum(nomalBoard));
 		nDao.insertNomalBoard(nomalBoard);
 		return 0;
@@ -249,7 +252,6 @@ public class NomalServiceImpl implements NomalService{
 	
 	@Override
 	public int nomalBoardModify(NomalBoard nomal){
-		// TODO Auto-generated method stub
 		nDao.nomalBoardModify(nomal);
 		return nomal.getNnum();
 	}

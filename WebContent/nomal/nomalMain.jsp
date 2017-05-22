@@ -19,7 +19,7 @@
 <link rel="stylesheet" type="text/css" href="css/main/jquery.bxslider.css?var=2">
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css?var=2">
 <link rel="stylesheet" type="text/css" href="css/main/public_header.css?var=2">
-<link rel="stylesheet" type="text/css" href="css/com/comMain_con.css?var=2">
+<link rel="stylesheet" type="text/css" href="css/com/comMain_con.css?var=3">
 <script type="text/javascript">
 
 	function logOut() {
@@ -172,7 +172,7 @@
 			</div>
 	<div class="Shortcut">
 		<div class="ShortcutMain"> <!-- 우측의 6개 숏컷 가이드 -->
-			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick3.png"/></div><div>구직검색</div></div>
+			<div class="ShortcutMain_dvi" onclick="location.href='nomalSearch.do'"><div><img src="img/main/Newquick3.png"/></div><div>구직검색</div></div>
 			<div class="ShortcutMain_dvi" onclick="nomalWriteCheck()"><div><img src="img/main/Newquick2.png"/></div><div>구직등록</div></div>
 			<div class="ShortcutMain_dvi" onclick="nomalBoardListCheck()"><div ><img src="img/main/Newquick1.png"/></div><div>구직 등록현황</div></div>
 			<div class="ShortcutMain_dvi" ><div><img src="img/main/Newquick5.png"/></div><div>구인검색 가이드</div></div>
@@ -314,7 +314,7 @@
 											</c:if>
 										</c:forEach>
 										<li class="content_in_lis" id="content_item"><span><a
-												href="">${f.title}</a></span></li>
+												href="freeBoardView.do?num=${f.num}">${f.title}</a></span></li>
 										<li class="content_in_lis" id="content_item2"><span>${f.createName}</span></li>
 										<c:forEach items="${timeList}" var="t2" varStatus="tst2">
 											<c:if test="${fst.count eq tst2.count}">

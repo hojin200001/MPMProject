@@ -52,6 +52,16 @@
 	margin-right: 150px;
 }
 </style>
+<script type="text/javascript">
+function titleCheck(){
+	if(document.frm.ntitle.value.length == 0){
+	   alert('제목을 입력해주세요.... 딱 보면 모르냐?');
+	   frm.ntitle.focus();
+	   return;
+	   }else{
+	   $("#nomalForm").submit();}
+	}
+</script>
 </head>
 <body>
 	
@@ -67,7 +77,7 @@
 	<nav style="margin-top: 20px;">
 		<ul id="menu">
 			<li><a href="index.do">홈으로</a></li>
-			<li><a href="comBoardList.do">일자리찾기</a></li>
+			<li><a href="nomalSearch.do">일자리찾기</a></li>
 			<li><a href="nomalBoardList.do">일자리등록정보</a>
 				<ul>
 					<li><a href="nomalBoardList.do">구인 등록 현황</a></li>
@@ -137,23 +147,23 @@
 		</div>
 	<div style="background-color: #ebedee">
 
-<form action="nomalModify.do" method="post">
+<form action="nomalModify.do" method="post" id="nomalForm" name="frm">
 <input type="hidden" name="nnum" value="${nomalBoard.nnum}">
 <table class="table table-bordered">
 	<thead>
 		<tr>
 			<th class="info" style="width:300px; font-size: 23px;">모집공고 제목</th>
 			<th class="active" colspan="3" style="font-size: 18px;">
-			<input type="text" class="form-control" name="ntitle" placeholder="${nomalBoard.ntitle}">
+			<input type="text" class="form-control" name="ntitle" placeholder="" value="${nomalBoard.ntitle}">
 			</th>
 		</tr>
 	</thead>
 	
 	<tbody>
 		<tr>
-			<th class="info" scope="row" style="width:300px; font-size: 23px;">이메일</th>
+			<th class="info" scope="row" style="width:300px; font-size: 23px;">전화번호</th>
 			<td colspan="3" style="font-size: 15px;">
-			<input type="text" class="form-control" name="nemail" placeholder="${nomalBoard.nemail}">
+			<input type="text" class="form-control" name="nemail" placeholder="" value="${nomalBoard.nphone}" readonly="readonly">
 			</td>
 		</tr>
 		
@@ -177,6 +187,7 @@
 			<th class="info" scope="row" style="width:300px; font-size: 23px;">경력</th>
 			<td colspan="3" style="font-size: 15px;">
 			<p style="font-size: 13px">
+				없음<input name="ncareer" type="radio" name="radiobox" value="없음"/> 
 				1년<input name="ncareer" type="radio" name="radiobox" value="1년"/> 
 				2년<input name="ncareer" type="radio" name="radiobox" value="2년"/> 
 				3년<input name="ncareer" type="radio" name="radiobox" value="3년"/>   
@@ -198,7 +209,7 @@
 			<input type="button" class="btn btn-primary" value="목록으로" onclick="location.href='nomalBoardList.do'">
 			<c:choose>
 				<c:when test="${user.id eq nomalBoard.nomalId}">
-					<input type="submit" class="btn btn-primary" value="수정하기">
+					<input type="button" class="btn btn-primary" value="수정하기" onclick="titleCheck()">
 				</c:when>
 			</c:choose>
 		</div>
@@ -208,8 +219,6 @@
 		</div>
 	</div>
 	
-	
-
 	<div class="footer">
 		<div class="copy">
 			<address>
@@ -223,14 +232,24 @@
 	<script>
 		$(window).load(
 				function() {
+					var select = '${nomalBoard.njob}'+"";
+					var radio = '${nomalBoard.ncareer}'+"";
+					$('input:radio[name=ncareer]:input[value=' + radio + ']').attr("checked", true);
 					$.ajax({
 						url : "json/job.json",
 						dataType : "json",
 						success : function(result) {
 							$.each(result.job, function(i, d) {
-								$("#njobsel").append(
-										"<option value=" + d["value"] + ">"
-												+ d["value"] + "</option>");
+								if(d["value"] == select){
+									$("#njobsel").append(
+											"<option value=" + d["value"] + " selected='selected'>"
+													+ d["value"] + "</option>");
+								}else{
+									$("#njobsel").append(
+											"<option value=" + d["value"] + ">"
+													+ d["value"] + "</option>");
+								}
+								
 							});
 						}
 					});

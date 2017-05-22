@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import model.ComBoard;
+import model.ComDay;
 import model.ComM;
 import model.ComUser;
 import model.InComBoard;
@@ -49,7 +50,7 @@ public interface ComService {
 	public List<InComBoardRe> inComBoardCount();
 
 
-
+	public ComDay selectComDay(int cnum);
 	public int comarea(HashMap<String, Object> comarea);
 
 	//inComBoard

@@ -311,11 +311,12 @@
 }
 .info_span1{
 	background-color: #ebf8ff; 
+	font-size: 15px;
 }
 .info_span2{
 	margin-left: 170px;
 	margin-top: 5px;
-
+	font-size: 13px;
 	
 }
 #info_span2{

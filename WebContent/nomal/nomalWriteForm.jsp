@@ -20,7 +20,16 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=5df6011222b3cbeedfefde1c00f1b101&libraries=services"></script>
 <title>Insert title here</title>
-
+<script type="text/javascript">
+function titleCheck(){
+	if(document.frm.ntitle.value.length == 0){
+	   alert('제목을 입력해주세요.... 딱 보면 모르냐?');
+	   frm.ntitle.focus();
+	   return;
+	   }else{
+	   $("#nomalForm").submit();}
+	}
+</script>
 </head>
 <body>
 	<div class="container">
@@ -34,23 +43,21 @@
 		</div>
    <nav style="margin-top: 20px;">
 	  <ul id="menu">
-	    <li><a href="index.do">홈으로</a></li>
-	    <li><a href="comBoardList.do">일자리찾기</a></li>
-	    <li>
-	    	<a href="nomalBoardList.do">일자리등록정보</a>
-	    	<ul>
-	    		<li><a href="nomalBoardList.do">구인 등록 현황</a></li>
-	    		<li><a href="nomalWriteForm.do">구인 등록하기</a></li>	
-	    	</ul>
-	    </li>
-	    <li>
-	        <a href="#">게시판</a>
-	        <ul>
-	            <li><a href="freeBoardList.do">자유게시판</a></li>
-	            <li><a href="#">후기게시판</a></li>
-	        </ul>
-	    </li>
-	    <li><a href="#">공지사항</a></li>
+	    	<li><a href="nomalMain.do">홈으로</a></li>
+			<li><a href="nomalSearch.do">일자리찾기</a></li>
+			<li><a href="nomalBoardList.do">일자리등록정보</a>
+				<ul>
+					<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
+					<li><a href="nomalWriteForm.do">구직 등록하기</a></li>
+				</ul>
+			</li>
+			<li><a href="#">게시판</a>
+				<ul>
+					<li><a href="freeBoardList.do">자유게시판</a></li>
+					<li><a href="#">후기게시판</a></li>
+				</ul>
+			</li>
+			<li><a href="#">공지사항</a></li>
 	</ul>
    </nav>
 		<div class="SkyBanner">
@@ -104,14 +111,14 @@
 					onclick="location.href='nomalWriteForm.do'">
 			</div>
 		</div>
-		<form action="nomalWrite.do">
+		<form action="nomalWrite.do" id="nomalForm" name="frm">
 			<input type="hidden" name="nomalId" value="${user.id}"> <input
 				type="hidden" name="nomalName" value="${user.name}"> <input
 				type="hidden" name="addr2" value="" id="hiddenAddr"><input
 				type="hidden" name="email" value="${user.email}">
 			<table>
 				<tr class="trs">
-					<td class="td_area_1" colspan="2"><span>구인정보 제목 : </span> <input
+					<td class="td_area_1" colspan="2"><span>구직정보 제목 : </span> <input
 						type="text" name="ntitle" placeholder="제목을 입력하세요"></td>
 				</tr>
 				<tr class="trs">
@@ -236,10 +243,10 @@
 				<tr>
 					<td class="td_area_7"><span>경력사항</span></td>
 					<td class="td_area_9"><span> <input type="radio"
-							name="ncareer" value="없음" checked="checked">없음 <input
-							type="radio" name="ncarrer" value="1년">1년<input
-							type="radio" name="ncarrer" value="2년">2년 <input
-							type="radio" name="ncarrer" value="3년">3년
+							name="ncarrer" value="없음" checked="checked">없음 <input
+							type="radio" name="ccarrer" value="1년">1년 <input
+							type="radio" name="ccarrer" value="2년">2년 <input
+							type="radio" name="ccarrer" value="3년">3년
 					</span></td>
 				</tr>
 				<tr>
@@ -254,8 +261,8 @@
 				<textarea rows="10" name="ntext" placeholder="상세 내용을 작성해 주세요"></textarea>
 			</div>
 			<div class="btnArea">
-				<input type="submit" value="등록하기"> <input type="button"
-					value="취소하기">
+				<input type="button" value="등록하기" onclick="titleCheck()"> 
+				<input type="button" value="취소하기">
 			</div>
 		</form>
 	</div>
