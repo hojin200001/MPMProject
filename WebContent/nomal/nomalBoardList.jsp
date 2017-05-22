@@ -231,24 +231,34 @@ td>a{
    </div>
 	<div class="contents_top"><span onclick="location.href='index.do'">홈</span> > <span onclick="location.href='nomalMain.do'">일반메인</span> > <span onclick="location.href='nomalBoardList.do'" style="font-weight: bold;">구직등록 현황</span></div>
 	<div class="contents_top2" style="padding-top: 10px">
-		<div class="contents_top2_1">
+	<div class="contents_top2_1">
 
-<button class="btn btn-primary" type="button">
-  전체 채용 정보 : <span class="badge">${totalPage}</span>
-</button>
+		<button class="btn btn-primary" type="button">
+		  전체 채용 정보 : <span class="badge">${userbasic.totalPage}${combasic.totalPage}</span>
+		</button>
 
-<button class="btn btn-primary" type="button">
-  오늘의 채용 정보 : <span class="badge">${todayTimeCom}</span>
-</button>
+		<button class="btn btn-primary" type="button">
+		  오늘의 채용 정보 : <span class="badge">${userbasic.todayTimeCom}${combasic.todayTimeCom}</span>
+		</button>
+		
+		<button class="btn btn-primary" type="button">
+		<c:choose>
+			<c:when test="${userInfo==1}">
+				거주 지역 채용정보 : <span class="badge">${userarea}</span>
+			</c:when>
 
-<button class="btn btn-primary" type="button">
-  거주 지역 채용정보 : <span class="badge">${userareanum}</span>
-</button>
+			<c:otherwise>
+				업체 지역 구직정보 : <span class="badge">${comarea}</span>
+			</c:otherwise>
+		</c:choose>
+			  
+		</button>
 
-<button class="btn btn-primary" type="button">
-	오늘의 구직 현황 : <span class="badge">${todayTimeNomal}</span>
-</button>
-</div>
+		<button class="btn btn-primary" type="button">
+			오늘의 구직 현황 : <span class="badge">${userbasic.todayTimeNomal}${combasic.todayTimeNomal}</span>
+		</button>
+		
+	</div>
 
 		<div class="contents_top2_2">
 			<input class="btn btn-primary" type="button" value="구직등록하기" onclick="location.href='nomalWriteForm.do'">

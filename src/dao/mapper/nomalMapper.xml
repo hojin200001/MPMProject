@@ -48,6 +48,9 @@
     <select id="getCountBoardList" parameterType="java.util.HashMap" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
     	select count(*) from nomalBoard where nomalId='${id}'
     </select>
+    <select id="getCountBoardListCom" parameterType="java.util.HashMap" resultType="int"> <!-- 총 게시물 수 얻어오는 sql문 -->
+    	select count(*) from comBoard where comId='${id}'
+    </select>
     
     <select id="selectBoardPage" parameterType="java.util.HashMap" resultType="nomalBoard">
     	select * from nomalBoard where nomalId='${id}' order by Nnum desc limit #{offset} ,#{boardsPerPage}
@@ -145,4 +148,12 @@
  	<update id="changeNomalM" parameterType="java.util.HashMap">
  		update nomalm set reception=1 where cnum=${cnum} and nomalId='${id}';
  	</update>
+ 	
+<!-- 좌표로 거리 구하는 함수 -->
+ 	<select id="amguna" resultType="String">
+ 		select cxy from comboard where cnum=26;
+ 	</select>
+ 	<select id="amguna2" resultType="String">
+ 		select cxy from comboard where cnum=27;
+ 	</select>
   </mapper>

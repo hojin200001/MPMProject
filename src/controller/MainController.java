@@ -60,19 +60,36 @@ public class MainController {
 		if (map != null) {
 			session.setAttribute("user", map);
 			session.setAttribute("userInfo", radios);
-			
-			
-			
+			System.out.println(map);
+			System.out.println(session.getAttribute("userInfo"));
+			if(session.getAttribute("userInfo").equals(1)){
+				//일반유저라면
+				HashMap<String, Object> sql = new HashMap<>();
+				//생성된 해쉬맵에 지역정보를 담고
+				sql.put("userarea", map.get("userarea"));
+				//해쉬맵으로 서비스를 실행해서 전달된 지역 구인정보값읋 세션에 userarea로 저장한다.
+				session.setAttribute("userarea", nservice.userarea(sql));
+				HashMap<String, Object> userbasic = new HashMap<>();
+				userbasic.put("code", session.getAttribute("userInfo"));
+				userbasic.put("id", map.get("id"));
+				session.setAttribute("userbasic", nservice.userbasic(userbasic));
+				System.out.println(nservice.userbasic(userbasic));
+			}
+			else{
+				//업체 로그인이라면 일반 유저의 로그인 상태와 상이함.
+				HashMap<String, Object> sql = new HashMap<>();
+				sql.put("comarea", map.get("comarea"));
+				session.setAttribute("comarea", cservice.comarea(sql));
+				HashMap<String, Object> combasic = new HashMap<>();
+				combasic.put("code", session.getAttribute("userInfo"));
+				combasic.put("id", map.get("id"));
+				session.setAttribute("combasic", nservice.userbasic(combasic));
+				System.out.println(nservice.userbasic(combasic));
+			}
 			
 			
 			return "redirect:" + url2;	
 		} else {
-			
-			
-			
-			
-			
-			
 			
 			return "redirect:login.do";
 		}
