@@ -51,4 +51,12 @@ public interface NomalService {
 	public HashMap<String, Object> selectNomalM(int page, String id);
 	public int deleteMesege(int nmnum);
 	public int changeNomalM(HashMap<String, Object> user);
+	public HashMap<String, Object> userbasic(HashMap<String, Object> userbasic);
+	
+	
+	//---------------좌표로 거리 구하는 함수
+	public String amguna();
+	public String amguna2();
+	
+	public double distance(double lat1, double lon1, double lat2, double lon2, String unit);
 }

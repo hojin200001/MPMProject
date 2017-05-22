@@ -99,6 +99,11 @@ public class NomalServiceImpl implements NomalService{
 		return nb;
 	}
 
+	
+	
+	
+	
+	
 	@Override
 	public HashMap<String, Object> nomalBoardList(int page, String id) {
 		HashMap<String, Object> result = new HashMap<>();
@@ -123,6 +128,12 @@ public class NomalServiceImpl implements NomalService{
 		return result;
 	}
 
+	
+	
+	
+	
+	
+	
 	@Override
 	public int getStartPage(int page) {
 		// TODO Auto-generated method stub
@@ -202,7 +213,38 @@ public class NomalServiceImpl implements NomalService{
 	public int userarea(HashMap<String, Object> userarea){
 		return nDao.userarea(userarea);
 	}
+	
+	
+	
+	@Override
+	public HashMap<String, Object> userbasic(HashMap<String, Object> userbasic){
+		
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
+		HashMap<String, Object> result = new HashMap<>();
+		HashMap<String, Object> params = new HashMap<>();
+		HashMap<String, Object> id = new HashMap<>();
+		id.put("id", userbasic.get("id"));
+		System.out.println(id);
+		if(userbasic.get("code").equals(1)){
+			result.put("totalPage", nDao.getCountBoardList(id));
+		}
+		else{
+			result.put("totalPage", nDao.getCountBoardListCom(id));
+		}
+		params.put("TimeCom", sf.format(cal.getTime()));
+		params.put("TimeNomal", sf.format(cal.getTime()));
+		result.put("todayTimeCom", nDao.listComNum(params));
+		result.put("todayTimeNomal", nDao.listNomalNum(params));
+		
+		
+		return result;
+		
+	}
 
+	
+	
+	
 	@Override
 	public int nomalBoardModify(NomalBoard nomal){
 		// TODO Auto-generated method stub
@@ -265,6 +307,49 @@ public class NomalServiceImpl implements NomalService{
 		// TODO Auto-generated method stub
 		nDao.changeNomalM(user);
 		return 0;
+	}
+
+
+	//---------------좌표로 거리 구하는 함수
+	@Override
+	public double distance(double lat1, double lon1, double lat2, double lon2, String unit) {
+
+        double theta = lon1 - lon2;
+        double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515;
+         
+        if (unit == "kilometer") {
+            dist = dist * 1.609344;
+        } else if(unit == "meter"){
+            dist = dist * 1609.344;
+        }
+ 
+        return (dist);
+    }
+
+
+	
+    private double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+     
+    private double rad2deg(double rad) {
+        return (rad * 180 / Math.PI);
+    }
+
+	@Override
+	public String amguna() {
+		// TODO Auto-generated method stub
+		return nDao.amguna();
+	}
+
+	@Override
+	public String amguna2() {
+		// TODO Auto-generated method stub
+		return nDao.amguna2();
 	}
 
 }

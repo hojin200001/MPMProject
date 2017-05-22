@@ -55,4 +55,11 @@ public interface NomalDao {
 	public int nomalMcountAll(HashMap<String, Object> params);
 	public int changeNomalM(HashMap<String, Object> params);
 	public int getCountM(HashMap<String, Object> params);
+
+	public int getCountBoardListCom(HashMap<String, Object> id);
+	
+	
+	//---------------좌표로 거리 구하는 함수
+	public String amguna();
+	public String amguna2();
 }

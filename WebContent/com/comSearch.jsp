@@ -151,7 +151,6 @@ td>a{
 </head>
 <body>
 <div class="container">
-<<<<<<< HEAD
  <div class="header">
   				<div class="searchArea">
   			<dir class="searchs">
@@ -162,18 +161,7 @@ td>a{
   				</div>
   			</dir>
   		</div>
-=======
-  <div class="header">
-  		<div class="searchArea">
-				<dir class="searchs">
-					<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" style="padding-top: 30px;"/>
-					<div class="serachs_div">
-						<input type="text" alt="전체검색" class="searchText"><img
-							src="img/main/btn_search.gif" alt="홈으로" style="float: left;" /></input>
-					</div>
-				</dir>
-			</div>
->>>>>>> 6bf5e6c954890f12737f1f1031bf4d108204f100
+
     <!-- end .header --></div>
    <nav style="margin-top: 20px;">
 	  <ul id="menu">
@@ -248,19 +236,28 @@ td>a{
 	<div class="contents_top2_1">
 
 		<button class="btn btn-primary" type="button">
-		  전체 채용 정보 : <span class="badge">${totalPage}</span>
+		  전체 채용 정보 : <span class="badge">${userbasic.totalPage}${combasic.totalPage}</span>
 		</button>
 
 		<button class="btn btn-primary" type="button">
-		  오늘의 채용 정보 : <span class="badge">${todayTimeCom}</span>
+		  오늘의 채용 정보 : <span class="badge">${userbasic.todayTimeCom}${combasic.todayTimeCom}</span>
 		</button>
 		
 		<button class="btn btn-primary" type="button">
-		  거주 지역 채용정보 : <span class="badge">${userareanum}</span>
+		<c:choose>
+			<c:when test="${userInfo==1}">
+				거주 지역 채용정보 : <span class="badge">${userarea}</span>
+			</c:when>
+
+			<c:otherwise>
+				업체 지역 구직정보 : <span class="badge">${comarea}</span>
+			</c:otherwise>
+		</c:choose>
+			  
 		</button>
 
 		<button class="btn btn-primary" type="button">
-			오늘의 구직 현황 : <span class="badge">${todayTimeNomal}</span>
+			오늘의 구직 현황 : <span class="badge">${userbasic.todayTimeNomal}${combasic.todayTimeNomal}</span>
 		</button>
 		
 	</div>

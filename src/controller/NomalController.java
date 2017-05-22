@@ -163,5 +163,20 @@ public class NomalController {
 		return "redirect:nomalBoardList.do";
 	}
 	
+	//---------------좌표로 거리 구하는 함수
+	@RequestMapping("testPoint.do")
+	public String testArea(){
+		
+		System.out.println("위치");
+		String asa1 = nservice.amguna();
+		String asa2 = nservice.amguna2();
+		String[] n1=asa1.split(",");
+		String[] n2=asa2.split(",");
+		System.out.println(Double.parseDouble(n1[1].trim()));
+		System.out.println(Double.parseDouble(n1[0].trim()));
+		double sipse = nservice.distance(Double.parseDouble(n1[0].trim()), Double.parseDouble(n1[1].trim()), Double.parseDouble(n2[0].trim()), Double.parseDouble(n2[1].trim()), "meter");
+		System.out.println(sipse+"미터 ㅋㅋㅋㅋ");
+		return "redirect:nomalMain.do";
+	}
 	
 }
