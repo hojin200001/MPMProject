@@ -61,7 +61,6 @@
 </head>
 <body>
 <div class="container">
-<<<<<<< HEAD
 		<div class="header">
 			<div class="searchArea">
 				<dir class="searchs">
@@ -72,21 +71,6 @@
 					</div>
 				</dir>
 			</div>
-			<!-- end .header -->
-=======
-	<div class="header">
-		<div class="searchArea">
-			<dir class="searchs">
-				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" style="padding-top: 30px;" />
-				<div class="serachs_div">
-					<input type="text" alt="전체검색" class="searchText">
-						<img src="img/main/btn_search.gif" alt="홈으로" style="float: left;" />
-					</input>
-				</div>
-			</dir>
->>>>>>> c8e077ea60b268887afcbc336796b66f588ed5cb
-		</div>
-			<!-- end .header -->
 	</div>
 		
 	<nav style="margin-top: 20px;">
@@ -103,7 +87,6 @@
 					</li>
 				</c:when>
 				<c:when test="${userInfo ==2}">
-<<<<<<< HEAD
 		  			<li><a href="comSearch.do">인력찾기</a></li>
 					<li><a href="comBoardList.do">구인 정보</a>
 					<ul>
@@ -118,24 +101,6 @@
 						<li><a href="comBoardList.do">구인 등록 현황</a></li>
 				    		<li><a href="comWriteForm.do">구인 등록하기</a></li>	
 					</ul></li>
-=======
-					<li><a href="comSearch.do">인력찾기</a></li>
-					<li><a href="comBoardList.do">구직 정보</a>
-						<ul>
-							<li><a href="comBoardList.do">구직 등록 현황</a></li>
-							<li><a href="comWriteForm.do">구직 등록하기</a></li>
-						</ul>
-					</li>
-				</c:when>
-				<c:otherwise>
-					<li><a href="nomalSearch.do">일자리찾기</a></li>
-					<li><a href="nomalBoardList.do">일자리등록정보</a>
-						<ul>
-							<li><a href="nomalBoardList.do">구직 등록 현황</a></li>
-							<li><a href="nomalWriteForm.do">구직 등록하기</a></li>
-						</ul>
-					</li>
->>>>>>> c8e077ea60b268887afcbc336796b66f588ed5cb
 				</c:otherwise>
 			</c:choose>
 			<li><a href="#">게시판</a>
@@ -177,7 +142,7 @@
 							<c:when test="${userInfo == 1}">
 								<span class="loginArea_div4_1" onclick="logOut()"><span>로그아웃</span></span>
 								<span class="loginArea_div4_2"><span>일반</span>회원</span><br> 
-								<span class="loginArea_div4_3" style="margin-right: 70px;"><span>${user.name}</span>님</span><br>
+								<span class="loginArea_div4_3" style="margin-right: 100px;"><span>${user.name}</span>님</span><br>
 								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
 								<span style="font-size: 13px; margin-right: 30px;float: right;">메세지 : 
 									<c:choose>
@@ -189,7 +154,7 @@
 							<c:when test="${userInfo == 2}">
 								<span class="loginArea_div4_1" onclick="logOut()"><span>로그아웃</span></span>
 								<span class="loginArea_div4_2"><span>기업</span>회원</span><br> 
-								<span class="loginArea_div4_3" style="margin-right: 70px;"><span>${user.name}</span>님</span><br>
+								<span class="loginArea_div4_3" style="margin-right: 100px;"><span>${user.name}</span>님</span><br>
 								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
 								<span style="font-size: 13px; margin-right: 30px;float: right;">메세지 : 
 									<c:choose>
@@ -234,7 +199,6 @@
 		});
 	</script>
     <!-- end .sidebar1 --></div>
-<<<<<<< HEAD
   <div class="content">
 			<div class="recentHelp">
 				<div class="recentHelp_1">
@@ -243,7 +207,7 @@
 					</p>
 					<div class="recentHelp_1_d">
 						<div class="recentHelp_1_div">
-							<ul style="list-style: none;">
+							<ul style="list-style: none; margin-top: 20px;">
 								<li><span>키워드 입력</span>
 									<div style="float: right; margin-right: 40px;">
 										<dt class="recentHelp_1_dt">
@@ -256,13 +220,13 @@
 							</ul>
 						</div>
 						<div class="recentHelp_1_div2">
-							<ul style="list-style: none;">
+							<ul style="list-style: none; margin-top: 25px;">
 								<li style="float: left; width: 50%;">
 									<dl style="float: left;">
 										<dt style="float: left;" class="recentHelp_1_div2_dt">전문분야</dt>
 										<dd style="padding-left: 30px;" class="recentHelp_1_div2_dd">
 											<select id='fruits' name='license'class="license"
-												style="width: 195px; height: 32px">
+												style="width: 195px; height: 32px; margin-left: 10px;">
 												<option value='' selected>-- 선택 --</option>
 											</select>
 										</dd>
@@ -272,7 +236,7 @@
 									<dl style="width: 100%;">
 										<dt style="margin-left: 9px;" class="recentHelp_1_div2_dt2">경력</dt>
 										<dd style="padding-left: 10px;" class="recentHelp_1_div2_dd2">
-											<select id="careerType" name="careerType" title="경력 선택"><option
+											<select id="careerType" name="careerType" title="경력 선택" style="margin-left: 10px;"><option
 													value="">전체</option>
 												<option value="없음">없음</option>
 												<option value="1년">1년</option>
@@ -284,54 +248,6 @@
 								</li>
 							</ul>
 						</div>
-=======
-	<div class="content">
-		<div class="recentHelp">
-			<div class="recentHelp_1">
-				<p class="recentHelp_1_p"><span>일자리</span>검색</p>
-				<div class="recentHelp_1_d">
-					<div class="recentHelp_1_div">
-						<ul style="list-style: none;">
-							<li><span>키워드 입력</span>
-								<div style="float: right; margin-right: 40px;">
-									<dt class="recentHelp_1_dt">
-										<input type="text" />
-									</dt>
-									<dd class="recentHelp_1_dd">
-										<a href="#">검색</a>
-									</dd>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="recentHelp_1_div2">
-						<ul style="list-style: none;">
-							<li style="float: left; width: 50%;">
-								<dl style="float: left;">
-									<dt style="float: left;" class="recentHelp_1_div2_dt">전문분야</dt>
-									<dd style="padding-left: 30px;" class="recentHelp_1_div2_dd">
-										<select id='fruits' name='license'
-											style="width: 195px; height: 32px">
-											<option value='' selected>-- 다중선택 --</option>
-										</select>
-									</dd>
-								</dl>
-							</li>
-							<li style="float: left; width: 50%;">
-								<dl style="width: 100%;">
-									<dt style="margin-left: 9px;" class="recentHelp_1_div2_dt2">경력</dt>
-									<dd style="padding-left: 10px;" class="recentHelp_1_div2_dd2">
-										<select id="careerType" name="careerType" title="경력 선택"><option
-												value="">전체</option>
-											<option value="0">무관</option>
-											<option value="1">신입</option>
-											<option value="2">경력</option>
-										</select>
-									</dd>
-								</dl>
-							</li>
-						</ul>
->>>>>>> c8e077ea60b268887afcbc336796b66f588ed5cb
 					</div>
 				</div>
 			</div>
