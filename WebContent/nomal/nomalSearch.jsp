@@ -349,32 +349,32 @@ style="padding-top: 10px; margin-top: 10px;" aria-controls="collapseExample" sty
 				<td><fmt:formatDate value="${c.createDay}" pattern="yyyy-MM-dd"/></td>
 			</tr>
 		</c:forEach>
-			<tr>
-		<td colspan="5">
-		<c:if test="${start != 1}">
-			<a href="nomalSearch.do?page=1&area=${ar}">[처음]</a>
-			<a href="nomalSearch.do?page=${start-1}&area=${ar}">[이전]</a>
-		</c:if>
-		<c:forEach begin="${start}" end="${end <last? end: last}" var="i">
-			
-			<c:choose>
-				<c:when test="${i == current }">
-					[${i}]
-				</c:when>
-				<c:otherwise>
-					<a href="nomalSearch.do?page=${i}&area=${ar}$keyword=&checkbox=&radiobox=">[${i}]</a>				
-				</c:otherwise>
-			</c:choose>
-				
-		</c:forEach>
-		
-		<c:if test="${end < last}">
-			<a href="nomalSearch.do?page=${end+1}&area=${ar}">[다음]</a>
-			<a href="nomalSearch.do?page=${last}&area=${ar}">[마지막]</a>
-		</c:if>
-		
-		</td>
-	</tr>
+         <tr>
+      <td colspan="5">
+      <c:if test="${start != 1}">
+         <a href="nomalSearch.do?page=1&area=${ar}">[처음]</a>
+         <a href="nomalSearch.do?page=${start-1}&area=${ar}">[이전]</a>
+      </c:if>
+      <c:forEach begin="${start}" end="${end <last? end: last}" var="i">
+         
+         <c:choose>
+            <c:when test="${i == current }">
+               [${i}]
+            </c:when>
+            <c:otherwise>
+               <a href="nomalSearch.do?page=${i}&area=${ar}">[${i}]</a>            
+            </c:otherwise>
+         </c:choose>
+            
+      </c:forEach>
+      
+      <c:if test="${end < last}">
+         <a href="nomalSearch.do?page=${end+1}&area=${ar}">[다음]</a>
+         <a href="nomalSearch.do?page=${last}&area=${ar}">[마지막]</a>
+      </c:if>
+      
+      </td>
+   </tr>
 	</tbody>
 		</c:when>
 		<c:otherwise>

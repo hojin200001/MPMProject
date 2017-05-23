@@ -151,8 +151,8 @@ $(window).load(function(){
 								<span class="loginArea_div4_1" onclick="logOut()"><span>로그아웃</span></span>
 								<span class="loginArea_div4_2"><span>일반</span>회원</span><br> 
 								<span class="loginArea_div4_3"><span>${user.name}</span>님</span><br>
-								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
-								<span style="font-size: 13px; margin-right: 10px;">메세지 : 
+								<span class="loginArea_div4_4">등록 구직글 : <a>${countInfo}</a></span>
+								<span style="font-size: 11px; margin-right: 10px;">메세지 : 
 									<c:choose>
 										<c:when test="${countNew ==0}"><a>0</a></c:when>
 										<c:when test="${countNew > 0}"><a style="color: red; cursor:pointer;" onclick="Mesege()">${countAll}</a></c:when>											 
@@ -163,8 +163,8 @@ $(window).load(function(){
 								<span class="loginArea_div4_1" onclick="logOut()"><span>로그아웃</span></span>
 								<span class="loginArea_div4_2"><span>기업</span>회원</span><br> 
 								<span class="loginArea_div4_3"><span>${user.name}</span>님</span><br>
-								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
-								<span style="font-size: 13px; margin-right: 10px;">메세지 : 
+								<span class="loginArea_div4_4">등록 구직글 : <a>${countInfo}</a></span>
+								<span style="font-size: 11px; margin-right: 10px; ">메세지 : 
 									<c:choose>
 										<c:when test="${countNew ==0}"><a>0</a></c:when>
 										<c:when test="${countNew > 0}"><a style="color:red; cursor:pointer;" onclick="Mesege()">${countAll}</a></c:when>											 

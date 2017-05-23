@@ -53,10 +53,12 @@ public class NomalController {
 				counts = cservice.comMcounts((String)map.get("id"));
 				mav.addObject("countNew", counts.get(0));
 				mav.addObject("countAll", counts.get(1));
+				mav.addObject("countInfo", cservice.getCount((String)map.get("id")));
 			}else{
 				counts = nservice.nomalMcounts((String)map.get("id"));
 				mav.addObject("countNew", counts.get(0));
 				mav.addObject("countAll", counts.get(1));
+				mav.addObject("countInfo", nservice.getCountNomalBoard((String)map.get("id")));
 			}
 			
 		}
@@ -162,6 +164,11 @@ public class NomalController {
 	public String nomalBoardModifyDo(NomalBoard nomal){
 		nservice.nomalBoardModify(nomal);													
 		return "redirect:nomalBoardList.do";		
+	}
+	@RequestMapping("nomalBoardDelete.do")
+	public String nomalBoardDelete(int nnum){
+		nservice.deleteNomalBoard(nnum);
+		return "redirect:nomalBoardList.do";
 	}
 	
 	//---------------좌표로 거리 구하는 함수

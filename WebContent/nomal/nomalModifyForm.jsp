@@ -206,12 +206,12 @@ function titleCheck(){
 		</div>
 	
 		<div class="textbottom_button">
-			<input type="button" class="btn btn-primary" value="목록으로" onclick="location.href='nomalBoardList.do'">
 			<c:choose>
 				<c:when test="${user.id eq nomalBoard.nomalId}">
 					<input type="button" class="btn btn-primary" value="수정하기" onclick="titleCheck()">
 				</c:when>
 			</c:choose>
+			<input type="button" class="btn btn-primary" value="목록으로" onclick="location.href='nomalBoardList.do'">
 		</div>
 		</form>
 

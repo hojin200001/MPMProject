@@ -115,14 +115,14 @@ public class ComServiceImpl implements ComService{
 		n.put("cnum", cnum);
 		ComBoard cb = cdao.comView(n);
 		ComDay cd = cdao.selectComDayOne(n);
-		System.out.println("출력 전");
+
 		System.out.println(cb.getCstartDay());
 		System.out.println(cd.getCstartDay());
 		
 		cb.setCstartDay(cd.getCstartDay());
 		
 		
-		System.out.println("여긴거같은데");
+
 		cb.setCendDay(cd.getCendDay());
 		if(cb !=null){
 			n.put("ccount",cb.getCcount()+1);
@@ -351,7 +351,7 @@ public class ComServiceImpl implements ComService{
 		params.put("ar", ar);
 		int n = (page - 1)*10;
 		params.put("offset", n);
-		params.put("boardsPerPage", 5);
+		params.put("boardsPerPage", 10);
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
 		params.put("todayTime", sf.format(cal.getTime()));
@@ -387,6 +387,15 @@ public class ComServiceImpl implements ComService{
 		map.put("cnum", cnum);
 		ComDay  cday = cdao.selectComDayOne(map);
 		return cday;
+	}
+
+	@Override
+	public int getCount(String comId) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("id", comId);
+		int re = cdao.getCount(map);
+		System.out.println(re);
+		return re;
 	}
 
 }

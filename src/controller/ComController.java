@@ -47,10 +47,12 @@ public class ComController {
 				counts = cservice.comMcounts((String)map.get("id"));
 				mav.addObject("countNew", counts.get(0));
 				mav.addObject("countAll", counts.get(1));
+				mav.addObject("countInfo", cservice.getCount((String) map.get("id")));
 			}else{
 				counts = nservice.nomalMcounts((String)map.get("id"));
 				mav.addObject("countNew", counts.get(0));
 				mav.addObject("countAll", counts.get(1));
+				mav.addObject("countInfo", nservice.getCountNomalBoard((String) map.get("id")));
 			}
 			
 		}
@@ -113,6 +115,9 @@ public class ComController {
 	public ModelAndView boardView2(int cnum,@RequestParam(defaultValue="0")int type,
 			HttpSession session){
 		ModelAndView mav = new ModelAndView();
+		List<InComBoard> ico= cservice.selectIncomBoard(cnum);
+		mav.addObject("inComBoard",ico);
+		mav.addObject("inCount", cservice.InComBoardCount(cnum));
 		if(type!=0){
 			HashMap<String, Object> user = (HashMap<String, Object>) session.getAttribute("user");
 			user.put("cnum", cnum);
@@ -127,12 +132,6 @@ public class ComController {
 		mav.setViewName("/com/comView");
 		return mav;
 	}
-	
-	
-	
-	
-	
-	
 	@RequestMapping("comSearch.do")
 	public ModelAndView comSearch(
 			@RequestParam(defaultValue="1") int page,

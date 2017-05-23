@@ -42,6 +42,9 @@ textarea {
     font-size: 16px;
     resize: none;
 }
+#rere{
+	
+}
 /* th,td{
 	border-bottom: 1px solid #ddd;
 	width: 100%;
@@ -213,7 +216,7 @@ textarea {
 			<input type="hidden" name="reName" value="${user.id}"> 
 			<input type="hidden" name="num" value="${freeBoard.num}">
 				<textarea name="teText" placeholder="댓글을 달아주세요." onfocus="loginCheck('${user}')"></textarea>
-				<input type="submit" value="댓글">
+				<input type="submit" value="댓글" id="rere">
 			</form>
 			
 		</div>

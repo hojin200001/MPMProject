@@ -243,15 +243,15 @@ function titleCheck(){
 						</select>
 					</span></td>
 				</tr>
-				<tr>
-					<td class="td_area_7"><span>경력사항</span></td>
-					<td class="td_area_9"><span> <input type="radio"
-							name="ncarrer" value="없음" checked="checked">없음 <input
-							type="radio" name="ccarrer" value="1년">1년 <input
-							type="radio" name="ccarrer" value="2년">2년 <input
-							type="radio" name="ccarrer" value="3년">3년
-					</span></td>
-				</tr>
+				 <tr>
+               <td class="td_area_7"><span>경력사항</span></td>
+               <td class="td_area_9"><span> 
+               <input type="radio" name="ncareer" value="없음">없음
+               <input type="radio" name="ncareer" value="1년">1년
+               <input type="radio" name="ncareer" value="2년">2년 
+               <input type="radio" name="ncareer" value="3년">3년
+               </span></td>
+            </tr>
 				<tr>
 					<td class="td_area_7"><span>업무 소요일</span></td>
 					<td class="td_area_9"><span> <input

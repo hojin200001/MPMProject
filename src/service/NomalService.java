@@ -18,7 +18,9 @@ public interface NomalService {
 	public HashMap<String, Object> areaJobNum(String json);
 	public NomalBoard boardView(int nnum);
 	public HashMap<String, Object> nomalBoardList(int page, String id);
+	public int getCountNomalBoard(String nomalId);
 	//네이게이터의 첫번째 번호 얻기
+	public int deleteNomalBoard(int nnum);
 	public int getStartPage(int page);
 	
 	//네비게이터의 마지막 번호 얻기

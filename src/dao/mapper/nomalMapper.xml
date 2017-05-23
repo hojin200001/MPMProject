@@ -17,7 +17,7 @@
     </sql>
     <sql id="ntext">
         <choose>
-            <when test="ntext != ntext">
+            <when test="ntext != null">
                 '${ntext}'
             </when>
             <otherwise>
@@ -63,7 +63,9 @@
         Ntext = <include refid="ntext"/>
         where Nnum = #{nnum}
     </update>
-    
+    <update id="nomalBoardCount" parameterType="java.util.HashMap">
+    	update nomalboard set Ncount= Ncount+1 where Nnum=${nnum} 
+    </update>
     <update id="nomalBoardModify" parameterType="nomalBoard">
     	update nomalBoard set
         Ncount = #{ncount}, Njob = #{njob}, Ncareer = #{ncareer},
@@ -114,7 +116,9 @@
     <select id="listComNum" parameterType="java.util.HashMap" resultType="int">
     	select count(*) from comboard where date(CreateDay)='${TimeCom}'
     </select>
-    
+    <select id="getCountNomalBoard" parameterType="java.util.HashMap" resultType="int">
+    	select count(*) from nomalboard where nomalId='${id}'
+    </select>
     <select id="listNomalNum" parameterType="java.util.HashMap" resultType="int">
     	select count(*) from nomalboard where date(NjoinDay)='${TimeNomal}'
     </select>
@@ -148,7 +152,9 @@
  	<update id="changeNomalM" parameterType="java.util.HashMap">
  		update nomalm set reception=1 where cnum=${cnum} and nomalId='${id}';
  	</update>
- 	
+ 	<delete id="deleteNomalBoard" parameterType="java.util.HashMap">
+		delete from nomalBoard where Nnum=${nnum} 	
+ 	</delete>
 <!-- 좌표로 거리 구하는 함수 -->
  	<select id="amguna" resultType="String">
  		select cxy from comboard where cnum=26;

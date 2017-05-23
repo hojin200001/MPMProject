@@ -195,8 +195,8 @@
 		<div class="textbottom_button">
 			<c:choose>
 				<c:when test="${user.id eq nomalBoard.nomalId}">
-					<input type="button" class="btn btn-primary" value="목록으로" onclick="location.href='nomalBoardList.do'">
 					<input type="button" class="btn btn-primary" value="수정하기" onclick="location.href='nomalModifyForm.do?num=${nomalBoard.nnum}'">
+					<input type="button" class="btn btn-primary" value="삭제하기" onclick="location.href='nomalBoardDelete.do?nnum=${nomalBoard.nnum}'">
 				</c:when>
 				<c:otherwise>
 					<input type="button" class="btn btn-primary" value="목록으로" onclick="location.href='history.back()'">

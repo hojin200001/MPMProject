@@ -92,8 +92,7 @@ public class NomalServiceImpl implements NomalService{
 		n.put("nnum", nnum);
 		NomalBoard nb = nDao.nomalView(n);
 		if(nb !=null){
-			nb.setNcount(nb.getNcount()+1);
-			nDao.nomalUpdate(nb);
+			nDao.nomalBoardCount(n);
 		}
 		
 		return nb;
@@ -190,7 +189,7 @@ public class NomalServiceImpl implements NomalService{
 		params.put("ar", ar);
 		params.put("kw", keyword);
 		params.put("offset", getOffset(page));
-		params.put("boardsPerPage", 5);
+		params.put("boardsPerPage", 10);
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
 		params.put("todayTime", sf.format(cal.getTime()));
@@ -354,6 +353,22 @@ public class NomalServiceImpl implements NomalService{
 	public String amguna2() {
 		// TODO Auto-generated method stub
 		return nDao.amguna2();
+	}
+
+	@Override
+	public int deleteNomalBoard(int nnum) {
+		HashMap<String, Integer>map = new HashMap<>();
+		map.put("nnum", nnum);
+		int re  = nDao.deleteNomalBoard(map);
+		return re;
+	}
+
+	@Override
+	public int getCountNomalBoard(String nomalId) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("id", nomalId);
+		int re = nDao.getCountNomalBoard(map);
+		return re;
 	}
 
 }

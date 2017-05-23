@@ -19,9 +19,11 @@ public interface NomalDao {
 	public NomalBoard nomalView(HashMap<String, Integer> nnum);
 	
 	public void nomalUpdate(NomalBoard nb);
+	public int nomalBoardCount(HashMap<String, Integer> nnum);
 
 	public int getCount();
 	public int getCountBoardList(HashMap<String, Object> params);
+	public int getCountNomalBoard(HashMap<String, Object> params);
 
 	public List<NomalBoard> selectBoardPage(HashMap<String, Object> params);
 	// 회원가입
@@ -42,8 +44,7 @@ public interface NomalDao {
 	
 	public int userarea(HashMap<String, Object> params);
 	public int comarea(HashMap<String, Object> params);
-
-	
+	public int deleteNomalBoard(HashMap<String, Integer> nnum);	
 	public void nomalBoardModify(NomalBoard nomal);
 
 	//nomalM(메세지 알람)
