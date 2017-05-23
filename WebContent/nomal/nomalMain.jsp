@@ -66,7 +66,7 @@
 				<dir class="searchs">
 					<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" style="margin-top: 30px;" />
 					<div class="serachs_div">
-						<input type="text" alt="전체검색" class="searchText" style="padding: 5px;"><img
+						<input type="text" alt="전체검색" class="searchText" style="padding: 8px;"><img
 							src="img/main/btn_search.gif" alt="홈으로" style="float: left;" /></input>
 					</div>
 				</dir>
@@ -144,7 +144,7 @@
 								<span class="loginArea_div4_2"><span>일반</span>회원</span><br> 
 								<span class="loginArea_div4_3" style="margin-right: 100px;"><span>${user.name}</span>님</span><br>
 								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
-								<span style="font-size: 13px; margin-right: 30px;float: right;">메세지 : 
+								<span style="font-size: 13px; margin-right: 10px;float: right;">메세지 : 
 									<c:choose>
 										<c:when test="${countNew ==0}"><a>0</a></c:when>
 										<c:when test="${countNew > 0}"><a style="color: red; cursor:pointer;" onclick="Mesege()">${countAll}</a></c:when>											 
@@ -156,7 +156,7 @@
 								<span class="loginArea_div4_2"><span>기업</span>회원</span><br> 
 								<span class="loginArea_div4_3" style="margin-right: 100px;"><span>${user.name}</span>님</span><br>
 								<span class="loginArea_div4_4">등록 구직글 : <a>0</a></span>
-								<span style="font-size: 13px; margin-right: 30px;float: right;">메세지 : 
+								<span style="font-size: 13px; margin-right: 10px;float: right;">메세지 : 
 									<c:choose>
 										<c:when test="${countNew ==0}"><a>0</a></c:when>
 										<c:when test="${countNew > 0}"><a style="color:red; cursor:pointer;" onclick="Mesege()">${countAll}</a></c:when>											 

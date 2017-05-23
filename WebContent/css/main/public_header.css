@@ -46,7 +46,14 @@ body {
 	padding-top: 10px;
 }
 .imageLogo{
-
+	
+	float: left;
+	width: 200px; 
+	height: 70px; 
+	margin-left: 20%;
+}
+.imageLogos{
+	margin-top: 45px;
 	float: left;
 	width: 200px; 
 	height: 70px; 

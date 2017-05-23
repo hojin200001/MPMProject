@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/main/menuBar.css">
-<link rel="stylesheet" type="text/css" href="css/main/public_header.css">
+<link rel="stylesheet" type="text/css" href="css/main/public_header.css?var=2">
 <link rel="stylesheet" type="text/css" href="css/main/SkyBanner.css">
 <link rel="stylesheet" type="text/css" href="css/com/comWrite_con.css">
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
@@ -23,7 +23,7 @@
 <script type="text/javascript">
 function titleCheck(){
 	if(document.frm.ntitle.value.length == 0){
-	   alert('제목을 입력해주세요.... 딱 보면 모르냐?');
+	   alert('제목을 입력해주세요.');
 	   frm.ntitle.focus();
 	   return;
 	   }else{
@@ -34,13 +34,16 @@ function titleCheck(){
 <body>
 	<div class="container">
 		<div class="header">
-			<div class="searchArea">
-				<div class="imgArea">
-					<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로" />
-				</div>
-			</div>
-			<!-- end .header -->
-		</div>
+  				<div class="searchArea">
+  			<dir class="searchs">
+  				<img class="imageLogo" src="img/main/logoB_07.png" style="margin-top: 45px" alt="홈으로"/>
+  				<div class="serachs_div">
+	  				<input type="text" alt="전체검색" class="searchText" style="margin-top: 17px; ">
+	  				<img src="img/main/btn_search.gif" alt="홈으로" style="float: left; margin-top: 17px; margin-left: 0px;"/></input>
+  				</div>
+  			</dir>
+  		</div>
+    <!-- end .header --></div>
    <nav style="margin-top: 20px;">
 	  <ul id="menu">
 	    	<li><a href="nomalMain.do">홈으로</a></li>

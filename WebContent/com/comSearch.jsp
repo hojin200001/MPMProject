@@ -151,17 +151,16 @@ td>a{
 </head>
 <body>
 <div class="container">
- <div class="header">
+		<div class="header">
   				<div class="searchArea">
   			<dir class="searchs">
-  				<img class="imageLogo" src="img/main/logoB_07.png" alt="홈으로"/>
+  				<img class="imageLogo" src="img/main/logoB_07.png" style="margin-top: 45px" alt="홈으로"/>
   				<div class="serachs_div">
-	  				<input type="text" alt="전체검색" class="searchText" style="margin-top: 11px; margin-left: -20px;">
+	  				<input type="text" alt="전체검색" class="searchText" style="margin-top: 17px; padding: 8px;">
 	  				<img src="img/main/btn_search.gif" alt="홈으로" style="float: left; margin-top: 17px; margin-left: 0px;"/></input>
   				</div>
   			</dir>
   		</div>
-
     <!-- end .header --></div>
    <nav style="margin-top: 20px;">
 	  <ul id="menu">
